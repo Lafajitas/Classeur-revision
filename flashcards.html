@@ -1,0 +1,237 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one deck at a time — filters, progress, a single flip card, then answer buttons */
+:root{
+  --bg:#f2f4f2; --paper:#fbfcfb; --fg:#1b2420; --muted:#5f6b66; --line:#d5dbd6; --accent:#1f4d3f;
+  --ok:#1f7a4d; --ko:#b4531f;
+  --m1:#0f6b5c; --m2:#3c5aa8; --m3:#8a3f86; --m4:#b4531f; --m5:#8a6d12; --m6:#b0303f; --m9:#7a4b2a;
+  --display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  color-scheme:light; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121715; --paper:#181f1c; --fg:#e3ebe7; --muted:#97a39e; --line:#2e3834; --accent:#8fd3b8; --ok:#6fcf9b; --ko:#f08a52;
+  --m1:#4cc3ad; --m2:#8aa6f2; --m3:#d38bd0; --m4:#f08a52; --m5:#d9b54a; --m6:#f07a87; --m9:#d9a07a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121715; --paper:#181f1c; --fg:#e3ebe7; --muted:#97a39e; --line:#2e3834; --accent:#8fd3b8; --ok:#6fcf9b; --ko:#f08a52;
+  --m1:#4cc3ad; --m2:#8aa6f2; --m3:#d38bd0; --m4:#f08a52; --m5:#d9b54a; --m6:#f07a87; --m9:#d9a07a; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:grid;gap:18px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,42px);line-height:1.05;margin:4px 0 6px}
+.lede{margin:0;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:13.5px;font-weight:500;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--fg);cursor:pointer;display:flex;align-items:center;gap:7px}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+select,.btn{font:inherit;font-size:13.5px;padding:7px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--fg)}
+.btn{cursor:pointer}
+.btn:hover{border-color:var(--fg)}
+label.tog{display:flex;gap:6px;align-items:center;font-size:13.5px;color:var(--muted)}
+.prog{display:grid;gap:6px}
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;display:flex}
+.bar .k{background:var(--ok)} .bar .r{background:var(--ko)}
+.prog p{margin:0;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.card{position:relative;min-height:280px;perspective:1400px;cursor:pointer}
+.face{position:absolute;inset:0;border-radius:14px;border:1px solid var(--line);background:var(--paper);padding:22px 24px;display:grid;grid-template-rows:auto 1fr auto;gap:10px;backface-visibility:hidden;transition:transform .45s cubic-bezier(.2,.7,.2,1);border-top:4px solid var(--c)}
+.back{transform:rotateY(180deg)}
+.card.flip .front{transform:rotateY(-180deg)} .card.flip .back{transform:rotateY(0)}
+@media (prefers-reduced-motion:reduce){.face{transition:none}}
+.meta{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}
+.meta b{color:var(--c);letter-spacing:.04em;text-transform:uppercase;font-size:11.5px}
+.q{font-family:var(--display);font-weight:500;font-size:clamp(20px,3.4vw,26px);line-height:1.25;align-self:center;text-wrap:balance}
+.a{font-size:17px;align-self:center;white-space:pre-line}
+.hint{font-size:12.5px;color:var(--muted)}
+.card:focus-visible,.chip:focus-visible,.btn:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.answer{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.answer button{font:inherit;font-weight:600;font-size:15px;padding:12px;border-radius:10px;cursor:pointer;border:1.5px solid}
+.ko{color:var(--ko);border-color:var(--ko);background:color-mix(in srgb,var(--ko) 8%,var(--paper))}
+.okb{color:var(--ok);border-color:var(--ok);background:color-mix(in srgb,var(--ok) 8%,var(--paper))}
+.done{border:1px dashed var(--line);border-radius:14px;padding:28px;text-align:center;display:grid;gap:10px;justify-items:center}
+.done h2{font-family:var(--display);font-weight:500;margin:0}
+.keys{font-size:12.5px;color:var(--muted);margin:0}
+kbd{font:inherit;font-size:11.5px;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;background:var(--paper)}
+</style></head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#flashcards">← Flashcards</a><span>· Classeur de révision</span></nav>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Classeur de révision</div>
+    <h1>Flashcards</h1>
+    <p class="lede">Lisez la question, cherchez la réponse de tête, puis retournez la carte. Votre progression reste enregistrée dans ce navigateur.</p>
+  </header>
+  <div class="chips" id="chips" role="group" aria-label="Matière"></div>
+  <div class="row">
+    <select id="cours" aria-label="Cours"></select>
+    <label class="tog"><input type="checkbox" id="onlyKo"> Seulement les cartes à revoir</label>
+    <button class="btn" id="shuffle" type="button">Mélanger</button>
+    <button class="btn" id="reset" type="button">Remettre à zéro</button>
+  </div>
+  <div class="prog"><div class="bar"><span class="k" id="bk"></span><span class="r" id="br"></span></div><p id="ptxt"></p></div>
+  <div id="stage"></div>
+  <p class="keys"><kbd>Espace</kbd> retourner · <kbd>1</kbd> à revoir · <kbd>2</kbd> je sais · <kbd>←</kbd> <kbd>→</kbd> naviguer</p>
+</div>
+<script>
+const CARDS = [
+// Évaluation d'entreprises · cours du 1er oct.
+["eval","2026-10-01","Les deux formules de l'ANC ?","Capitaux propres − actif fictif.\nActif réel − passif exigible (dettes + provisions R&C)."],
+["eval","2026-10-01","Quels actifs fictifs retire-t-on pour l'ANC ?","Frais d'établissement, charges à répartir (frais d'émission d'emprunts), primes de remboursement des obligations, part non couverte de l'ECA."],
+["eval","2026-10-01","Que fait-on de l'écart de conversion passif ?","C'est un gain latent : on l'ajoute aux capitaux propres (il sort du passif exigible)."],
+["eval","2026-10-01","Que fait-on des dividendes votés ?","C'est une dette envers les actionnaires : on les retire des capitaux propres (montant par action × nombre d'actions)."],
+["eval","2026-10-01","ECA de 250 couvert par une provision de 250 : actif fictif ?","Zéro : la provision, déjà déduite des capitaux propres, neutralise la perte. Seule la part non couverte (ECA − provision) est fictive."],
+["eval","2026-10-01","Formule de l'ANCC ?","ANCC = ANC ± plus/moins-values − IDP + IDA.\nValeur mathématique = ANCC / nombre d'actions."],
+["eval","2026-10-01","Sur quoi calcule-t-on un IDP ?","Subventions d'investissement, provisions réglementées (hausse des prix, amortissements dérogatoires) et plus-values hors exploitation, × ⅓."],
+["eval","2026-10-01","Sur quoi calcule-t-on un IDA ?","Actifs fictifs retirés et moins-values sur actifs, × ⅓ (économie d'impôt)."],
+["eval","2026-10-01","Bien d'exploitation ou hors exploitation : quelle valeur ?","Exploitation : valeur d'utilité, sans impôt.\nHors exploitation : valeur vénale, nette d'impôt sur la plus-value."],
+["eval","2026-10-01","Quel taux pour actualiser un crédit-bail ?","Le coût de la dette, pas le CMPC."],
+["eval","2026-10-01","Une seconde licence en négociation (probabilité 70 %) : quelle valeur ?","Zéro : contrat non signé, on reste prudent quelle que soit la probabilité."],
+["eval","2026-10-01","Comment évalue-t-on un droit au bail ?","Valeur actuelle de l'économie de loyer (loyer de marché − loyer payé) sur la durée restante. Payable d'avance : le premier flux n'est pas actualisé."],
+["eval","2026-10-01","Goodwill de l'exemple du cours (actifs 2 000, dettes 500, résultat 195, k = 10 %) ?","Rendement 195 / 10 % = 1 950 ; patrimoine 1 545.\nGoodwill = 1 950 − 1 545 = 405."],
+["eval","2026-10-01","Titre déjà déprécié : à quoi compare-t-on l'estimation ?","À la VNC, pas à la valeur brute (Hôtel Croisette : 42 000 = 42 000, écart nul)."],
+["eval","2026-10-01","Peut-on faire la moyenne des valeurs obtenues ?","Jamais. On présente une fourchette et le prix sort de la négociation."],
+// Économétrie J1 · 30 sept.
+["eco","2026-09-30","Coupe transversale, série temporelle, panel ?","Coupe : plusieurs entités, une période.\nSérie temporelle : une entité, plusieurs périodes.\nPanel : plusieurs entités, au moins deux périodes."],
+["eco","2026-09-30","Formule de la variance d'échantillon ?","S² = Σ(Xᵢ − X̄)² / (n − 1).\nPour la population : σ² avec division par N."],
+["eco","2026-09-30","Moyenne, médiane : laquelle résiste aux valeurs extrêmes ?","La médiane (et le mode). La moyenne est tirée par les extrêmes (maisons : moyenne 600 000, médiane 300 000)."],
+["eco","2026-09-30","Règle des 3 sigma ?","μ ± 1σ : 68 %\nμ ± 2σ : 95 %\nμ ± 3σ : 99,7 %"],
+["eco","2026-09-30","Que mesure le coefficient de corrélation r ?","La force relative de la relation linéaire, entre −1 et 1. r = cov / (Sₓ·Sᵧ). Aucune causalité."],
+["eco","2026-09-30","Les 5 étapes d'un test d'hypothèse ?","1. H₀ et H₁ · 2. Choisir α · 3. Valeurs critiques · 4. Calculer t · 5. Rejeter ou non H₀."],
+["eco","2026-09-30","Règle de décision avec la p-value ?","On rejette H₀ si p-value ≤ α (⇔ |t| ≥ valeur critique)."],
+["eco","2026-09-30","Statistique t pour une moyenne (σ inconnu) ?","t = (Ȳ − μ) / (S / √n), avec df = n − 1."],
+["eco","2026-09-30","Formule générale d'un intervalle de confiance ?","Estimation ponctuelle ± valeur critique × erreur-type."],
+["eco","2026-09-30","Californie : conclusion du test sur la taille des classes ?","Δ = 7,4 ; t = 4,05 > 1,96 → on rejette H₀ à 5 %. IC 95 % = [3,8 ; 11,0], qui ne contient pas 0."],
+// Économétrie J2 · 2 oct.
+["eco","2026-10-02","Formules de b₁ et b₀ (MCO) ?","b₁ = SS_XY / SS_X = cov / S²ₓ\nb₀ = Ȳ − b₁X̄"],
+["eco","2026-10-02","Interpréter b₁ = 0,10977 (prix en k$, surface en sq ft) ?","Chaque sq ft supplémentaire augmente le prix de 109,77 $ en moyenne."],
+["eco","2026-10-02","Définition de r² ?","r² = SSR / SST : part de la variation de Y expliquée par X (maisons : 58 %)."],
+["eco","2026-10-02","Test sur la pente : hypothèses, statistique, ddl ?","H₀ : β₁ = 0 ; H₁ : β₁ ≠ 0.\nt = b₁ / S_b₁ ; df = n − 2."],
+["eco","2026-10-02","Que signifie LINE ?","Linéarité, Indépendance des erreurs, Normalité des erreurs, Égalité des variances (homoscédasticité)."],
+["eco","2026-10-02","Résidus en forme d'entonnoir : quel problème ?","Variance non constante (hétéroscédasticité)."],
+["eco","2026-10-02","Peut-on prédire hors du domaine des X observés ?","Non : on interpole, on n'extrapole pas."],
+["eco","2026-10-02","β Apple = 1,28 : lecture ?","Quand le S&P 500 gagne 1 %, Apple gagne 1,28 % en moyenne : action offensive (β > 1)."],
+["eco","2026-10-02","Erreur-type de la régression ?","S_YX = √(SSE / (n − 2))"],
+// F&A · 28 sept.
+["ingf","2026-09-28","Les trois types d'opérations (perspective économique) ?","Horizontale (même industrie), verticale (amont ou aval), conglomérale (industries sans lien)."],
+["ingf","2026-09-28","Fusion ou fusion-absorption ?","Fusion : X + Z → Y (nouvelle société).\nAbsorption : X + Z → X, Z est dissoute sans liquidation."],
+["ingf","2026-09-28","Spin-off ou split-up ?","Spin-off : actions d'une filiale distribuées aux actionnaires de la mère.\nSplit-up : idem, et la mère est dissoute."],
+["ingf","2026-09-28","Prime d'acquisition : formule et ordres de grandeur ?","(prix offert − cours avant annonce) / cours avant annonce.\nÉtats-Unis 43 %, France 27 %."],
+["ingf","2026-09-28","Création de valeur d'une acquisition ?","Synergies (nettes des coûts d'intégration) − prime payée."],
+["ingf","2026-09-28","Quelles synergies sont les plus sûres ?","Les synergies de coûts : plus faciles à identifier, chiffrer et réaliser que celles de revenus."],
+["ingf","2026-09-28","Formule et seuils du HHI ?","HHI = Σ (part de marché en %)².\n< 1 000 peu concentré, 1 000-2 000 moyen, > 2 000 très concentré."],
+["ingf","2026-09-28","Lignes directrices UE : quand pas de problème ?","HHI post < 1 000, ou 1 000-2 000 avec delta < 250, ou > 2 000 avec delta < 150."],
+["ingf","2026-09-28","Pourquoi l'EPS bootstrapping est une illusion ?","Le BPA monte (5 → 6,25 €) mais la valeur totale ne change pas : le PER baisse (20 → 16)."],
+["ingf","2026-09-28","Qu'est-ce que l'hubris ?","Excès de confiance des dirigeants (Roll 1986) : primes plus élevées, acquisitions moins rentables."],
+["ingf","2026-09-28","Problème du passager clandestin ?","L'acquéreur paie seul la baisse de concurrence, dont les concurrents profitent aussi."],
+["ingf","2026-09-28","Fusion de 2 firmes sur 5 à 20 % : HHI ?","Avant 2 000, après 40² + 3 × 20² = 2 800. Delta 800 : l'opération attire les autorités."],
+// Banque · 22 sept.
+["bank","2026-09-22","Marché primaire ou secondaire ?","Primaire : émission d'actions et d'obligations (argent frais).\nSecondaire : échange de titres existants (liquidité)."],
+["bank","2026-09-22","Marché organisé ou gré à gré ?","Organisé : standardisé, chambre de compensation.\nGré à gré : contrats sur mesure."],
+["bank","2026-09-22","Qu'est-ce que l'€STR ?","Taux interbancaire à très court terme de la zone euro, qui a remplacé l'EONIA en 2022."],
+["bank","2026-09-22","Les droits de l'actionnaire ?","Propriété, vote, dividende (non garanti), droit préférentiel de souscription."],
+["bank","2026-09-22","Le prix d'une obligation à taux fixe monte : le taux actuariel ?","Il baisse (relation inverse prix / taux)."],
+["bank","2026-09-22","Qu'est-ce qu'un crédit syndiqué ?","Un crédit accordé par un pool de plusieurs banques, mené par un chef de file."],
+["bank","2026-09-22","Glass-Steagall (1933) ?","Séparation banques de dépôt / banques d'affaires aux États-Unis."],
+["bank","2026-09-22","Gramm-Leach-Bliley (1999) ?","Fin de la séparation : les banques US peuvent cumuler tous les métiers."],
+["bank","2026-09-22","Règle Volcker ?","Dodd-Frank (2010) : interdit à une banque commerciale de spéculer pour compte propre avec les dépôts."],
+["bank","2026-09-22","Loi bancaire française de 1984 ?","Fin de la séparation de 1945 : naissance de la banque universelle."],
+["bank","2026-09-22","Rapport Liikanen ?","UE, 2012 : séparer activités commerciales et d'investissement. Projet rejeté puis abandonné en 2017."],
+["bank","2026-09-22","Financement de projet ?","Très gros projet financé sans recours via une société ad hoc (ex. viaduc de Millau)."],
+// Transmission · 21 sept.
+["trans","2026-09-21","Composition du PFU ?","12,8 % d'IR + 17,2 % de prélèvements sociaux = 30 %."],
+["trans","2026-09-21","Abattements pour durée de détention (droit commun) ?","50 % moins de 8 ans, 65 % à partir de 8 ans. Seulement au barème, titres acquis avant 2018."],
+["trans","2026-09-21","Abattement renforcé PME ?","65 % moins de 8 ans, 85 % à partir de 8 ans (PME de moins de 10 ans)."],
+["trans","2026-09-21","Abattement fixe du dirigeant qui part en retraite ?","500 000 €, au PFU ou au barème. Dirigeant 5 ans, ≥ 25 % des droits, retraite dans les 2 ans. Non cumulable avec les abattements durée."],
+["trans","2026-09-21","Sursis ou report d'imposition ?","Sursis : OPE, fusion, apport à une société non contrôlée (pas de PV constatée).\nReport : apport à une société IS contrôlée."],
+["trans","2026-09-21","Art. 150-0 B ter : condition si la holding revend avant 3 ans ?","Réinvestir au moins 50 % du prix dans une activité économique sous 2 ans."],
+["trans","2026-09-21","Taux d'IS ?","15 % jusqu'à 42 500 € pour les PME (CA ≤ 10 M€), 25 % au-delà."],
+["trans","2026-09-21","Conditions du régime mère-fille ?","Participation ≥ 5 % détenue 2 ans. Dividendes exonérés sauf quote-part de 5 %."],
+["trans","2026-09-21","Droits sur cession de parts sociales et d'actions ?","Parts : 3 % après abattement de 23 000 €.\nActions : 0,1 %."],
+["trans","2026-09-21","Pourquoi donner avant de céder ?","La donation efface la plus-value : le donataire revend à la valeur reçue (exemple : 80 transmis au lieu de 55)."],
+["trans","2026-09-21","Valeur d'entreprise et valeur des titres ?","VE = EBE ajusté × multiple.\nVT = VE − dettes financières nettes."],
+["trans","2026-09-21","Clause d'earn-out ?","Une partie du prix dépend des performances futures de la cible."],
+["trans","2026-09-21","Taux des PVLT professionnelles ?","12,8 % + prélèvements sociaux."],
+// Portefeuille · 21 sept.
+["port","2026-09-21","Équation du MEDAF ?","E(rᵢ) = r_f + βᵢ [E(r_m) − r_f]"],
+["port","2026-09-21","Définition du bêta ?","β = Cov(Rᵢ, R_m) / Var(R_m). β > 1 amplifie le marché, β < 1 l'atténue."],
+["port","2026-09-21","Pourquoi diversifier réduit le risque ?","Le risque du portefeuille dépend de la covariance : avec une corrélation < 1, il est inférieur à la moyenne des risques."],
+["port","2026-09-21","Équation de la CML ?","r_p = r_f + σ_p × (r_M − r_f) / σ_M"],
+["port","2026-09-21","Les trois niveaux d'efficience de Fama ?","Faible : cours passés.\nSemi-forte : + information publique.\nForte : + information privée."],
+["port","2026-09-21","Les facteurs de Fama-French (1993) ?","Marché, SMB (taille), HML (value). Le modèle 2015 ajoute RMW et CMA."],
+["port","2026-09-21","Deux anomalies calendaires ?","Effet janvier (rentabilités plus fortes) et effet lundi (rentabilités négatives)."],
+["port","2026-09-21","Sharpe ou Treynor ?","Sharpe : (r_p − r_f) / σ_p, risque total.\nTreynor : (r_p − r_f) / β_p, risque systématique."],
+["port","2026-09-21","Alpha de Jensen ?","α = r_p − [r_f + β (r_m − r_f)] : écart à la droite du MEDAF."],
+["port","2026-09-21","CPPI : montant investi en actions ?","m × (valeur liquidative − plancher).\nEx. : (1 M − 900 k) × 3 = 300 k€."],
+["port","2026-09-21","TIR ou rentabilité pondérée par le temps ?","Le TIR dépend des apports (9,33 %) ; la pondérée par le temps les neutralise (9,23 %) et sert à juger le gérant."],
+["port","2026-09-21","Où se joue la performance d'un portefeuille ?","Surtout dans l'allocation stratégique entre classes d'actifs, pas dans le choix des titres."],
+["port","2026-09-21","Trois techniques de gestion indicielle ?","Réplication pure, synthétique (futures, swaps), par approximation (échantillonnage, optimisation)."],
+// Successions · 3 oct.
+["jurpat","2026-10-03","Qu'interdit-on avec les pactes sur succession future ?","Accepter ou renoncer à la succession d'une personne encore vivante, sauf si la loi le prévoit."],
+["jurpat","2026-10-03","Régime légal du mariage et ce qui reste propre ?","Communauté réduite aux acquêts. Propres : biens d'avant le mariage, biens reçus par succession ou libéralité, effets personnels."],
+["jurpat","2026-10-03","Préciput : définition et limite ?","Droit de prélever un bien commun sans indemnité, prévu au contrat. Seulement en cas de survie, jamais en cas de divorce."],
+["jurpat","2026-10-03","Un avantage matrimonial est-il une donation ?","Non : il est liquidé avant la succession."],
+["jurpat","2026-10-03","Indignité de plein droit ou facultative ?","Plein droit (726) : peine criminelle pour meurtre ou violences mortelles.\nFacultative (727) : peine correctionnelle, faux témoignage, abstention, dénonciation calomnieuse ; demande sous 6 mois."],
+["jurpat","2026-10-03","Les trois options de l'héritier ?","Acceptation pure et simple, acceptation à concurrence de l'actif net, renonciation."],
+["jurpat","2026-10-03","Délais de l'option ?","4 mois de réflexion. Après sommation : 2 mois, sinon acceptation pure et simple. Sans sommation : 10 ans, sinon renonçant."],
+["jurpat","2026-10-03","Les quatre ordres d'héritiers ?","1. Descendants · 2. Parents, frères et sœurs et leurs descendants · 3. Autres ascendants · 4. Autres collatéraux."],
+["jurpat","2026-10-03","Qu'est-ce que la fente ?","Partage par moitié entre lignes paternelle et maternelle, pour les ascendants et collatéraux ordinaires (3ᵉ et 4ᵉ ordres)."],
+["jurpat","2026-10-03","Où joue la représentation ?","À l'infini pour les descendants et pour les descendants des frères et sœurs. Jamais pour les ascendants ni les collatéraux ordinaires."],
+["jurpat","2026-10-03","3 enfants dont un prédécédé avec 2 enfants : parts ?","⅓, ⅓, et ⅙ pour chaque petit-enfant (partage par souche puis par tête)."],
+["jurpat","2026-10-03","Sans enfant ni conjoint : père, mère et fratrie ?","¼ au père, ¼ à la mère, ½ aux frères et sœurs (art. 738)."],
+["jurpat","2026-10-03","Conjoint et enfants : ses droits ?","Enfants tous communs : au choix usufruit de la totalité ou ¼ en pleine propriété. Un enfant non commun : ¼ en pleine propriété."],
+["jurpat","2026-10-03","Conjoint sans enfant, père et mère vivants ?","Conjoint ½, père ¼, mère ¼ (art. 757-1). La fratrie n'hérite pas."],
+["jurpat","2026-10-03","Le conjoint ne répond pas à l'invitation d'opter ?","Après 3 mois sans réponse écrite, il est réputé avoir choisi l'usufruit (758-3)."]
+];
+
+const MATIERES={eval:["Évaluation d'entreprises","--m1"],eco:["Économétrie","--m2"],ingf:["Ingénierie financière","--m3"],bank:["Banque","--m4"],trans:["Transmission d'entreprise","--m5"],port:["Gestion de portefeuille","--m6"],jurpat:["Gestion juridique du patrimoine","--m9"]};
+const all=CARDS.map(([m,c,q,a])=>({m,c,q,a,id:m+"|"+q}));
+const fmt=d=>new Date(d+"T12:00:00").toLocaleDateString("fr-FR",{weekday:"short",day:"numeric",month:"short"});
+let st={};try{st=JSON.parse(localStorage.getItem("fc-state")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("fc-state",JSON.stringify(st))}catch(e){}};
+const h=(location.hash||"").slice(1);
+let mat=MATIERES[h]?h:null, cours="", deck=[], i=0, flipped=false;
+
+function chips(){const el=document.getElementById("chips");el.replaceChildren();
+  [[null,"Toutes",null],...Object.entries(MATIERES).map(([k,v])=>[k,v[0],v[1]])].forEach(([k,l,c])=>{
+    const b=document.createElement("button");b.type="button";b.className="chip";b.setAttribute("aria-pressed",String(mat===k));
+    b.style.setProperty("--c",c?`var(${c})`:"var(--fg)");b.innerHTML=(c?"<i></i>":"")+l;
+    b.onclick=()=>{mat=k;cours="";build(true)};el.appendChild(b)})}
+function coursOpts(){const s=document.getElementById("cours");const ds=[...new Set(all.filter(x=>!mat||x.m===mat).map(x=>x.c))].sort();
+  s.innerHTML=`<option value="">Tous les cours</option>`+ds.map(d=>`<option value="${d}">Cours du ${fmt(d)}</option>`).join("");s.value=cours}
+function pool(){return all.filter(x=>(!mat||x.m===mat)&&(!cours||x.c===cours))}
+function build(keepOrder){chips();coursOpts();
+  deck=pool().filter(x=>!document.getElementById("onlyKo").checked||st[x.id]!=="ok");
+  if(!keepOrder)deck.sort(()=>Math.random()-.5);i=0;flipped=false;render()}
+function progress(){const p=pool();const k=p.filter(x=>st[x.id]==="ok").length,r=p.filter(x=>st[x.id]==="ko").length;
+  document.getElementById("bk").style.width=(p.length?k/p.length*100:0)+"%";document.getElementById("br").style.width=(p.length?r/p.length*100:0)+"%";
+  document.getElementById("ptxt").textContent=`${k} sues · ${r} à revoir · ${p.length-k-r} jamais vues · ${p.length} cartes`}
+function render(){progress();const stage=document.getElementById("stage");
+  if(!deck.length||i>=deck.length){stage.innerHTML=`<div class="done"><h2>${deck.length?"Paquet terminé":"Aucune carte ici"}</h2><p class="hint">${deck.length?"Recommencez, ou cochez « Seulement les cartes à revoir ».":"Toutes les cartes de cette sélection sont sues."}</p><button class="btn" type="button" id="again">Recommencer</button></div>`;
+    document.getElementById("again").onclick=()=>build(false);return}
+  const x=deck[i],[nom,c]=MATIERES[x.m];
+  const tag=st[x.id]==="ok"?"Sue":st[x.id]==="ko"?"À revoir":"Nouvelle";
+  stage.innerHTML=`<div class="card${flipped?" flip":""}" id="card" tabindex="0" role="button" aria-label="Retourner la carte" style="--c:var(${c})">
+    <div class="face front"><div class="meta"><b>${nom}</b><span>Cours du ${fmt(x.c)} · ${tag}</span></div><div class="q"></div><div class="hint">Carte ${i+1} / ${deck.length} · cliquez pour voir la réponse</div></div>
+    <div class="face back"><div class="meta"><b>${nom}</b><span>Réponse</span></div><div class="a"></div><div class="hint"></div></div></div>
+    <div class="answer" style="margin-top:12px"><button class="ko" type="button" id="bko">À revoir</button><button class="okb" type="button" id="bok">Je sais</button></div>`;
+  stage.querySelector(".q").textContent=x.q;stage.querySelector(".a").textContent=x.a;stage.querySelector(".back .hint").textContent=x.q;
+  const card=document.getElementById("card");card.onclick=flip;
+  document.getElementById("bko").onclick=()=>mark("ko");document.getElementById("bok").onclick=()=>mark("ok")}
+function flip(){flipped=!flipped;document.getElementById("card")?.classList.toggle("flip",flipped)}
+function mark(v){const x=deck[i];if(!x)return;st[x.id]=v;save();i++;flipped=false;render()}
+document.getElementById("cours").onchange=e=>{cours=e.target.value;build(false)};
+document.getElementById("onlyKo").onchange=()=>build(false);
+document.getElementById("shuffle").onclick=()=>build(false);
+document.getElementById("reset").onclick=()=>{pool().forEach(x=>delete st[x.id]);save();build(false)};
+document.addEventListener("keydown",e=>{if(e.target.tagName==="SELECT"||e.target.tagName==="INPUT")return;
+  if(e.key===" "){e.preventDefault();flip()}else if(e.key==="1")mark("ko");else if(e.key==="2")mark("ok");
+  else if(e.key==="ArrowRight"&&i<deck.length){i++;flipped=false;render()}else if(e.key==="ArrowLeft"&&i>0){i--;flipped=false;render()}});
+build(false);
+</script>
+</body></html>

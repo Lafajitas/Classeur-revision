@@ -1,0 +1,438 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style></head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-eval_cartes">← Évaluation d'entreprises</a><span>· Classeur de révision</span></nav>
+<title>Cartes mentales ANC · ANCC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: graph-paper sheet, tab strip of maps, one horizontally-scrollable two-sided mind map per tab */
+:root{
+  --bg:#f3f5f4; --paper:#fbfcfb; --grid:#e3e8e6; --fg:#1d2524; --muted:#5d6a68; --line:#c9d2cf;
+  --accent:#0f6b5c;
+  --b1:#0f6b5c; --b2:#b4531f; --b3:#3c5aa8; --b4:#8a3f86; --b5:#8a6d12; --b6:#b0303f; --b7:#2f7d8f;
+  --display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body:"Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111716; --paper:#151d1c; --grid:#1e2928; --fg:#e4ecea; --muted:#94a3a0; --line:#34433f;
+  --accent:#4cc3ad;
+  --b1:#4cc3ad; --b2:#f08a52; --b3:#8aa6f2; --b4:#d38bd0; --b5:#d9b54a; --b6:#f07a87; --b7:#5fc2d6;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111716; --paper:#151d1c; --grid:#1e2928; --fg:#e4ecea; --muted:#94a3a0; --line:#34433f;
+  --accent:#4cc3ad;
+  --b1:#4cc3ad; --b2:#f08a52; --b3:#8aa6f2; --b4:#d38bd0; --b5:#d9b54a; --b6:#f07a87; --b7:#5fc2d6;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:1500px;margin:0 auto;padding-inline:clamp(16px,3vw,40px);padding-block:28px 48px;display:grid;gap:18px}
+header{display:grid;gap:6px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,4vw,42px);line-height:1.05;margin:0;text-wrap:balance}
+.lede{color:var(--muted);margin:0;max-width:68ch}
+nav{display:flex;flex-wrap:wrap;gap:6px}
+nav button{font:inherit;font-size:14px;font-weight:500;border:1px solid var(--line);background:var(--paper);color:var(--fg);padding:7px 13px;border-radius:999px;cursor:pointer;display:flex;align-items:center;gap:7px}
+nav button .n{font-family:var(--mono);font-size:11px;color:var(--muted)}
+nav button[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+nav button[aria-selected="true"] .n{color:var(--bg);opacity:.7}
+button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:grid}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.bar h2{font-family:var(--display);font-weight:500;font-size:19px;margin:0;min-width:0}
+.bar p{margin:0;color:var(--muted);font-size:13px}
+.tools{display:flex;gap:6px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:13px;border:1px solid var(--line);background:transparent;color:var(--fg);padding:5px 10px;border-radius:6px;cursor:pointer}
+.tools button:hover,nav button:hover{border-color:var(--fg)}
+.canvas{overflow:auto;background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:22px 22px;min-height:300px;max-height:78vh}
+.canvas svg{display:block;margin:0 auto}
+svg text{fill:var(--fg)}
+.node{cursor:default}
+.node.has{cursor:pointer}
+.node.has:hover .pill{stroke-width:2}
+.hint{font-size:13px;color:var(--muted);margin:0}
+.printall{display:grid;gap:24px}
+.pmap{break-inside:avoid;page-break-inside:avoid;display:grid;gap:4px}
+.pmap h2{font-family:var(--display);font-weight:500;font-size:20px;margin:0}
+.pmap p{margin:0 0 6px;color:var(--muted);font-size:13px}
+@media print{.pmap{page-break-after:always;break-after:page}.pmap:last-child{page-break-after:auto;break-after:auto}}
+@media (prefers-reduced-motion:no-preference){.canvas svg g.node{transition:opacity .2s}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Évaluation d'entreprises · F. Romon · Cours du 1er oct.</div>
+    <h1>Cartes mentales ANC · ANCC</h1>
+    <p class="lede">Sept cartes tirées de la fiche de révision : le cours, les retraitements, les cas Warrior, Mangala, Pastouche et Lumen, puis les pièges d'examen. IS retenu : 33⅓ %.</p>
+  </header>
+  <nav id="tabs" role="tablist" aria-label="Cartes"></nav>
+  <section class="sheet">
+    <div class="bar">
+      <div><h2 id="mapTitle"></h2><p id="mapSub"></p></div>
+      <div class="tools">
+        <button id="zoomOut" aria-label="Dézoomer">−</button>
+        <button id="zoomFit">Ajuster</button>
+        <button id="zoomIn" aria-label="Zoomer">+</button>
+        <button id="collapse">Replier</button>
+        <button id="expand">Tout déplier</button>
+      </div>
+    </div>
+    <div class="canvas" id="canvas"></div>
+  </section>
+  <p class="hint">Cliquez sur une branche pour la replier ou la déplier, pour vous tester avant de regarder la réponse. Les formules sont en police à chasse fixe.</p>
+</div>
+
+<script>
+const F = s => ({t:s, f:true});
+const MAPS = [
+{id:"bases", tab:"Les bases", title:"L'évaluation d'entreprise en bref", sub:"Dimensions, approches, familles de méthodes, goodwill",
+ root:{t:"Évaluation d'entreprise", c:[
+  {t:"Deux dimensions", c:[
+    {t:"Quantitative : calcul de la valeur"},
+    {t:"Qualitative : diagnostic stratégique", c:[
+      {t:"Interne : forces / faiblesses (financier, commercial, techno, humain, structurel, culturel)"},
+      {t:"Externe : menaces / opportunités (demande, offre, concurrence, techno, socio-économie)"}]}]},
+  {t:"Quand évalue-t-on ?", c:[
+    {t:"Introduction en bourse, fusion"},
+    {t:"OPA / OPE, rachat d'actions, émission de titres"},
+    {t:"Dépréciation de titres à l'inventaire"},
+    {t:"Analystes, fiscalité (mutation, succession)"}]},
+  {t:"Deux approches", c:[
+    {t:"Par les stocks : valeur du patrimoine (patrimoniale)"},
+    {t:"Par les flux : profits futurs (DCF, rendement, multiples)"}]},
+  {t:"4 familles de méthodes", c:[
+    {t:"1. Patrimoniale"},{t:"2. Flux de trésorerie actualisés"},{t:"3. Comparables (multiples)"},{t:"4. Rendements, rentabilités"}]},
+  {t:"Goodwill / badwill", c:[
+    {t:"Actifs 2 000, dettes 500, rentabilité exigée 10 %"},
+    {t:"Résultat 150 : 1 500 = 150 / 10 % → les approches convergent"},
+    {t:"Résultat 195 : patrimoine 1 545, rendement 1 950", c:[
+      F("195 / 1 545 = 12,6 % > 10 %"),
+      F("Goodwill = 1 950 − 1 545 = 405")]},
+    {t:"Rentabilité < coût du capital → badwill"}]},
+  {t:"Convergence si marchés efficients", c:[
+    {t:"Information parfaite"},{t:"Opérateurs nombreux et rationnels"},{t:"Arbitrage possible"},{t:"Ni impôts ni frais de transaction"}]},
+  {t:"Règle d'or", c:[
+    {t:"Les méthodes donnent une fourchette"},
+    {t:"Jamais de moyenne des valeurs"},
+    {t:"Le prix final sort de la négociation"}]}
+ ]}},
+{id:"anc", tab:"ANC", title:"Étape 1 · Actif net comptable", sub:"Retirer l'actif fictif, déplacer ECP et dividendes",
+ root:{t:"ANC", c:[
+  {t:"Méthode patrimoniale", c:[
+    {t:"La plus ancienne, simple, additive"},
+    {t:"Adaptée aux entreprises matures"},
+    {t:"Donne la valeur des capitaux propres"},
+    {t:"3 étapes : ANC → ANCC → goodwill"},
+    {t:"Rester cohérent entre biens de même nature"}]},
+  {t:"Objectif", c:[{t:"Éliminer l'effet de certaines règles comptables sur la valeur"}]},
+  {t:"Formules", c:[
+    F("M1 : ANC = Capitaux propres − Actif fictif"),
+    F("M2 : ANC = Actif réel − Passif exigible"),
+    {t:"Passif exigible = dettes + provisions R&C"},
+    F("Par action = ANC / nb d'actions")]},
+  {t:"Actifs fictifs à retirer", c:[
+    {t:"Frais d'établissement (constitution, augmentation de capital)"},
+    {t:"Charges à répartir (frais d'émission d'emprunts)"},
+    {t:"Primes de remboursement des obligations"},
+    {t:"ECA, part non couverte seulement"}]},
+  {t:"Postes qui changent de place", c:[
+    {t:"Écart de conversion passif = gain latent → ajouté aux capitaux propres"},
+    {t:"Dividendes votés = dette → retirés des capitaux propres, ajoutés au passif exigible"}]},
+  {t:"Écart de conversion actif", c:[
+    {t:"Couvert par une provision de même montant : rien à retirer"},
+    {t:"Couvert sur les marchés : rien à retirer"},
+    F("Actif fictif = ECA − provision (non couvert)"),
+    {t:"Warrior : 14 000 − 12 000 = 2 000"},
+    {t:"L'ANC dépend de la couverture choisie"}]}
+ ]}},
+{id:"ancc", tab:"ANCC", title:"Étape 2 · Actif net comptable corrigé", sub:"Réévaluer chaque poste, puis la fiscalité latente",
+ root:{t:"ANCC", c:[
+  {t:"Formule", c:[
+    F("ANCC = ANC ± plus/moins-values − IDP + IDA"),
+    F("Valeur mathématique = ANCC / nb d'actions")]},
+  {t:"Pourquoi corriger ?", c:[{t:"Coût historique : l'ANC ne reflète pas la valeur réelle"}]},
+  {t:"Valeurs possibles d'un actif", c:[
+    {t:"Utilité / usage : biens d'exploitation"},
+    {t:"Marché / vénale : biens hors exploitation"},
+    {t:"Liquidative"}]},
+  {t:"IDP · à retrancher", c:[
+    F("Subventions d'investissement × ⅓"),
+    F("Provisions réglementées × ⅓"),
+    {t:"(provision pour hausse des prix, amortissements dérogatoires)"},
+    F("Plus-value hors exploitation × ⅓")]},
+  {t:"IDA · à ajouter", c:[
+    F("Actifs fictifs retirés × ⅓"),
+    F("Moins-values sur actifs × ⅓"),
+    {t:"Matériel, droit au bail, véhicule, stocks dépréciés"}]},
+  {t:"Convention", c:[
+    {t:"Plus-values d'exploitation : pas d'impôt (pas de vente prévue)"},
+    {t:"Plus-values hors exploitation : nettes d'IS"}]},
+  {t:"Taux d'actualisation", c:[
+    {t:"CMPC : droit au bail, brevets, marque, licences"},
+    {t:"Coût de la dette : crédit-bail, annuités d'emprunt"}]}
+ ]}},
+{id:"incorporels", tab:"Incorporels", title:"Retraiter les éléments incorporels", sub:"Hors bilan ne veut pas dire sans valeur",
+ root:{t:"Éléments incorporels", c:[
+  {t:"Critères d'inscription au bilan", c:[
+    {t:"Contrôlé par l'entreprise"},{t:"Source d'avantages économiques futurs"},
+    {t:"Coût mesurable de façon fiable"},{t:"Identifiable : séparable ou cash-flows propres"}]},
+  {t:"Non comptabilisés, mais évalués", c:[
+    {t:"Parts de marché"},{t:"Projets en phase de recherche"},{t:"Marque développée en interne"},
+    {t:"Listes de clients"},{t:"Publicité, formation"}]},
+  {t:"Comptabilisés", c:[
+    {t:"Frais de développement"},{t:"Marques, brevets protégés"},{t:"Logiciels"},{t:"Quotas"}]},
+  {t:"Droit au bail", c:[
+    {t:"VA de l'économie de loyer (marché − payé)"},
+    {t:"Sur la durée restante du bail"},
+    {t:"Payable d'avance : 1er flux non actualisé"}]},
+  {t:"Brevet / licence", c:[
+    {t:"Concédé : VA des redevances restantes", c:[F("R × [1 − (1+t)⁻ⁿ] / t")]},
+    {t:"Exploité en interne : cash-flows actualisés sur la protection restante"},
+    {t:"Contrat non signé = 0, même à 50 % ou 70 %"}]},
+  {t:"Marque", c:[
+    {t:"Capitalisation de la redevance", c:[
+      {t:"Taux × CA prévisionnel, net d'IS"},
+      {t:"Actualisé sur 3 à 10 ans (20 si notoire) + valeur résiduelle"},
+      {t:"Taux de 1 à 6 % du CA en grande consommation"}]},
+    {t:"Différentiel de marge", c:[
+      F("Rente = (marge avec − sans) × ventes"),
+      F("V = R × [(1+g)ⁿ − (1+t)ⁿ] / [(1+g) − (1+t)] / (1+t)ⁿ"),
+      {t:"Limites : très sensible au taux, pas toujours de génériques, marge pas toujours supérieure"}]}]},
+  {t:"Fonds commercial", c:[
+    {t:"Incorporels du fonds de commerce non évalués séparément"},
+    {t:"Sans information : maintenu à sa VNC"}]}
+ ]}},
+{id:"corporels", tab:"Corporels", title:"Retraiter les éléments corporels", sub:"Utilité pour l'exploitation, valeur vénale pour le reste",
+ root:{t:"Éléments corporels", c:[
+  {t:"Valeur d'utilité", c:[
+    {t:"Biens d'exploitation"},
+    F("Remplacement × coefficient de vétusté"),
+    {t:"Pas d'impôt différé"}]},
+  {t:"Valeur vénale", c:[
+    {t:"Biens hors exploitation"},
+    {t:"Comparaison avec des transactions similaires"},
+    {t:"Nette d'impôt sur la plus-value"}]},
+  {t:"Immobilier d'exploitation", c:[
+    {t:"Standard : prix du marché + frais d'acquisition + travaux"},
+    {t:"Spécifique : construction à neuf × vétusté"}]},
+  {t:"Terrain hors exploitation", c:[
+    {t:"Valeur de marché − frais de cession − IS sur PV"},
+    {t:"Achat < 5 ans : indexer le coût d'achat"},
+    {t:"Taux réduit possible (PV long terme)"}]},
+  {t:"Matériel, véhicules", c:[
+    {t:"Bien rendant un service équivalent, pas le neuf à l'identique"},
+    {t:"Mercuriales, tarifs, cote Argus"},
+    {t:"Jamais au-dessus du prix d'occasion"}]},
+  {t:"Crédit-bail", c:[
+    {t:"On suppose la levée de l'option"},
+    F("Écart = utilité − VA(redevances + option)"),
+    {t:"Actualisé au coût de la dette"},
+    {t:"Plus-value ou moins-value"}]},
+  {t:"Titres de participation", c:[
+    F("Écart = utilité − VNC"),
+    {t:"Hors exploitation : vénale nette d'IS"},
+    {t:"Déjà dépréciés : comparer à la VNC, pas au brut"}]}
+ ]}},
+{id:"cas", tab:"Cas corrigés", title:"Les cas en chiffres", sub:"Résultats clés à retrouver seul",
+ root:{t:"Cas corrigés", c:[
+  {t:"Warrior · €", c:[
+    {t:"60 000 actions · CMPC 8 % · dette 5 %"},
+    {t:"ANC 1 140 000 → 19 € / action"},
+    {t:"Droit au bail −7 519, IDA +2 506"},
+    {t:"Brevet +10 226 (contrat non signé : 0)"},
+    {t:"Marque +741 635 (différentiel de marge)"},
+    {t:"Site +263 000 · terrain +31 004"},
+    {t:"Véhicules +3 000, IDA +2 333"},
+    {t:"Crédit-bail +21 924"}]},
+  {t:"Mangala · k€", c:[
+    {t:"195 000 actions · dividende 8 €"},
+    {t:"ANC 49 490 → 253,79 € / action"},
+    {t:"Brevet +380 (10 %, 7 ans restants)"},
+    {t:"Terrains +2 000 · constructions +5 000 · installations −1 500"},
+    {t:"Titres de participation +500 · titres immobilisés +100"},
+    {t:"IDP −603,33 · IDA +566,67"},
+    {t:"ANCC 55 933,33 → 286,84 € / action"}]},
+  {t:"Pastouche · k€", c:[
+    {t:"600 000 actions · dividende 10 €"},
+    {t:"ANC 966 840 → 1 611,40 € / action"},
+    {t:"Licence +1 453 (payable d'avance)"},
+    {t:"Terrains +700 000 · constructions +280 000"},
+    {t:"Constructions locatives +46 667 (× ⅔)"},
+    {t:"Crédit-bail +25 255", c:[F("VA × 1,05^0,5 pour se placer au 31/12")]},
+    {t:"Casinos du Midi +34 000 · Hôtel Croisette 0"},
+    {t:"ANCC 2 137 214,57 → 3 562,02 € / action"},
+    {t:"Patrimonial > flux : badwill probable"}]},
+  {t:"Lumen · entraînement", c:[
+    {t:"ANC 5 170 → 25,85 € / action"},
+    {t:"Brevet +23,60 · stocks obsolètes −60"},
+    {t:"ANCC 5 906,93 → 29,53 € / action"}]}
+ ]}},
+{id:"pieges", tab:"Pièges", title:"Pièges fréquents à l'examen", sub:"Le bon réflexe pour chaque erreur classique",
+ root:{t:"Pièges d'examen", c:[
+  {t:"Retraitements ANC", c:[
+    {t:"Dividendes : toujours les retirer (montant × nb d'actions)"},
+    {t:"ECP : l'ajouter aux capitaux propres"},
+    {t:"ECA : seule la part non couverte est fictive"}]},
+  {t:"Actualisation", c:[
+    {t:"Crédit-bail : coût de la dette, pas le CMPC"},
+    {t:"Payable d'avance : 1er flux non actualisé"},
+    {t:"Fin d'année : annuité classique"},
+    {t:"Durée : début N−2 pour 10 ans → 7 ans restants"}]},
+  {t:"Choix de la valeur", c:[
+    {t:"Exploitation → utilité, sans impôt"},
+    {t:"Hors exploitation → vénale, nette d'impôt"},
+    {t:"Titre déjà déprécié : comparer à la VNC"}]},
+  {t:"Fiscalité latente", c:[
+    {t:"IDP : subventions, provisions réglementées"},
+    {t:"IDA : actifs fictifs retirés, moins-values"}]},
+  {t:"Présentation", c:[
+    F("Valeur en € = ANCC k€ × 1 000 / nb d'actions"),
+    {t:"Jamais de moyenne : une fourchette argumentée"}]}
+ ]}}
+];
+
+const SVGNS="http://www.w3.org/2000/svg";
+const cv=document.createElement("canvas").getContext("2d");
+const FONT={root:'700 20px "Bricolage Grotesque", system-ui, sans-serif', l1:'600 14.5px "Instrument Sans", system-ui, sans-serif', l2:'400 13.5px "Instrument Sans", system-ui, sans-serif', mono:'500 12.5px "JetBrains Mono", ui-monospace, monospace'};
+const MAXW={root:170,l1:170,l2:250};
+const HGAP=44, VGAP=10;
+let cur=0, zoom=null, nat={w:0,h:0};
+
+function wrap(text,font,max){
+  text=text.replace(/ (%|€|k€|\/ action)/g," $1").replace(/(\d) (?=\d{3})/g,"$1 ");
+  cv.font=font; const words=text.split(" "); const lines=[]; let line="";
+  for(const w of words){const t=line?line+" "+w:w; if(cv.measureText(t).width>max&&line){lines.push(line);line=w}else line=t}
+  if(line)lines.push(line); return lines;
+}
+function kind(n,d){return d===0?"root":d===1?"l1":"l2"}
+function measure(n,d){
+  n.d=d; n.k=kind(n,d);
+  n.font=n.f?FONT.mono:FONT[n.k];
+  const lh=n.k==="root"?24:n.k==="l1"?19:n.f?18:18;
+  n.lines=wrap(n.t,n.font,MAXW[n.k]); cv.font=n.font;
+  const tw=Math.max(...n.lines.map(l=>cv.measureText(l).width));
+  const px=n.k==="l2"?2:14, py=n.k==="root"?14:n.k==="l1"?8:4;
+  n.lh=lh; n.px=px; n.py=py; n.w=Math.ceil(tw)+px*2; n.h=n.lines.length*lh+py*2;
+  const kids=(n.c&&!n.closed)?n.c:[];
+  kids.forEach(c=>measure(c,d+1));
+  const sum=kids.reduce((a,c)=>a+c.sh,0)+Math.max(0,kids.length-1)*VGAP;
+  n.ch=sum; n.sh=Math.max(n.h,sum);
+}
+function place(n,ax,top,dir){
+  n.dir=dir; n.ax=ax; n.cy=top+n.sh/2; n.top=n.cy-n.h/2;
+  n.x0=dir>0?ax:ax-n.w;
+  const kids=(n.c&&!n.closed)?n.c:[];
+  let y=top+(n.sh-n.ch)/2; const cax=ax+dir*(n.w+HGAP);
+  kids.forEach(c=>{place(c,cax,y,dir);y+=c.sh+VGAP});
+}
+function anchorY(n){return n.k==="l2"?n.top+n.h:n.cy}
+function el(tag,attrs,parent){const e=document.createElementNS(SVGNS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+
+function render(){
+  const m=MAPS[cur], root=m.root;
+  root.c.forEach((c,i)=>c.color=`var(--b${(i%7)+1})`);
+  const prop=(n,col)=>{(n.c||[]).forEach(c=>{c.color=c.color&&n===root?c.color:col;prop(c,c.color)})};
+  root.c.forEach(c=>prop(c,c.color));
+  measure(root,0);
+  const kids=root.c, half=Math.ceil(kids.length/2), R=kids.slice(0,half), L=kids.slice(half);
+  root.ax=-root.w/2; root.x0=-root.w/2; root.cy=0; root.top=-root.h/2; root.dir=1;
+  const side=(arr,dir)=>{const tot=arr.reduce((a,c)=>a+c.sh,0)+(arr.length-1)*VGAP*2.2; let y=-tot/2;
+    arr.forEach(c=>{place(c,dir*(root.w/2+HGAP+10),y,dir);y+=c.sh+VGAP*2.2})};
+  side(R,1); side(L,-1);
+  const all=[]; const walk=n=>{all.push(n);if(n.c&&!n.closed)n.c.forEach(walk)}; walk(root);
+  let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;
+  all.forEach(n=>{minX=Math.min(minX,n.x0);maxX=Math.max(maxX,n.x0+n.w+12);minY=Math.min(minY,n.top);maxY=Math.max(maxY,n.top+n.h)});
+  const pad=28; minX-=pad+12; minY-=pad; maxX+=pad; maxY+=pad;
+  nat={w:maxX-minX,h:maxY-minY};
+  const svg=el("svg",{viewBox:`${minX} ${minY} ${nat.w} ${nat.h}`,role:"img","aria-label":m.title});
+  const gl=el("g",{},svg), gn=el("g",{},svg);
+  all.forEach(n=>{
+    const kidsV=(n.c&&!n.closed)?n.c:[];
+    kidsV.forEach(c=>{
+      const x1=n===root?(c.dir>0?n.x0+n.w:n.x0):(n.dir>0?n.x0+n.w:n.x0), y1=n===root?n.cy:anchorY(n);
+      const x2=c.dir>0?c.x0:c.x0+c.w, y2=anchorY(c); const mx=(x1+x2)/2;
+      el("path",{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,fill:"none",style:`stroke:${c.color}`,"stroke-width":n===root?3:c.d===2?1.8:1.3,"stroke-linecap":"round",opacity:n===root?.85:.7},gl);
+    });
+  });
+  all.forEach(n=>{
+    const g=el("g",{class:"node"+(n.c?" has":"")},gn);
+    if(n.k==="root"){
+      el("rect",{class:"pill",x:n.x0,y:n.top,width:n.w,height:n.h,rx:12,style:"fill:var(--fg)"},g);
+    }else if(n.k==="l1"){
+      el("rect",{class:"pill",x:n.x0,y:n.top,width:n.w,height:n.h,rx:n.h/2>16?10:n.h/2,style:`fill:color-mix(in srgb, ${n.color} 14%, var(--paper));stroke:${n.color}`,"stroke-width":1.4},g);
+    }else{
+      if(n.f) el("rect",{x:n.x0-4,y:n.top,width:n.w+8,height:n.h,rx:4,style:`fill:color-mix(in srgb, ${n.color} 9%, var(--paper))`},g);
+      else el("rect",{x:n.x0,y:n.top,width:n.w,height:n.h,style:"fill:var(--paper)",opacity:.75},g);
+      el("line",{x1:n.x0,y1:n.top+n.h,x2:n.x0+n.w,y2:n.top+n.h,style:`stroke:${n.color}`,"stroke-width":1.3,opacity:.7},g);
+    }
+    const tx=n.k==="l2"?n.x0+n.px:n.x0+n.w/2;
+    const t=el("text",{"text-anchor":n.k==="l2"?"start":"middle",style:`font:${n.font}${n.k==="root"?";fill:var(--bg)":""}`},g);
+    n.lines.forEach((ln,i)=>{const s=el("tspan",{x:tx,y:n.top+n.py+n.lh*(i+1)-n.lh*0.28},t);s.textContent=ln});
+    if(n.c&&n!==root){
+      const ox=n.dir>0?n.x0+n.w+(n.k==="l2"?6:7):n.x0-(n.k==="l2"?6:7), oy=n.k==="l2"?n.top+n.h:n.cy;
+      if(n.closed){
+        el("circle",{cx:ox,cy:oy,r:9,style:`fill:${n.color}`},g);
+        const ct=el("text",{x:ox,y:oy+3.8,"text-anchor":"middle",style:"font:600 10.5px 'Instrument Sans',sans-serif;fill:var(--paper)"},g);ct.textContent=n.c.length;
+      }else el("circle",{cx:ox,cy:oy,r:4,style:`fill:var(--paper);stroke:${n.color}`,"stroke-width":1.5},g);
+      g.setAttribute("tabindex","0"); g.setAttribute("role","button");
+      g.setAttribute("aria-expanded",String(!n.closed)); g.setAttribute("aria-label",n.t);
+      const tog=()=>{n.closed=!n.closed;render();const f=[...document.querySelectorAll("#canvas g.node")].find(x=>x.getAttribute("aria-label")===n.t);f&&f.focus({preventScroll:true})};
+      g.addEventListener("click",tog);
+      g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();tog()}});
+    }
+  });
+  const box=document.getElementById("canvas"); box.replaceChildren(svg);
+  if(zoom===null) zoom=fitZoom();
+  applyZoom();
+}
+function fitZoom(){const w=document.getElementById("canvas").clientWidth-8;return Math.max(.55,Math.min(1.1,w/nat.w))}
+function applyZoom(){const s=document.querySelector("#canvas svg");if(!s)return;s.setAttribute("width",Math.round(nat.w*zoom));s.setAttribute("height",Math.round(nat.h*zoom))}
+
+function setAll(n,closed,depth=0){(n.c||[]).forEach(c=>{if(c.c){c.closed=closed&&depth>=0;setAll(c,closed,depth+1)}})}
+function buildTabs(){
+  const nav=document.getElementById("tabs");
+  MAPS.forEach((m,i)=>{const b=document.createElement("button");b.id="tab-"+m.id;b.setAttribute("role","tab");
+    b.innerHTML=`<span class="n">${String(i+1).padStart(2,"0")}</span>${m.tab}`;
+    b.addEventListener("click",()=>select(i,true));nav.appendChild(b)});
+}
+function select(i,push){
+  cur=i; zoom=null; const m=MAPS[i];
+  document.querySelectorAll("#tabs button").forEach((b,j)=>b.setAttribute("aria-selected",String(j===i)));
+  document.getElementById("mapTitle").textContent=m.title;
+  document.getElementById("mapSub").textContent=m.sub;
+  if(push){try{history.replaceState(null,"","#"+m.id)}catch(e){}}
+  render();
+  const c=document.getElementById("canvas"); c.scrollLeft=(c.scrollWidth-c.clientWidth)/2; c.scrollTop=0;
+}
+document.getElementById("zoomIn").onclick=()=>{zoom=Math.min(2,zoom*1.15);applyZoom()};
+document.getElementById("zoomOut").onclick=()=>{zoom=Math.max(.35,zoom/1.15);applyZoom()};
+document.getElementById("zoomFit").onclick=()=>{zoom=fitZoom();applyZoom()};
+document.getElementById("collapse").onclick=()=>{MAPS[cur].root.c.forEach(c=>{if(c.c)c.closed=true});zoom=null;render()};
+document.getElementById("expand").onclick=()=>{const o=n=>{n.closed=false;(n.c||[]).forEach(o)};o(MAPS[cur].root);zoom=null;render()};
+function printAll(){
+  const out=document.createElement("div"); out.className="printall";
+  MAPS.forEach((m,i)=>{
+    const open=n=>{n.closed=false;(n.c||[]).forEach(open)}; open(m.root);
+    cur=i; zoom=1; render();
+    const svg=document.querySelector("#canvas svg"); svg.setAttribute("width","100%"); svg.removeAttribute("height");
+    const sec=document.createElement("section"); sec.className="pmap";
+    const h2=document.createElement("h2"); h2.textContent=m.title; const p=document.createElement("p"); p.textContent=m.sub;
+    sec.append(h2,p,svg); out.appendChild(sec);
+  });
+  document.querySelector(".sheet").replaceWith(out);
+  document.getElementById("tabs").remove(); document.querySelector(".hint")?.remove();
+  setTimeout(()=>window.print(),400);
+}
+buildTabs();
+const h=(location.hash||"").slice(1); const start=Math.max(0,MAPS.findIndex(m=>m.id===h));
+if(window.PRINT_ALL){
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(printAll);
+}else{
+  select(start,false);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>render());
+  let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{zoom=null;render()},200)});
+}
+</script>
+
+</body></html>

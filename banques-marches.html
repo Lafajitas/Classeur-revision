@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fiche — Les banques et leurs rapports aux marchés financiers</title>
+<style>
+  :root{
+    --bg:#ffffff;
+    --text:#1a1d23;
+    --muted:#5b6270;
+    --line:#e4e6ea;
+    --accent:#1f4b8f;
+    --accent-soft:#eef3fb;
+    --tag-bg:#f4f5f7;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14161a;
+      --text:#e9eaee;
+      --muted:#9aa1ad;
+      --line:#2a2d34;
+      --accent:#7fa8e8;
+      --accent-soft:#1d2734;
+      --tag-bg:#1e2126;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14161a;
+    --text:#e9eaee;
+    --muted:#9aa1ad;
+    --line:#2a2d34;
+    --accent:#7fa8e8;
+    --accent-soft:#1d2734;
+    --tag-bg:#1e2126;
+  }
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Georgia', 'Iowan Old Style', serif;
+    line-height:1.55;
+  }
+  .wrap{
+    max-width:780px;
+    margin:0 auto;
+    padding:48px 24px 80px;
+  }
+  header{
+    margin-bottom:36px;
+  }
+  .eyebrow{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:12.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  h1{
+    font-size:30px;
+    line-height:1.2;
+    margin:0 0 10px;
+    font-weight:700;
+  }
+  .meta{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:13.5px;
+    color:var(--muted);
+  }
+  h2{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:19px;
+    font-weight:700;
+    margin:40px 0 6px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  h2:first-of-type{border-top:none; padding-top:0; margin-top:0;}
+  h3{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:15.5px;
+    font-weight:700;
+    color:var(--accent);
+    margin:22px 0 8px;
+  }
+  p{margin:0 0 12px; font-size:16px;}
+  ul, ol{margin:0 0 14px; padding-left:22px;}
+  li{margin-bottom:6px; font-size:15.5px;}
+  .lead{
+    font-size:15.5px;
+    color:var(--muted);
+    font-style:italic;
+    margin-bottom:0;
+  }
+  .card{
+    background:var(--accent-soft);
+    border-radius:10px;
+    padding:16px 18px;
+    margin:14px 0;
+  }
+  .card p, .card ul{margin-bottom:0;}
+  .card + .card{margin-top:10px;}
+  .def{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:14px;
+  }
+  .def b{color:var(--accent);}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:10px 0 16px;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:14px;
+  }
+  th, td{
+    text-align:left;
+    padding:8px 10px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  th{color:var(--muted); font-weight:600; font-size:12.5px; text-transform:uppercase; letter-spacing:.03em;}
+  .tags{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 20px;}
+  .tag{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:12px;
+    background:var(--tag-bg);
+    color:var(--muted);
+    padding:4px 10px;
+    border-radius:20px;
+  }
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  @media (max-width:560px){
+    .two-col{grid-template-columns:1fr;}
+    h1{font-size:25px;}
+    .wrap{padding:32px 18px 60px;}
+  }
+  .colbox{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:14px 16px;
+  }
+  .colbox h4{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    color:var(--muted);
+    margin:0 0 8px;
+  }
+  .quiz-note{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:13.5px;
+    color:var(--muted);
+  }
+  .example{
+    border-left:3px solid var(--accent);
+    padding:10px 14px;
+    margin:12px 0;
+    font-size:14.5px;
+    color:var(--muted);
+    background:var(--tag-bg);
+    border-radius:0 8px 8px 0;
+  }
+  footer{
+    margin-top:50px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size:12.5px;
+    color:var(--muted);
+  }
+</style>
+</head>
+<body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-bank_fiches">← Économie et gestion de la banque</a><span>· Classeur de révision</span></nav>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Économie et Gestion de la Banque — JUNIA</div>
+    <h1>Les banques et leurs rapports aux marchés financiers</h1>
+    <p class="meta">Séance du 22 septembre · J-C Statnik · Automne 2026</p>
+  </header>
+
+  <h2>Vue d'ensemble du cours</h2>
+  <p class="lead">Le cours comporte une partie magistrale (banques &amp; marchés financiers, risque de crédit, risque de liquidité/taux) et une partie autogérée (risque systémique, réglementation prudentielle). Un test de 10-15 min a lieu en début de chaque séance (20% de la note finale, sur Junia_Learning).</p>
+
+  <div class="tags">
+    <span class="tag">Marché primaire / secondaire</span>
+    <span class="tag">Marché organisé / gré à gré</span>
+    <span class="tag">Marché monétaire</span>
+    <span class="tag">Financement long terme</span>
+    <span class="tag">BFI</span>
+    <span class="tag">Réglementation bancaire</span>
+  </div>
+
+  <h2>1. Le rôle du marché financier</h2>
+
+  <h3>Deux logiques de financement</h3>
+  <div class="two-col">
+    <div class="colbox">
+      <h4>Économie de marché</h4>
+      <p style="margin:0; font-size:14.5px;">Le marché financier occupe la place centrale : les agents lèvent des fonds directement auprès des investisseurs.</p>
+    </div>
+    <div class="colbox">
+      <h4>Économie d'endettement</h4>
+      <p style="margin:0; font-size:14.5px;">La banque occupe la place centrale : l'intermédiation bancaire domine le financement de l'économie.</p>
+    </div>
+  </div>
+
+  <h3>Marché primaire vs marché secondaire</h3>
+  <div class="card def">
+    <p><b>Marché primaire</b> : lieu où les agents économiques <i>émettent</i> des actifs financiers (actions, obligations) — permet à l'entreprise ou à l'État de lever de nouveaux financements.</p>
+    <p style="margin-top:8px;"><b>Marché secondaire</b> : lieu où les agents <i>échangent</i> entre eux les actifs déjà émis — n'apporte pas directement de capitaux nouveaux à l'émetteur, mais assure la liquidité (et donc l'attractivité) du titre.</p>
+  </div>
+  <div class="example">Exemple : IPO d'Alibaba le 19 septembre 2014 — 25 Md$ levés via la vente de 368 millions d'actions à 68$ (marché primaire). Le titre s'échangeait ensuite à 171,55$ le 24 septembre 2019 (marché secondaire).</div>
+
+  <h3>Marché organisé vs marché de gré à gré (OTC)</h3>
+  <table>
+    <tr><th>Marché organisé</th><th>Marché de gré à gré (OTC)</th></tr>
+    <tr>
+      <td>Standardisé, « prêt-à-porter »<br>Régi par une chambre de compensation</td>
+      <td>« Sur mesure »<br>Seul le prix est réellement négocié ; contrats adaptés aux besoins des deux contreparties</td>
+    </tr>
+  </table>
+
+  <h3>Le marché financier français</h3>
+  <p>L'AMF (Autorité des Marchés Financiers) réglemente, autorise, surveille et sanctionne. Euronext est la place de cotation où se rencontrent entreprises, États, intermédiaires financiers et particuliers (achats/ventes).</p>
+
+  <h2>2. Le marché monétaire</h2>
+  <p>Marché de financement à <b>court terme</b>. L'activité de transformation des banques (emprunter court / prêter long) n'est jamais équilibrée, ce qui justifie l'existence de ce marché interbancaire.</p>
+  <div class="card def">
+    <p><b>€STR</b> (Euro Short-Term Rate) : taux de référence du marché interbancaire de la zone euro, mesurant le coût des emprunts à très court terme ; a remplacé l'EONIA en 2022.</p>
+    <p style="margin-top:8px;"><b>NEU CP</b> (Negotiable European Commercial Paper) et <b>billets de trésorerie / certificats de dépôt</b> : titres de créance négociables à court terme. Les <b>TCN à moyen terme</b> complètent ce marché.</p>
+  </div>
+
+  <h2>3. Le financement à long terme</h2>
+
+  <h3>Actions</h3>
+  <ul>
+    <li>Droit de propriété</li>
+    <li>Droit de vote</li>
+    <li>Droit au dividende (non garanti)</li>
+    <li>Droit préférentiel de souscription</li>
+  </ul>
+
+  <h3>Obligations</h3>
+  <ul>
+    <li>Droit au remboursement (le détenteur est un <b>créancier</b>, pas un actionnaire)</li>
+    <li>Droit de percevoir un intérêt (coupon)</li>
+  </ul>
+
+  <div class="example">
+    Exemple — émission obligataire Infra Park (12 avril 2018) : 700 M€ levés, maturité 10 ans, coupon fixe annuel 1,625% versé chaque 19 avril, valeur nominale 100 000€, prix d'émission 98,546%, remboursement à 100%, notation S&amp;P BBB.<br><br>
+    <b>Taux de rendement actuariel</b> : taux « r » qui égalise le prix payé aujourd'hui et l'ensemble des flux futurs perçus si le titre est conservé jusqu'à maturité. À retenir : quand le prix d'une obligation à taux fixe monte sur le marché secondaire, son taux de rendement actuariel <b>baisse</b> (relation inverse prix/taux).
+  </div>
+
+  <h2>4. La Banque de Financement et d'Investissement (BFI)</h2>
+  <p>Héritière des activités des banques marchandes historiques (Médicis, Fugger) : financement du commerce international, conseil aux grandes entreprises et États. Acteurs : Goldman Sachs, Morgan Stanley, UBS, Deutsche Bank, ainsi que les pôles BFI des banques universelles (JPMorgan Chase, Citigroup, BNP Paribas…).</p>
+
+  <h3>Financement de projet</h3>
+  <ul>
+    <li>Très gros investissements, financement « sans recours ou à recours limité » : le projet est autonome</li>
+    <li>Prêteurs exposés à un risque important</li>
+    <li>En France : partenariats public-privé via une société « ad hoc »</li>
+  </ul>
+  <div class="example">Exemple : viaduc de Millau (mis en service le 16/12/2004) — emprunt de 573 M€ auprès d'un pool de 3 banques (BEI, DEPFA Bank, Dexia Credit Local) ; société ad hoc « Compagnie Eiffage du Viaduc de Millau » détenue à 51% par Eiffage, concession de 78 ans.</div>
+
+  <h3>Crédit syndiqué</h3>
+  <div class="card def">
+    <p>Crédit accordé à une même entreprise par plusieurs banques regroupées en <b>pool bancaire</b> (« syndicat »). Une banque « chef de file » négocie les termes du contrat et choisit les partenaires du pool.</p>
+  </div>
+
+  <h3>Croissance externe (M&amp;A)</h3>
+  <table>
+    <tr><th>Absorption</th><th>Acquisition</th></tr>
+    <tr><td>La cible est totalement dissoute</td><td>La cible conserve sa structure juridique</td></tr>
+  </table>
+  <p>La BFI intervient dans le conseil en fusions-acquisitions et dans le placement des titres lors des introductions en bourse (IPO) — ex. Credit Suisse (IPO Alibaba 2014), JP Morgan (IPO Visa 2008), Goldman Sachs (IPO Deutsche Telekom 1996).</p>
+
+  <h2>5. Réglementation : BFI aux États-Unis vs banque universelle en Europe</h2>
+
+  <h3>États-Unis — un pendule réglementaire</h3>
+  <table>
+    <tr><th>Date</th><th>Événement</th></tr>
+    <tr><td>1929</td><td>Crise financière</td></tr>
+    <tr><td>1933</td><td>Glass-Steagall Act : séparation banques de dépôt / banques d'affaires</td></tr>
+    <tr><td>1999</td><td>Gramm-Leach-Bliley Act : les banques peuvent à nouveau cumuler tous les métiers → consolidation du secteur</td></tr>
+    <tr><td>2008</td><td>Faillite de Lehman Brothers</td></tr>
+    <tr><td>2010</td><td>Dodd-Frank Act &amp; règle Volcker : interdiction pour une banque commerciale de spéculer avec les dépôts pour compte propre (application effective seulement en 2015, sous la pression des lobbies bancaires)</td></tr>
+  </table>
+
+  <h3>France</h3>
+  <table>
+    <tr><th>Date</th><th>Événement</th></tr>
+    <tr><td>1945</td><td>Loi bancaire (après-guerre) : séparation banques de dépôt / banques d'affaires</td></tr>
+    <tr><td>1984</td><td>Loi bancaire du 24/01/1984 : consolidation du secteur, naissance des banques universelles (tous les métiers réunis)</td></tr>
+  </table>
+
+  <h3>Royaume-Uni et Union européenne — tentatives inabouties</h3>
+  <ul>
+    <li><b>Rapport Vickers</b> (remis le 12/09/2011, après nationalisation partielle de 8 banques dont RBS en 2008) : préconise une filialisation séparant activités commerciales et d'investissement au sein d'un même groupe. Application retardée sous le lobbying des grandes banques britanniques.</li>
+    <li><b>Rapport Liikanen</b> (3/10/2012, commandé par la Commission européenne) : conclut à la séparation des activités d'investissement et commerciales. Projet édulcoré en 2015, rejeté (30 contre / 29 pour), puis abandonné en 2017.</li>
+  </ul>
+
+  <div class="card def">
+    <p>Question centrale : <b>la banque universelle est-elle un modèle menacé ?</b> Malgré plusieurs tentatives réglementaires (US, UK, UE) de séparer les activités de dépôt et d'investissement après la crise de 2008, aucune réforme structurelle radicale n'a réellement abouti en Europe.</p>
+  </div>
+
+  <h2>Points de vigilance pour le quiz</h2>
+  <p class="quiz-note">Deux quiz « Vrai/Faux » accompagnent le cours (fin de partie 1 : marchés financiers/monétaire ; fin de partie 2 : BFI &amp; régulation). Notions-clés à sécuriser :</p>
+  <ul>
+    <li>Le marché primaire concerne actions <i>et</i> obligations (pas exclusivement les actions)</li>
+    <li>Le marché secondaire n'est pas toujours régi par une chambre de compensation (c'est le cas du marché organisé, pas du gré à gré)</li>
+    <li>L'€STR est un taux à <b>court</b> terme, pas long terme</li>
+    <li>Une obligation ne donne pas de droit préférentiel de souscription (c'est une caractéristique de l'action)</li>
+    <li>Le Glass-Steagall Act (1933) instaure la séparation ; le Gramm-Leach-Bliley Act (1999) la <b>supprime</b> — attention à ne pas inverser les deux lois</li>
+    <li>La règle Volcker et le rapport Vickers sont des initiatives distinctes (pas des composantes du Gramm-Leach-Bliley Act)</li>
+    <li>Un pool bancaire suppose plusieurs banques, jamais une seule</li>
+  </ul>
+
+  <h2>Volet projet autogéré (aperçu)</h2>
+  <p>En parallèle, un projet en groupe (4 étudiants) porte sur <b>IFRS 9, réglementation prudentielle et prise de risque bancaire</b> : comprendre comment la norme IFRS 9 (provisionnement anticipé des pertes de crédit, plutôt qu'a posteriori) interagit avec les contraintes de fonds propres pour modifier le comportement de prise de risque des banques, notamment en période de stress (ex. Covid-19). Rendu : rapport ~15 pages + présentation orale de 20 min (+5 min Q/R) le jeudi 28 janvier, 13h30–18h30.</p>
+
+  <footer>
+    Fiche de synthèse générée à partir du support de cours « Économie et Gestion de la Banque » — JUNIA, Automne 2026 (J-C Statnik).
+  </footer>
+
+</div>
+</body>
+</html>

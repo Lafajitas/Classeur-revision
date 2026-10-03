@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fiche — Ch. 1 Le marché des fusions-acquisitions et la stratégie d'offre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAFD; --ink:#22223A; --muted:#5E5B70; --plum:#4B2E6F; --plum-soft:#EEE9F6;
+  --rule:#D9D5E2; --amber:#9A5418; --amber-soft:#FBF1E6; --green:#2F6B4F; --green-soft:#EAF4EE;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#16151F; --ink:#E7E4F0; --muted:#A7A2BA; --plum:#C7B2EC; --plum-soft:#2A2340;
+    --rule:#37334A; --amber:#E8A66A; --amber-soft:#33261A; --green:#8FD1AE; --green-soft:#1C2E25;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16151F; --ink:#E7E4F0; --muted:#A7A2BA; --plum:#C7B2EC; --plum-soft:#2A2340;
+  --rule:#37334A; --amber:#E8A66A; --amber-soft:#33261A; --green:#8FD1AE; --green-soft:#1C2E25;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:1.06rem;line-height:1.62}
+h1,h2,h3,h4,nav,th,.tag,.kicker{font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:48px}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;gap:0}nav.toc{position:static!important;border:none!important;padding:0 0 12px!important}}
+header.hero{max-width:1180px;margin:0 auto;padding:56px 20px 36px}
+.hero .kicker{color:var(--plum);font-weight:600;font-size:.95rem;margin:0 0 10px}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;margin:0;letter-spacing:-.02em;max-width:18ch}
+.hero p{color:var(--muted);max-width:62ch;margin:18px 0 0}
+.hero .formula-strip{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+.hero .formula-strip span{background:var(--plum-soft);color:var(--plum);border-radius:999px;padding:6px 14px;font-family:"Instrument Sans",sans-serif;font-size:.9rem;font-weight:600}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);align-self:start;border-left:2px solid var(--rule);padding:4px 0 4px 16px;font-size:.92rem}
+nav.toc ol{list-style:none;margin:0;padding:0}
+nav.toc li{margin:0 0 6px}
+nav.toc a{color:var(--muted);text-decoration:none}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--plum);text-decoration:underline}
+nav.toc ol ol{padding-left:12px;margin-top:6px;font-size:.86rem}
+main{min-width:0;padding-bottom:80px}
+section{padding:8px 0 28px;border-top:1px solid var(--rule)}
+section:first-of-type{border-top:none}
+h2{font-size:1.7rem;margin:28px 0 8px;letter-spacing:-.01em}
+h2 .n{color:var(--plum);margin-right:.4em}
+h3{font-size:1.18rem;margin:26px 0 6px;color:var(--plum)}
+h4{font-size:1rem;margin:18px 0 4px}
+p{margin:8px 0;max-width:74ch}
+ul{padding-left:1.2em;margin:8px 0;max-width:74ch}
+li{margin:4px 0}
+strong{font-weight:600}
+.tbl{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:520px}
+th{text-align:left;font-weight:600;font-size:.85rem;color:var(--muted);border-bottom:2px solid var(--ink);padding:8px 10px}
+td{border-bottom:1px solid var(--rule);padding:8px 10px;vertical-align:top}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.box{border-radius:6px;padding:14px 18px;margin:14px 0;max-width:78ch}
+.box p,.box ul{margin:4px 0}
+.box .tag{display:block;font-size:.85rem;font-weight:700;margin-bottom:4px}
+.key{background:var(--plum-soft)} .key .tag{color:var(--plum)}
+.limit{background:var(--amber-soft)} .limit .tag{color:var(--amber)}
+.ex{background:var(--green-soft)} .ex .tag{color:var(--green)}
+.eq{font-family:"Source Serif 4",serif;font-style:italic;text-align:center;padding:10px;margin:10px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);max-width:74ch}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;max-width:78ch}
+.grid2 .box{margin:0}
+.waves{border-left:2px solid var(--plum);padding-left:18px;margin:14px 0;max-width:74ch}
+.waves div{margin:0 0 14px}
+.waves b{font-family:"Instrument Sans",sans-serif;color:var(--plum)}
+.muted{color:var(--muted);font-size:.93rem}
+details{margin:8px 0;max-width:78ch}
+summary{cursor:pointer;font-family:"Instrument Sans",sans-serif;font-weight:600;color:var(--green)}
+summary:focus-visible,a:focus-visible{outline:2px solid var(--plum);outline-offset:2px}
+.calc{font-variant-numeric:tabular-nums}
+footer{max-width:1180px;margin:0 auto;padding:20px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--rule)}
+@media print{nav.toc{display:none}.wrap{display:block}details{display:block}details>*{display:block}}
+</style>
+</head>
+<body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-ingf_fiches">← Ingénierie financière</a><span>· Classeur de révision</span></nav>
+
+
+<header class="hero">
+  <p class="kicker">Ingénierie financière — ISA Lille 2026-2027 — J.-Y. Filbien</p>
+  <h1>Chapitre 1. Le marché et la stratégie d'offre</h1>
+  <p>Fiche de révision construite uniquement à partir des diapositives du cours : définitions, marché du contrôle des entreprises, processus d'offre, motivations des fusions-acquisitions et exercices du chapitre.</p>
+  <div class="formula-strip">
+    <span>Synergie : V(A+T) &gt; V(A) + V(T)</span>
+    <span>Création de valeur = synergies − prime</span>
+    <span>HHI = Σ (part de marché en %)²</span>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc" aria-label="Sommaire">
+  <ol>
+    <li><a href="#def">1. Les définitions</a>
+      <ol>
+        <li><a href="#def-strat">Perspective stratégique</a></li>
+        <li><a href="#def-eco">Perspective économique</a></li>
+        <li><a href="#def-legal">Perspective légale</a></li>
+        <li><a href="#def-scission">Les scissions</a></li>
+      </ol>
+    </li>
+    <li><a href="#marche">2. Le marché du contrôle</a>
+      <ol>
+        <li><a href="#chiffres">Grandes opérations</a></li>
+        <li><a href="#vagues">Les vagues de F&amp;A</a></li>
+      </ol>
+    </li>
+    <li><a href="#processus">3. Le processus et la prime</a></li>
+    <li><a href="#motiv">4. Les motivations</a>
+      <ol>
+        <li><a href="#macro">Macroéconomiques</a></li>
+        <li><a href="#micro">Microéconomiques</a></li>
+        <li><a href="#syn">Synergies</a></li>
+        <li><a href="#comp">Compétences</a></li>
+        <li><a href="#dir">Dirigeants et agence</a></li>
+        <li><a href="#pouvoir">Pouvoir de marché</a></li>
+        <li><a href="#vert">Intégration verticale</a></li>
+        <li><a href="#impot">Économies d'impôt</a></li>
+        <li><a href="#bpa">Accroître le BPA</a></li>
+        <li><a href="#diversif">Diversification</a></li>
+        <li><a href="#gestion">Gestion de la cible</a></li>
+      </ol>
+    </li>
+    <li><a href="#exos">5. Exercices corrigés</a></li>
+    <li><a href="#retenir">6. À retenir</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ============ 1. DEFINITIONS ============ -->
+<section id="def">
+<h2><span class="n">1</span>Les définitions</h2>
+<p>Le plan du chapitre suit cinq temps : les définitions, le marché du contrôle des entreprises, le processus, les motivations et l'évaluation.</p>
+
+<h3 id="def-strat">La perspective stratégique : trois façons de croître</h3>
+<div class="tbl"><table>
+<thead><tr><th>Mode de croissance</th><th>Principe</th><th>Exemples / caractéristiques</th></tr></thead>
+<tbody>
+<tr><td><strong>Croissance interne (organique)</strong></td><td>Développement progressif des activités à partir des ressources propres de l'entreprise</td><td>Nouveaux investissements, nouveaux produits, nouveaux clients, nouveaux marchés</td></tr>
+<tr><td><strong>Alliance stratégique</strong></td><td>Coopération avec une autre entreprise</td><td>Accord contractuel ou création d'une société commune (<em>joint venture</em>)</td></tr>
+<tr><td><strong>Croissance externe</strong></td><td>Acquisition ou fusion avec une autre entreprise (<em>Mergers &amp; Acquisitions – M&amp;A</em>)</td><td>Généralement plus rapide, mais nécessite des ressources financières importantes et comporte des risques spécifiques</td></tr>
+</tbody></table></div>
+<p class="muted">Le schéma du cycle de vie montre les outils financiers à chaque phase : <strong>lancement</strong> (essaimage, capital-risque, entrée en bourse), <strong>concentration</strong> (augmentations de capital, croissance externe), <strong>restructuration</strong> (réductions de capital, LBO, puis soit changement d'activité, soit dépôt de bilan).</p>
+
+<h3 id="def-eco">La perspective économique : trois types d'opérations</h3>
+<div class="tbl"><table>
+<thead><tr><th>Type</th><th>Définition</th><th>Motivations</th><th>Risque / enjeu</th><th>Exemple</th></tr></thead>
+<tbody>
+<tr><td><strong>Horizontale</strong></td><td>Entreprises de la même industrie, généralement au même stade de la chaîne de valeur</td><td>Synergies (économies d'échelle et de gamme), renforcement du pouvoir de marché</td><td>Intervention des autorités de la concurrence si création ou renforcement d'une position dominante</td><td>Peugeot + Citroën → PSA (1976)</td></tr>
+<tr><td><strong>Verticale</strong></td><td>Entreprises à différentes étapes de la chaîne de valeur ; intégration <strong>amont</strong> (fournisseurs) ou <strong>aval</strong> (clients / distributeurs)</td><td>Efficacité opérationnelle, réduction des coûts de transaction, meilleur contrôle de la chaîne de valeur</td><td>—</td><td>IBM acquiert Cognos (2007)</td></tr>
+<tr><td><strong>Conglomérale</strong></td><td>Acquéreur et cible dans des industries différentes, sans relation horizontale ou verticale directe</td><td>Diversification, entrée sur de nouveaux marchés, moindre dépendance à un secteur</td><td>Complexité accrue, synergies opérationnelles plus limitées</td><td>Moët Hennessy + Louis Vuitton → LVMH (1987)</td></tr>
+</tbody></table></div>
+
+<h4>Comment classer les secteurs ?</h4>
+<ul>
+<li><strong>Nomenclatures publiques :</strong> la NAF (nomenclature d'activités française), la NACE (européenne) et la CITI (internationale), conçues pour organiser l'information économique et sociale.</li>
+<li><strong>Classifications commerciales</strong> produites par des firmes privées : SIC / NAICS ; GICS (S&amp;P et MSCI) ; ICB (Dow Jones et FTSE, aujourd'hui FTSE Russell) ; TRBC (Refinitiv) ; Russell Global Sectors (RGS).</li>
+</ul>
+<div class="tbl"><table>
+<thead><tr><th>Classification</th><th>Structure (version présentée sur les pyramides)</th></tr></thead>
+<tbody>
+<tr><td>GICS</td><td>11 secteurs, 25 groupes d'industries, 74 industries, 163 sous-industries</td></tr>
+<tr><td>ICB</td><td>11 industries, 20 super-secteurs, 45 secteurs, 173 sous-secteurs</td></tr>
+<tr><td>TRBC</td><td>14 secteurs économiques, 33 secteurs d'activité, 62 groupes d'industries, 154 industries, 898 activités</td></tr>
+</tbody></table></div>
+<p class="muted">Attention : une diapositive plus ancienne indique pour GICS 10 secteurs / 24 groupes / 67 industries / 156 sous-industries et pour ICB 10 industries / 19 super-secteurs / 41 secteurs / 114 sous-secteurs. Les pyramides reprennent les versions plus récentes. La recherche utilise aussi des approches textuelles (Hoberg &amp; Phillips, 2010 : les transactions sont plus probables entre firmes au langage produit similaire).</p>
+
+<h3 id="def-legal">La perspective légale</h3>
+<div class="grid2">
+<div class="box key"><span class="tag">Fusion (réunion)</span><p>Deux sociétés ou plus se dissolvent pour former une <strong>nouvelle société</strong> qui reprend la totalité de leur patrimoine.</p><p class="calc">X + Z → Y</p></div>
+<div class="box key"><span class="tag">Fusion-absorption</span><p>La société absorbante X reçoit actifs et dettes de la société absorbée Z, qui disparaît (<strong>dissolution sans liquidation</strong>). Les actionnaires de Z sont rémunérés en actions de X.</p><p class="calc">X + Z → X</p></div>
+<div class="box key"><span class="tag">Apport de titres</span><p>Les actionnaires de B apportent leurs actions B à A et reçoivent des actions nouvellement émises par A. <strong>Les deux sociétés subsistent</strong> : B devient filiale de A, les actionnaires de B deviennent actionnaires de A.</p></div>
+</div>
+<div class="box ex"><span class="tag">Exemples de fusion-absorption</span><p>Affine absorbée par la Société de la Tour Eiffel (2018), parité de 3 actions Affine pour 1 action STE, dissolution sans liquidation d'Affine. Corio absorbée par Klépierre.</p></div>
+
+<h3 id="def-scission">Les scissions (<em>demerger</em>)</h3>
+<p>Un groupe à plusieurs branches d'activité les sépare en plusieurs sociétés distinctes.</p>
+<ul>
+<li><strong>Objectif :</strong> accroître la visibilité et la lisibilité de chaque activité, avec des entreprises centrées sur leur cœur de métier.</li>
+<li><strong>Conséquence attendue :</strong> la somme des valorisations des entités peut dépasser la valeur du groupe initial, grâce notamment à la réduction de la <strong>décote de conglomérat</strong>.</li>
+</ul>
+<div class="tbl"><table>
+<thead><tr><th>Forme</th><th>Mécanisme</th><th>Exemple du cours</th></tr></thead>
+<tbody>
+<tr><td><strong>Spin-off</strong></td><td>Distribution des actions d'une filiale aux actionnaires de la mère, le plus souvent sous forme de dividende ; les actionnaires restent exactement les mêmes</td><td>Pinault « donne » la Fnac à ses actionnaires ; Vivendi distribue 60 % d'Universal Music ; Atos distribue 23,4 % de Worldline</td></tr>
+<tr><td><strong>Split-up</strong></td><td>Distribution des actions des filiales et <strong>dissolution de la maison mère</strong></td><td>Gap et Old Navy (2019)</td></tr>
+<tr><td><strong>Split-off</strong></td><td>Offre d'échange : les actions rachetées par l'entreprise sont payées en actions d'une filiale, non en numéraire</td><td>—</td></tr>
+<tr><td><strong>Equity carve-out</strong></td><td>Introduction en bourse d'une partie du capital d'une filiale (généralement par IPO), la mère conservant une participation</td><td>—</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- ============ 2. MARCHE ============ -->
+<section id="marche">
+<h2><span class="n">2</span>Le marché du contrôle des entreprises</h2>
+<p>Les M&amp;A sont au cœur du <strong>marché du contrôle des entreprises</strong> (<em>market for corporate control</em>). Quelle que soit leur forme juridique, elles impliquent un <strong>changement de propriété</strong> de tout ou partie de l'entreprise, pouvant entraîner un <strong>transfert de contrôle</strong>. Les très grosses opérations sont rares, mais on compte <strong>plusieurs dizaines de milliers d'opérations par an</strong> dans le monde.</p>
+
+<h3 id="chiffres">Les plus grandes opérations (source LSEG)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Acquéreur</th><th>Cible</th><th>Annonce</th><th class="num">Mds $</th></tr></thead>
+<tbody>
+<tr><td>Vodafone AirTouch</td><td>Mannesmann</td><td>1999</td><td class="num">202,7</td></tr>
+<tr><td>America Online</td><td>Time Warner</td><td>2000</td><td class="num">164,7</td></tr>
+<tr><td>Verizon Communications</td><td>Verizon Wireless</td><td>2013</td><td class="num">130,3</td></tr>
+<tr><td>Shareholders</td><td>Philip Morris International</td><td>2007</td><td class="num">107,5</td></tr>
+<tr><td>Anheuser-Busch InBev</td><td>SABMiller</td><td>2015</td><td class="num">101,5</td></tr>
+<tr><td>Pfizer</td><td>Warner-Lambert</td><td>1999</td><td class="num">89,6</td></tr>
+<tr><td>United Technologies</td><td>Raytheon</td><td>2019</td><td class="num">86,8</td></tr>
+<tr><td>Walt Disney</td><td>21st Century Fox</td><td>2017</td><td class="num">84,2</td></tr>
+<tr><td>AT&amp;T</td><td>Time Warner</td><td>2016</td><td class="num">79,4</td></tr>
+<tr><td>Bristol-Myers Squibb</td><td>Celgene</td><td>2019</td><td class="num">79,4</td></tr>
+</tbody></table></div>
+<p>Dans ce top 10, les acquéreurs sont surtout américains (7 opérations, contre 1 pour le Royaume-Uni, la Suisse et la Belgique). Par industrie, les <strong>télécommunications</strong> dominent largement (plus de 400 Mds $), devant la santé et la haute technologie.</p>
+
+<h4>Le cas français</h4>
+<p>La plus grosse fusion française reste <strong>GDF-Suez (2008)</strong>, plus de 60 milliards d'euros. Pour comparer dans le temps, il faut <strong>déflater</strong> les montants.</p>
+<div class="tbl"><table>
+<thead><tr><th>Acquéreur français</th><th>Cible</th><th>Annonce</th><th class="num">Mds $</th></tr></thead>
+<tbody>
+<tr><td>Gaz de France</td><td>Suez</td><td>2006</td><td class="num">60,8</td></tr>
+<tr><td>France Telecom</td><td>Orange PLC</td><td>2000</td><td class="num">46,5</td></tr>
+<tr><td>Vivendi</td><td>Seagram</td><td>2000</td><td class="num">40,5</td></tr>
+<tr><td>Sanofi-Aventis</td><td>Genzyme</td><td>2010</td><td class="num">23,9</td></tr>
+<tr><td>Peugeot</td><td>Fiat Chrysler Automobiles</td><td>2019</td><td class="num">22,1</td></tr>
+<tr><td>Rhône-Poulenc</td><td>Hoechst</td><td>1999</td><td class="num">21,9</td></tr>
+<tr><td>Numericable Group</td><td>SFR</td><td>2014</td><td class="num">21,0</td></tr>
+<tr><td>Kansai Airports</td><td>Concession aéroports Kansai &amp; Osaka</td><td>2015</td><td class="num">17,9</td></tr>
+<tr><td>LVMH</td><td>Tiffany &amp; Co</td><td>2019</td><td class="num">16,0</td></tr>
+<tr><td>Unibail-Rodamco</td><td>Westfield</td><td>2017</td><td class="num">15,8</td></tr>
+</tbody></table></div>
+<p class="muted">Les graphiques IMAA (monde, Amérique du Nord, Europe, France) montrent des pics de valeur autour de 1999-2000, 2007, 2015 et 2021, des creux après 2001, 2008-2009 et en 2023, puis une remontée en 2025 et une estimation 2026 élevée. Les articles des Échos en ouverture illustrent ces cycles : chute à un plus bas de dix ans, effondrement de la French Tech en valeur (−73 % en 2025) malgré plus de deals, retour des industriels face au private equity, ère des mégadeals.</p>
+
+<h3 id="vagues">Les vagues de fusions-acquisitions (<em>merger waves</em>)</h3>
+<p>L'activité de F&amp;A est <strong>fortement cyclique</strong>. Elle est plus intense en période de <strong>croissance économique et d'innovation technologique</strong> et évolue avec les <strong>marchés actions</strong>. Chaque vague correspond à un contexte économique et à un type d'opération dominant.</p>
+<div class="waves">
+<div><b>1<sup>re</sup> vague, 1895-1904 — Great Merger Wave.</b> Concentrations <strong>horizontales</strong> entre concurrents ; consolidation des industries et pouvoir de marché. Exemple : Standard Oil.</div>
+<div><b>2<sup>e</sup> vague, 1916-1929 — Mergers for Oligopoly.</b> Concentrations <strong>verticales</strong> ; contrôle des approvisionnements, de la production et de la distribution.</div>
+<div><b>3<sup>e</sup> vague, 1965-1969.</b> Formation de <strong>conglomérats</strong> : la maison mère se croit capable d'améliorer la gestion de ses filiales.</div>
+<div><b>4<sup>e</sup> vague, 1981-1989.</b> <strong>Recentrage</strong> sur le cœur de métier (dépeçage des conglomérats, ex. ITT), acquéreurs financiers, opérations hostiles (<em>raiders</em>), création de géants, <strong>LBO</strong>.</div>
+<div><b>5<sup>e</sup> vague, 1992-1999.</b> Fusions stratégiques, globales et <strong>amicales</strong>, portées par les révolutions technologiques, la déréglementation (privatisations) et la baisse des barrières tarifaires ; financement par <strong>échange d'actions</strong>.</div>
+<div><b>6<sup>e</sup> vague, 2003-2008.</b> <strong>Consolidation</strong> (télécoms, logiciels, énergie : Total-Fina-Elf, Sanofi-Aventis, Alcatel-Lucent, GDF-Suez) et forte <strong>résurgence des LBO</strong> portée par le private equity.</div>
+</div>
+</section>
+
+<!-- ============ 3. PROCESSUS ============ -->
+<section id="processus">
+<h2><span class="n">3</span>Le processus et la prime</h2>
+<h3>Les modes de paiement</h3>
+<div class="tbl"><table>
+<thead><tr><th>Mode</th><th>Fonctionnement</th></tr></thead>
+<tbody>
+<tr><td><strong>En numéraire</strong> (<em>cash deal</em>)</td><td>L'acquéreur verse une somme en cash aux actionnaires de la cible ; le prix intègre généralement une prime sur le cours avant annonce.</td></tr>
+<tr><td><strong>En actions</strong> (« papier », <em>stock deal</em>)</td><td>L'acquéreur émet des actions remises aux actionnaires de la cible, qui deviennent actionnaires de l'entité issue du rapprochement.</td></tr>
+<tr><td><strong>Mixte</strong> (<em>cash and stock deal</em>)</td><td>Combinaison de numéraire et d'actions.</td></tr>
+</tbody></table></div>
+<p>Dans tous les cas, un <strong>cadre réglementaire</strong> garantit l'égalité de traitement des actionnaires et la défense des intérêts de toutes les parties prenantes.</p>
+
+<h3>La prime d'acquisition</h3>
+<p>Quand l'<strong>acquéreur / initiateur</strong> (<em>acquirer, bidder</em>) propose de racheter les actions d'une <strong>cible</strong> (<em>target</em>) cotée, le prix est généralement <strong>supérieur au cours avant l'annonce</strong>. Cet écart est la <strong>prime d'acquisition</strong> (<em>acquisition premium</em>).</p>
+<div class="eq">Prime (%) = (prix de l'offre − cours pré-annonce) / cours pré-annonce</div>
+<div class="tbl"><table>
+<thead><tr><th></th><th class="num">Prime d'acquisition</th><th class="num">Réaction du cours de la cible</th><th class="num">Réaction du cours de l'acquéreur</th></tr></thead>
+<tbody>
+<tr><td>États-Unis</td><td class="num">43 %</td><td class="num">15 %</td><td class="num">1 %</td></tr>
+<tr><td>France</td><td class="num">27 %</td><td class="num">16 %</td><td class="num">0 %</td></tr>
+</tbody></table></div>
+<div class="box key"><span class="tag">Idée clé</span><p>Les acquisitions sont de bonnes nouvelles pour les actionnaires des cibles, mais pas toujours pour ceux des acquéreurs.</p></div>
+<div class="box limit"><span class="tag">Le risque de surpayer</span>
+<p>La valorisation repose sur le plan d'affaires de la cible et sur les synergies attendues. L'acquéreur peut :</p>
+<ul><li>surestimer les gains de synergie et/ou de contrôle ;</li><li>sous-estimer les coûts et difficultés de leur réalisation ;</li><li>être trop optimiste sur les perspectives de la cible.</li></ul>
+<p>Il risque alors de payer une prime trop élevée et de <strong>détruire de la valeur pour ses propres actionnaires</strong>. Exemple : Warren Buffett estime que Berkshire Hathaway a trop payé pour Kraft Heinz (2019).</p></div>
+</section>
+
+<!-- ============ 4. MOTIVATIONS ============ -->
+<section id="motiv">
+<h2><span class="n">4</span>Les motivations</h2>
+
+<h3 id="macro">Les déterminants macroéconomiques</h3>
+<div class="tbl"><table>
+<thead><tr><th>Facteur</th><th>Mécanisme</th><th>Exemples</th></tr></thead>
+<tbody>
+<tr><td><strong>Technologie et innovation</strong></td><td>Bouleversement des modèles économiques ; consolidation de secteurs ou acquisition de compétences</td><td>Instagram par Facebook ; projet Dailymotion par Yahoo!</td></tr>
+<tr><td><strong>Globalisation</strong></td><td>Changer d'échelle, atteindre une taille critique, accéder à de nouveaux marchés</td><td>Canson par l'italien Fila</td></tr>
+<tr><td><strong>Réglementation</strong></td><td>Déréglementation et privatisations modifient la structure des secteurs</td><td>Privatisation de France Télécom ; déréglementation bancaire</td></tr>
+<tr><td><strong>Géopolitique, intégration des marchés</strong></td><td>L'ouverture facilite les rapprochements transfrontaliers</td><td>Air France–KLM</td></tr>
+<tr><td><strong>Marchés financiers</strong></td><td>Accès au financement ; valorisations élevées → paiement en actions ; taux bas → dette et LBO moins chers ; taux de change → coût relatif des opérations transfrontalières</td><td>—</td></tr>
+<tr><td><strong>Démographie</strong></td><td>Problèmes de succession des entreprises familiales ou à actionnaire-dirigeant ; sans repreneur familial, cession à un acquéreur industriel ou financier</td><td>—</td></tr>
+</tbody></table></div>
+
+<h3 id="micro">Les déterminants microéconomiques</h3>
+<p>Pourquoi l'initiateur accepte-t-il de payer plus que la valeur de marché avant l'annonce ? Deux questions :</p>
+<ul>
+<li>La prime est-elle <strong>économiquement justifiée</strong> par la création de valeur attendue ?</li>
+<li>Si oui, pourquoi l'acquéreur ne peut-il pas acheter la cible à sa <strong>valeur de marché initiale</strong> ?</li>
+</ul>
+<div class="box key"><span class="tag">Quatre grandes catégories de motivations</span>
+<ul>
+<li><strong>Synergies :</strong> création de valeur issue du rapprochement.</li>
+<li><strong>Pouvoir de marché :</strong> moins de concurrence, position renforcée.</li>
+<li><strong>Motivations managériales :</strong> excès de confiance (<em>hubris</em>), recherche de croissance, construction d'un « empire ».</li>
+<li><strong>Problèmes d'agence :</strong> divergence d'intérêts dirigeants / actionnaires.</li>
+</ul></div>
+
+<h3 id="syn">Les synergies</h3>
+<div class="eq">Synergie ⇔ V(A + T) &gt; V(A) + V(T)</div>
+<div class="grid2">
+<div class="box key"><span class="tag">Synergies de revenus</span><p>Ventes croisées, nouveaux marchés, complémentarité des produits, réseau de distribution renforcé.</p></div>
+<div class="box key"><span class="tag">Synergies de coûts</span><p>Économies d'échelle, suppression des fonctions redondantes, rationalisation de la production, pouvoir de négociation fournisseurs. <strong>Plus faciles</strong> à identifier, quantifier et réaliser.</p></div>
+</div>
+<p>Pour créer de la valeur, l'acquéreur doit : sélectionner des cibles à fort potentiel de synergies, les <strong>évaluer correctement</strong>, <strong>ne pas surpayer</strong> la cible et <strong>réaliser effectivement</strong> les synergies (ex. ArcelorMittal en avance sur son objectif d'environ 1,6 Md $ de synergies sur deux ans).</p>
+<ul>
+<li><strong>Économies d'échelle :</strong> coûts fixes élevés ou meilleurs prix fournisseurs grâce aux volumes (ex. Absolut Vodka par Pernod Ricard, 2008).</li>
+<li><strong>Économies de gamme :</strong> produire conjointement des biens différents coûte moins cher et/ou permet de vendre plus cher (ex. aviation).</li>
+</ul>
+<div class="box limit"><span class="tag">Limite</span><p>Au-delà d'une certaine taille, des coûts apparaissent et contrebalancent ces économies.</p></div>
+<div class="box key"><span class="tag">Décomposition de la valeur (schéma du cours)</span>
+<p>A = valeur de l'acquéreur avant fusion ; T = valeur de la cible ; Synergies = création de valeur potentielle, <strong>nette des coûts d'intégration</strong> ; Premium = prime payée au-dessus de T.</p>
+<p class="calc"><strong>Création de valeur = Synergies − Prime</strong><br>Valeur post-fusion = A + T + création de valeur</p></div>
+
+<h3 id="comp">La maîtrise d'une compétence spécifique</h3>
+<p>Acquérir une entreprise qui possède déjà des compétences, technologies ou savoir-faire peut être <strong>plus rapide ou moins coûteux</strong> que les développer en interne (TeachStreet par Amazon, Summify par Twitter, Lala par Apple).</p>
+<ul>
+<li><strong>Acqui-hiring</strong> (<em>acquisition + hiring</em>) : racheter pour recruter une équipe aux compétences spécifiques.</li>
+<li><strong>Acquisition « bolt-on »</strong> : acheter une société généralement plus petite pour compléter ses activités (produits, technologies, compétences, zones géographiques).</li>
+</ul>
+<h4>Pourquoi acheter l'entreprise plutôt que recruter ses salariés ?</h4>
+<ul>
+<li>L'équipe est difficile à reconstituer individuellement.</li>
+<li>Le savoir-faire est lié à des brevets, technologies ou droits de propriété intellectuelle.</li>
+<li>Clauses de non-concurrence ou de non-sollicitation (si la loi les autorise).</li>
+<li>Mécanismes de fidélisation (actions gratuites, stock-options, clauses de rétention).</li>
+<li>On obtient d'un coup salariés, technologie, actifs et organisation.</li>
+</ul>
+
+<h3 id="dir">Le comportement des dirigeants et les problèmes d'agence</h3>
+<ul>
+<li><strong>Mimétisme :</strong> imitation de la croissance externe des rivaux (Worldline-Ingenico, Nexi-SIA, Rapyd-Korta).</li>
+<li><strong>Excès de confiance</strong> (<em>CEO hubris</em>, Roll 1986) : les dirigeants surestiment leurs compétences et leur capacité à créer de la valeur, d'où des acquisitions à rendement faible voire négatif (ex. Lafarge-Holcim et ses « problèmes d'ego »).</li>
+</ul>
+<div class="box key"><span class="tag">Modèle Hayward &amp; Hambrick (1997), complété par Malmendier &amp; Tate (2008)</span>
+<p>Performance récente, éloges médiatiques et sentiment d'importance du CEO → <strong>hubris</strong> → primes d'acquisition plus élevées → performance de l'acquéreur plus faible. Une gouvernance faible et une trésorerie abondante (<em>cash rich</em>) amplifient le lien ; les dirigeants trop confiants multiplient les acquisitions (<em>acquisitiveness</em>).</p>
+<p>Implications : ils surpayent plus souvent, acquièrent davantage, et le marché réagit plus souvent négativement.</p></div>
+<p><strong>Théorie de l'agence :</strong> avec la séparation propriété / contrôle et sans incitations ni contrôle, les dirigeants peuvent détourner les ressources pour leurs propres objectifs. Plus l'entreprise est grande, plus leur rémunération et leur prestige sont élevés ; d'où l'<strong>empire building</strong> pour s'enraciner (<em>CEO entrenchment</em>) et préserver des bénéfices privés (raisons défensives).</p>
+
+<h3 id="pouvoir">Le pouvoir de marché : profiter d'une rente de monopole</h3>
+<p>Acquérir des concurrents réduit l'intensité concurrentielle et accroît pouvoir de marché et profits. On mesure la concentration par l'<strong>indice de Herfindahl-Hirschman</strong> :</p>
+<div class="eq">HHI = Σ (MS<sub>i</sub> × 100)² &nbsp;&nbsp; avec MS<sub>i</sub> = CA de l'entreprise i dans le secteur / CA du secteur</div>
+<p>Exemple du cours : parts de 40 %, 30 %, 20 %, 10 % → HHI = 40² + 30² + 20² + 10² = <strong>3 000</strong>.</p>
+<div class="tbl"><table>
+<thead><tr><th>HHI</th><th>Interprétation</th></tr></thead>
+<tbody>
+<tr><td>&lt; 1 000</td><td>Secteur peu concentré</td></tr>
+<tr><td>1 000 à 2 000</td><td>Moyennement concentré</td></tr>
+<tr><td>&gt; 2 000</td><td>Très concentré</td></tr>
+</tbody></table></div>
+<div class="box key"><span class="tag">Lignes directrices européennes (concentrations horizontales)</span>
+<ul>
+<li><strong>Art. 16 :</strong> la Commission utilise souvent le HHI.</li>
+<li><strong>Art. 17 :</strong> une part de marché de <strong>50 % ou plus</strong> peut en soi prouver une position dominante.</li>
+<li><strong>Art. 19 :</strong> problème peu probable si le HHI post-opération est <strong>&lt; 1 000</strong>.</li>
+<li><strong>Art. 20 :</strong> problème peu probable si HHI post entre 1 000 et 2 000 avec <strong>delta &lt; 250</strong>, ou HHI post &gt; 2 000 avec <strong>delta &lt; 150</strong>.</li>
+</ul></div>
+<div class="box limit"><span class="tag">Limites</span>
+<ul>
+<li><strong>Passager clandestin</strong> (<em>free-rider</em>) : l'acquéreur supporte seul le coût de l'acquisition, alors que les concurrents survivants profitent aussi de la moindre concurrence.</li>
+<li><strong>Lois antitrust :</strong> aux États-Unis, Sherman Act (1890), Clayton Act (1914), Hart-Scott-Rodino Act (1976) ; en France, loi NRE (2001), notification obligatoire si le CA des parties en France dépasse 15 M€ ; dans l'UE, la Commission européenne (veto à Alstom-Siemens, 2019).</li>
+</ul></div>
+
+<h3 id="vert">Réduire le pouvoir de marché des clients ou des fournisseurs</h3>
+<p>L'<strong>intégration verticale</strong> réunit deux entreprises à des stades différents de production ou de distribution : avec un fournisseur (<strong>amont</strong>) ou un client (<strong>aval</strong>). Motif : contrôler une ressource, des compétences ou un réseau de distribution pour ne plus dépendre de facteurs externes.</p>
+<div class="tbl"><table>
+<thead><tr><th>Direction</th><th>Cible</th><th>Exemple</th></tr></thead>
+<tbody>
+<tr><td>Horizontale</td><td>Rivaux</td><td>InBev / Anheuser-Busch</td></tr>
+<tr><td>Verticale amont</td><td>Fournisseurs</td><td>TomTom / Tele Atlas</td></tr>
+<tr><td>Verticale aval</td><td>(Potentiels) clients</td><td>Google / Motorola Mobility</td></tr>
+<tr><td>Conglomérat (latéral)</td><td>Aucune relation d'activité</td><td>Preussag / TUI</td></tr>
+</tbody></table></div>
+
+<h3 id="impot">Profiter d'économies d'impôt</h3>
+<ul>
+<li>Une entreprise bénéficiaire rachète une entreprise avec des <strong>déficits fiscaux reportables</strong> (<em>NOLs</em>) pour réduire ses bénéfices imposables futurs, si la réglementation le permet (ex. Google / Motorola Mobility).</li>
+<li>Autres avantages : <strong>déductibilité des intérêts</strong> si l'opération est financée par dette ; effets de <strong>réévaluation ou d'amortissement fiscal des actifs</strong> selon la structure.</li>
+</ul>
+<div class="box limit"><span class="tag">Limites</span>
+<ul>
+<li>Les économies fiscales ne suffisent pas forcément à justifier une acquisition.</li>
+<li>Les législations restreignent l'usage des déficits après un <strong>changement de contrôle</strong>.</li>
+<li>Si le report en avant des déficits est autorisé, la cible peut déjà en profiter seule.</li>
+</ul></div>
+
+<h3 id="bpa">Accroître les bénéfices : l'EPS bootstrapping</h3>
+<p>Une fusion peut faire afficher un <strong>BPA plus élevé</strong> sans créer aucune valeur économique. Cela arrive quand une entreprise en croissance (PER élevé) rachète une entreprise à faible croissance (PER faible). L'illusion peut faire monter le cours de l'acquéreur, mais une fusion qui ne crée pas de valeur n'enrichit personne.</p>
+
+<h3 id="diversif">Tirer parti de la diversification</h3>
+<div class="grid2">
+<div class="box key"><span class="tag">Arguments</span>
+<ul>
+<li><strong>Stabilisation des flux</strong> si les flux sont faiblement corrélés.</li>
+<li><strong>Capacité d'endettement</strong> accrue (moindre risque de difficultés financières) → économies fiscales sur les intérêts.</li>
+<li><strong>Marché interne des capitaux :</strong> le <em>cash slack</em> finance des projets à VAN positive autrement non financés.</li>
+<li>Moins de risque pour des <strong>actionnaires peu diversifiés</strong> (non cotées, familiales).</li>
+</ul></div>
+<div class="box limit"><span class="tag">Limites</span>
+<ul>
+<li>Les investisseurs d'une société cotée peuvent se diversifier eux-mêmes à moindre coût : réduire le risque idiosyncratique ne justifie pas seul l'opération.</li>
+<li>Coûts de complexité et d'agence → <em>conglomerate discount</em>.</li>
+<li>Le coût du capital doit refléter le <strong>risque de la cible</strong>, pas celui de l'acquéreur : un investissement risqué ne devient pas moins risqué parce qu'une firme peu risquée l'achète.</li>
+</ul></div>
+</div>
+
+<h3 id="gestion">Améliorer la gestion de la cible</h3>
+<p>Si la cible est <strong>mal gérée</strong>, l'acquéreur peut espérer accroître sa valeur ; payer une <strong>prime de contrôle</strong> peut alors être rationnel. La <strong>valeur de contrôle</strong> est la valeur créée par les améliorations de gestion que l'acquéreur pense mettre en œuvre.</p>
+<div class="box limit"><span class="tag">Limites</span><p>Amélioration incertaine ; remplacer les dirigeants peut ne pas suffire ; résistance au changement, coûts de réorganisation et difficultés d'intégration.</p></div>
+<p><strong>Valeur financière vs valeur stratégique :</strong> l'investisseur financier évalue l'opération comme un investissement, sans synergie opérationnelle ; l'acquéreur industriel y ajoute les synergies (industrielles, commerciales, administratives). La prime de contrôle est le supplément payé pour capter cette valeur stratégique.</p>
+<div class="eq">Valeur pour un investisseur financier &lt; Valeur pour un industriel = Valeur financière + Valeur des synergies</div>
+</section>
+
+<!-- ============ 5. EXERCICES ============ -->
+<section id="exos">
+<h2><span class="n">5</span>Exercices du chapitre</h2>
+<p class="muted">Les énoncés sont ceux du cours. Les corrigés n'utilisent que les données et formules présentes dans les diapositives.</p>
+
+<h3>Exercice 1 — Synergies de capacité (firme A rachète B)</h3>
+<p>Prix 4 €/unité, coûts variables 2,75 €/unité, coûts fixes 1 000 000 €. A produit 1 000 000 unités (50 % de sa capacité). B produit 500 000 unités ; A ferme l'usine de B et rapatrie sa production.</p>
+<details><summary>Voir le corrigé</summary>
+<div class="box ex calc">
+<p><strong>Avant :</strong> 1 000 000 × (4 − 2,75) − 1 000 000 = 1 250 000 − 1 000 000 = <strong>250 000 €</strong></p>
+<p><strong>Après :</strong> 1 500 000 × 1,25 − 1 000 000 = 1 875 000 − 1 000 000 = <strong>875 000 €</strong></p>
+<p>Les 500 000 unités supplémentaires rapportent 625 000 € de marge sans coût fixe additionnel, puisque l'usine de A avait la capacité inutilisée : c'est une synergie de coûts (économie d'échelle, coûts fixes répartis sur plus d'unités).</p>
+</div></details>
+
+<h3>Exercice 2 — HHI avant et après fusion</h3>
+<p>a) 20 entreprises à 5 % chacune ; deux fusionnent. b) 5 entreprises à 20 % chacune ; deux fusionnent.</p>
+<details><summary>Voir le corrigé</summary>
+<div class="box ex calc">
+<p><strong>a)</strong> Avant : 20 × 5² = <strong>500</strong>. Après : 10² + 18 × 5² = 100 + 450 = <strong>550</strong>. Delta = 50. HHI post &lt; 1 000 : marché peu concentré, problème de concurrence peu probable (art. 19).</p>
+<p><strong>b)</strong> Avant : 5 × 20² = <strong>2 000</strong>. Après : 40² + 3 × 20² = 1 600 + 1 200 = <strong>2 800</strong>. Delta = 800. HHI post &gt; 2 000 et delta bien supérieur à 150 : marché très concentré, l'opération attirerait l'attention des autorités (l'art. 20 ne la « blanchit » pas).</p>
+<p>Même fusion de deux firmes, conséquences très différentes selon la structure initiale du marché.</p>
+</div></details>
+
+<h3>Exercice 3 — Économies d'impôt (Ying rachète Yang)</h3>
+<p>Chaque entreprise : résultat de +100 M ou −27 M (équiprobables), corrélation parfaitement négative, IS 33 %, pas de report des déficits.</p>
+<details><summary>Voir le corrigé</summary>
+<div class="box ex calc">
+<p><strong>Séparées :</strong> scénario favorable 100 × (1 − 0,33) = 67 ; scénario défavorable −27 (pas d'impôt). Espérance par entreprise = 0,5 × 67 + 0,5 × (−27) = 20. Somme = <strong>40 M</strong>.</p>
+<p><strong>Fusionnées :</strong> corrélation −1, donc chaque année l'une gagne 100 et l'autre perd 27 : résultat avant impôt = 73 M. Résultat net = 73 × 0,67 = <strong>48,91 M</strong>.</p>
+<p>Gain ≈ 8,91 M par an = 33 % × 27 : la perte de l'une vient réduire l'impôt payé sur le bénéfice de l'autre.</p>
+</div></details>
+
+<h3>Exercice 4 — EPS bootstrapping (Internetic rachète Acieror)</h3>
+<p>BPA de 5 € pour les deux. Acieror : 1 M d'actions à 60 €. Internetic : 1 M d'actions à 100 €. Paiement en actions, marchés parfaits.</p>
+<details><summary>Voir le corrigé</summary>
+<div class="box ex calc">
+<p><strong>Actions à émettre :</strong> valeur d'Acieror 60 M€ / 100 € = <strong>600 000 actions</strong> Internetic.</p>
+<p><strong>BPA après :</strong> bénéfice total 5 M + 5 M = 10 M ; 1,6 M d'actions → BPA = <strong>6,25 €</strong> (contre 5 €).</p>
+<p>Mais la valeur totale reste 100 + 60 = 160 M€, soit 100 € par action : aucune valeur créée. Le PER passe de 20 (100/5) à 16 (100/6,25), car la nouvelle entité a en moyenne moins d'opportunités de croissance. La hausse du BPA est une illusion.</p>
+</div></details>
+
+<h3>Exercice 5 — Bêta de Disney après l'acquisition de Capital Cities (1996)</h3>
+<div class="tbl"><table>
+<thead><tr><th></th><th class="num">Disney</th><th class="num">Capital Cities</th></tr></thead>
+<tbody>
+<tr><td>Bêta des fonds propres</td><td class="num">1,15</td><td class="num">0,95</td></tr>
+<tr><td>Dette (M)</td><td class="num">3 186</td><td class="num">615</td></tr>
+<tr><td>Fonds propres (M)</td><td class="num">31 100</td><td class="num">18 500</td></tr>
+</tbody></table></div>
+<p>Taux d'imposition 36 %. Disney reprend la dette de Capital Cities ; opération financée entièrement par fonds propres. Estimer le bêta de Disney après l'opération.</p>
+<p class="muted">Le chapitre pose l'énoncé mais ne donne pas la formule de passage bêta endetté / désendetté ; la méthode est donc à reprendre du cours de finance d'entreprise. Idée à retenir du chapitre : le risque de la nouvelle entité combine celui de l'acquéreur et celui de la cible, et c'est le risque de la cible qui doit servir à l'évaluer.</p>
+</section>
+
+<!-- ============ 6. A RETENIR ============ -->
+<section id="retenir">
+<h2><span class="n">6</span>À retenir</h2>
+<ul>
+<li>Trois voies de croissance : organique, alliance, externe (M&amp;A, plus rapide mais coûteuse et risquée).</li>
+<li>Trois types économiques : horizontal, vertical (amont / aval), conglomérat. Trois formes légales : fusion, fusion-absorption, apport de titres. Quatre formes de scission : spin-off, split-up, split-off, equity carve-out.</li>
+<li>Les M&amp;A forment le marché du contrôle des entreprises ; l'activité est cyclique (six vagues, liées à la croissance, à l'innovation et aux marchés actions).</li>
+<li>Paiement en cash, en actions ou mixte ; la prime moyenne est de 43 % aux États-Unis et 27 % en France ; les cibles gagnent, les acquéreurs beaucoup moins.</li>
+<li><strong>Création de valeur = synergies (nettes des coûts d'intégration) − prime.</strong> Les synergies de coûts sont plus sûres que celles de revenus.</li>
+<li>Motivations valables : synergies, compétences, pouvoir de marché (limité par l'antitrust et le free-rider), intégration verticale, gains fiscaux, meilleure gestion de la cible.</li>
+<li>Motivations douteuses : hubris, empire building, mimétisme, EPS bootstrapping, diversification pour elle-même.</li>
+<li>HHI = somme des carrés des parts de marché ; seuils 1 000 / 2 000 ; deltas 250 / 150 dans les lignes directrices européennes.</li>
+</ul>
+<p class="muted">Le plan annonce une partie « L'évaluation », qui n'est pas développée dans ce document.</p>
+</section>
+
+</main>
+</div>
+
+<footer>Fiche établie à partir du support « Ingénierie financière, Chapitre 1 », J.-Y. Filbien, JUNIA ISA Lille 2026-2027.</footer>
+</body>
+</html>

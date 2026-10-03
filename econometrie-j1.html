@@ -1,0 +1,279 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-eco_fiches">← Économétrie</a><span>· Classeur de révision</span></nav>
+
+<title>Fiche Économétrie Jour 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+<style>
+/* Layout: colonne unique de fiche de révision, sections numérotées comme le cours, encadrés "formule" et "à retenir" */
+:root{
+  --bg:#f7f8fb; --paper:#ffffff; --fg:#1b2130; --muted:#5b6478; --line:#dfe3ec;
+  --accent:#2f5bd3; --accent-soft:#e8eefc; --key:#b4540f; --key-soft:#fdf1e6; --ok:#1f7a4d;
+  --display:"Fraunces", Georgia, serif; --body:"Source Sans 3", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#12151d; --paper:#1a1f2a; --fg:#e6e9f0; --muted:#9aa3b6; --line:#2c3342;
+  --accent:#86a5ff; --accent-soft:#1f2a45; --key:#f0a868; --key-soft:#35261a; --ok:#6fcf9b; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#12151d; --paper:#1a1f2a; --fg:#e6e9f0; --muted:#9aa3b6; --line:#2c3342;
+  --accent:#86a5ff; --accent-soft:#1f2a45; --key:#f0a868; --key-soft:#35261a; --ok:#6fcf9b; color-scheme:dark }
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:32px 64px}
+header{display:grid;gap:6px;padding-bottom:20px;border-bottom:2px solid var(--fg);margin-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-size:24px;margin:44px 0 14px;text-wrap:balance;display:flex;gap:12px;align-items:baseline}
+h2 .n{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:600}
+h3{font-size:17px;margin:26px 0 8px;color:var(--accent)}
+p,li{max-width:70ch}
+ul{padding-left:20px;margin:6px 0}
+li{margin:3px 0}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+nav a{font-size:14px;color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:4px 10px;border-radius:999px;background:var(--paper)}
+nav a:hover,nav a:focus-visible{border-color:var(--accent);outline:none}
+.f{background:var(--accent-soft);border-radius:8px;padding:10px 14px;margin:10px 0;overflow-x:auto}
+.key{background:var(--key-soft);border-left:3px solid var(--key);padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.key b:first-child{color:var(--key)}
+.ex{border:1px dashed var(--line);background:var(--paper);border-radius:8px;padding:12px 14px;margin:12px 0}
+.ex .t{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
+.tbl{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;background:var(--paper);font-variant-numeric:tabular-nums;font-size:15px}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--accent-soft);font-weight:600}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:6px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:8px}
+.steps li::before{content:counter(s);font-family:var(--mono);font-weight:600;color:var(--paper);background:var(--accent);border-radius:50%;width:24px;height:24px;display:grid;place-items:center;font-size:13px}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:14px}
+.flow span{background:var(--paper);border:1px solid var(--line);padding:4px 8px;border-radius:6px}
+.flow span.hl{border-color:var(--accent);color:var(--accent);font-weight:600}
+.flow i{color:var(--muted);font-style:normal}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.two>div{min-width:0}
+.mono{font-family:var(--mono);font-size:14px}
+.ok{color:var(--ok);font-weight:700}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+footer{margin-top:48px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Econometrics · Day 1 · Basics of statistics — Giang Vu</span>
+  <h1>Introduction &amp; révision de statistiques</h1>
+</header>
+
+<nav aria-label="Sections">
+  <a href="#p1">1. Introduction</a><a href="#p2">2. Mesures descriptives</a><a href="#p3">3. Estimation, tests, IC</a><a href="#ex">3.4 Exemple Californie</a><a href="#recap">Récap</a>
+</nav>
+
+<h3>Cadre du cours</h3>
+<ul>
+  <li><b>Objectifs</b> : comprendre la nécessité de l'économétrie ; outils de base pour <b>modéliser, estimer, inférer, prévoir</b> sur des problèmes économiques réels ; évaluer de façon critique les résultats des autres ; base pour aller plus loin.</li>
+  <li><b>Plan</b> : J1 bases de stats · J2 régression linéaire · J3 variable dépendante binaire (logit, probit) · J4 hypothèses MCO (multicolinéarité, hétéroscédasticité) · J5 hypothèses MCO (endogénéité), 2SLS · J6 synthèse + devoir de groupe.</li>
+  <li><b>Références</b> : Levine, Berenson, Stephan &amp; Lysell (<i>Statistics for Managers Using Excel</i>, 6e éd.) ; Gujarati (<i>Econometrics by example</i>) ; Stock &amp; Watson (3e éd.) ; Wooldridge (5e éd.) ; Hill, Griffiths &amp; Lim (4e éd.).</li>
+</ul>
+
+<!-- PARTIE 1 -->
+<h2 id="p1"><span class="n">PARTIE 1</span>Introduction</h2>
+
+<h3>1.1 Qu'est-ce que l'économétrie ?</h3>
+<div class="key"><b>Économétrie</b> = théorie économique + données économiques + outils de recherche → <b>quantifier</b> des relations économiques, <b>tester</b> des hypothèses économiques, <b>prédire</b> des résultats économiques.</div>
+<p>Exemple fil rouge : taille de classe → moyenne (GPA) des élèves.</p>
+<ol>
+  <li>Théorie / expérience : quels éléments influencent le GPA ? (taille de classe, qualité de l'enseignant, dispositifs de soutien…)</li>
+  <li>Collecter les données</li>
+  <li>Outils de recherche → quantifier (réduire la classe d'1 élève : effet sur le GPA ?), tester, prédire.</li>
+</ol>
+<p>Autres questions typiques : réduire la taille des classes améliore-t-il l'école primaire ? Effet d'une année d'études en plus sur le salaire ? Une campagne de pub augmente-t-elle les ventes ? Quels facteurs influencent l'efficacité / la liquidité bancaire ?</p>
+
+<h3>1.2 Étapes de l'analyse économique empirique</h3>
+<div class="flow">
+  <span>Théorie éco / relation importante</span><i>→</i><span>Modèle mathématique</span><i>→</i><span>Modèle économétrique</span><i>→</i><span>Données</span><i>→</i><span class="hl">Estimation</span><i>→</i><span class="hl">Tests d'hypothèse + intervalle de confiance</span><i>→</i><span class="hl">Prévision</span><i>→</i><span>Usage pour contrôle / politique</span>
+</div>
+<p style="font-size:14px;color:var(--muted)">En bleu : les étapes au cœur du cours.</p>
+
+<div class="ex"><span class="t">Exemple : Keynes, consommation et revenu</span>
+<ul>
+  <li><b>Théorie</b> : les individus augmentent leur consommation quand leur revenu augmente, <i>mais moins que</i> la hausse du revenu. Revenu +1 → consommation + (moins de 1).</li>
+  <li><b>Modèle mathématique</b> : \(Y = \beta_0 + \beta_1 X,\quad 0 &lt; \beta_1 &lt; 1\) (Consommation = β₀ + β₁·Revenu).</li>
+  <li><b>Modèle économétrique</b> : la consommation dépend aussi de la taille de la famille, de l'âge des membres, de la religion… → \(Y = \beta_0 + \beta_1 X + u\), où <b>u</b> représente tous les facteurs qui affectent la consommation sans être pris en compte explicitement.</li>
+  <li><b>Données</b> : 500 familles américaines, nuage de points. Population = tous les individus sur lesquels on veut conclure ; échantillon = la partie sélectionnée pour l'analyse.</li>
+  <li><b>Estimation</b> (régression) : \(\hat Y = -184.08 + 0.7064\,X_i\) → +1 $ de revenu réel ⇒ <i>en moyenne</i> ≈ +70 cents de consommation réelle.</li>
+  <li><b>Test / IC</b> : Keynes attend β₁ positif mais &lt; 1 ; on trouve ≈ 0,70. Il faut vérifier que ce n'est pas le hasard des données utilisées → tester : 0,70 est-il <i>statistiquement</i> inférieur à 1 ? + estimer un intervalle de confiance.</li>
+  <li><b>Prévision</b> : si le modèle ne réfute pas l'hypothèse, on prédit Y à partir de X. X attendu = 6 500 $ ⇒ \(\hat Y = -184.08 + 0.7064 \times 6500 = 4407.52\).</li>
+</ul></div>
+
+<h3>1.3 Données</h3>
+<div class="two">
+<div><b>Sources</b>
+<ul>
+  <li><b>Expérimentales</b> : issues d'expériences conçues pour évaluer un traitement/une politique ou étudier un effet causal (ex. : quantité d'engrais → rendement des tomates).</li>
+  <li><b>Observationnelles</b> : collectées par enquêtes et registres administratifs.</li>
+</ul></div>
+<div><b>Types</b>
+<ul>
+  <li><b>Coupe transversale</b> (cross-sectional) : <i>plusieurs</i> entités, <i>une seule</i> période (ex. : salaire, éducation, expérience, sexe, statut marital de 526 individus).</li>
+  <li><b>Série temporelle</b> (time series) : <i>une seule</i> entité, <i>plusieurs</i> périodes (ex. : PIB réel US annuel 1980–2008).</li>
+  <li><b>Panel</b> : <i>plusieurs</i> entités, chacune observée à <i>2 périodes ou plus</i> (ex. : criminalité de 150 villes en 1986 et 1990).</li>
+</ul></div>
+</div>
+<div class="ex"><span class="t">Exercice du cours</span>Tableau « Data from Two Rice Farms » : 2 exploitations (FIRM 1 et 2) suivies de 1990 à 1997 (PROD, AREA, LABOR, FERT) → plusieurs entités observées sur plusieurs années = <b>données de panel</b> (et observationnelles : pas d'expérience conçue).</div>
+
+<!-- PARTIE 2 -->
+<h2 id="p2"><span class="n">PARTIE 2</span>Mesures descriptives numériques</h2>
+
+<h3>2.1 Définitions</h3>
+<ul>
+  <li><b>Population</b> : tous les éléments/individus sur lesquels on veut conclure. <b>Échantillon</b> : portion de la population sélectionnée pour l'analyse (le « petit groupe »). Ex. revenu → consommation dans un pays : population = tous les individus &gt; 18 ans ; échantillon = certains d'entre eux.</li>
+  <li><b>Tendance centrale</b> : degré auquel les valeurs se regroupent autour d'une valeur typique/centrale → moyenne, médiane, mode.</li>
+  <li><b>Variation</b> : dispersion des valeurs → étendue, variance, écart-type.</li>
+</ul>
+
+<h3>2.2 Tendance centrale (échantillon)</h3>
+<div class="tbl"><table>
+<tr><th>Mesure</th><th>Définition</th><th>Propriétés</th></tr>
+<tr><td><b>Moyenne</b> (arithmétique, « x-bar »)</td><td>\(\bar X = \dfrac{\sum_{i=1}^{n} X_i}{n} = \dfrac{X_1 + \dots + X_n}{n}\)</td><td>Mesure la plus courante ; n = taille de l'échantillon, Xᵢ = i-ème valeur observée</td></tr>
+<tr><td><b>Médiane</b></td><td>Valeur du « milieu » d'une série <b>ordonnée</b> (50 % au-dessus, 50 % en dessous)</td><td>Non affectée par les valeurs extrêmes (11,12,13,14,15 et 11,12,13,14,20 → médiane = 13 dans les deux cas)</td></tr>
+<tr><td><b>Mode</b></td><td>Valeur la plus fréquente</td><td>Non affecté par les valeurs extrêmes ; utilisable pour données numériques <b>ou catégorielles</b> ; il peut n'y avoir <b>aucun</b> mode ou <b>plusieurs</b></td></tr>
+</table></div>
+<div class="ex"><span class="t">Exemple : prix de maisons</span>2 000 000 · 500 000 · 300 000 · 100 000 · 100 000 (somme 3 000 000) → <b>moyenne</b> = 3 000 000 / 5 = 600 000 $ ; <b>médiane</b> = 300 000 ; <b>mode</b> = 100 000. La moyenne est tirée vers le haut par la valeur extrême.</div>
+
+<h3>2.3 Variation (échantillon)</h3>
+<p>Renseigne sur l'étalement / la dispersion des données (même centre possible avec des variations différentes).</p>
+<ul>
+  <li><b>Étendue</b> (range) : mesure la plus simple. \(\text{Range} = X_{\text{largest}} - X_{\text{smallest}}\). Ex. : 13 − 1 = 12.</li>
+  <li><b>Variance d'échantillon</b> : moyenne (approximativement) des carrés des écarts à la moyenne :
+    <div class="f">\[ S^2 = \frac{\sum_{i=1}^{n}(X_i - \bar X)^2}{n-1} \]</div></li>
+  <li><b>Écart-type d'échantillon</b> : mesure de variation la plus utilisée ; montre la variation autour de la moyenne ; racine carrée de la variance ; <b>même unité que les données</b>.
+    <div class="f">\[ S = \sqrt{\frac{\sum_{i=1}^{n}(X_i - \bar X)^2}{n-1}} \]</div></li>
+</ul>
+<div class="two">
+<div class="ex"><span class="t">Variance – prix maisons (k$)</span>Écarts : 1 400 ; −100 ; −300 ; −500 ; −500. Carrés : 1 960 000 ; 10 000 ; 90 000 ; 250 000 ; 250 000. Somme = 2 560 000 → variance affichée = <b>640 000</b> (= 2 560 000 / 4, soit n − 1).</div>
+<div class="ex"><span class="t">Écart-type – exemple</span>10, 12, 14, 15, 17, 18, 18, 24 ; n = 8 ; \(\bar X = 16\). \(S = \sqrt{\tfrac{(10-16)^2+\dots+(24-16)^2}{8-1}} = \sqrt{\tfrac{130}{7}} = \mathbf{4.3095}\) → dispersion « moyenne » autour de la moyenne.</div>
+</div>
+<p>Comparaison (données A, B, C sur 11–21) : B, très regroupée, a le plus petit écart-type ; C, concentrée aux deux extrémités, le plus grand.</p>
+
+<h3>2.4 – 2.6 Mesures pour une population</h3>
+<p>Les mesures d'une population s'appellent des <b>paramètres</b> et sont notées en <b>lettres grecques</b> (moyenne, variance, écart-type). N = taille de la population. On divise par <b>N</b> (et non n − 1).</p>
+<div class="tbl"><table>
+<tr><th>Mesure</th><th>Paramètre de population</th><th>Statistique d'échantillon</th></tr>
+<tr><td>Moyenne</td><td>\(\mu = \dfrac{\sum_{i=1}^{N} X_i}{N}\)</td><td>\(\bar X = \dfrac{\sum_{i=1}^{n} X_i}{n}\)</td></tr>
+<tr><td>Variance</td><td>\(\sigma^2 = \dfrac{\sum_{i=1}^{N}(X_i-\mu)^2}{N}\)</td><td>\(S^2 = \dfrac{\sum_{i=1}^{n}(X_i-\bar X)^2}{n-1}\)</td></tr>
+<tr><td>Écart-type</td><td>\(\sigma = \sqrt{\dfrac{\sum_{i=1}^{N}(X_i-\mu)^2}{N}}\)</td><td>\(S = \sqrt{\dfrac{\sum_{i=1}^{n}(X_i-\bar X)^2}{n-1}}\)</td></tr>
+</table></div>
+<div class="key"><b>Règle des 3 sigma</b> (loi normale) : μ ± 1σ ≈ <b>68 %</b> des valeurs · μ ± 2σ ≈ <b>95 %</b> · μ ± 3σ ≈ <b>99,7 %</b>.</div>
+
+<h3>2.7 Covariance</h3>
+<p>Mesure la force de la relation <b>linéaire</b> entre <b>deux variables numériques</b> X et Y.</p>
+<div class="f">\[ \operatorname{cov}(X,Y) = \frac{\sum_{i=1}^{n}(X_i-\bar X)(Y_i-\bar Y)}{n-1} \]</div>
+<ul>
+  <li>cov &gt; 0 : X et Y tendent à varier dans le <b>même sens</b> ; cov &lt; 0 : en <b>sens opposé</b> ; cov = 0 : X et Y <b>indépendants</b> (selon le cours).</li>
+  <li>Ne concerne que la force de la relation ; <b>aucun effet causal</b> n'est impliqué.</li>
+  <li><b>Défaut majeur</b> : la taille de la covariance ne permet pas de juger la force <i>relative</i> de la relation.</li>
+</ul>
+
+<h3>2.8 Coefficient de corrélation</h3>
+<p>Mesure la force <b>relative</b> de la relation linéaire entre deux variables numériques.</p>
+<div class="f">\[ r = \frac{\operatorname{cov}(X,Y)}{S_X\,S_Y},\qquad S_X = \sqrt{\frac{\sum (X_i-\bar X)^2}{n-1}},\quad S_Y = \sqrt{\frac{\sum (Y_i-\bar Y)^2}{n-1}} \]</div>
+<ul>
+  <li>Population : <b>ρ</b> ; échantillon : <b>r</b>.</li>
+  <li>Compris entre <b>−1 et 1</b>. Proche de −1 : relation linéaire négative forte ; proche de 1 : positive forte ; proche de 0 : relation linéaire faible.</li>
+  <li>Nuages types : r = −1 (points alignés, pente négative), r = −0,6, r = +1 (alignés, pente positive), r = +0,3 (très dispersé), r = 0 (Y constant quand X varie).</li>
+</ul>
+
+<!-- PARTIE 3 -->
+<h2 id="p3"><span class="n">PARTIE 3</span>Estimation, tests d'hypothèse, intervalle de confiance</h2>
+<p><b>Test à 1 échantillon</b> : comparer une moyenne à une valeur (ex. : poids moyen des sachets de thé =, &gt; ou &lt; 5,5 g ?). <b>Test à 2 échantillons</b> : comparer deux moyennes (ex. : salaire des hommes =, &gt; ou &lt; celui des femmes ?).</p>
+
+<h3>3.1 Estimation de la moyenne de population</h3>
+<ul>
+  <li>Moyenne = espérance de Y : \(E(Y) = \mu_Y\).</li>
+  <li><b>Loi des grands nombres</b> : quand n est grand, \(\bar Y \to \mu_Y\).</li>
+</ul>
+
+<h3>3.2 Test d'hypothèse — les 5 étapes</h3>
+<ol class="steps">
+  <li><span>Poser l'hypothèse nulle <b>H₀</b> et l'hypothèse alternative <b>H₁</b>.</span></li>
+  <li><span>Choisir le seuil de signification <b>α</b> = probabilité de rejeter H₀ alors qu'elle est vraie (1 %, 5 %, 10 %).</span></li>
+  <li><span>Déterminer les <b>valeurs critiques</b> qui séparent zone de rejet et zone de non-rejet (test bilatéral : α/2 dans chaque queue).</span></li>
+  <li><span>Calculer la <b>statistique t</b>.</span></li>
+  <li><span>Si la statistique tombe dans la zone de non-rejet → <b>ne pas rejeter</b> H₀ ; dans la zone de rejet → <b>rejeter</b> H₀.</span></li>
+</ol>
+
+<div class="key"><b>Règle de décision</b> : rejeter H₀ si <b>|t| ≥ valeur critique</b> ⇔ si <b>p-value ≤ α</b>. (p &lt; α : rejet ; p ≥ α : non-rejet.) « If the p-value is low, H₀ must go. »</div>
+
+<div class="two">
+<div><b>1 échantillon</b> — test pour μ
+<ul>
+  <li>σ connu → <b>test Z</b></li>
+  <li>σ inconnu → <b>test t</b> :</li>
+</ul>
+<div class="f">\[ t_{STAT} = \frac{\bar Y - \mu}{S/\sqrt n} \]</div>
+<p>degrés de liberté : df = n − 1</p></div>
+<div><b>2 échantillons</b> (A et B, indépendants)
+<div class="f">\[ t = \frac{\bar Y_A - \bar Y_B}{\sqrt{\frac{s_A^2}{n_A}+\frac{s_B^2}{n_B}}} = \frac{\bar Y_A - \bar Y_B}{SE(\bar Y_A - \bar Y_B)} \]</div>
+<p>SE = erreur-type (standard error) ; \(s_A^2 = \frac{1}{n_A-1}\sum_{i=1}^{n_A}(Y_i-\bar Y_A)^2\)</p></div>
+</div>
+
+<p><b>Formes de H₀ / H₁ (deux moyennes, échantillons indépendants)</b></p>
+<div class="tbl"><table>
+<tr><th>Test</th><th>H₀</th><th>H₁</th><th>Rejeter H₀ si</th></tr>
+<tr><td>Unilatéral à gauche</td><td>μ₁ − μ₂ ≥ 0</td><td>μ₁ − μ₂ &lt; 0</td><td>t<sub>STAT</sub> &lt; −t<sub>α</sub></td></tr>
+<tr><td>Unilatéral à droite</td><td>μ₁ − μ₂ ≤ 0</td><td>μ₁ − μ₂ &gt; 0</td><td>t<sub>STAT</sub> &gt; t<sub>α</sub></td></tr>
+<tr><td>Bilatéral</td><td>μ₁ − μ₂ = 0</td><td>μ₁ − μ₂ ≠ 0</td><td>t<sub>STAT</sub> &lt; −t<sub>α/2</sub> ou t<sub>STAT</sub> &gt; t<sub>α/2</sub></td></tr>
+</table></div>
+
+<h3>3.3 Intervalle de confiance</h3>
+<ul>
+  <li>Estimation ponctuelle = un seul nombre ; l'IC ajoute une information sur la <b>variabilité</b> de l'estimation (bornes inférieure et supérieure ; niveau 95 %, 99 %…).</li>
+</ul>
+<div class="f">\[ \text{Estimation ponctuelle} \pm (\text{Valeur critique}) \times (\text{Erreur-type}) \]</div>
+
+<div class="ex"><span class="t">Exemple 1 échantillon : hôtels à New York</span>
+Coût moyen annoncé 168 $/nuit. Échantillon de n = 25 hôtels : \(\bar Y = 172.50\), S = 15.40 ; α = 0,05 ; population supposée normale.
+<ul>
+  <li>H₀ : μ = 168 ; H₁ : μ ≠ 168</li>
+  <li>df = 24 ; valeurs critiques ± t<sub>24 ; 0,025</sub> = <b>± 2,0639</b></li>
+  <li>\(t_{STAT} = \dfrac{172.50 - 168}{15.40/\sqrt{25}} = 1.46\)</li>
+  <li>−2,0639 &lt; 1,46 &lt; 2,0639 → <b>ne pas rejeter H₀</b> : pas assez de preuves que le coût moyen diffère de 168 $.</li>
+  <li>IC 95 % : \(172.5 \pm 2.0639 \times 15.4/\sqrt{25}\) → <b>166,14 ≤ μ ≤ 178,86</b> (contient 168).</li>
+</ul></div>
+
+<div class="ex"><span class="t">Logiciel (XLSTAT, captures du cours)</span>
+Menu « Parametric tests » → <b>One-sample t-test and z-test</b> ou <b>Two-sample t-test and z-test</b>. Onglet General : sélectionner les données (ex. variable Teabags ; ou Data = testscr, Sample identifiers = group, « One column per variable »), cocher Column labels, choisir <b>Student's t test</b>. Onglet Options : hypothèse alternative (Mean 1 ≠ Theoretical mean, ou Mean 1 − Mean 2 ≠ D), moyenne théorique / différence D (0), seuil 5 %. Onglet Missing data : possibilité d'« Ignore missing data ».</div>
+
+<h3 id="ex">3.4 Exemple : taille des classes et résultats scolaires (Californie)</h3>
+<p><b>Question politique</b> : effet sur les scores d'une réduction de la taille des classes d'1 élève ? de 8 élèves ?<br>
+<b>Données</b> : tous les districts K-6 et K-8 de Californie (<b>n = 420</b>). Variables : score moyen de 5e année au test Stanford-9 (maths + lecture) ; <b>STR</b> (student-teacher ratio) = nb d'élèves / nb d'enseignants équivalent temps plein.<br>
+Nuage de points score vs STR : relation négative (droite décroissante), mais très dispersée.</p>
+<p>Démarche : (1) comparer les scores moyens STR faible vs élevé = <i>estimation</i> ; (2) tester que les moyennes sont égales vs différentes = <i>test</i> ; (3) intervalle pour la différence = <i>IC</i>.</p>
+<div class="tbl"><table>
+<tr><th>Taille de classe</th><th>Score moyen \(\bar Y\)</th><th>Écart-type s<sub>Y</sub></th><th>n</th></tr>
+<tr><td>Petite (STR &lt; 20)</td><td>657,4</td><td>19,4</td><td>238</td></tr>
+<tr><td>Grande (STR ≥ 20)</td><td>650,0</td><td>17,9</td><td>182</td></tr>
+</table></div>
+<ol>
+  <li><b>Estimation</b> : \(\Delta = \bar Y_{small} - \bar Y_{large} = 657.4 - 650.0 = 7.4\). Est-ce important dans la réalité (réforme, parents, comité scolaire) ? → test de différence de moyennes.</li>
+  <li><b>Test</b> : H₀ : Δ = 0 (pas de différence) ; H₁ : Δ ≠ 0 ; α = 5 % ; valeur critique = <b>1,96</b>.
+    <div class="f">\[ t = \frac{657.4 - 650.0}{\sqrt{\frac{19.4^2}{238} + \frac{17.9^2}{182}}} = \frac{7.4}{1.83} = 4.05 \]</div>
+    |t| = 4,05 &gt; 1,96 → <b class="ok">on rejette H₀</b> au seuil de 5 % : les deux moyennes ne sont pas égales.</li>
+  <li><b>IC à 95 %</b> : \((\bar Y_s - \bar Y_l) \pm 1.96 \times SE = 7.4 \pm 1.96 \times 1.83 = (3.8\,;\,11.0)\).<br>
+  Deux affirmations équivalentes : l'IC à 95 % de Δ <b>ne contient pas 0</b> ⇔ Δ = 0 est <b>rejetée à 5 %</b>.</li>
+</ol>
+
+<h2 id="recap"><span class="n">RÉCAP</span>À savoir faire</h2>
+<ul>
+  <li>Distinguer données <b>transversales, temporelles, de panel</b> (et expérimentales vs observationnelles).</li>
+  <li>Calculer et interpréter : <b>moyenne, médiane, mode</b> ; <b>étendue, variance, écart-type</b> (n − 1 pour l'échantillon, N pour la population) ; <b>covariance, corrélation</b>.</li>
+  <li>Estimer une moyenne de population, mener un <b>test d'hypothèse</b> en 5 étapes et l'interpréter (|t| vs valeur critique, p-value vs α).</li>
+  <li>Construire un <b>intervalle de confiance</b> : estimation ± valeur critique × erreur-type.</li>
+</ul>
+
+<footer>Fiche construite uniquement à partir du support « Lecture note – Econometrics – Day 1 Basic » (G. Vu, d'après Levine et al. et Gujarati).</footer>
+</div>
+
+</body></html>

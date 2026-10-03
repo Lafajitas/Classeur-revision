@@ -1,0 +1,269 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style></head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-ingf_cartes">← Ingénierie financière</a><span>· Classeur de révision</span></nav>
+<title>Cartes mentales Fusions-acquisitions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: graph-paper sheet, tab strip of maps, one horizontally-scrollable two-sided mind map per tab */
+:root{
+  --bg:#f3f5f4; --paper:#fbfcfb; --grid:#e3e8e6; --fg:#1d2524; --muted:#5d6a68; --line:#c9d2cf;
+  --accent:#0f6b5c;
+  --b1:#0f6b5c; --b2:#b4531f; --b3:#3c5aa8; --b4:#8a3f86; --b5:#8a6d12; --b6:#b0303f; --b7:#2f7d8f;
+  --display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body:"Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111716; --paper:#151d1c; --grid:#1e2928; --fg:#e4ecea; --muted:#94a3a0; --line:#34433f;
+  --accent:#4cc3ad;
+  --b1:#4cc3ad; --b2:#f08a52; --b3:#8aa6f2; --b4:#d38bd0; --b5:#d9b54a; --b6:#f07a87; --b7:#5fc2d6;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111716; --paper:#151d1c; --grid:#1e2928; --fg:#e4ecea; --muted:#94a3a0; --line:#34433f;
+  --accent:#4cc3ad;
+  --b1:#4cc3ad; --b2:#f08a52; --b3:#8aa6f2; --b4:#d38bd0; --b5:#d9b54a; --b6:#f07a87; --b7:#5fc2d6;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:1500px;margin:0 auto;padding-inline:clamp(16px,3vw,40px);padding-block:28px 48px;display:grid;gap:18px}
+header{display:grid;gap:6px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,4vw,42px);line-height:1.05;margin:0;text-wrap:balance}
+.lede{color:var(--muted);margin:0;max-width:68ch}
+nav{display:flex;flex-wrap:wrap;gap:6px}
+nav button{font:inherit;font-size:14px;font-weight:500;border:1px solid var(--line);background:var(--paper);color:var(--fg);padding:7px 13px;border-radius:999px;cursor:pointer;display:flex;align-items:center;gap:7px}
+nav button .n{font-family:var(--mono);font-size:11px;color:var(--muted)}
+nav button[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+nav button[aria-selected="true"] .n{color:var(--bg);opacity:.7}
+button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:grid}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.bar h2{font-family:var(--display);font-weight:500;font-size:19px;margin:0;min-width:0}
+.bar p{margin:0;color:var(--muted);font-size:13px}
+.tools{display:flex;gap:6px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:13px;border:1px solid var(--line);background:transparent;color:var(--fg);padding:5px 10px;border-radius:6px;cursor:pointer}
+.tools button:hover,nav button:hover{border-color:var(--fg)}
+.canvas{overflow:auto;background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:22px 22px;min-height:300px;max-height:78vh}
+.canvas svg{display:block;margin:0 auto}
+svg text{fill:var(--fg)}
+.node{cursor:default}
+.node.has{cursor:pointer}
+.node.has:hover .pill{stroke-width:2}
+.hint{font-size:13px;color:var(--muted);margin:0}
+.printall{display:grid;gap:24px}
+.pmap{break-inside:avoid;page-break-inside:avoid;display:grid;gap:4px}
+.pmap h2{font-family:var(--display);font-weight:500;font-size:20px;margin:0}
+.pmap p{margin:0 0 6px;color:var(--muted);font-size:13px}
+@media print{.pmap{page-break-after:always;break-after:page}.pmap:last-child{page-break-after:auto;break-after:auto}}
+@media (prefers-reduced-motion:no-preference){.canvas svg g.node{transition:opacity .2s}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Ingénierie financière · J.-Y. Filbien · Cours du 28 sept.</div>
+    <h1>Cartes mentales Fusions-acquisitions</h1>
+    <p class="lede">Quatre cartes pour le chapitre 1 : définitions, marché et prime, motivations, puis les résultats des exercices.</p>
+  </header>
+  <nav id="tabs" role="tablist" aria-label="Cartes"></nav>
+  <section class="sheet">
+    <div class="bar">
+      <div><h2 id="mapTitle"></h2><p id="mapSub"></p></div>
+      <div class="tools">
+        <button id="zoomOut" aria-label="Dézoomer">−</button>
+        <button id="zoomFit">Ajuster</button>
+        <button id="zoomIn" aria-label="Zoomer">+</button>
+        <button id="collapse">Replier</button>
+        <button id="expand">Tout déplier</button>
+      </div>
+    </div>
+    <div class="canvas" id="canvas"></div>
+  </section>
+  <p class="hint">Cliquez sur une branche pour la replier ou la déplier, pour vous tester avant de regarder la réponse. Les formules sont en police à chasse fixe.</p>
+</div>
+
+<script>
+const F = s => ({t:s, f:true});
+const MAPS = [
+{id:"def", tab:"Définitions", title:"Les définitions", sub:"Stratégique, économique, légale, scissions",
+ root:{t:"Fusions-acquisitions", c:[
+  {t:"3 voies de croissance", c:[{t:"Organique"},{t:"Alliance : contrat ou joint venture"},{t:"Externe (M&A) : rapide, coûteuse, risquée"}]},
+  {t:"Perspective économique", c:[{t:"Horizontale : même industrie", c:[{t:"Synergies, pouvoir de marché (PSA)"}]},{t:"Verticale : amont ou aval (IBM-Cognos)"},{t:"Conglomérale : diversification (LVMH)"}]},
+  {t:"Perspective légale", c:[F("Fusion : X + Z → Y"),F("Absorption : X + Z → X"),{t:"Dissolution sans liquidation de l'absorbée"},{t:"Apport de titres : les deux sociétés subsistent"}]},
+  {t:"Scissions", c:[{t:"Spin-off : actions de la filiale distribuées"},{t:"Split-up : la mère est dissoute"},{t:"Split-off : offre d'échange"},{t:"Equity carve-out : IPO partielle"},{t:"But : réduire la décote de conglomérat"}]},
+  {t:"Classer les secteurs", c:[{t:"Publiques : NAF, NACE, CITI"},{t:"Commerciales : GICS, ICB, TRBC"}]}
+ ]}},
+{id:"marche", tab:"Marché et prime", title:"Le marché du contrôle et le processus", sub:"Vagues, modes de paiement, prime d'acquisition",
+ root:{t:"Marché du contrôle", c:[
+  {t:"Principe", c:[{t:"Changement de propriété → transfert de contrôle"},{t:"Des dizaines de milliers d'opérations par an"}]},
+  {t:"Records", c:[{t:"Vodafone-Mannesmann (1999) : 202,7 Md$"},{t:"GDF-Suez : plus grosse fusion française"},{t:"Télécoms en tête par secteur"}]},
+  {t:"6 vagues", c:[{t:"1895-1904 : horizontales"},{t:"1916-1929 : verticales"},{t:"1965-1969 : conglomérats"},{t:"1981-1989 : recentrage, raiders, LBO"},{t:"1992-1999 : stratégiques, paiement en actions"},{t:"2003-2008 : consolidation, private equity"}]},
+  {t:"Modes de paiement", c:[{t:"Numéraire (cash deal)"},{t:"Actions (stock deal)"},{t:"Mixte"}]},
+  {t:"Prime d'acquisition", c:[F("(prix offert − cours avant) / cours avant"),{t:"États-Unis 43 %, France 27 %"},{t:"La cible gagne, l'acquéreur ≈ 0"}]},
+  {t:"Risque de surpayer", c:[{t:"Synergies surestimées"},{t:"Coûts d'intégration sous-estimés"},{t:"Kraft Heinz selon Buffett"}]}
+ ]}},
+{id:"motiv", tab:"Motivations", title:"Les motivations", sub:"Bonnes et mauvaises raisons d'acheter",
+ root:{t:"Pourquoi acheter ?", c:[
+  {t:"Macroéconomie", c:[{t:"Technologie, globalisation"},{t:"Réglementation, géopolitique"},{t:"Marchés financiers, taux bas"},{t:"Démographie : successions"}]},
+  {t:"Synergies", c:[F("V(A+T) > V(A) + V(T)"),{t:"Revenus : ventes croisées"},{t:"Coûts : plus sûres"},F("Création de valeur = synergies − prime")]},
+  {t:"Compétences", c:[{t:"Acqui-hiring"},{t:"Acquisition bolt-on"}]},
+  {t:"Pouvoir de marché", c:[F("HHI = Σ (part en %)²"),{t:"< 1 000 peu concentré, > 2 000 très concentré"},{t:"UE : delta < 250 ou < 150"},{t:"Limites : free-rider, antitrust"}]},
+  {t:"Intégration verticale", c:[{t:"Amont : fournisseurs"},{t:"Aval : clients"}]},
+  {t:"Fiscalité", c:[{t:"Déficits reportables (NOL)"},{t:"Intérêts déductibles"},{t:"Limitée après changement de contrôle"}]},
+  {t:"Raisons douteuses", c:[{t:"Hubris (Roll 1986)"},{t:"Empire building, enracinement"},{t:"Mimétisme"},{t:"EPS bootstrapping"},{t:"Diversification pour elle-même"}]},
+  {t:"Mieux gérer la cible", c:[{t:"Valeur de contrôle"},{t:"Industriel > investisseur financier"}]}
+ ]}},
+{id:"exos", tab:"Exercices", title:"Les exercices en chiffres", sub:"Résultats à retrouver seul",
+ root:{t:"Exercices Ch. 1", c:[
+  {t:"Synergie de capacité", c:[{t:"Avant : 250 000 €"},{t:"Après : 875 000 €"}]},
+  {t:"HHI", c:[{t:"20 firmes à 5 % : 500 → 550"},{t:"5 firmes à 20 % : 2 000 → 2 800, à surveiller"}]},
+  {t:"Économie d'impôt", c:[{t:"Séparées : 40 M"},{t:"Fusionnées : 48,91 M"},{t:"Gain = 33 % × 27"}]},
+  {t:"EPS bootstrapping", c:[{t:"600 000 actions émises"},{t:"BPA 5 € → 6,25 €"},{t:"PER 20 → 16, valeur inchangée"}]}
+ ]}}
+];
+
+const SVGNS="http://www.w3.org/2000/svg";
+const cv=document.createElement("canvas").getContext("2d");
+const FONT={root:'700 20px "Bricolage Grotesque", system-ui, sans-serif', l1:'600 14.5px "Instrument Sans", system-ui, sans-serif', l2:'400 13.5px "Instrument Sans", system-ui, sans-serif', mono:'500 12.5px "JetBrains Mono", ui-monospace, monospace'};
+const MAXW={root:170,l1:170,l2:250};
+const HGAP=44, VGAP=10;
+let cur=0, zoom=null, nat={w:0,h:0};
+
+function wrap(text,font,max){
+  text=text.replace(/ (%|€|k€|\/ action)/g," $1").replace(/(\d) (?=\d{3})/g,"$1 ");
+  cv.font=font; const words=text.split(" "); const lines=[]; let line="";
+  for(const w of words){const t=line?line+" "+w:w; if(cv.measureText(t).width>max&&line){lines.push(line);line=w}else line=t}
+  if(line)lines.push(line); return lines;
+}
+function kind(n,d){return d===0?"root":d===1?"l1":"l2"}
+function measure(n,d){
+  n.d=d; n.k=kind(n,d);
+  n.font=n.f?FONT.mono:FONT[n.k];
+  const lh=n.k==="root"?24:n.k==="l1"?19:n.f?18:18;
+  n.lines=wrap(n.t,n.font,MAXW[n.k]); cv.font=n.font;
+  const tw=Math.max(...n.lines.map(l=>cv.measureText(l).width));
+  const px=n.k==="l2"?2:14, py=n.k==="root"?14:n.k==="l1"?8:4;
+  n.lh=lh; n.px=px; n.py=py; n.w=Math.ceil(tw)+px*2; n.h=n.lines.length*lh+py*2;
+  const kids=(n.c&&!n.closed)?n.c:[];
+  kids.forEach(c=>measure(c,d+1));
+  const sum=kids.reduce((a,c)=>a+c.sh,0)+Math.max(0,kids.length-1)*VGAP;
+  n.ch=sum; n.sh=Math.max(n.h,sum);
+}
+function place(n,ax,top,dir){
+  n.dir=dir; n.ax=ax; n.cy=top+n.sh/2; n.top=n.cy-n.h/2;
+  n.x0=dir>0?ax:ax-n.w;
+  const kids=(n.c&&!n.closed)?n.c:[];
+  let y=top+(n.sh-n.ch)/2; const cax=ax+dir*(n.w+HGAP);
+  kids.forEach(c=>{place(c,cax,y,dir);y+=c.sh+VGAP});
+}
+function anchorY(n){return n.k==="l2"?n.top+n.h:n.cy}
+function el(tag,attrs,parent){const e=document.createElementNS(SVGNS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+
+function render(){
+  const m=MAPS[cur], root=m.root;
+  root.c.forEach((c,i)=>c.color=`var(--b${(i%7)+1})`);
+  const prop=(n,col)=>{(n.c||[]).forEach(c=>{c.color=c.color&&n===root?c.color:col;prop(c,c.color)})};
+  root.c.forEach(c=>prop(c,c.color));
+  measure(root,0);
+  const kids=root.c, half=Math.ceil(kids.length/2), R=kids.slice(0,half), L=kids.slice(half);
+  root.ax=-root.w/2; root.x0=-root.w/2; root.cy=0; root.top=-root.h/2; root.dir=1;
+  const side=(arr,dir)=>{const tot=arr.reduce((a,c)=>a+c.sh,0)+(arr.length-1)*VGAP*2.2; let y=-tot/2;
+    arr.forEach(c=>{place(c,dir*(root.w/2+HGAP+10),y,dir);y+=c.sh+VGAP*2.2})};
+  side(R,1); side(L,-1);
+  const all=[]; const walk=n=>{all.push(n);if(n.c&&!n.closed)n.c.forEach(walk)}; walk(root);
+  let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;
+  all.forEach(n=>{minX=Math.min(minX,n.x0);maxX=Math.max(maxX,n.x0+n.w+12);minY=Math.min(minY,n.top);maxY=Math.max(maxY,n.top+n.h)});
+  const pad=28; minX-=pad+12; minY-=pad; maxX+=pad; maxY+=pad;
+  nat={w:maxX-minX,h:maxY-minY};
+  const svg=el("svg",{viewBox:`${minX} ${minY} ${nat.w} ${nat.h}`,role:"img","aria-label":m.title});
+  const gl=el("g",{},svg), gn=el("g",{},svg);
+  all.forEach(n=>{
+    const kidsV=(n.c&&!n.closed)?n.c:[];
+    kidsV.forEach(c=>{
+      const x1=n===root?(c.dir>0?n.x0+n.w:n.x0):(n.dir>0?n.x0+n.w:n.x0), y1=n===root?n.cy:anchorY(n);
+      const x2=c.dir>0?c.x0:c.x0+c.w, y2=anchorY(c); const mx=(x1+x2)/2;
+      el("path",{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,fill:"none",style:`stroke:${c.color}`,"stroke-width":n===root?3:c.d===2?1.8:1.3,"stroke-linecap":"round",opacity:n===root?.85:.7},gl);
+    });
+  });
+  all.forEach(n=>{
+    const g=el("g",{class:"node"+(n.c?" has":"")},gn);
+    if(n.k==="root"){
+      el("rect",{class:"pill",x:n.x0,y:n.top,width:n.w,height:n.h,rx:12,style:"fill:var(--fg)"},g);
+    }else if(n.k==="l1"){
+      el("rect",{class:"pill",x:n.x0,y:n.top,width:n.w,height:n.h,rx:n.h/2>16?10:n.h/2,style:`fill:color-mix(in srgb, ${n.color} 14%, var(--paper));stroke:${n.color}`,"stroke-width":1.4},g);
+    }else{
+      if(n.f) el("rect",{x:n.x0-4,y:n.top,width:n.w+8,height:n.h,rx:4,style:`fill:color-mix(in srgb, ${n.color} 9%, var(--paper))`},g);
+      else el("rect",{x:n.x0,y:n.top,width:n.w,height:n.h,style:"fill:var(--paper)",opacity:.75},g);
+      el("line",{x1:n.x0,y1:n.top+n.h,x2:n.x0+n.w,y2:n.top+n.h,style:`stroke:${n.color}`,"stroke-width":1.3,opacity:.7},g);
+    }
+    const tx=n.k==="l2"?n.x0+n.px:n.x0+n.w/2;
+    const t=el("text",{"text-anchor":n.k==="l2"?"start":"middle",style:`font:${n.font}${n.k==="root"?";fill:var(--bg)":""}`},g);
+    n.lines.forEach((ln,i)=>{const s=el("tspan",{x:tx,y:n.top+n.py+n.lh*(i+1)-n.lh*0.28},t);s.textContent=ln});
+    if(n.c&&n!==root){
+      const ox=n.dir>0?n.x0+n.w+(n.k==="l2"?6:7):n.x0-(n.k==="l2"?6:7), oy=n.k==="l2"?n.top+n.h:n.cy;
+      if(n.closed){
+        el("circle",{cx:ox,cy:oy,r:9,style:`fill:${n.color}`},g);
+        const ct=el("text",{x:ox,y:oy+3.8,"text-anchor":"middle",style:"font:600 10.5px 'Instrument Sans',sans-serif;fill:var(--paper)"},g);ct.textContent=n.c.length;
+      }else el("circle",{cx:ox,cy:oy,r:4,style:`fill:var(--paper);stroke:${n.color}`,"stroke-width":1.5},g);
+      g.setAttribute("tabindex","0"); g.setAttribute("role","button");
+      g.setAttribute("aria-expanded",String(!n.closed)); g.setAttribute("aria-label",n.t);
+      const tog=()=>{n.closed=!n.closed;render();const f=[...document.querySelectorAll("#canvas g.node")].find(x=>x.getAttribute("aria-label")===n.t);f&&f.focus({preventScroll:true})};
+      g.addEventListener("click",tog);
+      g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();tog()}});
+    }
+  });
+  const box=document.getElementById("canvas"); box.replaceChildren(svg);
+  if(zoom===null) zoom=fitZoom();
+  applyZoom();
+}
+function fitZoom(){const w=document.getElementById("canvas").clientWidth-8;return Math.max(.55,Math.min(1.1,w/nat.w))}
+function applyZoom(){const s=document.querySelector("#canvas svg");if(!s)return;s.setAttribute("width",Math.round(nat.w*zoom));s.setAttribute("height",Math.round(nat.h*zoom))}
+
+function setAll(n,closed,depth=0){(n.c||[]).forEach(c=>{if(c.c){c.closed=closed&&depth>=0;setAll(c,closed,depth+1)}})}
+function buildTabs(){
+  const nav=document.getElementById("tabs");
+  MAPS.forEach((m,i)=>{const b=document.createElement("button");b.id="tab-"+m.id;b.setAttribute("role","tab");
+    b.innerHTML=`<span class="n">${String(i+1).padStart(2,"0")}</span>${m.tab}`;
+    b.addEventListener("click",()=>select(i,true));nav.appendChild(b)});
+}
+function select(i,push){
+  cur=i; zoom=null; const m=MAPS[i];
+  document.querySelectorAll("#tabs button").forEach((b,j)=>b.setAttribute("aria-selected",String(j===i)));
+  document.getElementById("mapTitle").textContent=m.title;
+  document.getElementById("mapSub").textContent=m.sub;
+  if(push){try{history.replaceState(null,"","#"+m.id)}catch(e){}}
+  render();
+  const c=document.getElementById("canvas"); c.scrollLeft=(c.scrollWidth-c.clientWidth)/2; c.scrollTop=0;
+}
+document.getElementById("zoomIn").onclick=()=>{zoom=Math.min(2,zoom*1.15);applyZoom()};
+document.getElementById("zoomOut").onclick=()=>{zoom=Math.max(.35,zoom/1.15);applyZoom()};
+document.getElementById("zoomFit").onclick=()=>{zoom=fitZoom();applyZoom()};
+document.getElementById("collapse").onclick=()=>{MAPS[cur].root.c.forEach(c=>{if(c.c)c.closed=true});zoom=null;render()};
+document.getElementById("expand").onclick=()=>{const o=n=>{n.closed=false;(n.c||[]).forEach(o)};o(MAPS[cur].root);zoom=null;render()};
+function printAll(){
+  const out=document.createElement("div"); out.className="printall";
+  MAPS.forEach((m,i)=>{
+    const open=n=>{n.closed=false;(n.c||[]).forEach(open)}; open(m.root);
+    cur=i; zoom=1; render();
+    const svg=document.querySelector("#canvas svg"); svg.setAttribute("width","100%"); svg.removeAttribute("height");
+    const sec=document.createElement("section"); sec.className="pmap";
+    const h2=document.createElement("h2"); h2.textContent=m.title; const p=document.createElement("p"); p.textContent=m.sub;
+    sec.append(h2,p,svg); out.appendChild(sec);
+  });
+  document.querySelector(".sheet").replaceWith(out);
+  document.getElementById("tabs").remove(); document.querySelector(".hint")?.remove();
+  setTimeout(()=>window.print(),400);
+}
+buildTabs();
+const h=(location.hash||"").slice(1); const start=Math.max(0,MAPS.findIndex(m=>m.id===h));
+if(window.PRINT_ALL){
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(printAll);
+}else{
+  select(start,false);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>render());
+  let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{zoom=null;render()},200)});
+}
+</script>
+
+</body></html>

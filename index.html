@@ -1,0 +1,417 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Classeur de révision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: sticky top bar with sections; views swapped by hash — home (hero + 4 colour tiles + recent), subjects grid, subject page with tabs, all mind maps, flashcard decks, exam calendar */
+:root{
+  --bg:#f3f4f0; --paper:#fdfdfb; --fg:#1b2420; --muted:#5f6b66; --line:#dde2dc; --accent:#1f4d3f;
+  --t1:#1f6b55; --t2:#3d55a6; --t3:#c2571f; --t4:#8a3f86;
+  --m1:#0f6b5c; --m2:#3c5aa8; --m3:#8a3f86; --m4:#b4531f; --m5:#8a6d12; --m6:#b0303f; --m7:#4f6b12; --m8:#2f6f8f; --m9:#7a4b2a;
+  --s1:#0f6b5c; --s2:#3c5aa8; --s3:#8a3f86; --s4:#b4531f; --s5:#8a6d12; --s6:#b0303f; --s7:#4f6b12; --s8:#2f6f8f; --s9:#7a4b2a;
+  --on:#ffffff;
+  --display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111614; --paper:#18201d; --fg:#e3ebe7; --muted:#97a39e; --line:#2b3531; --accent:#8fd3b8;
+  --t1:#2f8f73; --t2:#5571c4; --t3:#d4692f; --t4:#a656a1;
+  --m1:#4cc3ad; --m2:#8aa6f2; --m3:#d38bd0; --m4:#f08a52; --m5:#d9b54a; --m6:#f07a87; --m7:#b5cf5e; --m8:#6fc0e0; --m9:#d9a07a;
+  --on:#ffffff; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111614; --paper:#18201d; --fg:#e3ebe7; --muted:#97a39e; --line:#2b3531; --accent:#8fd3b8;
+  --t1:#2f8f73; --t2:#5571c4; --t3:#d4692f; --t4:#a656a1;
+  --m1:#4cc3ad; --m2:#8aa6f2; --m3:#d38bd0; --m4:#f08a52; --m5:#d9b54a; --m6:#f07a87; --m7:#b5cf5e; --m8:#6fc0e0; --m9:#d9a07a;
+  --on:#ffffff; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1120px;margin:0 auto;padding:10px clamp(16px,4vw,40px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:800;font-size:18px;background:none;border:0;cursor:pointer;padding:0}
+.brand i{display:grid;grid-template-columns:repeat(3,7px);gap:2px}
+.brand i b{width:7px;height:7px;border-radius:2px}
+.nav{display:flex;gap:2px;flex-wrap:wrap;flex:1;min-width:0}
+.nav button{background:none;border:0;padding:7px 11px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:500;color:var(--muted)}
+.nav button:hover{color:var(--fg);background:color-mix(in srgb,var(--fg) 6%,transparent)}
+.nav button[aria-current="page"]{color:var(--fg);background:color-mix(in srgb,var(--fg) 9%,transparent)}
+@media (max-width:720px){.nav{order:3;flex:0 0 100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.nav button{white-space:nowrap}.brand{flex:1}.search{width:150px}}
+.search{width:min(260px,100%);font:inherit;font-size:14px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--fg)}
+
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:28px 64px}
+.view{display:grid;gap:28px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lede{margin:0;color:var(--muted);max-width:60ch}
+.sect-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.sect-h h2{font-weight:600;font-size:22px}
+.link{background:none;border:0;padding:0;color:var(--accent);font-weight:600;cursor:pointer;font-size:14px}
+
+/* home hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:18px;align-items:stretch}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+.hero-l{display:grid;gap:10px;align-content:center}
+.hero-l h1{font-weight:800;font-size:clamp(36px,6vw,58px);line-height:.98}
+.stats{display:flex;flex-wrap:wrap;gap:8px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px;color:var(--muted)}
+.stat b{color:var(--fg);font-variant-numeric:tabular-nums}
+.next{border-radius:18px;padding:20px 22px;color:var(--on);background:var(--cs,var(--c));display:grid;gap:4px;align-content:space-between;min-height:170px;position:relative;overflow:hidden;cursor:pointer;border:0;text-align:left}
+.next::after{content:"";position:absolute;right:-40px;bottom:-60px;width:200px;height:200px;border-radius:50%;background:color-mix(in srgb,var(--on) 12%,transparent)}
+.next .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.85;font-weight:600}
+.next .n{font-family:var(--display);font-weight:800;font-size:64px;line-height:1;font-variant-numeric:tabular-nums}
+.next .n small{font-size:20px;font-weight:600;margin-left:6px}
+.next .w{font-weight:600;font-size:16px;position:relative;z-index:1}
+.next .s{opacity:.9;font-size:13.5px;position:relative;z-index:1}
+
+/* big tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media (max-width:900px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.tiles{grid-template-columns:1fr}}
+.tile{border:0;border-radius:18px;padding:18px;min-height:168px;display:grid;align-content:space-between;gap:16px;text-align:left;cursor:pointer;color:var(--on);background:var(--cs,var(--c));position:relative;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
+.tile:hover{box-shadow:0 10px 24px -12px color-mix(in srgb,var(--c) 80%,transparent)}
+@media (prefers-reduced-motion:no-preference){.tile:hover{transform:translateY(-3px)}}
+.tile svg{width:34px;height:34px}
+.tile .tn{font-family:var(--display);font-weight:700;font-size:21px;line-height:1.1}
+.tile .td{font-size:13px;opacity:.9}
+.tile .tc{position:absolute;right:16px;top:12px;font-family:var(--display);font-weight:800;font-size:44px;opacity:.28;font-variant-numeric:tabular-nums}
+
+/* subject tiles */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.mtile{border:1px solid var(--line);border-radius:16px;background:var(--paper);padding:0;overflow:hidden;cursor:pointer;text-align:left;display:grid;grid-template-rows:auto 1fr;transition:border-color .15s,transform .18s}
+.mtile:hover{border-color:var(--c)}
+@media (prefers-reduced-motion:no-preference){.mtile:hover{transform:translateY(-3px)}}
+.mtile .band{background:var(--cs,var(--c));color:var(--on);padding:14px 16px;display:flex;align-items:center;gap:12px;min-height:74px}
+.mono{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:17px;background:color-mix(in srgb,var(--on) 20%,transparent);flex:none}
+.mtile .band h3{font-weight:600;font-size:17px;line-height:1.15}
+.mtile .body{padding:12px 16px 14px;display:grid;gap:8px;align-content:start}
+.prof{font-size:13px;color:var(--muted)}
+.counts{display:flex;flex-wrap:wrap;gap:6px}
+.cnt{font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:color-mix(in srgb,var(--c) 12%,var(--paper));color:var(--c)}
+.cnt.zero{background:transparent;color:var(--muted);border:1px dashed var(--line);font-weight:500}
+.exline{font-size:12.5px;color:var(--fg);font-weight:600}
+.exline span{color:var(--muted);font-weight:500}
+
+/* subject page */
+.crumb{display:flex;gap:6px;align-items:center;font-size:13.5px;color:var(--muted)}
+.mhead{border-radius:20px;padding:22px 24px;background:var(--cs,var(--c));color:var(--on);display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center}
+@media (max-width:640px){.mhead{grid-template-columns:auto 1fr}.mhead .exchip{grid-column:1/-1}}
+.mhead .mono{width:56px;height:56px;font-size:22px;border-radius:16px}
+.mhead h1{font-weight:800;font-size:clamp(24px,4vw,36px);line-height:1.05}
+.mhead p{margin:4px 0 0;opacity:.9;font-size:14px}
+.exchip{background:color-mix(in srgb,var(--on) 18%,transparent);border-radius:12px;padding:8px 12px;font-size:13px;line-height:1.3}
+.exchip b{font-family:var(--display);font-size:20px;display:block}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:0}
+.tab{border:0;background:none;padding:10px 14px;font-weight:600;font-size:14.5px;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;display:flex;gap:7px;align-items:center}
+.tab span{font-size:12px;padding:1px 7px;border-radius:999px;background:color-mix(in srgb,var(--fg) 8%,transparent);color:var(--muted)}
+.tab[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--c)}
+.tab[aria-selected="true"] span{background:var(--cs,var(--c));color:var(--on)}
+
+/* item cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.card{position:relative;display:grid;gap:8px;align-content:start;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:12px;min-width:0;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--c)}
+@media (prefers-reduced-motion:no-preference){.card:hover{transform:translateY(-2px)}}
+.card a.open{color:inherit;text-decoration:none}
+.card a.open::after{content:"";position:absolute;inset:0;border-radius:12px}
+.card a.open:focus-visible{outline:none}
+.card:has(a.open:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.card .top2{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.badge{font-weight:700;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--c)}
+.mname{font-size:12px;color:var(--muted)}
+.new{font-size:11px;font-weight:600;padding:2px 7px;border-radius:999px;background:var(--cs,var(--c));color:var(--on)}
+.card h3{font-weight:600;font-size:17px;line-height:1.2}
+.card p{margin:0;font-size:13.5px;color:var(--muted)}
+.card p.when{font-size:12.5px;font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums}
+.acts{display:flex;justify-content:flex-end}
+.pbtn{position:relative;z-index:1;font-size:12.5px;font-weight:500;padding:4px 10px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--muted);cursor:pointer}
+.pbtn:hover{color:var(--fg);border-color:var(--fg)}
+.empty{border:1px dashed var(--line);border-radius:12px;padding:18px;color:var(--muted);margin:0}
+.group{display:grid;gap:10px}
+.group h3{font-weight:600;font-size:17px;display:flex;align-items:center;gap:8px}
+.group h3 i{width:10px;height:10px;border-radius:3px;background:var(--c)}
+
+/* exams */
+.ex-list{display:grid;gap:10px}
+.ex{display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:center;padding:12px 16px;background:var(--paper);border:1px solid var(--line);border-radius:14px;cursor:pointer;text-align:left;width:100%}
+.ex:hover{border-color:var(--c)}
+.ex .d{border-radius:12px;background:var(--cs,var(--c));color:var(--on);text-align:center;padding:8px 0;font-family:var(--display);line-height:1}
+.ex .d b{display:block;font-size:26px;font-weight:800}
+.ex .d span{font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.ex .t{font-weight:600;font-size:16px}
+.ex .s{font-size:13px;color:var(--muted)}
+.ex .cd{font-family:var(--display);font-weight:700;font-size:15px;color:var(--c);text-align:right;white-space:nowrap}
+.ex.past{opacity:.5}
+@media (max-width:520px){.ex{grid-template-columns:60px 1fr}.ex .cd{grid-column:2;text-align:left}}
+
+/* flashcard decks */
+.deck{border:0;border-radius:16px;padding:16px;min-height:130px;color:var(--on);background:var(--cs,var(--c));display:grid;align-content:space-between;gap:10px;text-align:left;cursor:pointer;text-decoration:none;position:relative;overflow:hidden}
+.deck::before,.deck::after{content:"";position:absolute;right:14px;top:14px;width:46px;height:60px;border-radius:7px;border:2px solid color-mix(in srgb,var(--on) 45%,transparent)}
+.deck::after{right:22px;top:20px;transform:rotate(-8deg)}
+.deck b{font-family:var(--display);font-size:34px;font-weight:800;line-height:1}
+.deck span{font-weight:600;font-size:15px;max-width:75%}
+.deck:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+
+footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:8px}
+.toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13.5px;z-index:20}
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <button class="brand" type="button" data-go="accueil" aria-label="Accueil du Classeur"><i id="brandDots"></i>Classeur</button>
+    <nav class="nav" aria-label="Sections">
+      <button type="button" data-go="accueil">Accueil</button>
+      <button type="button" data-go="matieres">Matières</button>
+      <button type="button" data-go="cartes">Cartes mentales</button>
+      <button type="button" data-go="flashcards">Flashcards</button>
+      <button type="button" data-go="examens">Examens</button>
+    </nav>
+    <input id="q" class="search" type="search" placeholder="Rechercher…" aria-label="Rechercher une fiche ou une notion">
+  </div>
+</header>
+
+<main class="wrap" id="app"></main>
+
+<script>
+const MATIERES = [
+  {id:"eval", nom:"Évaluation d'entreprises", prof:"F. Romon", c:"--m1"},
+  {id:"eco",  nom:"Économétrie", prof:"G. Vu", c:"--m2"},
+  {id:"ingf", nom:"Ingénierie financière", prof:"J.-Y. Filbien", c:"--m3"},
+  {id:"bank", nom:"Économie et gestion de la banque", prof:"J.-C. Statnik", c:"--m4"},
+  {id:"trans",nom:"Transmission d'entreprise", prof:"", c:"--m5"},
+  {id:"port", nom:"Gestion de portefeuille", prof:"P. Grandin", c:"--m6"},
+  {id:"treso",nom:"Gestion de trésorerie", prof:"", c:"--m7"},
+  {id:"deriv",nom:"Produits dérivés", prof:"", c:"--m8"},
+  {id:"jurpat",nom:"Gestion juridique du patrimoine", prof:"C. Gegout", c:"--m9"}
+];
+/* cours : date(s) du cours couvert (= jour où la fiche a été demandée). ajout : date de mise en ligne. */
+const FICHES = [
+  {m:"eval", type:"Fiche", titre:"Évaluation patrimoniale : ANC et ANCC", desc:"Cours, cas Warrior, Mangala, Pastouche et 7 exercices corrigés.", href:"evaluation-anc-ancc.html", cours:["2026-10-01"], ajout:"2026-10-01", tags:"actif net comptable corrigé crédit-bail marque brevet"},
+  {m:"eval", type:"Carte mentale", titre:"Cartes mentales ANC · ANCC", desc:"7 cartes : bases, ANC, ANCC, incorporels, corporels, cas, pièges.", href:"cartes-anc-ancc.html", cours:["2026-10-01"], ajout:"2026-10-03", tags:"goodwill idp ida warrior mangala pastouche lumen"},
+  {m:"eco",  type:"Fiche", titre:"Jour 1 · Révision de statistiques", desc:"Mesures descriptives, covariance, corrélation, tests d'hypothèse, intervalles de confiance.", href:"econometrie-j1.html", cours:["2026-09-30"], ajout:"2026-09-30", tags:"moyenne variance ecart-type test t p-value"},
+  {m:"eco",  type:"Fiche", titre:"Jour 2 · Régression linéaire simple", desc:"MCO, r², test sur la pente, CAPM et bêta, hypothèses LINE, exercices corrigés.", href:"econometrie-j2.html", cours:["2026-10-02"], ajout:"2026-10-02", tags:"mco ols regression beta capm residus"},
+  {m:"eco",  type:"Carte mentale", titre:"Cartes mentales Économétrie", desc:"4 cartes : statistiques, tests et IC, régression, validation du modèle.", href:"cartes-econometrie.html", cours:["2026-09-30","2026-10-02"], ajout:"2026-10-03", tags:"mco regression test t beta line"},
+  {m:"ingf", type:"Fiche", titre:"Ch. 1 · Fusions-acquisitions et stratégie d'offre", desc:"Définitions, vagues de F&A, prime, synergies, HHI, motivations, exercices.", href:"fusions-acquisitions-ch1.html", cours:["2026-09-28"], ajout:"2026-09-28", tags:"m&a synergies hhi prime spin-off"},
+  {m:"ingf", type:"Carte mentale", titre:"Cartes mentales Fusions-acquisitions", desc:"4 cartes : définitions, marché et prime, motivations, exercices.", href:"cartes-fusions-acquisitions.html", cours:["2026-09-28"], ajout:"2026-10-03", tags:"m&a synergies hhi prime vagues"},
+  {m:"bank", type:"Fiche", titre:"Les banques et les marchés financiers", desc:"Marchés primaire et secondaire, marché monétaire, BFI, réglementation.", href:"banques-marches.html", cours:["2026-09-22"], ajout:"2026-09-22", tags:"€str glass-steagall volcker bfi obligation"},
+  {m:"bank", type:"Carte mentale", titre:"Cartes mentales Banque", desc:"2 cartes : marchés financiers, BFI et réglementation.", href:"cartes-banque.html", cours:["2026-09-22"], ajout:"2026-10-03", tags:"€str glass-steagall volcker bfi quiz"},
+  {m:"trans",type:"Fiche", titre:"Transmission d'entreprise", desc:"Plus-values, IS, droits d'enregistrement, donation avant cession, LBO.", href:"transmission-entreprise.html", cours:["2026-09-21"], ajout:"2026-09-21", tags:"pfu abattement 500000 mere-fille dmtg"},
+  {m:"trans",type:"Carte mentale", titre:"Cartes mentales Transmission", desc:"3 cartes : PV du particulier, côté entreprise, reprise.", href:"cartes-transmission.html", cours:["2026-09-21"], ajout:"2026-10-03", tags:"pfu abattement 500000 mere-fille lbo"},
+  {m:"port", type:"Fiche", titre:"Gestion de portefeuille", desc:"Markowitz, MEDAF, efficience, gestion active et passive, mesures de performance.", href:"gestion-portefeuille.html", cours:["2026-09-21"], ajout:"2026-09-21", tags:"sharpe treynor jensen medaf etf"},
+  {m:"port", type:"Carte mentale", titre:"Cartes mentales Portefeuille", desc:"4 cartes : théorie, efficience, gestion, performance.", href:"cartes-portefeuille.html", cours:["2026-09-21"], ajout:"2026-10-03", tags:"sharpe treynor jensen medaf cppi"},
+  {m:"jurpat",type:"Fiche", titre:"Droit des successions : conjugalité et dévolution légale", desc:"Régimes matrimoniaux, option de l'héritier, ordre, degré, fente, représentation, droits du conjoint, 5 cas pratiques.", href:"droit-successions.html", cours:["2026-10-03"], ajout:"2026-10-03", tags:"succession heritier conjoint usufruit fente representation preciput indignite pacs regime matrimonial"},
+  {m:"jurpat",type:"Carte mentale", titre:"Cartes mentales Successions", desc:"4 cartes : conjugalité, être héritier, principes, qui hérite.", href:"cartes-successions.html", cours:["2026-10-03"], ajout:"2026-10-03", tags:"succession fente representation conjoint"},
+  {m:"jurpat",type:"Flashcards", titre:"Flashcards Successions", desc:"15 questions-réponses : délais, ordres, quotes-parts.", href:"flashcards.html#jurpat", cours:["2026-10-03"], ajout:"2026-10-03", tags:"quiz succession"},
+  {m:"eval", type:"Flashcards", titre:"Flashcards ANC · ANCC", desc:"15 questions-réponses pour se tester.", href:"flashcards.html#eval", cours:["2026-10-01"], ajout:"2026-10-03", tags:"quiz"},
+  {m:"eco",  type:"Flashcards", titre:"Flashcards Économétrie", desc:"19 questions-réponses sur les jours 1 et 2.", href:"flashcards.html#eco", cours:["2026-09-30","2026-10-02"], ajout:"2026-10-03", tags:"quiz"},
+  {m:"ingf", type:"Flashcards", titre:"Flashcards Fusions-acquisitions", desc:"12 questions-réponses sur le chapitre 1.", href:"flashcards.html#ingf", cours:["2026-09-28"], ajout:"2026-10-03", tags:"quiz"},
+  {m:"bank", type:"Flashcards", titre:"Flashcards Banque", desc:"12 questions-réponses, utiles pour le quiz.", href:"flashcards.html#bank", cours:["2026-09-22"], ajout:"2026-10-03", tags:"quiz vrai faux"},
+  {m:"trans",type:"Flashcards", titre:"Flashcards Transmission", desc:"13 questions-réponses : taux, abattements, seuils.", href:"flashcards.html#trans", cours:["2026-09-21"], ajout:"2026-10-03", tags:"quiz"},
+  {m:"port", type:"Flashcards", titre:"Flashcards Portefeuille", desc:"13 questions-réponses sur les 4 chapitres.", href:"flashcards.html#port", cours:["2026-09-21"], ajout:"2026-10-03", tags:"quiz"}
+];
+/* Examens : {m:"eco", date:"2026-11-12", heure:"9h00", titre:"Partiel", lieu:"Amphi A"} */
+const EXAMS = [
+  {m:"treso", date:"2026-12-01", heure:"11h00", titre:"Examen"},
+  {m:"port",  date:"2026-12-02", heure:"14h00", titre:"Examen"},
+  {m:"deriv", date:"2026-12-04", heure:"11h00", titre:"Examen"},
+  {m:"jurpat",date:"2026-12-04", heure:"15h45", titre:"Examen"}
+];
+const TYPE_ORDER = {"Fiche":0,"Carte mentale":1,"Flashcards":2};
+
+const SHORT={eval:"Év",eco:"Éc",ingf:"IF",bank:"Bq",trans:"Tr",port:"GP",treso:"Ts",deriv:"PD",jurpat:"JP"};
+const TABS=[["fiches","Fiches","Fiche"],["cartes","Cartes mentales","Carte mentale"],["flashcards","Flashcards","Flashcards"],["examen","Examen",null]];
+const ICONS={
+  book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/><path d="M8 7h7M8 11h7"/></svg>',
+  map:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="5" r="2"/><circle cx="20" cy="5" r="2"/><circle cx="4" cy="19" r="2"/><circle cx="20" cy="19" r="2"/><path d="M9.6 10.2 5.6 6.4M14.4 10.2l4-3.8M9.6 13.8l-4 3.8M14.4 13.8l4 3.8"/></svg>',
+  cards:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="7" y="3" width="13" height="16" rx="2"/><path d="M4 7v12a2 2 0 0 0 2 2h10"/></svg>',
+  cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>'
+};
+const fmt=d=>new Date(d+"T12:00:00").toLocaleDateString("fr-FR",{weekday:"short",day:"numeric",month:"short"});
+const fmtLong=d=>new Date(d+"T12:00:00").toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});
+const coursLabel=f=>"Cours du "+f.cours.map(fmt).join(" et du ");
+const lastCours=f=>f.cours[f.cours.length-1];
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const mat=id=>MATIERES.find(m=>m.id===id)||{id,nom:id,c:"--accent",prof:""};
+const newest=[...FICHES].sort((a,b)=>b.ajout.localeCompare(a.ajout))[0].ajout;
+const today=(()=>{const d=new Date();d.setHours(0,0,0,0);return d})();
+const daysTo=d=>Math.round((new Date(d+"T00:00:00")-today)/864e5);
+const cdLabel=n=>n<0?"Passé":n===0?"Aujourd'hui":n===1?"Demain":`J−${n}`;
+const upcoming=()=>[...EXAMS].filter(e=>daysTo(e.date)>=0).sort((a,b)=>(a.date+a.heure).localeCompare(b.date+b.heure));
+const examsOf=id=>[...EXAMS].filter(e=>e.m===id).sort((a,b)=>a.date.localeCompare(b.date));
+const byType=(id,t)=>FICHES.filter(f=>f.m===id&&f.type===t).sort((a,b)=>lastCours(a).localeCompare(lastCours(b)));
+const nCards=f=>+(f.desc.match(/\d+/)||[0])[0];
+const app=document.getElementById("app");
+const paint=(el,c)=>{el.style.setProperty("--c",`var(${c})`);if(/^--m\d$/.test(c))el.style.setProperty("--cs",`var(${c.replace("--m","--s")})`);return el};
+
+document.getElementById("brandDots").innerHTML=["--m1","--m2","--m4","--m3","--m6","--m8","--m5","--m9","--m7"].map(c=>`<b style="background:var(${c})"></b>`).join("");
+
+/* ---------- printable download (downloads capability) ---------- */
+let downloads=null;
+if(window.claude&&typeof window.claude.use==="function"){
+  window.claude.use("downloads").then(d=>{downloads=d;if(d)route()}).catch(()=>{});
+}
+function toast(msg){const t=document.createElement("div");t.className="toast";t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),3200)}
+async function printable(f){
+  const res=await fetch(f.href.split("#")[0]);let html=await res.text();
+  html=html.replace(/<style>\.cl-back[\s\S]*?<\/nav>/,"");
+  const isMap=f.type==="Carte mentale";
+  const head=`<script>document.documentElement.setAttribute("data-theme","light");${isMap?"window.PRINT_ALL=true;":""}<\/script><style>@page{margin:12mm}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}nav.toc,.tools{display:none!important}@media print{.shell,.wrap{display:block!important}a{color:inherit}}</style>`;
+  const tail=isMap?"":`<script>addEventListener("load",()=>{document.querySelectorAll("details").forEach(d=>d.open=true);setTimeout(()=>print(),1500)})<\/script>`;
+  return html.replace(/<head[^>]*>/i,m=>m+head).replace(/<\/body>/i,tail+"</body>");
+}
+async function doPrint(f,btn){
+  if(!downloads)return;btn.disabled=true;
+  try{await downloads.save({filename:f.href.split("#")[0].replace(".html","-imprimable.html"),data:await printable(f)});toast("Fichier enregistré : ouvrez-le, l'impression se lance toute seule.")}
+  catch(e){if(e&&e.code==="declined"){}else if(e&&e.code==="rate_limited")toast("Une fenêtre d'enregistrement est déjà ouverte.");else toast("Le téléchargement n'est pas disponible ici.")}
+  finally{btn.disabled=false}
+}
+
+/* ---------- components ---------- */
+function itemCard(f,showMat){
+  const m=mat(f.m);const el=document.createElement("div");el.className="card";paint(el,m.c);
+  el.innerHTML=`<div class="top2"><span class="badge">${f.type}</span>${f.ajout===newest?'<span class="new">Nouveau</span>':""}</div>
+    <h3><a class="open" href="${f.href}">${esc(f.titre)}</a></h3>${showMat?`<span class="mname">${esc(m.nom)}</span>`:""}
+    <p class="when">${coursLabel(f)}</p><p>${esc(f.desc)}</p>`;
+  if(downloads&&f.type!=="Flashcards"){const a=document.createElement("div");a.className="acts";const b=document.createElement("button");b.type="button";b.className="pbtn";b.textContent="Version imprimable";b.onclick=()=>doPrint(f,b);a.appendChild(b);el.appendChild(a)}
+  return el;
+}
+function gridOf(items,showMat){const g=document.createElement("div");g.className="grid";items.forEach(f=>g.appendChild(itemCard(f,showMat)));return g}
+function examRow(e){
+  const m=mat(e.m),n=daysTo(e.date),d=new Date(e.date+"T12:00:00");
+  const b=document.createElement("button");b.type="button";b.className="ex"+(n<0?" past":"");paint(b,m.c);
+  b.innerHTML=`<div class="d"><b>${d.getDate()}</b><span>${d.toLocaleDateString("fr-FR",{month:"short"})}</span></div>
+    <div><div class="t">${esc(m.nom)}</div><div class="s">${esc([e.titre,fmtLong(e.date),e.heure,e.lieu].filter(Boolean).join(" · "))}</div></div>
+    <div class="cd">${n<0?"Passé":n===0?"Aujourd'hui":n===1?"Demain":"Dans "+n+" jours"}</div>`;
+  b.onclick=()=>go("m-"+e.m);return b;
+}
+function sectH(title,linkLabel,target){const h=document.createElement("div");h.className="sect-h";h.innerHTML=`<h2>${title}</h2>`;
+  if(linkLabel){const b=document.createElement("button");b.className="link";b.type="button";b.textContent=linkLabel+" →";b.onclick=()=>go(target);h.appendChild(b)}return h}
+function view(){const v=document.createElement("div");v.className="view";app.replaceChildren(v);return v}
+
+/* ---------- views ---------- */
+function vHome(){
+  const v=view();
+  const nF=FICHES.filter(f=>f.type==="Fiche").length,nC=FICHES.filter(f=>f.type==="Carte mentale").length,
+        nQ=FICHES.filter(f=>f.type==="Flashcards").reduce((a,f)=>a+nCards(f),0),up=upcoming();
+  const hero=document.createElement("section");hero.className="hero";
+  const nx=up[0];
+  hero.innerHTML=`<div class="hero-l"><div class="eyebrow">JUNIA · Année 2026-2027</div><h1>Classeur de révision</h1>
+    <p class="lede">Fiches, cartes mentales et flashcards de la promo, rangées par matière et par date de cours.</p>
+    <div class="stats"><span class="stat"><b>${MATIERES.length}</b> matières</span><span class="stat"><b>${nF}</b> fiches</span><span class="stat"><b>${nC}</b> pages de cartes</span><span class="stat"><b>${nQ}</b> flashcards</span></div></div>`;
+  if(nx){const m=mat(nx.m),n=daysTo(nx.date);const b=document.createElement("button");b.type="button";b.className="next";paint(b,m.c);
+    b.innerHTML=`<span class="k">Prochain examen</span><span class="n">${n===0?"Aujourd'hui":n}<small>${n>1?"jours":n===1?"jour":""}</small></span><span class="w">${esc(m.nom)}</span><span class="s">${fmtLong(nx.date)}${nx.heure?" · "+esc(nx.heure):""}</span>`;
+    b.onclick=()=>go("examens");hero.appendChild(b)}
+  v.appendChild(hero);
+  const tiles=document.createElement("section");tiles.className="tiles";tiles.setAttribute("aria-label","Rubriques");
+  [["matieres","Matières",`${MATIERES.length} matières, un onglet par type de document`,ICONS.book,"--t1",MATIERES.length],
+   ["cartes","Cartes mentales","Toutes les cartes, matière par matière",ICONS.map,"--t2",nC],
+   ["flashcards","Flashcards","Se tester avant le partiel",ICONS.cards,"--t3",nQ],
+   ["examens","Examens",up.length?`Prochain : ${fmt(up[0].date)}`:"Dates à venir",ICONS.cal,"--t4",EXAMS.length]
+  ].forEach(([r,t,d,ic,c,n])=>{const b=document.createElement("button");b.type="button";b.className="tile";paint(b,c);
+    b.innerHTML=`${ic}<span class="tc">${n}</span><div><div class="tn">${t}</div><div class="td">${d}</div></div>`;b.onclick=()=>go(r);tiles.appendChild(b)});
+  v.appendChild(tiles);
+  v.appendChild(sectH("Derniers ajouts"));
+  v.appendChild(gridOf([...FICHES].sort((a,b)=>b.ajout.localeCompare(a.ajout)||lastCours(b).localeCompare(lastCours(a))).slice(0,6),true));
+  const ft=document.createElement("footer");ft.textContent="Les dates de cours correspondent au jour où chaque fiche a été demandée.";v.appendChild(ft);
+}
+function vMatieres(){
+  const v=view();
+  v.insertAdjacentHTML("beforeend",`<div><div class="eyebrow">Rubrique</div><h1 style="font-weight:800;font-size:clamp(30px,5vw,44px)">Matières</h1><p class="lede">Choisissez une matière pour voir ses fiches, ses cartes mentales, ses flashcards et la date de l'examen.</p></div>`);
+  const g=document.createElement("div");g.className="mgrid";
+  MATIERES.forEach(m=>{
+    const b=document.createElement("button");b.type="button";b.className="mtile";paint(b,m.c);
+    const c=t=>FICHES.filter(f=>f.m===m.id&&f.type===t).length;
+    const ex=examsOf(m.id).find(e=>daysTo(e.date)>=0);
+    const chip=(n,l)=>`<span class="cnt${n?"":" zero"}">${n} ${l}</span>`;
+    const nq=FICHES.filter(f=>f.m===m.id&&f.type==="Flashcards").reduce((a,f)=>a+nCards(f),0);
+    b.innerHTML=`<div class="band"><span class="mono">${SHORT[m.id]||m.nom[0]}</span><h3>${esc(m.nom)}</h3></div>
+      <div class="body"><span class="prof">${m.prof?esc(m.prof):"Professeur à préciser"}</span>
+      <div class="counts">${chip(c("Fiche"),c("Fiche")>1?"fiches":"fiche")}${c("Carte mentale")?'<span class="cnt">Cartes mentales</span>':'<span class="cnt zero">Pas de cartes</span>'}${chip(nq,nq>1?"flashcards":"flashcard")}</div>
+      ${ex?`<div class="exline">Examen ${fmt(ex.date)} <span>· ${cdLabel(daysTo(ex.date))}</span></div>`:`<div class="exline"><span>Pas d'examen daté</span></div>`}</div>`;
+    b.onclick=()=>go("m-"+m.id);g.appendChild(b);
+  });
+  v.appendChild(g);
+}
+function vMatiere(id,tab){
+  const m=mat(id);const v=view();paint(v,m.c);
+  const crumb=document.createElement("div");crumb.className="crumb";
+  const back=document.createElement("button");back.className="link";back.type="button";back.textContent="← Matières";back.onclick=()=>go("matieres");
+  crumb.append(back);v.appendChild(crumb);
+  const ex=examsOf(id).find(e=>daysTo(e.date)>=0);
+  const h=document.createElement("section");h.className="mhead";
+  h.innerHTML=`<span class="mono">${SHORT[id]||m.nom[0]}</span><div><h1>${esc(m.nom)}</h1><p>${m.prof?esc(m.prof)+" · ":""}${FICHES.filter(f=>f.m===id).length} documents</p></div>
+    ${ex?`<div class="exchip">Examen<b>${cdLabel(daysTo(ex.date))}</b>${fmt(ex.date)}${ex.heure?" · "+esc(ex.heure):""}</div>`:""}`;
+  v.appendChild(h);
+  const counts={fiches:byType(id,"Fiche").length,cartes:byType(id,"Carte mentale").length,flashcards:byType(id,"Flashcards").reduce((a,f)=>a+nCards(f),0),examen:examsOf(id).length};
+  if(!tab||!counts.hasOwnProperty(tab))tab=counts.fiches?"fiches":counts.examen?"examen":"fiches";
+  const tl=document.createElement("div");tl.className="tabs";tl.setAttribute("role","tablist");
+  TABS.forEach(([k,l])=>{const b=document.createElement("button");b.type="button";b.className="tab";b.setAttribute("role","tab");b.setAttribute("aria-selected",String(k===tab));
+    b.innerHTML=`${l}<span>${counts[k]}</span>`;b.onclick=()=>go(`m-${id}_${k}`);tl.appendChild(b)});
+  v.appendChild(tl);
+  const panel=document.createElement("div");panel.setAttribute("role","tabpanel");
+  const T=TABS.find(t=>t[0]===tab);
+  if(tab==="examen"){
+    const ex=examsOf(id);
+    if(ex.length){const l=document.createElement("div");l.className="ex-list";ex.forEach(e=>l.appendChild(examRow(e)));panel.appendChild(l)}
+    else panel.innerHTML=`<p class="empty">Pas encore de date d'examen pour cette matière.</p>`;
+  }else{
+    const items=byType(id,T[2]);
+    if(items.length)panel.appendChild(gridOf(items,false));
+    else panel.innerHTML=`<p class="empty">Rien ici pour l'instant. ${tab==="fiches"?"Envoyez le support du cours pour créer la première fiche.":"Ils arriveront avec la première fiche de la matière."}</p>`;
+  }
+  v.appendChild(panel);
+}
+function vCartes(){
+  const v=view();
+  v.insertAdjacentHTML("beforeend",`<div><div class="eyebrow">Rubrique</div><h1 style="font-weight:800;font-size:clamp(30px,5vw,44px)">Cartes mentales</h1><p class="lede">Une page de cartes par matière, avec un onglet par chapitre. Cliquez une branche pour la replier et vous tester.</p></div>`);
+  MATIERES.forEach(m=>{const items=byType(m.id,"Carte mentale");if(!items.length)return;
+    const g=document.createElement("section");g.className="group";paint(g,m.c);g.innerHTML=`<h3><i></i>${esc(m.nom)}</h3>`;g.appendChild(gridOf(items,false));v.appendChild(g)});
+}
+function vFlash(){
+  const v=view();
+  v.insertAdjacentHTML("beforeend",`<div><div class="eyebrow">Rubrique</div><h1 style="font-weight:800;font-size:clamp(30px,5vw,44px)">Flashcards</h1><p class="lede">Choisissez un paquet. La progression (sues, à revoir) reste enregistrée dans votre navigateur.</p></div>`);
+  const g=document.createElement("div");g.className="tiles";
+  const all=FICHES.filter(f=>f.type==="Flashcards").reduce((a,f)=>a+nCards(f),0);
+  const mk=(href,n,label,c)=>{const a=document.createElement("a");a.className="deck";a.href=href;paint(a,c);a.innerHTML=`<b>${n}</b><span>${esc(label)}</span>`;return a};
+  g.appendChild(mk("flashcards.html",all,"Toutes les matières mélangées","--t3"));
+  MATIERES.forEach(m=>{const f=byType(m.id,"Flashcards")[0];if(f)g.appendChild(mk(f.href,nCards(f),m.nom,m.c))});
+  v.appendChild(g);
+}
+function vExamens(){
+  const v=view();
+  v.insertAdjacentHTML("beforeend",`<div><div class="eyebrow">Rubrique</div><h1 style="font-weight:800;font-size:clamp(30px,5vw,44px)">Calendrier des examens</h1><p class="lede">Cliquez un examen pour ouvrir la matière et ses documents de révision.</p></div>`);
+  if(!EXAMS.length){v.insertAdjacentHTML("beforeend",`<p class="empty">Les dates des partiels seront ajoutées ici.</p>`);return}
+  const l=document.createElement("div");l.className="ex-list";
+  [...EXAMS].sort((a,b)=>(a.date+a.heure).localeCompare(b.date+b.heure)).forEach(e=>l.appendChild(examRow(e)));v.appendChild(l);
+}
+function vSearch(q){
+  const v=view();const nq=norm(q);
+  const res=FICHES.filter(f=>norm(`${f.titre} ${f.desc} ${f.type} ${f.tags} ${mat(f.m).nom} ${mat(f.m).prof}`).includes(nq));
+  v.insertAdjacentHTML("beforeend",`<div><div class="eyebrow">Recherche</div><h1 style="font-weight:700;font-size:28px">${res.length} résultat${res.length>1?"s":""} pour « ${esc(q)} »</h1></div>`);
+  if(res.length)v.appendChild(gridOf(res,true));else v.insertAdjacentHTML("beforeend",`<p class="empty">Aucun document ne correspond. Essayez un autre mot (une notion, un prof, une matière).</p>`);
+}
+
+/* ---------- routing ---------- */
+let current="accueil";
+function go(r){current=r;document.getElementById("q").value="";try{if(location.hash.slice(1)!==r)history.pushState(null,"","#"+r)}catch(e){}route();window.scrollTo({top:0})}
+function route(){
+  const q=document.getElementById("q").value.trim();
+  let r=q?"recherche":((location.hash||"").slice(1)||current);
+  const navKey=r.startsWith("m-")?"matieres":r;
+  document.querySelectorAll(".nav button").forEach(b=>{if(b.dataset.go===navKey)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
+  if(q)return vSearch(q);
+  if(r.startsWith("m-")){const [id,tab]=r.slice(2).split("_");if(MATIERES.some(m=>m.id===id))return vMatiere(id,tab)}
+  ({matieres:vMatieres,cartes:vCartes,flashcards:vFlash,examens:vExamens}[r]||vHome)();
+}
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
+window.addEventListener("hashchange",()=>{current=(location.hash||"").slice(1)||"accueil";route()});
+window.addEventListener("popstate",()=>{current=(location.hash||"").slice(1)||"accueil";route()});
+let st;document.getElementById("q").addEventListener("input",()=>{clearTimeout(st);st=setTimeout(route,120)});
+route();
+</script>
+
+</body></html>

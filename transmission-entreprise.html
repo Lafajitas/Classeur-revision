@@ -1,0 +1,766 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}</style><style>:root{color-scheme:light dark;--md-bg:#fff;--md-text:rgba(0,0,0,.8);--md-muted:rgba(0,0,0,.6);--md-fill:rgba(0,0,0,.04);--md-fill-strong:rgba(0,0,0,.06);--md-rule:rgba(0,0,0,.1);--md-rule-strong:rgba(0,0,0,.16);--md-link:hsl(210 100% 45%)}@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){--md-bg:#0d0d0d;--md-text:rgba(255,255,255,.85);--md-muted:rgba(255,255,255,.6);--md-fill:rgba(255,255,255,.06);--md-fill-strong:rgba(255,255,255,.09);--md-rule:rgba(255,255,255,.14);--md-rule-strong:rgba(255,255,255,.22);--md-link:hsl(210 100% 72%)}}:root[data-theme="dark"]{color-scheme:dark;--md-bg:#0d0d0d;--md-text:rgba(255,255,255,.85);--md-muted:rgba(255,255,255,.6);--md-fill:rgba(255,255,255,.06);--md-fill-strong:rgba(255,255,255,.09);--md-rule:rgba(255,255,255,.14);--md-rule-strong:rgba(255,255,255,.22);--md-link:hsl(210 100% 72%)}:root[data-theme="light"]{color-scheme:light}@media print{:root,:root[data-theme="dark"]{color-scheme:light;--md-bg:#fff;--md-text:rgba(0,0,0,.8);--md-muted:rgba(0,0,0,.6);--md-fill:rgba(0,0,0,.04);--md-fill-strong:rgba(0,0,0,.06);--md-rule:rgba(0,0,0,.1);--md-rule-strong:rgba(0,0,0,.16);--md-link:hsl(210 100% 45%)}}body{background:var(--md-bg);color:var(--md-text);max-width:720px;margin:0 auto;padding:32px;display:flex;flex-direction:column;gap:10px;font:14px/1.55 -apple-system,BlinkMacSystemFont,'SF Pro','Segoe UI',sans-serif;overflow-wrap:break-word}body>:first-child{margin-top:0}h1,h2,h3,h4,h5,h6{margin:6px 0 0;line-height:1.25;font-weight:600;text-wrap:balance}h1{font-size:1.35em}h2{font-size:1.15em;color:var(--md-muted)}h3,h4,h5,h6{font-size:1em}p,ul,ol,blockquote,table,pre,hr{margin:0}strong{font-weight:600}a{color:var(--md-link);text-decoration:none}a:hover{text-decoration:underline}ul,ol{display:flex;flex-direction:column;gap:6px;padding-left:22px}ul{list-style:disc}ol{list-style:decimal}:is(li,td,th)>*+:is(p,ul,ol,blockquote){margin-top:6px}blockquote{display:flex;flex-direction:column;gap:10px;border-left:2px solid var(--md-rule);padding-left:10px;color:var(--md-muted)}:not(pre)>code{background:var(--md-fill);padding:1px 3px;border-radius:4px;font:.92em 'SF Mono',ui-monospace,Menlo,Consolas,monospace}a>code{background:none;color:inherit}pre{background:var(--md-fill);padding:10px 12px;border-radius:6px;overflow-x:auto;font:12px/1.5 'SF Mono',ui-monospace,Menlo,Consolas,monospace;margin-block:4px}pre code{background:none;padding:0;font:inherit}table{width:100%;border-collapse:separate;border-spacing:2px;font:inherit}th,td{padding:6px 8px;border-radius:3px;text-align:left;vertical-align:top}th{background:var(--md-fill-strong);font-weight:600}td{background:var(--md-fill)}:is(th,td) :not(pre)>code{background:transparent}hr{border:0;border-top:1px solid var(--md-rule-strong);margin-block:10px}img{max-width:100%;height:auto;border-radius:4px}</style>
+</head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-trans_fiches">← Transmission d'entreprise</a><span>· Classeur de révision</span></nav>
+
+<h1>Fiche de révision — Transmission d'entreprise</h1>
+<p><em>Basée sur le support de cours 2026 (JUNIA) et les cas pratiques DUPONT / « Céder et reprendre » (2023)</em></p>
+<hr>
+<h2>Lexique des abréviations</h2>
+<table>
+<thead>
+<tr>
+<th>Abréviation</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ATPS</td>
+<td>Apport à Titre Pur et Simple</td>
+</tr>
+<tr>
+<td>BIC</td>
+<td>Bénéfices Industriels et Commerciaux</td>
+</tr>
+<tr>
+<td>CA (HT)</td>
+<td>Chiffre d'Affaires (Hors Taxes)</td>
+</tr>
+<tr>
+<td>CAF</td>
+<td>Capacité d'Autofinancement</td>
+</tr>
+<tr>
+<td>CBM</td>
+<td>Crédit-Bail Mobilier</td>
+</tr>
+<tr>
+<td>CCA</td>
+<td>Compte Courant d'Associé</td>
+</tr>
+<tr>
+<td>CGI</td>
+<td>Code Général des Impôts</td>
+</tr>
+<tr>
+<td>CSG</td>
+<td>Contribution Sociale Généralisée</td>
+</tr>
+<tr>
+<td>DFN</td>
+<td>Dettes Financières Nettes</td>
+</tr>
+<tr>
+<td>DMTG</td>
+<td>Droits de Mutation à Titre Gratuit</td>
+</tr>
+<tr>
+<td>EBE</td>
+<td>Excédent Brut d'Exploitation</td>
+</tr>
+<tr>
+<td>EEE</td>
+<td>Espace Économique Européen</td>
+</tr>
+<tr>
+<td>EURL</td>
+<td>Entreprise Unipersonnelle à Responsabilité Limitée</td>
+</tr>
+<tr>
+<td>FCP</td>
+<td>Fonds Commun de Placement</td>
+</tr>
+<tr>
+<td>FCPI</td>
+<td>Fonds Commun de Placement dans l'Innovation</td>
+</tr>
+<tr>
+<td>FCPR</td>
+<td>Fonds Commun de Placement à Risques</td>
+</tr>
+<tr>
+<td>FIA</td>
+<td>Fonds d'Investissement Alternatif</td>
+</tr>
+<tr>
+<td>FIP</td>
+<td>Fonds d'Investissement de Proximité</td>
+</tr>
+<tr>
+<td>GAP</td>
+<td>Garantie d'Actif et de Passif</td>
+</tr>
+<tr>
+<td>HT</td>
+<td>Hors Taxes</td>
+</tr>
+<tr>
+<td>IFU</td>
+<td>Imposition Forfaitaire Unique (synonyme de PFU)</td>
+</tr>
+<tr>
+<td>IR</td>
+<td>Impôt sur le Revenu</td>
+</tr>
+<tr>
+<td>IRPP</td>
+<td>Impôt sur le Revenu des Personnes Physiques</td>
+</tr>
+<tr>
+<td>IS</td>
+<td>Impôt sur les Sociétés</td>
+</tr>
+<tr>
+<td>LBO</td>
+<td>Leverage Buy-Out (rachat avec effet de levier)</td>
+</tr>
+<tr>
+<td>LOI</td>
+<td>Lettre d'Intention (Letter Of Intent)</td>
+</tr>
+<tr>
+<td>MV / MVCT / MVLT</td>
+<td>Moins-Value / à Court Terme / à Long Terme</td>
+</tr>
+<tr>
+<td>OPCVM</td>
+<td>Organisme de Placement Collectif en Valeurs Mobilières</td>
+</tr>
+<tr>
+<td>OPE</td>
+<td>Offre Publique d'Échange</td>
+</tr>
+<tr>
+<td>PACS</td>
+<td>Pacte Civil de Solidarité</td>
+</tr>
+<tr>
+<td>PFU</td>
+<td>Prélèvement Forfaitaire Unique</td>
+</tr>
+<tr>
+<td>PME</td>
+<td>Petite et Moyenne Entreprise</td>
+</tr>
+<tr>
+<td>PS</td>
+<td>Prélèvements Sociaux</td>
+</tr>
+<tr>
+<td>PV / PVCT / PVLT</td>
+<td>Plus-Value / à Court Terme / à Long Terme</td>
+</tr>
+<tr>
+<td>QPFC</td>
+<td>Quote-Part de Frais et Charges</td>
+</tr>
+<tr>
+<td>RCM</td>
+<td>Revenus de Capitaux Mobiliers</td>
+</tr>
+<tr>
+<td>REX</td>
+<td>Résultat d'Exploitation</td>
+</tr>
+<tr>
+<td>RN</td>
+<td>Résultat Net</td>
+</tr>
+<tr>
+<td>SA</td>
+<td>Société Anonyme</td>
+</tr>
+<tr>
+<td>SARL</td>
+<td>Société à Responsabilité Limitée</td>
+</tr>
+<tr>
+<td>SAS</td>
+<td>Société par Actions Simplifiée</td>
+</tr>
+<tr>
+<td>SC</td>
+<td>Société Civile</td>
+</tr>
+<tr>
+<td>SCI</td>
+<td>Société Civile Immobilière</td>
+</tr>
+<tr>
+<td>SICAV</td>
+<td>Société d'Investissement à Capital Variable</td>
+</tr>
+<tr>
+<td>SNC</td>
+<td>Société en Nom Collectif</td>
+</tr>
+<tr>
+<td>TMI</td>
+<td>Tranche Marginale d'Imposition</td>
+</tr>
+<tr>
+<td>TNS</td>
+<td>Travailleur Non Salarié</td>
+</tr>
+<tr>
+<td>UE</td>
+<td>Union Européenne</td>
+</tr>
+<tr>
+<td>VA</td>
+<td>Valeur Ajoutée</td>
+</tr>
+<tr>
+<td>VAC</td>
+<td>Valeur des Actifs Cédés</td>
+</tr>
+<tr>
+<td>VE</td>
+<td>Valeur d'Entreprise</td>
+</tr>
+<tr>
+<td>VT</td>
+<td>Valeur des Titres</td>
+</tr>
+</tbody>
+</table>
+<p><em>Comment utiliser cette fiche : la première fois qu'une abréviation apparaît dans le texte ci-dessous, sa signification complète est rappelée entre parenthèses. Le lexique ci-dessus permet aussi une recherche rapide à tout moment.</em></p>
+<hr>
+<h2>1. Plus-values de cession de valeurs mobilières et droits sociaux (particuliers)</h2>
+<h3>Champ d'application</h3>
+<ul>
+<li>Concerne les <strong>particuliers</strong> cédant, dans le cadre de la <strong>gestion de leur patrimoine privé</strong> : actions, obligations, titres d'OPCVM (Organisme de Placement Collectif en Valeurs Mobilières) et de FIA (Fonds d'Investissement Alternatif), droits sociaux, nue-propriété/usufruit (hors usufruit temporaire).</li>
+<li>Titres détenus directement <strong>ou</strong> via une société civile de portefeuille non soumise à l'IS (Impôt sur les Sociétés).</li>
+</ul>
+<p><strong>Exclus du régime :</strong></p>
+<ul>
+<li>Titres de sociétés à l'IR (Impôt sur le Revenu) assimilés à des actifs professionnels (cédant exerçant son activité dans la société) → régime des <strong>plus-values professionnelles</strong>.</li>
+<li>Titres de sociétés à prépondérance immobilière non soumises à l'IS (SCI – Société Civile Immobilière) → régime des <strong>plus-values immobilières</strong>.</li>
+</ul>
+<h3>Opérations imposables</h3>
+<ul>
+<li>Ventes, échanges, apports, rachats de titres, partages avec soulte (hors succession/divorce), rachats d'actions SICAV (Société d'Investissement à Capital Variable)/parts de FCP (Fonds Commun de Placement), transferts entre compartiments.</li>
+<li><strong>Sursis d'imposition</strong> (opération intercalaire, pas de PV — Plus-Value — constatée) : OPE (Offre Publique d'Échange), fusion, scission, apport de titres à une société IS <strong>non contrôlée</strong> par l'apporteur.</li>
+<li><strong>Report d'imposition</strong> (PV constatée mais imposition différée) : apport à une société IS <strong>contrôlée</strong> par l'apporteur.</li>
+</ul>
+<h3>Opérations exonérées (sous conditions)</h3>
+<ul>
+<li>PV sur parts de FCPR (Fonds Commun de Placement à Risques)/FCPI (Fonds Commun de Placement dans l'Innovation)/FIP (Fonds d'Investissement de Proximité) détenues &gt; 5 ans.</li>
+<li>PV de partage/licitation au profit d'un coïndivisaire (indivision successorale/conjugale).</li>
+</ul>
+<h3>Modalités d'imposition</h3>
+<ul>
+<li>Déclaration n°2074 (sauf si calcul fait par intermédiaire financier).</li>
+<li>Hors champ du prélèvement à la source.</li>
+<li>Imposition par défaut : <strong>PFU</strong> (Prélèvement Forfaitaire Unique, aussi appelé « flat tax »). Option possible pour le <strong>barème progressif</strong> (option globale, annuelle, portant sur RCM — Revenus de Capitaux Mobiliers — + PV).
+<ul>
+<li><strong>Nouveauté revenus 2026</strong> : l'option globale devient <strong>révocable a posteriori</strong> (renonciation possible en 2027 lors de la déclaration des revenus 2026) — auparavant irrévocable.</li>
+</ul>
+</li>
+</ul>
+<h3>Abattements pour durée de détention (uniquement si option barème progressif, titres acquis avant 01/01/2018)</h3>
+<table>
+<thead>
+<tr>
+<th>Durée de détention</th>
+<th>Abattement droit commun</th>
+<th>Abattement renforcé (PME – Petite et Moyenne Entreprise – &lt; 10 ans)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moins de 8 ans</td>
+<td>50 %</td>
+<td>65 %</td>
+</tr>
+<tr>
+<td>8 ans et plus</td>
+<td>65 %</td>
+<td>85 %</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conditions société émettrice (abattement renforcé) :</strong></p>
+<ul>
+<li>Soumise à l'impôt sur les bénéfices, PME au sens de l'UE (Union Européenne), siège dans l'EEE (Espace Économique Européen).</li>
+<li>Activité commerciale/industrielle/artisanale/libérale/agricole (pas de gestion de patrimoine propre).</li>
+<li>Créée depuis &lt; 10 ans, pas issue d'une restructuration/reprise.</li>
+<li>Pas de garantie en capital aux associés.</li>
+<li>Si holding animatrice : conditions à vérifier aussi au niveau des filiales.</li>
+</ul>
+<h3>Abattement fixe dirigeant partant à la retraite — <strong>500 000 €</strong></h3>
+<ul>
+<li>S'applique que la PV soit imposée au PFU <strong>ou</strong> au barème progressif.</li>
+<li>Cessions du 01/01/2018 au 31/12/2031, titres détenus ≥ 1 an.</li>
+<li><strong>Un seul abattement de 500 000 €</strong> par société, même en cas de cessions échelonnées sur plusieurs années.</li>
+<li>Non cumulable avec les abattements proportionnels (droit commun/renforcé).</li>
+<li>Porté à 600 000 € pour cessions au profit de jeunes agriculteurs.</li>
+</ul>
+<p><strong>Conditions société :</strong> IS (ou équivalent), PME UE, siège EEE, activité éligible depuis ≥ 5 ans (ou holding de participations dans de telles sociétés).</p>
+<p><strong>Conditions cédant :</strong></p>
+<ul>
+<li>Dirigeant effectif et continu pendant les 5 ans précédant la cession, rémunération normale ≥ 50 % de ses revenus professionnels IR.</li>
+<li>Détention ≥ 25 % des droits de vote/bénéfices (seul ou avec conjoint/partenaire de PACS — Pacte Civil de Solidarité —/ascendants/descendants/fratrie) pendant 5 ans.</li>
+<li>Cesse ses fonctions et fait valoir ses droits à la retraite dans les 2 ans avant/après la cession (délai allongeable si report lié à la réforme des retraites 2023).</li>
+<li>Cède l'intégralité des titres, ou &gt; 50 % des droits de vote (ou &gt; 50 % des droits aux bénéfices si seul usufruit).</li>
+<li>Si acquéreur = société : le cédant ne doit pas y détenir de participation, ni à la cession ni pendant les 3 années suivantes.</li>
+</ul>
+<hr>
+<h2>2. Plus et moins-values professionnelles (entreprises relevant de l'IR)</h2>
+<h3>Distinction court terme / long terme</h3>
+<p>Critères : <strong>durée de détention</strong> (seuil 2 ans) + <strong>caractère amortissable ou non</strong>.</p>
+<p><em>(CT = Court Terme, LT = Long Terme ; PVCT = Plus-Value à Court Terme, MVCT = Moins-Value à Court Terme, PVLT = Plus-Value à Long Terme, MVLT = Moins-Value à Long Terme.)</em></p>
+<table>
+<thead>
+<tr>
+<th>Durée de détention</th>
+<th>Bien amortissable</th>
+<th>Bien non amortissable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt; 2 ans</td>
+<td>PVCT / MVCT</td>
+<td>PVCT / MVCT</td>
+</tr>
+<tr>
+<td>≥ 2 ans</td>
+<td>PVCT (à hauteur des amortissements) + PVLT au-delà, ou MVCT</td>
+<td>PVLT ou MVLT</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Ensemble immobilier</strong> : distinguer bâtiment (amortissable) et terrain (non amortissable), chacun son régime ; ventiler le prix si global.</li>
+<li><strong>Titres du portefeuille</strong> : relèvent des PV professionnelles CT/LT s'ils sont à l'actif immobilisé, affectés à l'activité (participation ou placement).</li>
+</ul>
+<h3>Court terme</h3>
+<ul>
+<li>Compensation générale PV/MV CT de l'exercice.</li>
+<li><strong>PV nette CT</strong> → résultat ordinaire imposable ; possibilité d'<strong>étalement sur 3 ans</strong> (sauf entreprise en fin d'activité).</li>
+<li><strong>MV nette CT</strong> → s'impute sur les bénéfices d'exploitation ; si insuffisants, devient un déficit d'exploitation imputable selon le droit commun.</li>
+</ul>
+<h3>Long terme</h3>
+<ul>
+<li>Compensation générale PV/MV LT de l'exercice, possible avec MVLT des 10 exercices antérieurs non imputées, ou déficits reportables.</li>
+<li><strong>PV nette LT</strong> → taxée à <strong>12,8 %</strong> + prélèvements sociaux.</li>
+<li><strong>MV nette LT</strong> → imputable uniquement sur les PVLT des 10 exercices suivants (règles particulières en cas de cession/cessation d'activité).</li>
+</ul>
+<h3>Trois dispositifs d'exonération (cumulables entre eux selon l'ordre spécifique → général)</h3>
+<table>
+<thead>
+<tr>
+<th>Dispositif</th>
+<th>Condition d'activité</th>
+<th>Seuils</th>
+<th>Portée exonération</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Liée aux recettes</strong></td>
+<td>Activité ≥ 5 ans</td>
+<td>Vente/logement : total &lt; 250 000 € (partiel 250-350k) ; Services : &lt; 90 000 € (partiel 90-126k)</td>
+<td>IR <strong>et</strong> prélèvements sociaux</td>
+</tr>
+<tr>
+<td><strong>Liée à la valeur des actifs cédés (VAC)</strong> — sur option</td>
+<td>Activité ≥ 5 ans</td>
+<td>Totale si VAC ≤ 500 000 € ; partielle si 500k-1M€</td>
+<td>IR <strong>et</strong> prélèvements sociaux</td>
+</tr>
+<tr>
+<td><strong>Départ à la retraite</strong> — sur option</td>
+<td>Activité ≥ 5 ans</td>
+<td>— (cession totale entreprise/parts)</td>
+<td>IR <strong>seulement</strong> (pas les prélèvements sociaux)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Formules de calcul partiel :</strong></p>
+<ul>
+<li>Recettes logement : PV × (350 000 − recettes) ÷ 100 000</li>
+<li>Recettes services : PV × (126 000 − recettes) ÷ 36 000</li>
+<li>VAC : PV × (1 000 000 − VAC) ÷ 500 000</li>
+</ul>
+<p><strong>Exonération retraite — conditions cumulatives :</strong> entreprise PME, cédant ne détenant pas &gt; 50 % dans la société cessionnaire (à la cession et 3 ans après), cessation de fonctions + retraite dans les 2 ans.</p>
+<p><strong>Définition PME (UE) :</strong> &lt; 250 salariés, CA (Chiffre d'Affaires) ≤ 50 M€ ou bilan ≤ 43 M€, capital détenu à &lt; 25 % par des entreprises ne remplissant pas ces critères.</p>
+<hr>
+<h2>3. Imposition du résultat — IS</h2>
+<h3>Règles d'assiette (spécificités BIC — Bénéfices Industriels et Commerciaux)</h3>
+<ul>
+<li>Rémunération dirigeants : déductible si non exagérée et travail effectif.</li>
+<li>Taxes véhicules de tourisme : <strong>non déductibles</strong>.</li>
+<li>Résultats non distribués de filiales à l'IR : à réintégrer.</li>
+<li>Frais d'acquisition de titres de participation : incorporés au prix de revient, amortissables sur <strong>5 ans</strong> (amortissement dérogatoire).</li>
+<li><strong>Déficit fiscal</strong> : imputable sur le bénéfice de l'exercice suivant dans la limite de <strong>1 M€ + 50 %</strong> du bénéfice excédant ce seuil ; report illimité dans le temps aux mêmes conditions. Option carry-back possible (imputation sur bénéfice de l'exercice précédent, limite 1 M€), à exercer au titre de l'exercice déficitaire.</li>
+</ul>
+<h3>Taux d'IS</h3>
+<ul>
+<li><strong>Taux réduit PME</strong> (CA HT — Hors Taxes — ≤ 10 M€) : <strong>15 %</strong> sur les premiers 42 500 € de bénéfice (conditions : capital libéré, détenu ≥ 75 % par des personnes physiques).</li>
+<li><strong>Taux normal</strong> : <strong>25 %</strong>.</li>
+</ul>
+<h3>Recouvrement</h3>
+<ul>
+<li>4 acomptes trimestriels + solde de régularisation.</li>
+<li>Dispense d'acomptes si IS de l'exercice précédent ≤ 3 000 €.</li>
+</ul>
+<h3>Régimes de participations (cumulables)</h3>
+<ul>
+<li><strong>Mère-fille</strong> : exonération des dividendes reçus si participation ≥ 5 % pendant ≥ 2 ans, sauf quote-part de frais et charges (QPFC) de <strong>5 %</strong> réintégrée.</li>
+<li><strong>Intégration fiscale</strong> (sur option) : filiales à l'IS détenues à ≥ 95 %, compensation des résultats du groupe.</li>
+</ul>
+<hr>
+<h2>4. Droits d'enregistrement</h2>
+<p>Dus lors de création, transformation, dissolution de société, et cession d'immeuble/fonds de commerce/droits sociaux. Base = prix stipulé (+ charges) ou valeur vénale si supérieure.</p>
+<h3>Création de société — apports purs et simples</h3>
+<table>
+<thead>
+<tr>
+<th>Nature de l'apport</th>
+<th>Vers société IR / entre sociétés IS</th>
+<th>Vers société IS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numéraire</td>
+<td>Gratuit</td>
+<td>Gratuit</td>
+</tr>
+<tr>
+<td>Immeubles/droits immobiliers</td>
+<td>Gratuit</td>
+<td><strong>5 %</strong></td>
+</tr>
+<tr>
+<td>Fonds de commerce, clientèle, bail</td>
+<td>Gratuit</td>
+<td>Barème vente de fonds, ou gratuit si conservation 3 ans</td>
+</tr>
+<tr>
+<td>Actif immobilisé professionnel</td>
+<td>Gratuit</td>
+<td><strong>5 %</strong>, ou gratuit si conservation 3 ans</td>
+</tr>
+<tr>
+<td>Matériels, créances, droits sociaux</td>
+<td>Gratuit</td>
+<td>Gratuit</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Apports à titre onéreux</strong> (compte courant, prise en charge de passif) → assimilés à des cessions.</li>
+<li><strong>Apport d'entreprise individuelle avec prise en charge du passif</strong> → gratuit si conservation des titres 3 ans.</li>
+</ul>
+<h3>Transformation de société</h3>
+<ul>
+<li>Sans changement de régime fiscal : droit fixe <strong>125 €</strong>.</li>
+<li>IR → IS ou IS → IR : droit fixe <strong>125 €</strong> (sauf capital constitué de fonds de commerce/immeubles pro → droit de mutation, ou gratuit si conservation 3 ans).</li>
+</ul>
+<h3>Cession — droits selon la nature du bien</h3>
+<table>
+<thead>
+<tr>
+<th>Bien cédé</th>
+<th>Droit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Immeuble</td>
+<td>Droit de mutation (taux normal ou réduit si neuf)</td>
+</tr>
+<tr>
+<td>Fonds de commerce / clientèle / bail</td>
+<td>Barème progressif : 0 % ≤ 23k€ ; 3 % de 23k à 200k€ ; 5 % &gt; 200k€ (1 % de 23k-107k en zones prioritaires)</td>
+</tr>
+<tr>
+<td>Parts sociales (SNC – Société en Nom Collectif, SC – Société Civile, SARL – Société à Responsabilité Limitée, EURL – Entreprise Unipersonnelle à Responsabilité Limitée)</td>
+<td><strong>3 %</strong> après abattement de 23 000 € (prorata des parts cédées)</td>
+</tr>
+<tr>
+<td>Actions</td>
+<td><strong>0,1 %</strong> (non exigible si cotées et cession non constatée par acte ; exo groupe)</td>
+</tr>
+<tr>
+<td>Titres non cotés société à prépondérance immobilière</td>
+<td><strong>5 %</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Cession de fonds de commerce aux salariés/proches : abattement de 500 000 €.</li>
+<li>Cession de parts d'une société non-IS &lt; 3 ans après apport en nature → droits de l'apport d'origine.</li>
+</ul>
+<h3>Autres opérations</h3>
+<ul>
+<li>Augmentation de capital en numéraire/incorporation de réserves : gratuit ; en nature : régime des apports.</li>
+<li>Fusion : gratuit si régime spécial, sinon régime de création.</li>
+<li>Liquidation : droit de partage <strong>2,50 %</strong> sur acquêts sociaux ; biens apportés purs et simples exonérés si repris par l'apporteur, sinon droits de mutation selon la nature.</li>
+</ul>
+<hr>
+<h2>5. Reprise des titres d'une société — aspects juridiques</h2>
+<h3>Lettre d'intention (LOI – Letter Of Intent)</h3>
+<ul>
+<li>Première étape écrite, émane généralement du <strong>repreneur</strong>.</li>
+<li>Pas de forme imposée ; ne contraint pas à conclure.</li>
+<li>Contenu type : état des négociations, prix en fourchette, conditions suspensives, durée/confidentialité des négociations, obligation de bonne foi.</li>
+<li>Souvent une <strong>clause de sincérité/exclusivité</strong> (interdiction de négocier en parallèle).</li>
+</ul>
+<h3>Protocole d'accord (= promesse synallagmatique / compromis)</h3>
+<ul>
+<li>Acte juridique majeur <strong>avant le closing</strong>, souvent préalable à audit/financement/agréments.</li>
+<li>Rédigé par les deux parties ; pas de forme imposée ; peut être scindé en plusieurs protocoles/annexes.</li>
+</ul>
+<p><strong>Contenu :</strong></p>
+<ul>
+<li>Prix, modalités de paiement, garanties, crédit vendeur, clause de révision de prix, clause de complément de prix.</li>
+<li>Conditions suspensives (financement, autorisations, audit, purge des droits des salariés…).</li>
+<li>Date de transfert de propriété/jouissance, agrément des associés.</li>
+<li>Organisation des audits (comptable, juridique, fiscal, social, commercial).</li>
+<li>Base des documents transactionnels (GAP – Garantie d'Actif et de Passif, acte de cession, pacte d'actionnaires).</li>
+<li><strong>Gestion de la période intérimaire</strong> : le cédant s'interdit certains actes sans accord du repreneur (embauche, hausse de salaires, investissements, emprunts, distribution de dividendes, cession d'actifs/filiales…).</li>
+</ul>
+<p><strong>Clause d'earn-out</strong> : fractionnement du paiement, une partie du prix indexée sur les performances futures de la cible (critères comptables précis).</p>
+<h3>Closing</h3>
+<ul>
+<li>Signature finale des actes : ordre de mouvement (sociétés par actions), protocole, garantie d'actif et de passif, cession de compte courant, clauses de non-concurrence/non-sollicitation.</li>
+<li>Paiement effectué + transfert de propriété des titres.</li>
+<li>Conditions suspensives réalisées ou levées (renonciation par leur bénéficiaire).</li>
+</ul>
+<hr>
+<h2>6. Stratégies et méthodologie — cas pratiques (donation, évaluation, montage holding)</h2>
+<h3>6.1 La donation avant cession (stratégie d'effacement de plus-value)</h3>
+<p><strong>Principe :</strong> un dirigeant qui veut céder son entreprise ET transmettre une partie du produit de cession à ses enfants a intérêt à <strong>inverser l'ordre des opérations</strong>.</p>
+<p><em>(DMTG = Droits de Mutation à Titre Gratuit ; regroupe les droits de donation et de succession.)</em></p>
+<table>
+<thead>
+<tr>
+<th>Ordre classique : céder puis donner</th>
+<th>Ordre optimisé : donner puis céder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Cession → PV taxée (ex. 31 %)</td>
+<td>1. Donation d'une partie des titres (valeur au jour J)</td>
+</tr>
+<tr>
+<td>2. Donation du produit net → droits de donation (DMTG)</td>
+<td>2. Cession par le dirigeant <strong>et</strong> les donataires</td>
+</tr>
+<tr>
+<td><strong>Double taxation</strong> : impôt PV + DMTG</td>
+<td>La donation « efface » la PV : le donataire est réputé avoir acquis les titres à leur valeur au jour de la donation → <strong>PV ≈ 0</strong> à la revente si le prix n'a pas bougé</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exemple (sur une base 100) :</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Cession puis donation</th>
+<th>Donation puis cession</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opération 1</td>
+<td>Cession à 100 → impôt PV (31 %) = 31</td>
+<td>Donation de 100 → droits (20 %) = 20</td>
+</tr>
+<tr>
+<td>Net après op.1</td>
+<td>69</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Opération 2</td>
+<td>Donation de 69 → droits (20 %) = 14</td>
+<td>Cession à 100 → impôt PV = <strong>0</strong></td>
+</tr>
+<tr>
+<td><strong>Net transmis final</strong></td>
+<td><strong>55</strong></td>
+<td><strong>80</strong></td>
+</tr>
+</tbody>
+</table>
+<p>→ Gain net de <strong>25</strong> dans cet exemple simplifié en inversant l'ordre.</p>
+<p><strong>Point de vigilance méthodo :</strong> cette stratégie suppose que la valeur ne varie pas entre la donation et la cession (sinon une PV résiduelle apparaît sur l'écart de valeur).</p>
+<h3>6.2 Barème des droits de donation (DMTG) — abattements et calcul rapide</h3>
+<table>
+<thead>
+<tr>
+<th>Lien de parenté</th>
+<th>Abattement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conjoint / partenaire de PACS</td>
+<td>80 724 €</td>
+</tr>
+<tr>
+<td>Enfant</td>
+<td>100 000 €</td>
+</tr>
+<tr>
+<td>Petit-enfant</td>
+<td>31 865 €</td>
+</tr>
+<tr>
+<td>Arrière-petit-enfant</td>
+<td>5 310 €</td>
+</tr>
+<tr>
+<td>Ascendant</td>
+<td>100 000 €</td>
+</tr>
+<tr>
+<td>Frère et sœur</td>
+<td>15 932 €</td>
+</tr>
+<tr>
+<td>Neveu et nièce</td>
+<td>7 967 €</td>
+</tr>
+<tr>
+<td>Autres</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Formule rapide enfant/ascendant</strong> (P = part nette taxable après abattement) :</p>
+<table>
+<thead>
+<tr>
+<th>Tranche (P)</th>
+<th>Calcul</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>≤ 8 072 €</td>
+<td>P × 0,05</td>
+</tr>
+<tr>
+<td>8 073 – 15 932 €</td>
+<td>(P × 0,10) − 404 €</td>
+</tr>
+<tr>
+<td>15 933 – 552 324 €</td>
+<td>(P × 0,20) − 1 806 €</td>
+</tr>
+<tr>
+<td>552 325 – 902 838 €</td>
+<td>(P × 0,30) − 57 038 €</td>
+</tr>
+<tr>
+<td>902 839 – 1 805 677 €</td>
+<td>(P × 0,40) − 147 322 €</td>
+</tr>
+<tr>
+<td>&gt; 1 805 677 €</td>
+<td>(P × 0,45) − 237 606 €</td>
+</tr>
+</tbody>
+</table>
+<p><em>(barèmes conjoint/PACS légèrement différents ; frère-sœur : 35 % puis 45 % − 2 443 € ; neveu/nièce 55 % ; autres 60 %)</em></p>
+<h3>6.3 Article 150-0 B ter CGI (Code Général des Impôts) — apport-cession avec réinvestissement</h3>
+<ul>
+<li>Apport de titres à une société <strong>IS contrôlée par l'apporteur</strong> → <strong>report d'imposition</strong> (pas sursis) : la PV est constatée mais son imposition est différée.</li>
+<li>Le report tombe (imposition déclenchée) en cas de cession des titres reçus en échange, <strong>sauf</strong> :
+<ul>
+<li>si la <strong>cession par la holding</strong> des titres apportés intervient <strong>plus de 3 ans après l'apport</strong> → report maintenu sans condition ;</li>
+<li>si cession <strong>avant 3 ans</strong> : report maintenu seulement si le produit de cession est <strong>réinvesti à ≥ 50 %</strong> dans le financement d'une activité économique (opérationnelle), dans un délai de 2 ans.</li>
+</ul>
+</li>
+<li>Utilisé notamment pour loger les titres dans une holding <strong>avant</strong> une cession rapide, en réinvestissant une partie du prix (ex. dans une nouvelle activité).</li>
+</ul>
+<h3>6.4 Méthode d'évaluation d'entreprise (comparables transactionnels)</h3>
+<p><strong>Formule générale :</strong></p>
+<blockquote>
+<p><strong>Valeur d'entreprise (VE)</strong> = EBE (Excédent Brut d'Exploitation) ajusté × multiple sectoriel
+<strong>Valeur des titres (VT)</strong> = VE − DFN (Dettes Financières Nettes)</p>
+</blockquote>
+<p><strong>Retraitements courants de l'EBE :</strong></p>
+<ul>
+<li>Rémunération du dirigeant : écart entre rémunération réelle et rémunération « normative » de marché (+ charges sociales si TNS — Travailleur Non Salarié —, art. 62 CGI).</li>
+<li>Avantages en nature non nécessaires à l'activité (véhicules de fonction type Porsche…).</li>
+<li>Loyers de crédit-bail (à retraiter selon le mode de financement retenu pour l'évaluation).</li>
+<li>Coûts futurs prévisibles liés à la transmission (ex. recrutement d'un remplaçant) → <strong>à déduire</strong>.</li>
+</ul>
+<p><strong>Décote</strong> possible : cession minoritaire (ex. 50 % et non 100 %) → décote de l'ordre de 18-20 % sur la valeur globale.</p>
+<h3>6.5 Montage holding de reprise (LBO – Leverage Buy-Out) et régime mère-fille</h3>
+<ul>
+<li>Le repreneur crée une <strong>holding de rachat</strong> qui s'endette pour acquérir les titres de la cible (plutôt qu'un emprunt personnel).</li>
+<li>La dette d'acquisition est remboursée par <strong>remontée de dividendes</strong> de la cible vers la holding.</li>
+<li>Intérêt fiscal : application du régime <strong>mère-fille</strong> (détention ≥ 5 % pendant ≥ 2 ans) → dividendes remontés <strong>exonérés d'IS</strong> dans la holding, sous réserve de la <strong>QPFC de 5 %</strong> réintégrée.</li>
+<li>Avantage majeur vs remboursement par la rémunération personnelle du dirigeant : pas d'IR ni de charges sociales sur les sommes utilisées pour rembourser la dette.</li>
+<li><strong>Capacité d'emprunt (méthode rapide vue en TD)</strong> : environ 6 × (EBE ajusté ÷ 2), sur une durée type de 7 ans.</li>
+<li>⚠️ QPFC spécifique sur les <strong>plus-values de cession de titres de participation</strong> (régime des titres de participation, différent du régime mère-fille sur dividendes) : <strong>12 %</strong>.</li>
+</ul>
+<h3>6.6 Schéma de synthèse — imposition de la PV de cession (particulier)</h3>
+<p><em>(Rappel : PS = Prélèvements Sociaux ; CSG = Contribution Sociale Généralisée, une composante des PS.)</em></p>
+<pre><code>PV brute de cession
+   ↓
+Compensation gains/pertes de l&#39;année
+   ↓
+PV nette (si négative → MV nette, reportable 10 ans sur PV de même nature)
+   ↓
+   ├── DROIT COMMUN (PFU) : 12,8 % (IR) + 17,2 % (PS) = 30 %
+   │     (CSG non déductible, pas d&#39;abattements possibles)
+   │
+   └── OPTION BARÈME PROGRESSIF (0 à 45 %) + PS 17,2 % (CSG déductible 6,8 %)
+         ├── Abattement fixe 500 000 € (dirigeant partant en retraite)
+         └── OU abattement proportionnel pour durée de détention
+               ├── Droit commun : 50 % (&lt; 8 ans) / 65 % (≥ 8 ans)
+               └── Renforcé PME &lt; 10 ans : 65 % (&lt; 8 ans) / 85 % (≥ 8 ans)
+   (abattement fixe et proportionnel NON cumulables)
+</code></pre>
+<h3>6.7 Exemple chiffré complet — calcul de l'impôt sur une PV de cession</h3>
+<p><em>Cas : cession de titres détenus &gt; 8 ans par un dirigeant partant à la retraite, prix de cession 700 000 €, prix d'acquisition 12 000 €, PV brute = 688 000 €.</em></p>
+<p><strong>Option 1 — PFU avec abattement fixe retraite (500 000 €) :</strong></p>
+<ul>
+<li>PS (17,2 %) sur PV brute : 688 000 × 17,2 % = <strong>118 336 €</strong></li>
+<li>PV après abattement fixe : 688 000 − 500 000 = 188 000 €</li>
+<li>IR à 12,8 % : 188 000 × 12,8 % = <strong>24 064 €</strong></li>
+<li><strong>Total fiscalité : 142 400 €</strong></li>
+</ul>
+<p><strong>Option 2 — Barème progressif avec abattement renforcé 85 % (durée ≥ 8 ans) :</strong></p>
+<ul>
+<li>PS (17,2 %) sur PV brute : <strong>118 336 €</strong> (identique, assis sur la PV brute)</li>
+<li>PV nette après abattement 85 % : 688 000 × 15 % = 103 200 €</li>
+<li>IRPP (Impôt sur le Revenu des Personnes Physiques), TMI (Tranche Marginale d'Imposition) 41 %, 2 parts : (103 200 × 0,41) − (21 808,75 × 2) ≈ <strong>12 214 €</strong></li>
+<li><strong>Total fiscalité : 130 550 €</strong></li>
+</ul>
+<p>→ Ici, l'<strong>option barème progressif</strong> (avec abattement renforcé) est plus favorable que le PFU + abattement fixe. <strong>Il faut donc toujours comparer les deux options</strong> au cas par cas — c'est souvent l'objet même de l'exercice au partiel.</p>
+<p><em>(Barème IRPP &quot;calcul rapide&quot; 2023 utilisé dans l'exemple — vérifie les seuils actualisés si l'énoncé de ton partiel en donne un différent.)</em></p>
+<hr>
+<h2>⚠️ Chiffres clés à retenir absolument</h2>
+<ul>
+<li>Abattement dirigeant retraite : <strong>500 000 €</strong></li>
+<li>Taux IS réduit PME : <strong>15 %</strong> jusqu'à 42 500 €, sinon <strong>25 %</strong></li>
+<li>Taux PVLT professionnelles (entreprises IR) : <strong>12,8 %</strong></li>
+<li>Régime mère-fille : participation ≥ <strong>5 %</strong>, ≥ <strong>2 ans</strong>, quote-part <strong>5 %</strong></li>
+<li>Intégration fiscale : détention ≥ <strong>95 %</strong></li>
+<li>Droits cession parts sociales : <strong>3 %</strong> après abattement de <strong>23 000 €</strong></li>
+<li>Droits cession actions : <strong>0,1 %</strong></li>
+<li>Droit de partage (liquidation) : <strong>2,50 %</strong></li>
+<li>Exonération recettes : services &lt; <strong>90 000 €</strong>, vente/logement &lt; <strong>250 000 €</strong></li>
+<li>Exonération VAC : totale si ≤ <strong>500 000 €</strong>, partielle jusqu'à <strong>1 000 000 €</strong></li>
+<li>PFU décomposé : <strong>12,8 %</strong> (IR) + <strong>17,2 %</strong> (PS) = <strong>30 %</strong></li>
+<li>Abattement donation enfant : <strong>100 000 €</strong> ; conjoint/PACS : <strong>80 724 €</strong></li>
+<li>Régime mère-fille : QPFC <strong>5 %</strong> (dividendes) — QPFC titres de participation (PV) : <strong>12 %</strong></li>
+<li>Art. 150-0 B ter : réinvestissement ≥ <strong>50 %</strong> du prix, dans un délai de <strong>2 ans</strong>, si cession &lt; <strong>3 ans</strong> après l'apport</li>
+</ul>
+<hr>
+<p><em>Fiche enrichie avec les cas pratiques DUPONT et &quot;Céder et reprendre&quot; (supports 2023). Les données chiffrées (barèmes IRPP, DMTG, taux d'IS historiques) doivent être vérifiées/actualisées si ton énoncé de partiel fournit ses propres barèmes.</em></p>
+
+</body></html>

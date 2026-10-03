@@ -1,0 +1,353 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fiche Droit des successions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column, sticky section nav, article references set in mono like a code civil margin note */
+:root{
+  --bg:#f6f4f1; --surface:#ffffff; --fg:#231c17; --muted:#6a5d53; --line:#e2dbd3;
+  --accent:#7a4b2a; --accent-soft:#f3e8de; --plus:#1f6b45; --warn-bg:#fff4dc; --warn-fg:#7a5200;
+  --f-display:"Source Serif 4", Georgia, serif;
+  --f-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme:light; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#171310; --surface:#201a16; --fg:#ece4dc; --muted:#a8998c; --line:#3a3029;
+  --accent:#d9a07a; --accent-soft:#33261d; --plus:#7fd3a5; --warn-bg:#2f2614; --warn-fg:#f0c86a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#171310; --surface:#201a16; --fg:#ece4dc; --muted:#a8998c; --line:#3a3029;
+  --accent:#d9a07a; --accent-soft:#33261d; --plus:#7fd3a5; --warn-bg:#2f2614; --warn-fg:#f0c86a; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--f-body)}
+.wrap{max-width:52rem;margin:0 auto;padding-inline:16px;padding-block:0 4rem}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(1.9rem,5vw,2.6rem)}
+h2{font-size:1.6rem}
+h3{font-size:1.18rem;margin-top:.6rem}
+p{margin:0}
+.eyebrow{font:600 .75rem/1 var(--f-body);letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+header.hero{padding-block:2.5rem 1.5rem;display:flex;flex-direction:column;gap:.75rem;border-bottom:1px solid var(--line)}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:.25rem;overflow-x:auto;padding-block:.5rem}
+nav.toc a{font:500 .9rem var(--f-body);color:var(--fg);text-decoration:none;padding:.35rem .7rem;border-radius:6px;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--accent-soft);color:var(--accent);outline:none}
+section.part{display:flex;flex-direction:column;gap:1.1rem;padding-top:2rem}
+.partHead{display:flex;flex-direction:column;gap:.35rem;border-top:3px solid var(--accent);padding-top:1rem}
+ul,ol{margin:0;padding-left:1.25rem;display:flex;flex-direction:column;gap:.3rem}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.art{font-family:var(--f-mono);font-size:.82em;color:var(--accent);white-space:nowrap}
+.warn{background:var(--warn-bg);color:var(--warn-fg);border-radius:6px;padding:.7rem .9rem;font-size:.95rem}
+.key{background:var(--accent-soft);border-radius:6px;padding:.8rem 1rem}
+.key strong:first-child{color:var(--accent)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{padding:.5rem .75rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font:600 .75rem var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td.q{font-family:var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+.steps{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;font-size:.92rem}
+.steps span{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.3rem .6rem}
+.steps i{color:var(--muted);font-style:normal}
+details{background:var(--surface);border:1px solid var(--line);border-radius:8px}
+details>summary{cursor:pointer;padding:.75rem 1rem;font-weight:600;color:var(--accent);list-style:none}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"▸ "} details[open]>summary::before{content:"▾ "}
+details>.body{padding:0 1rem 1rem;display:flex;flex-direction:column;gap:.6rem}
+.ex{display:flex;flex-direction:column;gap:.6rem}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+</style></head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-jurpat_fiches">← Gestion juridique du patrimoine</a><span>· Classeur de révision</span></nav>
+
+<div class="wrap">
+<header class="hero">
+  <span class="eyebrow">Gestion juridique du patrimoine · C. Gegout · Cours du 3 oct.</span>
+  <h1>Droit des successions : conjugalité et dévolution légale</h1>
+  <p class="muted">Fiche tirée du support de cours (JUNIA, 5ᵉ année). Le support couvre le chapitre préliminaire et le chapitre I du titre 1, jusqu'à l'article 758-5. Les libéralités, le rapport et la réduction, puis la fiscalité (titre 2) n'y figurent pas encore.</p>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <a href="#intro">Introduction</a>
+  <a href="#conj">1 · Conjugalité</a>
+  <a href="#heritier">2 · Être héritier</a>
+  <a href="#principes">3 · Principes</a>
+  <a href="#sans">4 · Sans conjoint</a>
+  <a href="#avec">5 · Avec conjoint</a>
+  <a href="#cas">6 · Cas pratiques</a>
+  <a href="#pieges">7 · À retenir</a>
+</nav>
+
+<section id="intro" class="part">
+  <div class="partHead"><span class="eyebrow">Introduction</span><h2>Le cadre</h2></div>
+  <ul>
+    <li>La succession et la donation sont des modes d'acquisition de la propriété <span class="art">art. 711</span>.</li>
+    <li>La loi organise la transmission au décès <span class="art">art. 721</span>.</li>
+    <li><strong>Interdiction des pactes sur succession future</strong> : on ne peut ni accepter ni renoncer à la succession d'une personne encore vivante, sauf si la loi le prévoit.</li>
+  </ul>
+  <div class="steps" aria-label="Plan du cours">
+    <span>Ch. préliminaire : conjugalité</span><i>→</i><span>Ch. I : dévolution légale</span><i>→</i><span>Ch. II : libéralités</span><i>→</i><span>Ch. III : rapport et réduction</span><i>→</i><span>Titre 2 : fiscalité</span>
+  </div>
+  <p class="muted">Dévolution légale = la loi désigne les héritiers et leurs parts quand le défunt n'a rien prévu. Le défunt peut aussi organiser sa succession par des libéralités (testament, donation).</p>
+</section>
+
+<section id="conj" class="part">
+  <div class="partHead"><span class="eyebrow">Chapitre préliminaire</span><h2>Modes de conjugalité et avantages matrimoniaux</h2></div>
+
+  <div class="tw"><table>
+    <thead><tr><th>Union</th><th>Définition</th><th>Règles clés</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Concubinage</strong> <span class="art">art. 515-8</span></td><td>Union de fait, vie commune stable et continue, entre personnes de même sexe ou non.</td><td>Différence avec la colocation : la relation intime.</td></tr>
+      <tr><td><strong>PACS</strong> <span class="art">art. 515-1 s.</span></td><td>Contrat entre deux majeurs pour organiser leur vie commune (créé en 1999).</td><td>Devant notaire, ou en mairie depuis le 1ᵉʳ novembre 2017. Régime par défaut : <strong>séparation de biens</strong>. Option : <strong>indivision</strong> pour moitié, sauf les biens reçus par succession ou libéralité <span class="art">art. 515-5-2</span>.</td></tr>
+      <tr><td><strong>Mariage</strong></td><td>Libre choix du régime matrimonial par contrat devant notaire.</td><td>Communauté, séparation de biens ou participation aux acquêts.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Les régimes matrimoniaux</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Régime</th><th>Ce qui est commun</th><th>Ce qui reste propre</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Communauté réduite aux acquêts</strong> (régime légal) <span class="art">art. 1400 s.</span></td><td>Tout ce qui est acquis pendant le mariage, gains et salaires compris, y compris les revenus d'un bien propre (ex. loyers d'un appartement acheté avant le mariage).</td><td>Biens possédés avant le mariage ; biens reçus par succession ou libéralité <span class="art">art. 1405</span> ; vêtements et linge personnels <span class="art">art. 1404</span>. Mouvements entre propres et communauté → <strong>récompenses</strong>.</td></tr>
+      <tr><td><strong>Communauté de meubles et acquêts</strong> <span class="art">art. 1498</span></td><td>Les acquêts + tous les meubles (possédés au mariage ou reçus ensuite par succession ou libéralité, sauf clause contraire).</td><td>Immeubles reçus par succession ou libéralité. Ancien régime légal : mariages sans contrat avant le 1ᵉʳ juillet 1966.</td></tr>
+      <tr><td><strong>Communauté universelle</strong> <span class="art">art. 1526</span></td><td>Tous les biens, meubles ou immeubles, acquis avant ou pendant le mariage.</td><td>Seulement les biens de l'art. 1404, sauf clause contraire.</td></tr>
+      <tr><td><strong>Séparation de biens</strong> <span class="art">art. 1536 s.</span></td><td>Rien. Un bien acheté ensemble est en indivision <span class="art">art. 815 s.</span></td><td>Chacun reste propriétaire de ce qu'il achète.</td></tr>
+      <tr><td><strong>Participation aux acquêts</strong> <span class="art">art. 1569 s.</span></td><td>Régime hybride : fonctionne comme une séparation de biens…</td><td>…mais à la dissolution, chacun reçoit la moitié des acquêts constatés dans le patrimoine de l'autre.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Changer ou modifier son régime</h3>
+  <div class="steps">
+    <span>Intérêt de la famille</span><i>→</i><span>Acte notarié</span><i>→</i><span>Enfants informés par LRAR, créanciers par annonce légale</span><i>→</i><span>3 mois pour s'opposer</span><i>→</i><span>Pas d'opposition : certificat de non-opposition, mention sur l'acte de mariage</span>
+  </div>
+  <p>Si un enfant ou un créancier s'oppose, le changement doit être <strong>homologué par le juge</strong>.</p>
+  <div class="key"><strong>Au décès, on liquide d'abord la communauté.</strong> Le conjoint survivant reprend sa moitié ; seule l'autre moitié entre dans la succession.</div>
+
+  <h3>Les avantages matrimoniaux</h3>
+  <p>Liquidés <strong>avant</strong> la succession et <strong>pas considérés comme des donations</strong>.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Avantage</th><th>Principe</th><th>Quand il joue</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Prélèvement moyennant indemnité</strong></td><td>L'époux prélève en priorité un bien commun, en contrepartie d'une indemnité prise en compte dans la liquidation.</td><td>À la liquidation de la communauté.</td></tr>
+      <tr><td><strong>Préciput</strong></td><td>L'époux prélève un bien commun, prévu au contrat de mariage, <strong>sans indemnité</strong>.</td><td>Seulement en cas de survie de l'époux (jamais en cas de divorce).</td></tr>
+      <tr><td><strong>Stipulation de parts inégales</strong></td><td>Déroge au partage de la communauté par moitié.</td><td>Quelle que soit la cause de dissolution.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="warn"><strong>Cas typique :</strong> passage à la communauté universelle avec <strong>attribution intégrale au conjoint survivant</strong> (ne vaut qu'en cas de dissolution par décès). Le survivant reçoit tout, les autres héritiers rien : protection maximale, mais lourdes conséquences fiscales au décès du second époux.</div>
+</section>
+
+<section id="heritier" class="part">
+  <div class="partHead"><span class="eyebrow">Chapitre I · Introduction</span><h2>Être héritier et exercer son option</h2></div>
+
+  <div class="grid2">
+    <div class="box"><strong>Conditions pour hériter</strong>
+      <ul>
+        <li>La succession s'ouvre par la mort <span class="art">art. 720</span>.</li>
+        <li><strong>Exister</strong> : être vivant, ou conçu et né viable <span class="art">art. 725</span>.</li>
+        <li><strong>Ne pas être indigne</strong> <span class="art">art. 726 à 729</span>.</li>
+      </ul>
+    </div>
+    <div class="box"><strong>Preuve de la qualité d'héritier</strong>
+      <ul>
+        <li>Par tout moyen, notamment un <strong>acte de notoriété</strong> établi par notaire.</li>
+        <li>Le <strong>certificat d'hérédité</strong> de mairie est moins fiable : il repose sur les seules déclarations du demandeur.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>L'indignité</h3>
+  <div class="tw"><table>
+    <thead><tr><th></th><th>Indignité de plein droit <span class="art">art. 726</span></th><th>Indignité facultative <span class="art">art. 727</span></th></tr></thead>
+    <tbody>
+      <tr><td>Qui ?</td><td>Condamné à une <strong>peine criminelle</strong> pour avoir donné ou tenté de donner la mort au défunt, ou pour violences ayant entraîné sa mort sans intention de la donner.</td><td>Condamné à une <strong>peine correctionnelle</strong> pour les mêmes faits ; faux témoignage contre le défunt en procédure criminelle ; abstention volontaire d'empêcher un crime ou délit mortel ; dénonciation calomnieuse passible d'une peine criminelle. Aussi l'auteur décédé avant toute action publique (faits 1° et 2°).</td></tr>
+      <tr><td>Comment ?</td><td>Automatique.</td><td>Prononcée par le tribunal à la demande d'un héritier, dans les <strong>6 mois</strong> du décès ou de la condamnation si elle est postérieure <span class="art">art. 727-1</span>. Sans héritier : ministère public.</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li><strong>Pardon</strong> : le défunt peut maintenir l'indigne dans ses droits par une déclaration en forme testamentaire, ou lui faire une libéralité universelle ou à titre universel <span class="art">art. 728</span>.</li>
+    <li>L'indigne doit <strong>restituer les fruits et revenus</strong> perçus depuis l'ouverture <span class="art">art. 729</span>.</li>
+  </ul>
+
+  <h3>Les trois options de l'héritier</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Option</th><th>Effet</th><th>Quand la conseiller</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Acceptation pure et simple</strong> <span class="art">art. 782 s.</span></td><td>Tout l'actif et tout le passif, même inconnu. Expresse (acte) ou tacite (payer les factures du défunt, mettre sa maison en vente).</td><td>Actif supérieur au passif.</td></tr>
+      <tr><td><strong>Acceptation à concurrence de l'actif net</strong> <span class="art">art. 787</span></td><td>L'héritier ne répond du passif que dans la limite de l'actif. Formalisme lourd : inventaires, publications légales, coût élevé.</td><td>Doute sur le passif, par exemple un défunt chef d'entreprise.</td></tr>
+      <tr><td><strong>Renonciation</strong> <span class="art">art. 804 s.</span></td><td>L'héritier n'a aucun droit dans la succession.</td><td>Passif supérieur à l'actif.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="steps" aria-label="Délais d'option">
+    <span>Décès</span><i>→</i><span><strong>4 mois</strong> de réflexion : personne ne peut forcer l'héritier <span class="art">art. 771</span></span><i>→</i><span>Sommation par huissier (héritier, créancier ou État)</span><i>→</i><span><strong>2 mois</strong> pour choisir ou demander un délai au juge</span><i>→</i><span>Silence : <strong>acceptation pure et simple</strong></span>
+  </div>
+  <p>Sans sommation, l'héritier a <strong>10 ans</strong> pour opter. Passé ce délai, il est réputé <strong>renonçant</strong>.</p>
+
+  <h3>Le conjoint successible</h3>
+  <p>C'est le conjoint survivant <strong>non divorcé</strong> <span class="art">art. 732</span>, même séparé de fait ou en instance de divorce. Pour l'écarter sans divorcer, il faut un <strong>testament</strong>, de préférence authentique pour le priver aussi du droit viager au logement <span class="art">art. 764</span>.</p>
+</section>
+
+<section id="principes" class="part">
+  <div class="partHead"><span class="eyebrow">Chapitre I · I</span><h2>Les quatre principes de la dévolution</h2></div>
+  <p class="muted">L'idée directrice est l'égalité : non pas des parts identiques, mais des correctifs pour les situations inégalitaires.</p>
+
+  <h3>A. L'ordre <span class="art">art. 734</span></h3>
+  <div class="tw"><table>
+    <thead><tr><th>Ordre</th><th>Héritiers (en l'absence de conjoint successible)</th></tr></thead>
+    <tbody>
+      <tr><td class="q">1ᵉʳ</td><td>Les enfants et leurs descendants</td></tr>
+      <tr><td class="q">2ᵉ</td><td>Les père et mère, les frères et sœurs et leurs descendants (ascendants et collatéraux <em>privilégiés</em>)</td></tr>
+      <tr><td class="q">3ᵉ</td><td>Les ascendants autres que les père et mère (ascendants <em>ordinaires</em>)</td></tr>
+      <tr><td class="q">4ᵉ</td><td>Les collatéraux autres que frères, sœurs et leurs descendants (collatéraux <em>ordinaires</em>)</td></tr>
+    </tbody>
+  </table></div>
+  <p>Chaque ordre <strong>exclut les suivants</strong> : s'il existe un héritier du 1ᵉʳ ordre, on s'arrête là.</p>
+
+  <h3>B. Le degré</h3>
+  <div class="grid2">
+    <div class="box"><strong>Ligne directe</strong><p>On descend les uns des autres : un degré par génération (enfant 1ᵉʳ degré, petit-enfant 2ᵉ).</p></div>
+    <div class="box"><strong>Ligne collatérale</strong><p>On remonte à l'auteur commun puis on redescend. Exemple : frère 2ᵉ degré, oncle 3ᵉ, cousin germain 4ᵉ.</p></div>
+  </div>
+  <p>Dans un même ordre, le plus proche en degré exclut le plus éloigné ; à degré égal, partage par parts égales.</p>
+
+  <h3>C. La fente <span class="art">art. 747</span></h3>
+  <ul>
+    <li>Quand la succession revient aux <strong>ascendants</strong> ou aux <strong>collatéraux</strong>, elle se divise <strong>par moitié</strong> : ligne paternelle / ligne maternelle.</li>
+    <li>Elle joue toujours dans les <strong>3ᵉ et 4ᵉ ordres</strong>. Elle est exclue pour les descendants et pour les frères et sœurs et leurs descendants.</li>
+    <li>Dans chaque ligne, le plus proche en degré l'emporte : la fente <strong>neutralise la priorité du degré</strong> entre les deux lignes.</li>
+    <li>Si une ligne est vide, l'autre ligne recueille tout (à l'intérieur du même ordre).</li>
+  </ul>
+  <div class="box"><strong>Exemple du cours</strong><p>3ᵉ ordre. Côté paternel, seul un arrière-grand-père survit (3ᵉ degré) ; côté maternel, la grand-mère (2ᵉ degré). Grâce à la fente, chacun reçoit <strong>la moitié</strong>, même si la grand-mère est plus proche.</p></div>
+  <p><strong>Fente spéciale (adoption simple)</strong> <span class="art">art. 368-1</span> : si l'adopté meurt sans descendant ni conjoint, les biens donnés par l'adoptant ou recueillis dans sa succession retournent à l'adoptant ou à ses descendants ; les biens reçus à titre gratuit des parents d'origine retournent à la famille d'origine ; le surplus se partage par moitié entre famille d'origine et famille adoptive.</p>
+
+  <h3>D. La représentation <span class="art">art. 751 à 755</span></h3>
+  <p>Fiction juridique qui appelle les représentants aux droits du représenté. Elle écarte la règle du degré et fait raisonner <strong>par souche</strong> : le petit-enfant hérite à la place de son parent.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Question</th><th>Réponse</th></tr></thead>
+    <tbody>
+      <tr><td>Qui peut être représenté ?</td><td>Le <strong>prédécédé</strong>, l'<strong>indigne</strong> (même vivant) <span class="art">art. 755</span> et le <strong>renonçant</strong> <span class="art">art. 754</span>.</td></tr>
+      <tr><td>1ᵉʳ ordre</td><td>À l'infini en ligne directe descendante <span class="art">art. 752</span>.</td></tr>
+      <tr><td>2ᵉ ordre</td><td>En faveur des descendants des frères et sœurs, à l'infini <span class="art">art. 752-2</span>.</td></tr>
+      <tr><td>3ᵉ et 4ᵉ ordres</td><td><strong>Jamais</strong> : pas de représentation des ascendants <span class="art">art. 752-1</span>, ni des collatéraux ordinaires.</td></tr>
+      <tr><td>Partage</td><td>Par souche, puis subdivision de souche, puis <strong>par tête</strong> à l'intérieur de la souche <span class="art">art. 753</span>.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">En cas de représentation d'un renonçant, les donations qu'il a reçues s'imputent sur la réserve qui lui serait revenue, sauf volonté contraire du disposant <span class="art">art. 754</span>.</p>
+</section>
+
+<section id="sans" class="part">
+  <div class="partHead"><span class="eyebrow">Chapitre I · II</span><h2>Succession sans conjoint survivant</h2></div>
+
+  <h3>Égalité des enfants <span class="art">art. 735</span></h3>
+  <p>Aucune distinction de sexe, de primogéniture ni d'union : enfants issus du mariage, hors mariage ou adultérins ont les mêmes droits.</p>
+  <ul>
+    <li><strong>Enfant adultérin</strong> : il ne recevait que la moitié de sa part avant la <strong>loi du 3 décembre 2001</strong> (en vigueur le 1ᵉʳ juillet 2002).</li>
+    <li><strong>Filiation</strong> : la mère est celle qui accouche (sauf accouchement sous X). Le père est présumé être le mari si la mère est mariée ; sinon il doit reconnaître l'enfant, avant ou après la naissance, pour chaque enfant.</li>
+    <li><strong>Adoption simple</strong> : l'adopté hérite de sa famille d'origine <strong>et</strong> de sa famille adoptive. <strong>Adoption plénière</strong> : de sa famille adoptive seulement. Dans les deux cas, mêmes droits que les autres enfants.</li>
+    <li><strong>Enfant incestueux</strong> : la filiation ne peut être établie qu'à l'égard d'un seul parent <span class="art">art. 310-2</span>.</li>
+  </ul>
+
+  <h3>Le 2ᵉ ordre : parents, frères et sœurs</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Survivants (sans postérité)</th><th>Partage</th><th>Article</th></tr></thead>
+    <tbody>
+      <tr><td>Père et mère seuls</td><td>½ chacun</td><td class="q">736</td></tr>
+      <tr><td>Frères et sœurs seuls (parents prédécédés)</td><td>Tout, à l'exclusion des autres parents</td><td class="q">737</td></tr>
+      <tr><td>Père et mère + frères et sœurs</td><td>¼ au père, ¼ à la mère, ½ aux frères et sœurs</td><td class="q">738</td></tr>
+      <tr><td>Un seul parent + frères et sœurs</td><td>¼ au parent, ¾ aux frères et sœurs</td><td class="q">738</td></tr>
+      <tr><td>Un seul parent, sans fratrie, + ascendants de l'autre branche</td><td>½ au parent, ½ aux ascendants de l'autre branche</td><td class="q">738-1</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>Droit de retour des parents</strong> <span class="art">art. 738-2</span> : sans postérité du défunt, les père et mère reprennent les biens qu'ils lui avaient donnés, à hauteur de leur quote-part de l'art. 738 (en nature, sinon en valeur dans la limite de l'actif). Il s'impute d'abord sur leurs droits successoraux.</p>
+  <p>À défaut des deux premiers ordres : ascendants ordinaires <span class="art">art. 739</span>, puis collatéraux ordinaires <span class="art">art. 740</span>.</p>
+</section>
+
+<section id="avec" class="part">
+  <div class="partHead"><span class="eyebrow">Chapitre I · III</span><h2>Succession avec conjoint survivant</h2></div>
+  <div class="tw"><table>
+    <thead><tr><th>Le défunt laisse</th><th>Droits du conjoint</th><th>Article</th></tr></thead>
+    <tbody>
+      <tr><td>Des enfants <strong>tous issus des deux époux</strong></td><td>Au choix : <strong>usufruit de la totalité</strong> ou <strong>¼ en pleine propriété</strong></td><td class="q">757</td></tr>
+      <tr><td>Au moins un enfant <strong>non issu des deux époux</strong></td><td><strong>¼ en pleine propriété</strong>, sans choix</td><td class="q">757</td></tr>
+      <tr><td>Pas de descendant, père et mère vivants</td><td>½ ; ¼ au père, ¼ à la mère</td><td class="q">757-1</td></tr>
+      <tr><td>Pas de descendant, un seul parent vivant</td><td>¾ (la part du parent prédécédé lui revient) ; ¼ au parent</td><td class="q">757-1</td></tr>
+      <tr><td>Ni descendant ni père et mère</td><td><strong>Toute la succession</strong> (les frères et sœurs n'héritent pas)</td><td class="q">757-2</td></tr>
+    </tbody>
+  </table></div>
+  <div class="warn">Le support écrit « le choix entre la totalité de la succession ou un quart » : il s'agit de l'<strong>usufruit</strong> de la totalité, comme le dit l'article 757 cité juste après. Avant la loi du 3 décembre 2001, le conjoint n'avait qu'un quart en usufruit.</div>
+
+  <h3>Les correctifs</h3>
+  <ul>
+    <li><strong>Droit de retour des frères et sœurs</strong> <span class="art">art. 757-3</span> : si le conjoint hérite de tout et que les parents sont prédécédés, les biens de famille reçus des ascendants et <strong>retrouvés en nature</strong> vont pour moitié aux frères et sœurs (ou leurs descendants) issus du parent à l'origine du bien. Indivision avec le conjoint : c'est une <strong>succession anomale</strong>.</li>
+    <li><strong>Créance d'aliments</strong> <span class="art">art. 758</span> : si le conjoint recueille la totalité ou les ¾, les ascendants ordinaires dans le besoin peuvent réclamer une pension à la succession, dans un délai d'<strong>un an</strong>.</li>
+  </ul>
+
+  <h3>L'option du conjoint (usufruit ou pleine propriété)</h3>
+  <ul>
+    <li>Droits <strong>incessibles</strong> tant que l'option n'est pas exercée <span class="art">art. 758-1</span> ; preuve par tout moyen <span class="art">art. 758-2</span>.</li>
+    <li>Tout héritier peut l'inviter par écrit à choisir : sans réponse écrite en <strong>3 mois</strong>, il est réputé avoir choisi l'<strong>usufruit</strong> <span class="art">art. 758-3</span>.</li>
+    <li>S'il meurt sans avoir choisi : <strong>usufruit</strong> <span class="art">art. 758-4</span>.</li>
+    <li>Le quart en pleine propriété se calcule sur une masse de tous les biens existant au décès <span class="art">art. 758-5</span> (le support s'arrête ici).</li>
+  </ul>
+</section>
+
+<section id="cas" class="part">
+  <div class="partHead"><span class="eyebrow">Entraînement</span><h2>Cas pratiques</h2><p class="muted">Cas construits à partir des règles du cours. Cherchez avant d'ouvrir.</p></div>
+
+  <div class="ex"><h3>Cas 1 · Représentation</h3>
+  <p>Le défunt, veuf, avait trois enfants A, B et C. C est prédécédé et laisse deux enfants, C1 et C2. Qui hérite et de quelle part ?</p>
+  <details><summary>Voir la correction</summary><div class="body">
+    <p>1ᵉʳ ordre, représentation à l'infini en ligne directe. Partage par souche : A ⅓, B ⅓, souche C ⅓. Dans la souche C, partage par tête : C1 <strong>⅙</strong>, C2 <strong>⅙</strong>.</p>
+  </div></details></div>
+
+  <div class="ex"><h3>Cas 2 · Le 2ᵉ ordre</h3>
+  <p>Le défunt, célibataire et sans enfant, laisse son père, sa mère et deux sœurs.</p>
+  <details><summary>Voir la correction</summary><div class="body">
+    <p>Art. 738 : père ¼, mère ¼, et la moitié restante aux sœurs, soit <strong>¼ chacune</strong>. Si la mère était prédécédée : père ¼, sœurs ¾ (⅜ chacune).</p>
+  </div></details></div>
+
+  <div class="ex"><h3>Cas 3 · Conjoint et enfants</h3>
+  <p>Le défunt laisse son épouse, deux enfants communs et un enfant d'une première union.</p>
+  <details><summary>Voir la correction</summary><div class="body">
+    <p>Un enfant n'est pas issu des deux époux : l'épouse n'a pas le choix, elle reçoit <strong>¼ en pleine propriété</strong> (art. 757). Les trois enfants se partagent les ¾ restants, soit ¼ chacun (égalité, art. 735).</p>
+  </div></details></div>
+
+  <div class="ex"><h3>Cas 4 · Conjoint, parents et fratrie</h3>
+  <p>Le défunt, sans enfant, laisse son épouse, son père (la mère est décédée) et un frère.</p>
+  <details><summary>Voir la correction</summary><div class="body">
+    <p>Art. 757-1 : le conjoint reçoit ½ plus la part de la mère prédécédée, soit <strong>¾</strong> ; le père <strong>¼</strong>. Le frère n'hérite pas : en présence du conjoint, la fratrie est écartée (sous réserve du droit de retour de l'art. 757-3 si aucun parent ne survit).</p>
+  </div></details></div>
+
+  <div class="ex"><h3>Cas 5 · La fente</h3>
+  <p>Le défunt, sans conjoint, descendant, parent ni fratrie, laisse une tante paternelle (3ᵉ degré) et un cousin germain maternel (4ᵉ degré).</p>
+  <details><summary>Voir la correction</summary><div class="body">
+    <p>4ᵉ ordre, donc fente : moitié ligne paternelle, moitié ligne maternelle. La tante prend <strong>½</strong> et le cousin <strong>½</strong>, malgré la différence de degré. Pas de représentation dans cet ordre.</p>
+  </div></details></div>
+</section>
+
+<section id="pieges" class="part">
+  <div class="partHead"><span class="eyebrow">Avant l'examen</span><h2>À retenir et pièges</h2></div>
+  <div class="tw"><table>
+    <thead><tr><th>Piège</th><th>Bon réflexe</th></tr></thead>
+    <tbody>
+      <tr><td>Oublier la liquidation du régime</td><td>Liquider d'abord la communauté : le conjoint reprend sa moitié, seule l'autre moitié est successorale.</td></tr>
+      <tr><td>Voir un avantage matrimonial comme une donation</td><td>Ce n'en est pas une : il se règle avant la succession.</td></tr>
+      <tr><td>Préciput en cas de divorce</td><td>Impossible : il ne joue qu'en cas de survie.</td></tr>
+      <tr><td>Conjoint séparé ou en instance de divorce</td><td>Il reste successible tant que le divorce n'est pas prononcé, sauf testament contraire.</td></tr>
+      <tr><td>Silence de l'héritier</td><td>Après sommation : 2 mois, puis acceptation pure et simple. Sans sommation : 10 ans, puis renonciation.</td></tr>
+      <tr><td>Fente chez les frères et sœurs</td><td>Non : la fente ne joue que pour les ascendants et collatéraux ordinaires.</td></tr>
+      <tr><td>Représentation d'un grand-parent ou d'un cousin</td><td>Jamais dans les 3ᵉ et 4ᵉ ordres.</td></tr>
+      <tr><td>Choix du conjoint avec un enfant non commun</td><td>Pas de choix : ¼ en pleine propriété uniquement.</td></tr>
+      <tr><td>Conjoint muet après invitation écrite</td><td>3 mois, puis il est réputé avoir choisi l'usufruit.</td></tr>
+      <tr><td>Frères et sœurs face au conjoint seul</td><td>Le conjoint prend tout (757-2), mais les biens de famille en nature reviennent pour moitié à la fratrie (757-3).</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<footer>Fiche établie à partir du support « Droit des successions », C. Gegout, JUNIA Lille, 5ᵉ année (support 2023-2024, 15 pages). Les cas pratiques sont des exercices d'entraînement construits sur les règles du cours.</footer>
+</div>
+</body></html>
