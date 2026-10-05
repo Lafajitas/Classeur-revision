@@ -186,7 +186,25 @@ const CARDS = [
 ["jurpat","2026-10-03","Sans enfant ni conjoint : père, mère et fratrie ?","¼ au père, ¼ à la mère, ½ aux frères et sœurs (art. 738)."],
 ["jurpat","2026-10-03","Conjoint et enfants : ses droits ?","Enfants tous communs : au choix usufruit de la totalité ou ¼ en pleine propriété. Un enfant non commun : ¼ en pleine propriété."],
 ["jurpat","2026-10-03","Conjoint sans enfant, père et mère vivants ?","Conjoint ½, père ¼, mère ¼ (art. 757-1). La fratrie n'hérite pas."],
-["jurpat","2026-10-03","Le conjoint ne répond pas à l'invitation d'opter ?","Après 3 mois sans réponse écrite, il est réputé avoir choisi l'usufruit (758-3)."]
+["jurpat","2026-10-03","Le conjoint ne répond pas à l'invitation d'opter ?","Après 3 mois sans réponse écrite, il est réputé avoir choisi l'usufruit (758-3)."],
+// Ingénierie financière Ch. 2 · 5 oct.
+["ingf","2026-10-05","Quel modèle pour quel flux ?","Dividendes → DDM ; flux disponibles → FCFF ou FCFE ; valeur comptable + revenus résiduels → RIM."],
+["ingf","2026-10-05","Formule de Gordon et ses conditions ?","V₀ = D₁ / (r − g) = D₀(1 + g) / (r − g). Il faut r > g, et ce n'est légitime qu'en phase de maturité (ROE = r)."],
+["ingf","2026-10-05","Formule du modèle H ?","V₀ = D₀(1 + gL)/(r − gL) + D₀·H·(gS − gL)/(r − gL), avec H = moitié de la durée de forte croissance."],
+["ingf","2026-10-05","10 ans de croissance décroissante : que vaut H ?","H = 5 (la moitié de la durée)."],
+["ingf","2026-10-05","Quand préférer les FCF aux dividendes ?","Pas de dividende, dividendes très différents de la capacité à distribuer, ou FCF cohérents avec la rentabilité."],
+["ingf","2026-10-05","Formule du FCFE ?","FCFE = NI − (FCInv − Dep) − WCInv + Net Borrowing, avec Net Borrowing = DR·(FCInv − Dep) + DR·WCInv."],
+["ingf","2026-10-05","À quel taux actualiser FCFE et FCFF ?","FCFE (et dividendes) : coût des fonds propres. FCFF : CMPC."],
+["ingf","2026-10-05","Formule du revenu résiduel ?","RIₜ = Eₜ − r·Bₜ₋₁ = (ROE − r)·Bₜ₋₁ ; V₀ = B₀ + Σ RIₜ / (1+r)ᵗ."],
+["ingf","2026-10-05","Pourquoi un résultat net positif ne prouve pas une création de valeur ?","Le résultat déduit le coût de la dette mais pas celui des fonds propres. Il faut RI > 0."],
+["ingf","2026-10-05","Comparables boursiers ou transactions passées : faut-il ajouter une prime ?","Comparables boursiers : oui, prix = valeur × (1 + prime). Transactions passées : non, la prime est déjà dans les prix."],
+["ingf","2026-10-05","Pourquoi EV/EBITDA est-il apprécié ?","Il ne dépend ni de la structure financière de la cible ni de ses politiques d'amortissement et de provision."],
+["ingf","2026-10-05","Formule de l'EV ?","Capitalisation + actions privilégiées + dette (valeur de marché) − disponibilités."],
+["ingf","2026-10-05","Formule du VWAP (CMPV) ?","VWAP = Σ(Pᵢ × Vᵢ) / Σ Vᵢ. On compare le prix offert aux CMPV 1, 3, 6 et 12 mois."],
+["ingf","2026-10-05","Taux de croissance soutenable ?","g = b × ROE, avec b le taux de rétention des bénéfices."],
+["ingf","2026-10-05","Bêta d'une société non cotée ?","Désendetter le bêta d'un comparable : βU = βE / (1 + D/E), puis réendetter : β′E = βU (1 + D′/E′) avec la structure de la cible."],
+["ingf","2026-10-05","Bêta ajusté ?","β ajusté = 2/3 × β brut + 1/3 × 1 (les bêtas tendent vers 1)."],
+["ingf","2026-10-05","Formule du CMPC ?","WACC = D/(D+E) · rd(1 − T) + E/(D+E) · re, en valeurs de marché."]
 ];
 
 const MATIERES={eval:["Évaluation d'entreprises","--m1"],eco:["Économétrie","--m2"],ingf:["Ingénierie financière","--m3"],bank:["Banque","--m4"],trans:["Transmission d'entreprise","--m5"],port:["Gestion de portefeuille","--m6"],jurpat:["Gestion juridique du patrimoine","--m9"]};
