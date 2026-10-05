@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fiche — Ch. 2 L'évaluation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAFD; --ink:#22223A; --muted:#5E5B70; --plum:#4B2E6F; --plum-soft:#EEE9F6;
+  --rule:#D9D5E2; --amber:#9A5418; --amber-soft:#FBF1E6; --green:#2F6B4F; --green-soft:#EAF4EE;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#16151F; --ink:#E7E4F0; --muted:#A7A2BA; --plum:#C7B2EC; --plum-soft:#2A2340;
+    --rule:#37334A; --amber:#E8A66A; --amber-soft:#33261A; --green:#8FD1AE; --green-soft:#1C2E25;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16151F; --ink:#E7E4F0; --muted:#A7A2BA; --plum:#C7B2EC; --plum-soft:#2A2340;
+  --rule:#37334A; --amber:#E8A66A; --amber-soft:#33261A; --green:#8FD1AE; --green-soft:#1C2E25;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:1.06rem;line-height:1.62}
+h1,h2,h3,h4,nav,th,.tag,.kicker{font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:48px}
+@media (max-width:900px){.wrap{grid-template-columns:1fr;gap:0}nav.toc{position:static!important;border:none!important;padding:0 0 12px!important}}
+header.hero{max-width:1180px;margin:0 auto;padding:56px 20px 36px}
+.hero .kicker{color:var(--plum);font-weight:600;font-size:.95rem;margin:0 0 10px}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;margin:0;letter-spacing:-.02em;max-width:18ch}
+.hero p{color:var(--muted);max-width:62ch;margin:18px 0 0}
+.hero .formula-strip{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+.hero .formula-strip span{background:var(--plum-soft);color:var(--plum);border-radius:999px;padding:6px 14px;font-family:"Instrument Sans",sans-serif;font-size:.9rem;font-weight:600}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);align-self:start;border-left:2px solid var(--rule);padding:4px 0 4px 16px;font-size:.92rem}
+nav.toc ol{list-style:none;margin:0;padding:0}
+nav.toc li{margin:0 0 6px}
+nav.toc a{color:var(--muted);text-decoration:none}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--plum);text-decoration:underline}
+nav.toc ol ol{padding-left:12px;margin-top:6px;font-size:.86rem}
+main{min-width:0;padding-bottom:80px}
+section{padding:8px 0 28px;border-top:1px solid var(--rule)}
+section:first-of-type{border-top:none}
+h2{font-size:1.7rem;margin:28px 0 8px;letter-spacing:-.01em}
+h2 .n{color:var(--plum);margin-right:.4em}
+h3{font-size:1.18rem;margin:26px 0 6px;color:var(--plum)}
+h4{font-size:1rem;margin:18px 0 4px}
+p{margin:8px 0;max-width:74ch}
+ul{padding-left:1.2em;margin:8px 0;max-width:74ch}
+li{margin:4px 0}
+strong{font-weight:600}
+.tbl{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:520px}
+th{text-align:left;font-weight:600;font-size:.85rem;color:var(--muted);border-bottom:2px solid var(--ink);padding:8px 10px}
+td{border-bottom:1px solid var(--rule);padding:8px 10px;vertical-align:top}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.box{border-radius:6px;padding:14px 18px;margin:14px 0;max-width:78ch}
+.box p,.box ul{margin:4px 0}
+.box .tag{display:block;font-size:.85rem;font-weight:700;margin-bottom:4px}
+.key{background:var(--plum-soft)} .key .tag{color:var(--plum)}
+.limit{background:var(--amber-soft)} .limit .tag{color:var(--amber)}
+.ex{background:var(--green-soft)} .ex .tag{color:var(--green)}
+.eq{font-family:"Source Serif 4",serif;font-style:italic;text-align:center;padding:10px;margin:10px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);max-width:74ch}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;max-width:78ch}
+.grid2 .box{margin:0}
+.waves{border-left:2px solid var(--plum);padding-left:18px;margin:14px 0;max-width:74ch}
+.waves div{margin:0 0 14px}
+.waves b{font-family:"Instrument Sans",sans-serif;color:var(--plum)}
+.muted{color:var(--muted);font-size:.93rem}
+details{margin:8px 0;max-width:78ch}
+summary{cursor:pointer;font-family:"Instrument Sans",sans-serif;font-weight:600;color:var(--green)}
+summary:focus-visible,a:focus-visible{outline:2px solid var(--plum);outline-offset:2px}
+.calc{font-variant-numeric:tabular-nums}
+footer{max-width:1180px;margin:0 auto;padding:20px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--rule)}
+@media print{nav.toc{display:none}.wrap{display:block}details{display:block}details>*{display:block}}
+</style>
+</head>
+<body>
+
+
+<header class="hero">
+  <p class="kicker">Ingénierie financière — ISA Lille 2026-2027 — J.-Y. Filbien</p>
+  <h1>Chapitre 2. L'évaluation</h1>
+  <p>Fiche de révision construite à partir des diapositives du cours : approche par les flux (DDM, FCFE, revenu résiduel), approche par les multiples, appréciation du prix de l'offre et paramètres (croissance, MEDAF, bêta, CMPC).</p>
+  <div class="formula-strip">
+    <span>V₀ = D₁ / (r − g)</span>
+    <span>RIₜ = Eₜ − r·Bₜ₋₁</span>
+    <span>Valeur = multiple × fondamental</span>
+    <span>g = b × ROE</span>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc" aria-label="Sommaire">
+  <ol>
+    <li><a href="#intro">1. Deux approches</a></li>
+    <li><a href="#flux">2. Les flux monétaires</a>
+      <ol>
+        <li><a href="#ddm">Dividendes actualisés</a></li>
+        <li><a href="#fcfe">Flux disponibles (FCFE)</a></li>
+        <li><a href="#sens">Analyse de sensibilité</a></li>
+        <li><a href="#rim">Revenu résiduel</a></li>
+      </ol>
+    </li>
+    <li><a href="#mult">3. Les multiples</a>
+      <ol>
+        <li><a href="#mult-def">Définitions</a></li>
+        <li><a href="#comps">Comparables boursiers</a></li>
+        <li><a href="#trans">Transactions passées</a></li>
+        <li><a href="#ev">EV/EBITDA</a></li>
+      </ol>
+    </li>
+    <li><a href="#offre">4. Le prix de l'offre</a></li>
+    <li><a href="#param">5. Les paramètres</a></li>
+    <li><a href="#exos">6. Exercices corrigés</a></li>
+    <li><a href="#retenir">7. À retenir</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ============ 1. INTRO ============ -->
+<section id="intro">
+<h2><span class="n">1</span>Deux approches pour évaluer une cible</h2>
+<p>Une entreprise cible d'une opération de croissance externe se valorise comme n'importe quelle autre entreprise.</p>
+<div class="grid2">
+  <div class="box key"><span class="tag">Actualisation des flux</span><p>Plus précise : les flux futurs sont estimés à partir d'une analyse détaillée des changements postérieurs à la fusion.</p></div>
+  <div class="box limit"><span class="tag">Multiples</span><p>Facile à mettre en œuvre, mais la valeur n'est que relative aux comparables. Ne tient compte ni des changements opérationnels ni des synergies.</p></div>
+</div>
+<div class="tbl"><table>
+<thead><tr><th>Flux retenu</th><th>Modèle</th></tr></thead>
+<tbody>
+<tr><td>Les dividendes</td><td><strong>DDM</strong> (modèle des dividendes actualisés)</td></tr>
+<tr><td>Les flux disponibles</td><td><strong>FCF</strong> : pour l'entreprise (FCFF) ou pour les actionnaires (FCFE)</td></tr>
+<tr><td>Valeur comptable des FP + revenus résiduels</td><td><strong>RIM</strong> (modèle des revenus résiduels)</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- ============ 2. FLUX ============ -->
+<section id="flux">
+<h2><span class="n">2</span>L'approche par les flux monétaires</h2>
+
+<h3 id="ddm">Le modèle des dividendes actualisés (DDM)</h3>
+<p>Si l'horizon de détention tend vers l'infini, la valeur de l'action est la valeur actuelle de tous les dividendes futurs espérés.</p>
+<p class="eq">V₀ = D₁/(1+r) + D₂/(1+r)² + … = Σ Dₜ / (1+r)ᵗ</p>
+<p>Prévoir sur un horizon infini est irréaliste : on découpe la vie de l'entreprise en phases.</p>
+<div class="tbl"><table>
+<thead><tr><th>Phase</th><th>Caractéristiques</th></tr></thead>
+<tbody>
+<tr><td><strong>Croissance</strong></td><td>Forte hausse des bénéfices, marges élevées, réinvestissements lourds (flux négatifs), dividendes nuls ou faibles</td></tr>
+<tr><td><strong>Transition</strong></td><td>La croissance ralentit avec la concurrence et tend vers celle de l'économie ; le réinvestissement baisse, la distribution augmente</td></tr>
+<tr><td><strong>Maturité</strong></td><td>ROE = r ; bénéfices et dividendes stables ; le modèle de Gordon est légitime</td></tr>
+</tbody></table></div>
+<p class="eq">Gordon : V₀ = D₁ / (r − g) = D₀(1 + g) / (r − g), avec r &gt; g</p>
+
+<h4>Modèle à deux étapes</h4>
+<ul>
+<li><strong>Version 1 :</strong> deux paliers de croissance distincts, le second constant.</li>
+<li><strong>Version 2 (modèle H) :</strong> la croissance part d'un taux élevé g<sub>S</sub> et décroît linéairement jusqu'au taux normal g<sub>L</sub> sur 2H années.</li>
+</ul>
+<p class="eq">V₀ = D₀(1 + g<sub>L</sub>) / (r − g<sub>L</sub>) + D₀ · H · (g<sub>S</sub> − g<sub>L</sub>) / (r − g<sub>L</sub>)</p>
+<div class="box key"><span class="tag">Lecture du modèle H</span>
+<p>1er terme : valeur des dividendes si la croissance était g<sub>L</sub> dès maintenant. 2e terme : approximation de la valeur additionnelle due à la croissance au-dessus de la normale (g<sub>S</sub> &gt; g<sub>L</sub>) des années 1 à 2H.</p>
+<p><strong>H = moitié de la durée de forte croissance</strong> (10 ans → H = 5).</p></div>
+
+<h4>Modèle à trois étapes</h4>
+<ul>
+<li><strong>Version 1 :</strong> trois paliers constants.</li>
+<li><strong>Version 2 :</strong> n années à g<sub>S</sub> constant, puis transition linéaire (modèle H appliqué en n), puis g<sub>L</sub>.</li>
+</ul>
+<p class="eq">V₀ = Σₜ₌₁ⁿ D₀(1 + g<sub>S</sub>)ᵗ / (1+r)ᵗ + Vₙ / (1+r)ⁿ</p>
+<p class="eq">Vₙ = [Dₙ(1 + g<sub>L</sub>) + Dₙ · H · (g<sub>S</sub> − g<sub>L</sub>)] / (r − g<sub>L</sub>)</p>
+
+<h3 id="fcfe">Le modèle des flux disponibles (FCF)</h3>
+<p><strong>Quand l'utiliser :</strong> l'entreprise ne paie pas de dividendes ; ou ses dividendes diffèrent nettement de sa capacité à distribuer ; ou les FCF sont cohérents avec sa rentabilité.</p>
+<div class="box limit"><span class="tag">Pourquoi pas les mesures comptables ?</span>
+<ul><li>CFO (flux de trésorerie d'exploitation) ≠ flux disponibles.</li>
+<li>EBIT et EBITDA sont des mesures avant impôts.</li>
+<li>Le résultat net ignore les investissements nets et la variation du BFR.</li></ul>
+<p>Ils restent utiles pour calculer les FCF.</p></div>
+<div class="grid2">
+  <div class="box key"><span class="tag">FCFF</span><p>Flux disponibles pour les actionnaires ordinaires + détenteurs d'obligations + actionnaires privilégiés.</p></div>
+  <div class="box key"><span class="tag">FCFE</span><p>Flux disponibles pour les seuls actionnaires ordinaires. C'est l'approche du cours.</p></div>
+</div>
+<h4>Les 5 étapes de l'approche FCFE</h4>
+<ol>
+<li>Choisir le modèle de FCF.</li>
+<li>Calculer les FCFE prévisionnels.</li>
+<li>Déterminer la valeur terminale.</li>
+<li>Actualiser au taux approprié (coût des fonds propres r).</li>
+<li>Sommer la VA des flux de la 1re étape et la VA de la valeur terminale.</li>
+</ol>
+<p class="eq">FCFE = NI + NCC − FCInv − WCInv + Net Borrowing = NI − (FCInv − Dep) − WCInv + Net Borrowing</p>
+<p><strong>Hypothèses :</strong> investissements nets en capital fixe (FCInv − Dep) et en BFR (WCInv) proportionnels à la hausse des ventes ; la firme garde un ratio d'endettement cible DR.</p>
+<p class="eq">Net Borrowing = DR · (FCInv − Dep) + DR · WCInv</p>
+<p class="eq">Equity value = Σₜ₌₁ⁿ FCFEₜ / (1+r)ᵗ + [FCFEₙ₊₁ / (r − g)] · 1 / (1+r)ⁿ</p>
+
+<h3 id="sens">L'analyse de sensibilité</h3>
+<p>Elle teste la robustesse du modèle en faisant varier les hypothèses clés (croissance, marge, taux d'actualisation). En <em>transaction services</em>, elle sert à :</p>
+<ul>
+<li><strong>valider l'évaluation</strong> : fourchette de valeurs selon les scénarios ;</li>
+<li><strong>identifier les variables critiques</strong> pour concentrer la due diligence ;</li>
+<li><strong>faciliter la négociation</strong> : une fourchette de prix plutôt qu'un chiffre unique.</li>
+</ul>
+<p class="muted">Exemple Total / Saft : CMPC de 8,87 % à 9,87 % et croissance à l'infini de 1,33 % à 2,33 % donnent 25,30 € à 32,56 € par action (valeur centrale 28,45 €).</p>
+
+<h3 id="rim">Le modèle du revenu résiduel (RIM)</h3>
+<p>Concept ancien, popularisé par Stern-Stewart sous le nom d'<strong>EVA</strong> (aussi <em>economic profit</em> chez McKinsey, <em>abnormal earnings</em>). Question : reste-t-il du bénéfice après déduction du coût du capital ?</p>
+<div class="box key"><span class="tag">Idée clé</span>
+<p>Le résultat comptable déduit le coût de la dette (intérêts) mais <strong>pas le coût des fonds propres</strong>. Un résultat net positif ne suffit donc pas à prouver une création de valeur : il faut couvrir la rémunération exigée par les actionnaires. RI &gt; 0 = création de valeur sur la période.</p></div>
+<p class="eq">RIₜ = Eₜ − r · Bₜ₋₁ = (ROEₜ − r) · Bₜ₋₁</p>
+<p class="eq">V₀ = B₀ + Σ RIₜ / (1+r)ᵗ = B₀ + Σ (ROEₜ − r) · Bₜ₋₁ / (1+r)ᵗ</p>
+<p>B₀ : valeur comptable par action actuelle ; Eₜ : BPA espéré ; r : coût des fonds propres. Hormis r, tous les paramètres sont comptables.</p>
+</section>
+
+<!-- ============ 3. MULTIPLES ============ -->
+<section id="mult">
+<h2><span class="n">3</span>L'approche par les multiples</h2>
+<p>Les multiples sont largement utilisés, faciles à calculer, utilisables en séries chronologiques et en comparaisons transversales.</p>
+
+<h3 id="mult-def">Définitions</h3>
+<p><strong>Multiple justifié</strong> (ou intrinsèque) : la « juste » valeur du multiple, fondée sur les comparables, sur les transactions passées ou sur les fondamentaux futurs. Certains secteurs ont leurs propres multiples (immobilier : prix au m², café : recette journalière).</p>
+<p class="eq">Multiple = numérateur (ce que tu paies) / dénominateur (ce que tu as)</p>
+<div class="tbl"><table>
+<thead><tr><th>Multiple</th><th>Numérateur</th><th>Dénominateur</th></tr></thead>
+<tbody>
+<tr><td><strong>P/E</strong></td><td>Cours</td><td>Bénéfice par action (BPA, EPS)</td></tr>
+<tr><td><strong>P/B</strong></td><td>Cours</td><td>Valeur comptable des FP par action</td></tr>
+<tr><td><strong>P/S</strong></td><td>Cours</td><td>Ventes par action</td></tr>
+<tr><td><strong>P/CF</strong></td><td>Cours</td><td>Cash-flow par action : souvent BPA + amortissements (ou CFO, FCFE, EBITDA)</td></tr>
+<tr><td><strong>EV/EBITDA</strong></td><td>Valeur d'entreprise</td><td>EBITDA</td></tr>
+</tbody></table></div>
+<p>Numérateur : valeur des FP, de la firme (FP + dette) ou des actifs opérationnels (FP + dette − cash). Le dénominateur doit viser le même investisseur : RN ou BPA pour les actionnaires, EBIT pour tous les investisseurs.</p>
+<h4>Les variantes du P/E</h4>
+<ul>
+<li><strong>Courant :</strong> cours / BPA du dernier exercice.</li>
+<li><strong>Trailing :</strong> cours / somme des 4 derniers BPA trimestriels (TTM).</li>
+<li><strong>Forward (prospectif) :</strong> cours / BPA estimé de l'année à venir.</li>
+<li><strong>Hors éléments exceptionnels :</strong> sur les <em>core earnings</em>.</li>
+<li><strong>Dilué :</strong> BPA de base (nombre moyen d'actions) vs BPA totalement dilué (options, convertibles…).</li>
+<li><strong>Ajusté du coût carbone :</strong> BPA courant moins l'impact financier estimé des émissions de GES (exemple Danone).</li>
+</ul>
+<div class="box key"><span class="tag">Intuition : la loi du prix unique</span>
+<p>Deux actifs identiques doivent se vendre au même prix. Un actif sous-évalué par rapport au benchmark devrait surperformer en relatif. Mais si le benchmark est mal évalué, l'action peut être justement évaluée, voire surévaluée, en absolu.</p></div>
+<p><strong>Choix du benchmark</strong> (moyenne ou médiane) : concurrent représentatif, pairs du secteur, indice sectoriel, indice boursier représentatif, historique de l'entreprise. Critères : rentabilité, levier, croissance comparables.</p>
+
+<h3 id="comps">Analyse des comparables boursiers : 5 étapes</h3>
+<ol>
+<li>Identifier un échantillon d'entreprises comparables.</li>
+<li>Calculer les multiples sur leurs prix de marché actuels.</li>
+<li>Calculer les statistiques descriptives et estimer : <strong>Valeur = multiple × fondamental</strong>.</li>
+<li>Estimer une prime à partir de transactions passées sur des cibles similaires.</li>
+<li>Prix de l'offre = valeur estimée × (1 + prime).</li>
+</ol>
+
+<h3 id="trans">Méthode des transactions passées : 3 étapes</h3>
+<ol>
+<li>Échantillon de transactions récentes (même industrie, structure de capital comparable).</li>
+<li>Multiples calculés sur les <strong>prix de transaction</strong>.</li>
+<li>Statistiques descriptives pour estimer la valeur de la cible.</li>
+</ol>
+<div class="box limit"><span class="tag">Attention</span><p>Les prix de transaction incluent déjà la prime de contrôle : on n'en rajoute pas.</p></div>
+
+<h3 id="ev">L'approche EV/EBITDA</h3>
+<p class="eq">EV = capitalisation + actions privilégiées + dette (valeur de marché) − disponibilités</p>
+<p>EV/EBITDA est pertinent car il n'est influencé ni par la structure financière de la cible ni par ses politiques d'amortissement et de provision. Indice Argos (PME non cotées de la zone euro) : multiple médian autour de 9 x en 2025, contre 5,7 x au creux de 2009.</p>
+</section>
+
+<!-- ============ 4. OFFRE ============ -->
+<section id="offre">
+<h2><span class="n">4</span>Les éléments d'appréciation du prix de l'offre</h2>
+<p class="eq">Prime = (prix de l'offre − cours avant annonce) / cours avant annonce</p>
+<h4>Les objectifs de cours des analystes</h4>
+<p>Ils servent de repères aux investisseurs et aux acquéreurs. Exemple Total / Saft (avant l'annonce du 9 mai 2016) : moyenne des objectifs 28,71 €, soit une prime de 27,1 % offerte.</p>
+<h4>Le cours moyen pondéré par les volumes (CMPV / VWAP)</h4>
+<p class="eq">VWAP = Σ (Pᵢ × Vᵢ) / Σ Vᵢ</p>
+<p>On compare le prix offert au cours de clôture et aux CMPV 1, 3, 6 et 12 mois. Total / Saft : primes de 24,2 % (CMPV 12 mois) à 43,5 % (CMPV 3 mois).</p>
+</section>
+
+<!-- ============ 5. PARAMETRES ============ -->
+<section id="param">
+<h2><span class="n">5</span>Les paramètres</h2>
+<h3>Le taux de croissance soutenable</h3>
+<p>Deux sources : projections sectorielles et macroéconomiques, ou la formule ci-dessous (b = taux de rétention ; ROE par DuPont, ROE = r ou ROE médian du secteur).</p>
+<p class="eq">g = b × ROE</p>
+<h3>Le rendement exigé : MEDAF / CAPM</h3>
+<p class="eq">E(rᵢ) = r<sub>f</sub> + βᵢ · [E(r<sub>M</sub>) − r<sub>f</sub>]</p>
+<div class="tbl"><table>
+<thead><tr><th>Élément</th><th>À retenir</th></tr></thead>
+<tbody>
+<tr><td>Bêta (cotée)</td><td>Régression MCO des rendements excédentaires du titre sur ceux du marché : β = Cov(rᵢ, r<sub>M</sub>) / Var(r<sub>M</sub>). Indice : CAC 40 ; usuellement 5 ans de données mensuelles</td></tr>
+<tr><td>Bêta ajusté</td><td>Les bêtas tendent vers 1 : β ajusté = 2/3 × β brut + 1/3 × 1</td></tr>
+<tr><td>Bêta (non cotée ou peu liquide)</td><td>Désendetter le bêta du comparable, puis le réendetter avec la structure D′/E′ de la cible</td></tr>
+<tr><td>Taux sans risque</td><td>Rendement connu d'avance : ni risque de défaut, ni risque de réinvestissement. En pratique, obligations souveraines long terme</td></tr>
+<tr><td>Prime de risque</td><td>Estimée sur données historiques longues (Dimson, Marsh &amp; Staunton, 1900-2022)</td></tr>
+</tbody></table></div>
+<p class="eq">β<sub>U</sub> ≈ β<sub>E</sub> / (1 + D/E) &nbsp;&nbsp;puis&nbsp;&nbsp; β′<sub>E</sub> ≈ β<sub>U</sub> · (1 + D′/E′)</p>
+<p class="muted">Ces formules supposent que l'endettement s'ajuste au ratio cible quand la valeur de la firme change.</p>
+<h3>Le coût moyen pondéré du capital (CMPC / WACC)</h3>
+<p class="eq">WACC = MVD / (MVD + MVCE) · r<sub>d</sub>(1 − T) + MVCE / (MVD + MVCE) · r<sub>e</sub></p>
+<p>MVD : valeur de marché de la dette ; MVCE : valeur de marché des fonds propres ; r<sub>d</sub> : coût de la dette avant impôt ; r<sub>e</sub> : coût des fonds propres.</p>
+</section>
+
+<!-- ============ 6. EXERCICES ============ -->
+<section id="exos">
+<h2><span class="n">6</span>Exercices du chapitre</h2>
+<p class="muted">Les énoncés sont ceux du cours. Le PDF ne contient pas les corrigés : les résultats ci-dessous sont recalculés avec les formules du chapitre, à vérifier avec la correction de TD.</p>
+
+<h3>Exercice 1 — Carl Zeiss Meditec (modèle H)</h3>
+<p>Cours 19,10 € ; D₀ = 0,14 € ; croissance de 15 % à 8 % sur 10 ans puis 8 % à l'infini ; β = 0,89, r<sub>f</sub> = 4,5 %, prime 5,8 %.</p>
+<details><summary>Voir le corrigé</summary>
+<div class="box ex calc">
+<p><strong>r</strong> = 4,5 % + 0,89 × 5,8 % = <strong>9,7 %</strong> ; H = 10 / 2 = 5.</p>
+<p>V₀ = 0,14 × 1,08 / (0,097 − 0,08) + 0,14 × 5 × (0,15 − 0,08) / 0,017 = 8,89 + 2,88 = <strong>11,78 €</strong></p>
+<p>Valeur &lt; cours de 19,10 € : le titre paraît <strong>surévalué</strong>.</p>
+</div></details>
+
+<h3>Exercice 2 — Vinci (modèle H)</h3>
+<p>Cours 57 € ; D₀ = 1,37 € ; r = 10 % ; croissance de 24 % décroissant linéairement sur 12 ans jusqu'à 6 % à perpétuité.</p>
+<details><summary>Voir le corrigé</summary>
+<div class="box ex calc">
+<p>H = 6. V₀ = 1,37 × 1,06 / 0,04 + 1,37 × 6 × 0,18 / 0,04 = 36,31 + 36,99 = <strong>73,30 €</strong></p>
+<p>Valeur &gt; cours de 57 € : le titre paraît <strong>sous-évalué</strong>.</p>
+</div></details>
+
+<h3>Exercice 3 — Energen (DDM à trois étapes)</h3>
+<p>Cours 57,77 € ; D₀ = 0,46 € ; 12 % pendant 5 ans ; transition de 10 ans vers 7,5 % ; r = 10 % ; bien évalué à ± 20 %.</p>
+<details><summary>Voir le corrigé</summary>
+<div class="box ex calc">
+<p><strong>Dividendes 1 à 5 :</strong> 0,515 ; 0,577 ; 0,646 ; 0,724 ; 0,811 → VA = <strong>2,43 €</strong></p>
+<p><strong>V₅</strong> (modèle H, H = 5) = 0,811 × [1,075 + 5 × 0,045] / 0,025 = <strong>42,16 €</strong> → VA = 42,16 / 1,1⁵ = 26,18 €</p>
+<p>V₀ = 2,43 + 26,18 = <strong>28,60 €</strong>. Fourchette ± 20 % : 22,88 € à 34,32 €. Le cours de 57,77 € est au-dessus : <strong>surévalué</strong>.</p>
+</div></details>
+
+<h3>Exercice 4 — Anacor Pharmaceutical (DDM à trois phases)</h3>
+<p>Cours 5,34 € ; D₂₀₂₁ = 0,14 € ; 18 % pendant 3 ans ; baisse linéaire de 18 % à 7 % sur 5 ans ; 7 % dès la 9e année ; r = 12 %.</p>
+<details><summary>Voir le corrigé</summary>
+<div class="box ex calc">
+<p>Croissance années 4 à 8 (baisse de 2,2 points par an) : 15,8 % ; 13,6 % ; 11,4 % ; 9,2 % ; 7 %.</p>
+<p>Dividendes 1 à 8 : 0,165 ; 0,195 ; 0,230 ; 0,266 ; 0,303 ; 0,337 ; 0,368 ; 0,394 → VA = <strong>1,30 €</strong></p>
+<p>V₈ = 0,394 × 1,07 / (0,12 − 0,07) = 8,43 € → VA = <strong>3,40 €</strong></p>
+<p>V₀ ≈ <strong>4,71 €</strong> (≈ 4,87 € avec le modèle H en année 3). Valeur &lt; 5,34 € : <strong>surévaluée</strong>.</p>
+</div></details>
+
+<h3>Exercice 5 — TechnoSchaft (FCFE)</h3>
+<p>Ventes par action 25 ; +20 % pendant 3 ans puis 6 % ; marge nette 10 % ; FCInv net = 50 % et WCInv = 20 % de la hausse des ventes ; 40 % financé par dette ; r = 12,4 %.</p>
+<details><summary>Voir le corrigé</summary>
+<div class="box ex calc">
+<p>FCFE = 0,10 × ventes − (1 − 0,4) × (0,5 + 0,2) × Δventes = 0,10 × V − 0,42 × ΔV</p>
+<div class="tbl"><table>
+<thead><tr><th>Année</th><th class="num">Ventes</th><th class="num">ΔVentes</th><th class="num">RN</th><th class="num">FCFE</th></tr></thead>
+<tbody>
+<tr><td>1</td><td class="num">30,00</td><td class="num">5,00</td><td class="num">3,00</td><td class="num">0,90</td></tr>
+<tr><td>2</td><td class="num">36,00</td><td class="num">6,00</td><td class="num">3,60</td><td class="num">1,08</td></tr>
+<tr><td>3</td><td class="num">43,20</td><td class="num">7,20</td><td class="num">4,32</td><td class="num">1,30</td></tr>
+<tr><td>4</td><td class="num">45,79</td><td class="num">2,59</td><td class="num">4,58</td><td class="num">3,49</td></tr>
+</tbody></table></div>
+<p>VT₃ = 3,49 / (0,124 − 0,06) = 54,54 €. VA des FCFE 1-3 = 2,57 € ; VA de VT₃ = 38,41 €.</p>
+<p>Valeur du titre = <strong>40,98 €</strong></p>
+</div></details>
+
+<h3>Exercice 6 — TSMC (revenu résiduel)</h3>
+<p>Cours 62,9 € ; r = 15 % ; B₂₀₁₆ = 19,59 € ; BPA 4,256 € (2017) et 5,556 € (2018), dividendes 3,000 € et 3,284 € ; ROE 25 % de 2019 à 2026 puis 20 % jusqu'en 2036 ; b = 70 % après 2018 ; RI = 0 après 2036.</p>
+<details><summary>Voir le corrigé</summary>
+<div class="box ex calc">
+<p><strong>2017 :</strong> RI = 4,256 − 0,15 × 19,59 = 1,318 → VA 1,146. B₂₀₁₇ = 19,59 + 4,256 − 3 = 20,846.</p>
+<p><strong>2018 :</strong> RI = 5,556 − 0,15 × 20,846 = 2,429 → VA 1,837. B₂₀₁₈ = 23,118.</p>
+<p><strong>2019-2026 :</strong> RI = (0,25 − 0,15) × Bₜ₋₁, B croît de 0,7 × 25 % = 17,5 % par an → VA = 13,13.</p>
+<p><strong>2027-2036 :</strong> RI = 0,05 × Bₜ₋₁, B croît de 14 % par an → VA = 8,68.</p>
+<p>V₀ = 19,59 + 1,15 + 1,84 + 13,13 + 8,68 ≈ <strong>44,38 €</strong>. Valeur &lt; 62,9 € : <strong>surévalué</strong>.</p>
+</div></details>
+
+<h3>Exercice 7 — AGSI (comparables boursiers)</h3>
+<div class="tbl"><table>
+<thead><tr><th></th><th class="num">AGSI</th><th class="num">Comp. 1</th><th class="num">Comp. 2</th><th class="num">Comp. 3</th></tr></thead>
+<tbody>
+<tr><td>Prix (€)</td><td class="num">—</td><td class="num">25,00</td><td class="num">33,00</td><td class="num">19,00</td></tr>
+<tr><td>BPA</td><td class="num">2,95</td><td class="num">1,50</td><td class="num">2,25</td><td class="num">1,20</td></tr>
+<tr><td>BVPS</td><td class="num">15,20</td><td class="num">8,80</td><td class="num">10,50</td><td class="num">6,00</td></tr>
+<tr><td>CF par action</td><td class="num">3,80</td><td class="num">2,00</td><td class="num">2,90</td><td class="num">1,80</td></tr>
+<tr><td>Ventes par action</td><td class="num">46,00</td><td class="num">21,60</td><td class="num">28,70</td><td class="num">19,50</td></tr>
+</tbody></table></div>
+<p>Primes récentes : 22,00 → 27,25 ; 18,25 → 21,00 ; 108,90 → 130,00 ; 48,50 → 57,00.</p>
+<details><summary>Voir le corrigé</summary>
+<div class="box ex calc">
+<div class="tbl"><table>
+<thead><tr><th>Multiple</th><th class="num">Comp. 1</th><th class="num">Comp. 2</th><th class="num">Comp. 3</th><th class="num">Moyenne</th><th class="num">Valeur AGSI</th></tr></thead>
+<tbody>
+<tr><td>P/E</td><td class="num">16,67</td><td class="num">14,67</td><td class="num">15,83</td><td class="num">15,72</td><td class="num">46,38</td></tr>
+<tr><td>P/B</td><td class="num">2,84</td><td class="num">3,14</td><td class="num">3,17</td><td class="num">3,05</td><td class="num">46,36</td></tr>
+<tr><td>P/CF</td><td class="num">12,50</td><td class="num">11,38</td><td class="num">10,56</td><td class="num">11,48</td><td class="num">43,62</td></tr>
+<tr><td>P/S</td><td class="num">1,16</td><td class="num">1,15</td><td class="num">0,97</td><td class="num">1,09</td><td class="num">50,32</td></tr>
+</tbody></table></div>
+<p>Valeur moyenne = <strong>46,67 €</strong>. Primes : 23,86 % ; 15,07 % ; 19,38 % ; 17,53 % → moyenne <strong>18,96 %</strong>.</p>
+<p>Prix de l'offre ≈ 46,67 × 1,1896 = <strong>55,52 €</strong></p>
+</div></details>
+
+<h3>Exercice 8 — Peerkless Saw (transactions passées)</h3>
+<div class="tbl"><table>
+<thead><tr><th></th><th class="num">Peerkless</th><th class="num">Acquise 1</th><th class="num">Acquise 2</th><th class="num">Acquise 3</th></tr></thead>
+<tbody>
+<tr><td>Prix de transaction (€)</td><td class="num">—</td><td class="num">42,00</td><td class="num">21,50</td><td class="num">90,00</td></tr>
+<tr><td>BPA</td><td class="num">3,25</td><td class="num">1,80</td><td class="num">0,85</td><td class="num">4,65</td></tr>
+<tr><td>BVPS</td><td class="num">18,50</td><td class="num">9,75</td><td class="num">5,25</td><td class="num">22,25</td></tr>
+<tr><td>CF par action</td><td class="num">4,10</td><td class="num">2,10</td><td class="num">1,10</td><td class="num">5,05</td></tr>
+<tr><td>Ventes par action</td><td class="num">33,00</td><td class="num">18,20</td><td class="num">9,75</td><td class="num">38,90</td></tr>
+</tbody></table></div>
+<details><summary>Voir le corrigé</summary>
+<div class="box ex calc">
+<div class="tbl"><table>
+<thead><tr><th>Multiple</th><th class="num">Acq. 1</th><th class="num">Acq. 2</th><th class="num">Acq. 3</th><th class="num">Moyenne</th><th class="num">Valeur Peerkless</th></tr></thead>
+<tbody>
+<tr><td>P/E</td><td class="num">23,33</td><td class="num">25,29</td><td class="num">19,35</td><td class="num">22,66</td><td class="num">73,65</td></tr>
+<tr><td>P/B</td><td class="num">4,31</td><td class="num">4,10</td><td class="num">4,04</td><td class="num">4,15</td><td class="num">76,76</td></tr>
+<tr><td>P/CF</td><td class="num">20,00</td><td class="num">19,55</td><td class="num">17,82</td><td class="num">19,12</td><td class="num">78,40</td></tr>
+<tr><td>P/S</td><td class="num">2,31</td><td class="num">2,21</td><td class="num">2,31</td><td class="num">2,28</td><td class="num">75,09</td></tr>
+</tbody></table></div>
+<p>Prix à payer ≈ <strong>75,98 €</strong> par action, sans prime à ajouter (déjà incluse dans les prix de transaction).</p>
+</div></details>
+</section>
+
+<!-- ============ 7. A RETENIR ============ -->
+<section id="retenir">
+<h2><span class="n">7</span>À retenir</h2>
+<ul>
+<li>Flux retenu → modèle : dividendes → DDM ; flux disponibles → FCFF / FCFE ; valeur comptable + RI → RIM.</li>
+<li>Gordon utilise <strong>D₁</strong>, pas D₀, et exige r &gt; g. Il n'est légitime qu'en phase de maturité.</li>
+<li>Modèle H : <strong>H = moitié</strong> de la durée de forte croissance.</li>
+<li>La valeur terminale calculée en n s'actualise sur <strong>n années</strong>, avec le flux de l'année n + 1.</li>
+<li>Taux cohérent avec le flux : dividendes et FCFE → coût des fonds propres ; FCFF → CMPC.</li>
+<li>RIM : le coût des FP s'applique à la valeur comptable de <strong>début</strong> de période ; un résultat net positif ne prouve pas une création de valeur.</li>
+<li>Comparables boursiers : on ajoute une prime. Transactions passées : la prime est déjà dans les prix.</li>
+<li>Numérateur et dénominateur visent le même investisseur : EV avec EBITDA / EBIT / FCFF, cours avec BPA / FCFE / FP.</li>
+<li>Bêta d'une non cotée : désendetter le comparable, puis réendetter avec D′/E′ de la cible ; bêta ajusté = 2/3 β + 1/3.</li>
+<li>Le prix de l'offre se juge face aux objectifs des analystes et aux CMPV 1, 3, 6 et 12 mois.</li>
+</ul>
+</section>
+
+</main>
+</div>
+
+<footer>Fiche établie à partir du support « Ingénierie financière, Chapitre 2 : L'évaluation », J.-Y. Filbien, JUNIA ISA Lille 2026-2027.</footer>
+</body>
+</html>
