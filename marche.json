@@ -1,0 +1,34 @@
+{
+ "maj": "2026-10-05T08:45:00+02:00",
+ "seance": "Clôture du vendredi 2 octobre 2026",
+ "source": {"nom": "Boursorama", "url": "https://www.boursorama.com/bourse/"},
+ "groupes": [
+  {"titre": "Actions Europe", "lignes": [
+   {"nom": "CAC 40", "valeur": "7 897,19", "var": 0.79},
+   {"nom": "Euro Stoxx 50", "valeur": "6 238,50", "var": 1.02},
+   {"nom": "DAX", "valeur": "25 231,20", "var": 1.17}]},
+  {"titre": "Actions monde", "lignes": [
+   {"nom": "S&P 500", "valeur": "7 722,72", "var": 0.73},
+   {"nom": "Nasdaq", "valeur": "27 190,86", "var": 1.19},
+   {"nom": "Dow Jones", "valeur": "51 176,96", "var": 0.49},
+   {"nom": "Nikkei 225", "valeur": "70 037,61", "var": 2.53}]},
+  {"titre": "Change, matières premières, crypto", "lignes": [
+   {"nom": "EUR/USD", "valeur": "1,1253", "var": 0.00},
+   {"nom": "Pétrole Brent ($)", "valeur": "102,61", "var": -0.38},
+   {"nom": "Or ($/once)", "valeur": "4 137,55", "var": 0.00},
+   {"nom": "Bitcoin ($)", "valeur": "85 121,30", "var": 0.50}]}
+ ],
+ "actu": {
+  "titre": "Wall Street finit la semaine en hausse, l'emploi américain conforte une pause de la Fed",
+  "date": "2026-10-02",
+  "resume": "Vendredi, les Bourses américaines ont clôturé dans le vert, portées par la technologie : le Nasdaq gagne 1,19 % et le Dow Jones 0,49 %. Les chiffres de l'emploi aux États-Unis, jugés décevants, renforcent l'idée que la Réserve fédérale laissera ses taux inchangés. En Europe, les valeurs de semi-conducteurs ont aussi brillé, avec Soitec et STMicroelectronics en forte hausse.",
+  "cours": "Lien avec tes cours : quand le marché anticipe des taux stables ou plus bas, le taux d'actualisation baisse et la valeur actuelle des flux futurs monte. Les valeurs de croissance, dont la valeur dépend de flux lointains, en profitent le plus : c'est pour ça que le Nasdaq monte davantage que le Dow Jones (MEDAF, DCF).",
+  "source": "Boursorama",
+  "url": "https://www.boursorama.com/bourse/actualites/wall-street-termine-en-hausse-l-emploi-plaide-pour-un-statu-quo-de-la-fed-3b772901e8a28a56c32c380a9e973f46"
+ },
+ "titres": [
+  {"t": "Renault va investir plus de 10 milliards d'euros sur cinq ans dans l'électrique en France", "url": "https://www.boursorama.com/bourse/actualites/renault-va-investir-plus-de-10-mds-sur-cinq-ans-dans-l-electrique-en-france-155bc3e3d01e423705437fa3bca012c2"},
+  {"t": "L'Opep+ devrait maintenir ses objectifs de production", "url": "https://www.boursorama.com/bourse/actualites/l-opep-devrait-maintenir-ses-objectifs-de-production-delegue-1288d221f110d72520b34c60eb06f19b"},
+  {"t": "Citi relève ses prévisions sur le bitcoin et l'ether", "url": "https://www.boursorama.com/bourse/actualites/citi-revoit-a-la-hausse-ses-previsions-concernant-le-bitcoin-et-l-ether-en-raison-d-une-forte-activite-sur-le-marche-des-cryptomonnaies-f590628accd2ea886dde535c3fa5a6ae"}
+ ]
+}

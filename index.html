@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style></head><body>
 <title>Classeur de révision</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,6 +10,7 @@
   --t1:#1f6b55; --t2:#3d55a6; --t3:#c2571f; --t4:#8a3f86;
   --m1:#0f6b5c; --m2:#3c5aa8; --m3:#8a3f86; --m4:#b4531f; --m5:#8a6d12; --m6:#b0303f; --m7:#4f6b12; --m8:#2f6f8f; --m9:#7a4b2a;
   --s1:#0f6b5c; --s2:#3c5aa8; --s3:#8a3f86; --s4:#b4531f; --s5:#8a6d12; --s6:#b0303f; --s7:#4f6b12; --s8:#2f6f8f; --s9:#7a4b2a;
+  --up:#16794a; --down:#c2362b;
   --on:#ffffff;
   --display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
   --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
@@ -18,12 +19,12 @@
   --bg:#111614; --paper:#18201d; --fg:#e3ebe7; --muted:#97a39e; --line:#2b3531; --accent:#8fd3b8;
   --t1:#2f8f73; --t2:#5571c4; --t3:#d4692f; --t4:#a656a1;
   --m1:#4cc3ad; --m2:#8aa6f2; --m3:#d38bd0; --m4:#f08a52; --m5:#d9b54a; --m6:#f07a87; --m7:#b5cf5e; --m8:#6fc0e0; --m9:#d9a07a;
-  --on:#ffffff; color-scheme:dark}}
+  --up:#5fd39a; --down:#ff8577; --on:#ffffff; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#111614; --paper:#18201d; --fg:#e3ebe7; --muted:#97a39e; --line:#2b3531; --accent:#8fd3b8;
   --t1:#2f8f73; --t2:#5571c4; --t3:#d4692f; --t4:#a656a1;
   --m1:#4cc3ad; --m2:#8aa6f2; --m3:#d38bd0; --m4:#f08a52; --m5:#d9b54a; --m6:#f07a87; --m7:#b5cf5e; --m8:#6fc0e0; --m9:#d9a07a;
-  --on:#ffffff; color-scheme:dark}
+  --up:#5fd39a; --down:#ff8577; --on:#ffffff; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
 button{font:inherit;color:inherit}
@@ -155,6 +156,70 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
 .deck span{font-weight:600;font-size:15px;max-width:75%}
 .deck:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 
+/* market + news */
+.mkt{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:14px}
+@media (max-width:820px){.mkt{grid-template-columns:1fr}}
+.mkt[hidden]{display:none}
+.news,.quotes{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:grid;gap:10px;align-content:start;min-width:0}
+.news{border-top:5px solid var(--t2)}
+.quotes{border-top:5px solid var(--t1)}
+.news h3{font-weight:700;font-size:21px;line-height:1.2}
+.news p{margin:0}
+.news .why{background:color-mix(in srgb,var(--t2) 9%,var(--paper));border-radius:12px;padding:10px 12px;font-size:14px}
+.news a,.quotes a{color:var(--accent);font-weight:600}
+.news ul{margin:0;padding-left:1.1em;display:grid;gap:4px;font-size:14px}
+.qh{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.qh h3{font-weight:700;font-size:19px}
+.qh span{font-size:12.5px;color:var(--muted)}
+.qg{display:grid;gap:2px}
+.qg h4{margin:6px 0 2px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.qr{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.qr:last-child{border-bottom:0}
+.qr b{font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.pill{font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;padding:2px 8px;border-radius:999px;min-width:66px;text-align:center}
+.pill.up{color:var(--up);background:color-mix(in srgb,var(--up) 13%,var(--paper))}
+.pill.down{color:var(--down);background:color-mix(in srgb,var(--down) 13%,var(--paper))}
+.pill.flat{color:var(--muted);background:color-mix(in srgb,var(--fg) 6%,var(--paper))}
+.qnote{font-size:12px;color:var(--muted);margin:0}
+
+/* owner space */
+.admin{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.admin{grid-template-columns:1fr}}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:12px;align-content:start;min-width:0}
+.panel.wide{grid-column:1/-1}
+.panel h2{font-weight:600;font-size:20px}
+.panel h3{font-weight:600;font-size:15px;margin-top:4px}
+.fld{display:grid;gap:5px;font-size:13px;font-weight:600;color:var(--muted);min-width:0}
+.fld input,.fld select,.fld textarea{font:inherit;font-size:14.5px;font-weight:400;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 11px;width:100%;min-width:0}
+.fld textarea{resize:vertical;line-height:1.5}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:440px){.row2{grid-template-columns:1fr}}
+.btn{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 14px;font-weight:600;font-size:14px;cursor:pointer}
+.btn:hover{border-color:var(--fg)}
+.btn.primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn.small{padding:4px 10px;font-size:12.5px;font-weight:500}
+.btn:disabled{opacity:.55;cursor:default}
+.msg{font-size:13px;color:var(--muted)}
+.muted{color:var(--muted)}
+.savebar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;padding:12px 16px;border-radius:14px;background:color-mix(in srgb,var(--t3) 14%,var(--paper));border:1px solid color-mix(in srgb,var(--t3) 40%,var(--line))}
+.answer{font-size:15px;line-height:1.6;border-left:3px solid var(--t2);padding-left:12px;min-height:1em}
+.answer:empty{display:none}
+.mlist{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.mlist li{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:10px;font-size:14px}
+.note-prev{border:1px dashed var(--line);border-radius:14px;padding:16px;display:grid;gap:8px}
+.note-prev .badge{color:var(--c)}
+.note{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:clamp(16px,3vw,28px);max-width:72ch;display:grid;gap:10px;line-height:1.6}
+.note-prev .note{border:0;padding:0;background:none}
+.note h2{font-family:var(--display);font-weight:600;font-size:22px;margin-top:10px;padding-top:10px;border-top:3px solid var(--c,var(--accent))}
+.note h3{font-family:var(--display);font-weight:600;font-size:17px;color:var(--c,var(--accent))}
+.note p,.note ul,.note ol,.note blockquote{margin:0}
+.note ul,.note ol{padding-left:1.2em;display:grid;gap:4px}
+.note table{border-collapse:collapse;width:100%;font-size:14px;display:block;overflow-x:auto}
+.note th,.note td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
+.note th{background:color-mix(in srgb,var(--c,var(--accent)) 10%,var(--paper))}
+.note blockquote{border-left:3px solid var(--c,var(--accent));padding:6px 12px;background:color-mix(in srgb,var(--c,var(--accent)) 7%,var(--paper));border-radius:0 8px 8px 0}
+
 footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:8px}
 .toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13.5px;z-index:20}
 </style>
@@ -168,6 +233,7 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padd
       <button type="button" data-go="cartes">Cartes mentales</button>
       <button type="button" data-go="flashcards">Flashcards</button>
       <button type="button" data-go="examens">Examens</button>
+      <button type="button" data-go="admin" id="navAdmin" hidden>Mon espace</button>
     </nav>
     <input id="q" class="search" type="search" placeholder="Rechercher…" aria-label="Rechercher une fiche ou une notion">
   </div>
@@ -176,51 +242,8 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padd
 <main class="wrap" id="app"></main>
 
 <script>
-const MATIERES = [
-  {id:"eval", nom:"Évaluation d'entreprises", prof:"F. Romon", c:"--m1"},
-  {id:"eco",  nom:"Économétrie", prof:"G. Vu", c:"--m2"},
-  {id:"ingf", nom:"Ingénierie financière", prof:"J.-Y. Filbien", c:"--m3"},
-  {id:"bank", nom:"Économie et gestion de la banque", prof:"J.-C. Statnik", c:"--m4"},
-  {id:"trans",nom:"Transmission d'entreprise", prof:"", c:"--m5"},
-  {id:"port", nom:"Gestion de portefeuille", prof:"P. Grandin", c:"--m6"},
-  {id:"treso",nom:"Gestion de trésorerie", prof:"", c:"--m7"},
-  {id:"deriv",nom:"Produits dérivés", prof:"", c:"--m8"},
-  {id:"jurpat",nom:"Gestion juridique du patrimoine", prof:"C. Gegout", c:"--m9"}
-];
-/* cours : date(s) du cours couvert (= jour où la fiche a été demandée). ajout : date de mise en ligne. */
-const FICHES = [
-  {m:"eval", type:"Fiche", titre:"Évaluation patrimoniale : ANC et ANCC", desc:"Cours, cas Warrior, Mangala, Pastouche et 7 exercices corrigés.", href:"evaluation-anc-ancc.html", cours:["2026-10-01"], ajout:"2026-10-01", tags:"actif net comptable corrigé crédit-bail marque brevet"},
-  {m:"eval", type:"Carte mentale", titre:"Cartes mentales ANC · ANCC", desc:"7 cartes : bases, ANC, ANCC, incorporels, corporels, cas, pièges.", href:"cartes-anc-ancc.html", cours:["2026-10-01"], ajout:"2026-10-03", tags:"goodwill idp ida warrior mangala pastouche lumen"},
-  {m:"eco",  type:"Fiche", titre:"Jour 1 · Révision de statistiques", desc:"Mesures descriptives, covariance, corrélation, tests d'hypothèse, intervalles de confiance.", href:"econometrie-j1.html", cours:["2026-09-30"], ajout:"2026-09-30", tags:"moyenne variance ecart-type test t p-value"},
-  {m:"eco",  type:"Fiche", titre:"Jour 2 · Régression linéaire simple", desc:"MCO, r², test sur la pente, CAPM et bêta, hypothèses LINE, exercices corrigés.", href:"econometrie-j2.html", cours:["2026-10-02"], ajout:"2026-10-02", tags:"mco ols regression beta capm residus"},
-  {m:"eco",  type:"Carte mentale", titre:"Cartes mentales Économétrie", desc:"4 cartes : statistiques, tests et IC, régression, validation du modèle.", href:"cartes-econometrie.html", cours:["2026-09-30","2026-10-02"], ajout:"2026-10-03", tags:"mco regression test t beta line"},
-  {m:"ingf", type:"Fiche", titre:"Ch. 1 · Fusions-acquisitions et stratégie d'offre", desc:"Définitions, vagues de F&A, prime, synergies, HHI, motivations, exercices.", href:"fusions-acquisitions-ch1.html", cours:["2026-09-28"], ajout:"2026-09-28", tags:"m&a synergies hhi prime spin-off"},
-  {m:"ingf", type:"Carte mentale", titre:"Cartes mentales Fusions-acquisitions", desc:"4 cartes : définitions, marché et prime, motivations, exercices.", href:"cartes-fusions-acquisitions.html", cours:["2026-09-28"], ajout:"2026-10-03", tags:"m&a synergies hhi prime vagues"},
-  {m:"bank", type:"Fiche", titre:"Les banques et les marchés financiers", desc:"Marchés primaire et secondaire, marché monétaire, BFI, réglementation.", href:"banques-marches.html", cours:["2026-09-22"], ajout:"2026-09-22", tags:"€str glass-steagall volcker bfi obligation"},
-  {m:"bank", type:"Carte mentale", titre:"Cartes mentales Banque", desc:"2 cartes : marchés financiers, BFI et réglementation.", href:"cartes-banque.html", cours:["2026-09-22"], ajout:"2026-10-03", tags:"€str glass-steagall volcker bfi quiz"},
-  {m:"trans",type:"Fiche", titre:"Transmission d'entreprise", desc:"Plus-values, IS, droits d'enregistrement, donation avant cession, LBO.", href:"transmission-entreprise.html", cours:["2026-09-21"], ajout:"2026-09-21", tags:"pfu abattement 500000 mere-fille dmtg"},
-  {m:"trans",type:"Carte mentale", titre:"Cartes mentales Transmission", desc:"3 cartes : PV du particulier, côté entreprise, reprise.", href:"cartes-transmission.html", cours:["2026-09-21"], ajout:"2026-10-03", tags:"pfu abattement 500000 mere-fille lbo"},
-  {m:"port", type:"Fiche", titre:"Gestion de portefeuille", desc:"Markowitz, MEDAF, efficience, gestion active et passive, mesures de performance.", href:"gestion-portefeuille.html", cours:["2026-09-21"], ajout:"2026-09-21", tags:"sharpe treynor jensen medaf etf"},
-  {m:"port", type:"Carte mentale", titre:"Cartes mentales Portefeuille", desc:"4 cartes : théorie, efficience, gestion, performance.", href:"cartes-portefeuille.html", cours:["2026-09-21"], ajout:"2026-10-03", tags:"sharpe treynor jensen medaf cppi"},
-  {m:"jurpat",type:"Fiche", titre:"Droit des successions : conjugalité et dévolution légale", desc:"Régimes matrimoniaux, option de l'héritier, ordre, degré, fente, représentation, droits du conjoint, 5 cas pratiques.", href:"droit-successions.html", cours:["2026-10-03"], ajout:"2026-10-03", tags:"succession heritier conjoint usufruit fente representation preciput indignite pacs regime matrimonial"},
-  {m:"jurpat",type:"Carte mentale", titre:"Cartes mentales Successions", desc:"4 cartes : conjugalité, être héritier, principes, qui hérite.", href:"cartes-successions.html", cours:["2026-10-03"], ajout:"2026-10-03", tags:"succession fente representation conjoint"},
-  {m:"jurpat",type:"Flashcards", titre:"Flashcards Successions", desc:"15 questions-réponses : délais, ordres, quotes-parts.", href:"flashcards.html#jurpat", cours:["2026-10-03"], ajout:"2026-10-03", tags:"quiz succession"},
-  {m:"eval", type:"Flashcards", titre:"Flashcards ANC · ANCC", desc:"15 questions-réponses pour se tester.", href:"flashcards.html#eval", cours:["2026-10-01"], ajout:"2026-10-03", tags:"quiz"},
-  {m:"eco",  type:"Flashcards", titre:"Flashcards Économétrie", desc:"19 questions-réponses sur les jours 1 et 2.", href:"flashcards.html#eco", cours:["2026-09-30","2026-10-02"], ajout:"2026-10-03", tags:"quiz"},
-  {m:"ingf", type:"Flashcards", titre:"Flashcards Fusions-acquisitions", desc:"12 questions-réponses sur le chapitre 1.", href:"flashcards.html#ingf", cours:["2026-09-28"], ajout:"2026-10-03", tags:"quiz"},
-  {m:"bank", type:"Flashcards", titre:"Flashcards Banque", desc:"12 questions-réponses, utiles pour le quiz.", href:"flashcards.html#bank", cours:["2026-09-22"], ajout:"2026-10-03", tags:"quiz vrai faux"},
-  {m:"trans",type:"Flashcards", titre:"Flashcards Transmission", desc:"13 questions-réponses : taux, abattements, seuils.", href:"flashcards.html#trans", cours:["2026-09-21"], ajout:"2026-10-03", tags:"quiz"},
-  {m:"port", type:"Flashcards", titre:"Flashcards Portefeuille", desc:"13 questions-réponses sur les 4 chapitres.", href:"flashcards.html#port", cours:["2026-09-21"], ajout:"2026-10-03", tags:"quiz"}
-];
-/* Examens : {m:"eco", date:"2026-11-12", heure:"9h00", titre:"Partiel", lieu:"Amphi A"} */
-const EXAMS = [
-  {m:"treso", date:"2026-12-01", heure:"11h00", titre:"Examen"},
-  {m:"port",  date:"2026-12-02", heure:"14h00", titre:"Examen"},
-  {m:"deriv", date:"2026-12-04", heure:"11h00", titre:"Examen"},
-  {m:"jurpat",date:"2026-12-04", heure:"15h45", titre:"Examen"}
-];
-const TYPE_ORDER = {"Fiche":0,"Carte mentale":1,"Flashcards":2};
-
+const DATA=/*DATA-BEGIN*/{"matieres":[{"id":"eval","nom":"Évaluation d'entreprises","prof":"F. Romon","c":"--m1"},{"id":"eco","nom":"Économétrie","prof":"G. Vu","c":"--m2"},{"id":"ingf","nom":"Ingénierie financière","prof":"J.-Y. Filbien","c":"--m3"},{"id":"bank","nom":"Économie et gestion de la banque","prof":"J.-C. Statnik","c":"--m4"},{"id":"trans","nom":"Transmission d'entreprise","prof":"","c":"--m5"},{"id":"port","nom":"Gestion de portefeuille","prof":"P. Grandin","c":"--m6"},{"id":"treso","nom":"Gestion de trésorerie","prof":"","c":"--m7"},{"id":"deriv","nom":"Produits dérivés","prof":"","c":"--m8"},{"id":"jurpat","nom":"Gestion juridique du patrimoine","prof":"C. Gegout","c":"--m9"}],"fiches":[{"m":"eval","type":"Fiche","titre":"Évaluation patrimoniale : ANC et ANCC","desc":"Cours, cas Warrior, Mangala, Pastouche et 7 exercices corrigés.","href":"evaluation-anc-ancc.html","cours":["2026-10-01"],"ajout":"2026-10-01","tags":"actif net comptable corrigé crédit-bail marque brevet"},{"m":"eval","type":"Carte mentale","titre":"Cartes mentales ANC · ANCC","desc":"7 cartes : bases, ANC, ANCC, incorporels, corporels, cas, pièges.","href":"cartes-anc-ancc.html","cours":["2026-10-01"],"ajout":"2026-10-03","tags":"goodwill idp ida warrior mangala pastouche lumen"},{"m":"eco","type":"Fiche","titre":"Jour 1 · Révision de statistiques","desc":"Mesures descriptives, covariance, corrélation, tests d'hypothèse, intervalles de confiance.","href":"econometrie-j1.html","cours":["2026-09-30"],"ajout":"2026-09-30","tags":"moyenne variance ecart-type test t p-value"},{"m":"eco","type":"Fiche","titre":"Jour 2 · Régression linéaire simple","desc":"MCO, r², test sur la pente, CAPM et bêta, hypothèses LINE, exercices corrigés.","href":"econometrie-j2.html","cours":["2026-10-02"],"ajout":"2026-10-02","tags":"mco ols regression beta capm residus"},{"m":"eco","type":"Carte mentale","titre":"Cartes mentales Économétrie","desc":"4 cartes : statistiques, tests et IC, régression, validation du modèle.","href":"cartes-econometrie.html","cours":["2026-09-30","2026-10-02"],"ajout":"2026-10-03","tags":"mco regression test t beta line"},{"m":"ingf","type":"Fiche","titre":"Ch. 1 · Fusions-acquisitions et stratégie d'offre","desc":"Définitions, vagues de F&A, prime, synergies, HHI, motivations, exercices.","href":"fusions-acquisitions-ch1.html","cours":["2026-09-28"],"ajout":"2026-09-28","tags":"m&a synergies hhi prime spin-off"},{"m":"ingf","type":"Carte mentale","titre":"Cartes mentales Fusions-acquisitions","desc":"4 cartes : définitions, marché et prime, motivations, exercices.","href":"cartes-fusions-acquisitions.html","cours":["2026-09-28"],"ajout":"2026-10-03","tags":"m&a synergies hhi prime vagues"},{"m":"bank","type":"Fiche","titre":"Les banques et les marchés financiers","desc":"Marchés primaire et secondaire, marché monétaire, BFI, réglementation.","href":"banques-marches.html","cours":["2026-09-22"],"ajout":"2026-09-22","tags":"€str glass-steagall volcker bfi obligation"},{"m":"bank","type":"Carte mentale","titre":"Cartes mentales Banque","desc":"2 cartes : marchés financiers, BFI et réglementation.","href":"cartes-banque.html","cours":["2026-09-22"],"ajout":"2026-10-03","tags":"€str glass-steagall volcker bfi quiz"},{"m":"trans","type":"Fiche","titre":"Transmission d'entreprise","desc":"Plus-values, IS, droits d'enregistrement, donation avant cession, LBO.","href":"transmission-entreprise.html","cours":["2026-09-21"],"ajout":"2026-09-21","tags":"pfu abattement 500000 mere-fille dmtg"},{"m":"trans","type":"Carte mentale","titre":"Cartes mentales Transmission","desc":"3 cartes : PV du particulier, côté entreprise, reprise.","href":"cartes-transmission.html","cours":["2026-09-21"],"ajout":"2026-10-03","tags":"pfu abattement 500000 mere-fille lbo"},{"m":"port","type":"Fiche","titre":"Gestion de portefeuille","desc":"Markowitz, MEDAF, efficience, gestion active et passive, mesures de performance.","href":"gestion-portefeuille.html","cours":["2026-09-21"],"ajout":"2026-09-21","tags":"sharpe treynor jensen medaf etf"},{"m":"port","type":"Carte mentale","titre":"Cartes mentales Portefeuille","desc":"4 cartes : théorie, efficience, gestion, performance.","href":"cartes-portefeuille.html","cours":["2026-09-21"],"ajout":"2026-10-03","tags":"sharpe treynor jensen medaf cppi"},{"m":"jurpat","type":"Fiche","titre":"Droit des successions : conjugalité et dévolution légale","desc":"Régimes matrimoniaux, option de l'héritier, ordre, degré, fente, représentation, droits du conjoint, 5 cas pratiques.","href":"droit-successions.html","cours":["2026-10-03"],"ajout":"2026-10-03","tags":"succession heritier conjoint usufruit fente representation preciput indignite pacs regime matrimonial"},{"m":"jurpat","type":"Carte mentale","titre":"Cartes mentales Successions","desc":"4 cartes : conjugalité, être héritier, principes, qui hérite.","href":"cartes-successions.html","cours":["2026-10-03"],"ajout":"2026-10-03","tags":"succession fente representation conjoint"},{"m":"jurpat","type":"Flashcards","titre":"Flashcards Successions","desc":"15 questions-réponses : délais, ordres, quotes-parts.","href":"flashcards.html#jurpat","cours":["2026-10-03"],"ajout":"2026-10-03","tags":"quiz succession"},{"m":"eval","type":"Flashcards","titre":"Flashcards ANC · ANCC","desc":"15 questions-réponses pour se tester.","href":"flashcards.html#eval","cours":["2026-10-01"],"ajout":"2026-10-03","tags":"quiz"},{"m":"eco","type":"Flashcards","titre":"Flashcards Économétrie","desc":"19 questions-réponses sur les jours 1 et 2.","href":"flashcards.html#eco","cours":["2026-09-30","2026-10-02"],"ajout":"2026-10-03","tags":"quiz"},{"m":"ingf","type":"Flashcards","titre":"Flashcards Fusions-acquisitions","desc":"12 questions-réponses sur le chapitre 1.","href":"flashcards.html#ingf","cours":["2026-09-28"],"ajout":"2026-10-03","tags":"quiz"},{"m":"bank","type":"Flashcards","titre":"Flashcards Banque","desc":"12 questions-réponses, utiles pour le quiz.","href":"flashcards.html#bank","cours":["2026-09-22"],"ajout":"2026-10-03","tags":"quiz vrai faux"},{"m":"trans","type":"Flashcards","titre":"Flashcards Transmission","desc":"13 questions-réponses : taux, abattements, seuils.","href":"flashcards.html#trans","cours":["2026-09-21"],"ajout":"2026-10-03","tags":"quiz"},{"m":"port","type":"Flashcards","titre":"Flashcards Portefeuille","desc":"13 questions-réponses sur les 4 chapitres.","href":"flashcards.html#port","cours":["2026-09-21"],"ajout":"2026-10-03","tags":"quiz"}],"exams":[{"m":"treso","date":"2026-12-01","heure":"11h00","titre":"Examen"},{"m":"port","date":"2026-12-02","heure":"14h00","titre":"Examen"},{"m":"deriv","date":"2026-12-04","heure":"11h00","titre":"Examen"},{"m":"jurpat","date":"2026-12-04","heure":"15h45","titre":"Examen"}],"notes":[]}/*DATA-END*/;
+const MATIERES=DATA.matieres, FICHES=DATA.fiches, EXAMS=DATA.exams, NOTES=DATA.notes||(DATA.notes=[]);
 const SHORT={eval:"Év",eco:"Éc",ingf:"IF",bank:"Bq",trans:"Tr",port:"GP",treso:"Ts",deriv:"PD",jurpat:"JP"};
 const TABS=[["fiches","Fiches","Fiche"],["cartes","Cartes mentales","Carte mentale"],["flashcards","Flashcards","Flashcards"],["examen","Examen",null]];
 const ICONS={
@@ -270,13 +293,40 @@ async function doPrint(f,btn){
   finally{btn.disabled=false}
 }
 
+
+/* ---------- daily market + news (marche.json, refreshed by a scheduled task) ---------- */
+let MARKET=null;
+fetch("marche.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{MARKET=d;const b=document.getElementById("marketBox");if(b)fillMarket(b)}).catch(()=>{});
+function fillMarket(box){
+  const d=MARKET;if(!d||!d.groupes)return;
+  const pct=v=>{const n=Number(v);const cls=n>0.004?"up":n<-0.004?"down":"flat";return `<span class="pill ${cls}">${n>0?"+":n<0?"−":""}${Math.abs(n).toLocaleString("fr-FR",{minimumFractionDigits:2,maximumFractionDigits:2})} %</span>`};
+  const maj=d.maj?new Date(d.maj):null;
+  const majTxt=maj?maj.toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"})+" à "+maj.toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"}):"";
+  const a=d.actu||{};
+  box.innerHTML=`
+    <article class="news">
+      <div class="eyebrow">L'actu du jour${a.date?" · "+fmt(a.date):""}</div>
+      <h3>${esc(a.titre||"")}</h3>
+      <p>${esc(a.resume||"")}</p>
+      ${a.cours?`<p class="why">${esc(a.cours)}</p>`:""}
+      ${a.url?`<a href="${esc(a.url)}" target="_blank" rel="noopener">Lire l'article${a.source?" ("+esc(a.source)+")":""} →</a>`:""}
+      ${(d.titres||[]).length?`<div class="eyebrow" style="margin-top:6px">À suivre aussi</div><ul>${d.titres.map(t=>`<li><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.t)}</a></li>`).join("")}</ul>`:""}
+    </article>
+    <section class="quotes" aria-label="Les marchés">
+      <div class="qh"><h3>Les marchés</h3><span>${esc(d.seance||"")}</span></div>
+      ${d.groupes.map(g=>`<div class="qg"><h4>${esc(g.titre)}</h4>${g.lignes.map(l=>`<div class="qr"><span>${esc(l.nom)}</span><b>${esc(l.valeur)}</b>${pct(l.var)}</div>`).join("")}</div>`).join("")}
+      <p class="qnote">Mis à jour ${esc(majTxt)}${d.source?` · Source : <a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.nom)}</a>`:""}. Cours de clôture, pas du temps réel.</p>
+    </section>`;
+  box.hidden=false;
+}
+
 /* ---------- components ---------- */
 function itemCard(f,showMat){
   const m=mat(f.m);const el=document.createElement("div");el.className="card";paint(el,m.c);
   el.innerHTML=`<div class="top2"><span class="badge">${f.type}</span>${f.ajout===newest?'<span class="new">Nouveau</span>':""}</div>
     <h3><a class="open" href="${f.href}">${esc(f.titre)}</a></h3>${showMat?`<span class="mname">${esc(m.nom)}</span>`:""}
     <p class="when">${coursLabel(f)}</p><p>${esc(f.desc)}</p>`;
-  if(downloads&&f.type!=="Flashcards"){const a=document.createElement("div");a.className="acts";const b=document.createElement("button");b.type="button";b.className="pbtn";b.textContent="Version imprimable";b.onclick=()=>doPrint(f,b);a.appendChild(b);el.appendChild(a)}
+  if(downloads&&f.type!=="Flashcards"&&!f.href.startsWith("#")){const a=document.createElement("div");a.className="acts";const b=document.createElement("button");b.type="button";b.className="pbtn";b.textContent="Version imprimable";b.onclick=()=>doPrint(f,b);a.appendChild(b);el.appendChild(a)}
   return el;
 }
 function gridOf(items,showMat){const g=document.createElement("div");g.className="grid";items.forEach(f=>g.appendChild(itemCard(f,showMat)));return g}
@@ -314,8 +364,7 @@ function vHome(){
   ].forEach(([r,t,d,ic,c,n])=>{const b=document.createElement("button");b.type="button";b.className="tile";paint(b,c);
     b.innerHTML=`${ic}<span class="tc">${n}</span><div><div class="tn">${t}</div><div class="td">${d}</div></div>`;b.onclick=()=>go(r);tiles.appendChild(b)});
   v.appendChild(tiles);
-  v.appendChild(sectH("Derniers ajouts"));
-  v.appendChild(gridOf([...FICHES].sort((a,b)=>b.ajout.localeCompare(a.ajout)||lastCours(b).localeCompare(lastCours(a))).slice(0,6),true));
+  const mk=document.createElement("section");mk.className="mkt";mk.id="marketBox";mk.hidden=true;mk.setAttribute("aria-label","Actualité et marchés");v.insertBefore(mk,tiles);if(MARKET)fillMarket(mk);
   const ft=document.createElement("footer");ft.textContent="Les dates de cours correspondent au jour où chaque fiche a été demandée.";v.appendChild(ft);
 }
 function vMatieres(){
@@ -395,15 +444,244 @@ function vSearch(q){
   if(res.length)v.appendChild(gridOf(res,true));else v.insertAdjacentHTML("beforeend",`<p class="empty">Aucun document ne correspond. Essayez un autre mot (une notion, un prof, une matière).</p>`);
 }
 
+/* ================= Mon espace (owner only) ================= */
+let USER=null, SAMPLE=null, ART=null, IS_OWNER=false;
+const PENDING={changed:false};
+const COLORS=["--m1","--m2","--m3","--m4","--m5","--m6","--m7","--m8","--m9"];
+const ALLOWED=new Set(["H2","H3","H4","P","UL","OL","LI","STRONG","EM","B","I","TABLE","THEAD","TBODY","TR","TH","TD","BLOCKQUOTE","CODE","BR","HR","DIV","SPAN","SUB","SUP"]);
+function sanitize(html){
+  const doc=new DOMParser().parseFromString(`<div>${html}</div>`,"text/html");
+  const walk=n=>{[...n.childNodes].forEach(c=>{
+    if(c.nodeType===1){ if(!ALLOWED.has(c.tagName)){ if(["SCRIPT","STYLE","IFRAME","OBJECT"].includes(c.tagName)){c.remove();return} const frag=document.createDocumentFragment();while(c.firstChild)frag.appendChild(c.firstChild);c.replaceWith(frag);walk(n);return}
+      [...c.attributes].forEach(a=>c.removeAttribute(a.name)); walk(c);}
+    else if(c.nodeType!==3)c.remove();});};
+  const root=doc.body.firstChild;walk(root);return root.innerHTML;
+}
+function slug(s){return norm(s).replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,40)||"x"}
+function mdLite(t){return esc(t).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\n/g,"<br>")}
+
+const onAdmin=()=>((location.hash||"").slice(1)||current)==="admin";
+async function initOwner(){
+  if(!(window.claude&&typeof window.claude.use==="function"))return;
+  try{USER=await window.claude.use("user")}catch(e){}
+  IS_OWNER=USER?await USER.isOwner():false;
+  if(!IS_OWNER)return;
+  document.getElementById("navAdmin").hidden=false;
+  window.claude.use("sample").then(s=>{SAMPLE=s;if(onAdmin())route()}).catch(()=>{});
+  window.claude.use("artifact").then(a=>{ART=a;if(onAdmin())route()}).catch(()=>{});
+  if(onAdmin())route();
+}
+
+/* ---- save: rewrite the data block of index.html and publish it ---- */
+async function saveSite(btn,msg){
+  if(!ART){msg.textContent="L'enregistrement n'est pas disponible dans cette vue.";return}
+  btn.disabled=true;msg.textContent="Enregistrement…";
+  try{
+    const src=await (await fetch("index.html",{cache:"no-store"})).text();
+    const json=JSON.stringify({matieres:MATIERES,fiches:FICHES,exams:EXAMS,notes:NOTES}).replace(/</g,"\\u003c");
+    const BEG="/*DATA-"+"BEGIN*/",END="/*DATA-"+"END*/";const a=src.indexOf(BEG),b=src.indexOf(END);
+    if(a<0||b<0||!/^<!doctype html>/i.test(src.trim()))throw {code:"bad_source"};
+    const html=src.slice(0,a+BEG.length)+json+src.slice(b);
+    try{sessionStorage.setItem("classeur-go","admin")}catch(e){}
+    await ART.publish(html);
+    msg.textContent="Enregistré. La page se recharge.";
+  }catch(e){
+    const c=e&&e.code;
+    msg.textContent= c==="conflict"?"Une version plus récente vient d'être publiée : la page se recharge, refaites la modification.":
+      c==="not_writer"||c==="not_granted"?"Cette vue est en lecture seule : vous ne pouvez pas enregistrer ici.":
+      c==="rate_limited"?"Trop d'enregistrements d'affilée : attendez un peu.":
+      c==="bad_source"?"Impossible de relire la page pour l'enregistrer.":"L'enregistrement a échoué. Réessayez dans un instant.";
+    btn.disabled=false;
+  }
+}
+function markChanged(){PENDING.changed=true;route()}
+
+/* ---- PDF reading (pdf.js loaded on demand from cdnjs) ---- */
+const PDFJS="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
+let pdfReady=null;
+function loadScript(src){return new Promise((res,rej)=>{const s=document.createElement("script");s.src=src;s.onload=res;s.onerror=()=>rej(new Error("load"));document.head.appendChild(s)})}
+function loadPdfJs(){
+  if(!pdfReady)pdfReady=loadScript(PDFJS+"pdf.min.js").then(()=>loadScript(PDFJS+"pdf.worker.min.js")).then(()=>{const L=window.pdfjsLib;L.GlobalWorkerOptions.workerSrc=PDFJS+"pdf.worker.min.js";return L}).catch(e=>{pdfReady=null;throw e});
+  return pdfReady;
+}
+function itemsToText(items){let out="";for(const it of items){out+=it.str;out+=it.hasEOL?"\n":" "}return out.replace(/[ \t]+\n/g,"\n").replace(/ {2,}/g," ")}
+async function readPdf(file,onStep){
+  const L=await loadPdfJs();
+  const doc=await L.getDocument({data:await file.arrayBuffer(),isEvalSupported:false}).promise;
+  let text="";
+  for(let i=1;i<=doc.numPages;i++){const pg=await doc.getPage(i);text+=`\n\n[Page ${i}]\n`+itemsToText((await pg.getTextContent()).items);onStep&&onStep(i,doc.numPages)}
+  return {doc,text:text.trim(),pages:doc.numPages,chars:text.replace(/\[Page \d+\]|\s/g,"").length};
+}
+async function pdfPagesAsImages(doc,max){
+  const out=[];
+  for(let i=1;i<=Math.min(doc.numPages,max);i++){
+    const pg=await doc.getPage(i);const vp0=pg.getViewport({scale:1});const vp=pg.getViewport({scale:Math.min(2,1400/vp0.width)});
+    const c=document.createElement("canvas");c.width=vp.width;c.height=vp.height;
+    await pg.render({canvasContext:c.getContext("2d"),viewport:vp}).promise;
+    out.push(await new Promise(r=>c.toBlob(r,"image/jpeg",0.82)));
+  }
+  return out;
+}
+/* Reads a PDF picked in `input`, writes status into `msg`; resolves {text, images} */
+async function pdfFromInput(input,msg){
+  const f=input.files&&input.files[0];if(!f)return null;
+  if(!/pdf$/i.test(f.type)&&!/\.pdf$/i.test(f.name)){msg.textContent="Choisissez un fichier PDF.";return null}
+  msg.textContent="Lecture du PDF…";
+  try{
+    const r=await readPdf(f,(i,n)=>{msg.textContent=`Lecture du PDF… page ${i} / ${n}`});
+    if(r.chars>=300){msg.textContent=`PDF lu : ${r.pages} pages, ${r.text.length.toLocaleString("fr-FR")} caractères.`;return {text:r.text,images:[],name:f.name}}
+    const lim=SAMPLE&&SAMPLE.limits?await SAMPLE.limits().catch(()=>null):null;
+    if(!lim||!lim.images){msg.textContent="Ce PDF est scanné (pas de texte lisible) et Claude ne peut pas lire d'images ici. Collez le texte à la main.";return null}
+    const max=Math.min(lim.images.maxCount,20);msg.textContent="PDF scanné : conversion des pages en images…";
+    const imgs=await pdfPagesAsImages(r.doc,max);
+    msg.textContent=`PDF scanné : Claude lira ${imgs.length} page${imgs.length>1?"s":""} en image${r.pages>max?` (sur ${r.pages}, limite atteinte)`:""}.`;
+    return {text:"",images:imgs,name:f.name};
+  }catch(e){msg.textContent="Impossible de lire ce PDF (protégé ou endommagé ?). Collez le texte à la main.";return null}
+}
+
+/* ---- view ---- */
+function field(label,html){return `<label class="fld"><span>${label}</span>${html}</label>`}
+function matOptions(sel){return MATIERES.map(m=>`<option value="${m.id}"${m.id===sel?" selected":""}>${esc(m.nom)}</option>`).join("")}
+function vAdmin(){
+  const v=view();
+  if(!IS_OWNER){v.innerHTML=`<p class="empty">Cet espace est réservé au propriétaire du Classeur.</p>`;return}
+  v.insertAdjacentHTML("beforeend",`<div><div class="eyebrow">Visible par vous seul</div><h1 style="font-weight:800;font-size:clamp(30px,5vw,44px)">Mon espace</h1>
+    <p class="lede">Posez une question à Claude ou ajoutez du contenu au Classeur. Les questions utilisent votre compte Claude.</p></div>`);
+  if(PENDING.changed){
+    const bar=document.createElement("div");bar.className="savebar";
+    bar.innerHTML=`<span><b>Modifications en attente.</b> Elles ne sont visibles par la promo qu'après enregistrement.</span><button type="button" class="btn primary">Enregistrer sur le site</button><span class="msg" role="status"></span>`;
+    const b=bar.querySelector("button");b.onclick=()=>saveSite(b,bar.querySelector(".msg"));v.appendChild(bar);
+  }
+  const grid=document.createElement("div");grid.className="admin";v.appendChild(grid);
+
+  /* 1. Ask Claude */
+  const ask=document.createElement("section");ask.className="panel wide";
+  ask.innerHTML=`<h2>Demander à Claude</h2>
+    ${field("Sur quel document ? (facultatif)",`<select id="askDoc"><option value="">Aucun : question générale</option>${FICHES.filter(f=>f.type!=="Flashcards").map((f,i)=>`<option value="${i}">${esc(mat(f.m).nom)} · ${esc(f.titre)}</option>`).join("")}</select>`)}
+    ${field("Ou joindre un PDF (facultatif)",`<input type="file" id="askPdf" accept="application/pdf,.pdf">`)}<span class="msg" id="askPdfMsg" role="status"></span>
+    ${field("Votre question",`<textarea id="askQ" rows="3" placeholder="Ex. : explique-moi la fente avec un exemple chiffré"></textarea>`)}
+    <div class="row"><button type="button" class="btn primary" id="askGo">Envoyer</button><button type="button" class="btn" id="askStop" hidden>Arrêter</button></div>
+    <div class="answer" id="askOut" aria-live="polite"></div>`;
+  grid.appendChild(ask);
+  let ctrl=null, askPdf=null;
+  ask.querySelector("#askPdf").onchange=async e=>{askPdf=await pdfFromInput(e.target,ask.querySelector("#askPdfMsg"))};
+  ask.querySelector("#askGo").onclick=async()=>{
+    const q=ask.querySelector("#askQ").value.trim();const out=ask.querySelector("#askOut");if(!q)return;
+    if(!SAMPLE){out.textContent="Les questions à Claude ne sont pas disponibles dans cette vue.";return}
+    const di=ask.querySelector("#askDoc").value;let ctx="";
+    if(di!==""){const f=FICHES.filter(f=>f.type!=="Flashcards")[+di];
+      if(f.href.startsWith("#fiche-")){const n=NOTES.find(n=>"#fiche-"+n.id===f.href);ctx=n?new DOMParser().parseFromString(n.html,"text/html").body.textContent:""}
+      else{try{const h=await (await fetch(f.href)).text();const d=new DOMParser().parseFromString(h,"text/html");d.querySelectorAll("script,style,nav,svg").forEach(x=>x.remove());ctx=(d.body.innerText||d.body.textContent).replace(/\s+\n/g,"\n").replace(/[ \t]+/g," ").slice(0,120000)}catch(e){}}}
+    if(askPdf&&askPdf.text)ctx+=`\n\nDocument joint (${askPdf.name}) :\n${askPdf.text.slice(0,150000)}`;
+    const prompt=`Tu aides un étudiant de 5e année d'école de commerce (JUNIA) à réviser. Réponds en français, clairement et brièvement, avec des exemples si utile. Mets en gras les notions clés avec **...**.\n${ctx?`\nAppuie-toi en priorité sur ce contenu :\n"""\n${ctx}\n"""\n`:""}\nQuestion : ${q}`;
+    out.innerHTML=`<p class="muted">Claude réfléchit…</p>`;ctrl=new AbortController();
+    const go=ask.querySelector("#askGo"),stop=ask.querySelector("#askStop");go.disabled=true;stop.hidden=false;stop.onclick=()=>ctrl.abort();
+    try{await SAMPLE(prompt,{signal:ctrl.signal,cache:false,...(askPdf&&askPdf.images.length?{images:askPdf.images}:{}),onText:({text})=>{out.innerHTML=mdLite(text)}})}
+    catch(e){const keep=e&&e.text;out.innerHTML=(keep?mdLite(keep)+"<br>":"")+`<p class="muted">${e&&e.code==="cancelled"?"Arrêté.":e&&e.code==="not_granted"?"Vous avez refusé l'accès à Claude pour cette page.":e&&e.code==="rate_limited"?"Trop de questions d'affilée, réessayez dans un moment.":"La réponse n'a pas pu aboutir."}</p>`}
+    finally{go.disabled=false;stop.hidden=true}
+  };
+
+  /* 2. Create a fiche with Claude */
+  const mk=document.createElement("section");mk.className="panel wide";
+  mk.innerHTML=`<h2>Créer une fiche avec Claude</h2>
+    <p class="muted">Déposez le PDF du cours ou collez son texte : Claude rédige la fiche, vous la relisez, puis vous l'ajoutez.</p>
+    <div class="row2">${field("Matière",`<select id="nfM">${matOptions()}</select>`)}${field("Date du cours",`<input type="date" id="nfD" value="${new Date().toISOString().slice(0,10)}">`)}</div>
+    ${field("PDF du cours",`<input type="file" id="nfPdf" accept="application/pdf,.pdf">`)}<span class="msg" id="nfPdfMsg" role="status"></span>
+    ${field("Ou texte du cours",`<textarea id="nfT" rows="7" placeholder="Le texte du PDF s'affiche ici une fois lu. Vous pouvez aussi coller un texte."></textarea>`)}
+    <div class="row"><button type="button" class="btn primary" id="nfGo">Rédiger la fiche</button><span class="msg" id="nfMsg" role="status"></span></div>
+    <div id="nfPrev"></div>`;
+  grid.appendChild(mk);
+  let nfImgs=[];
+  mk.querySelector("#nfPdf").onchange=async e=>{const r=await pdfFromInput(e.target,mk.querySelector("#nfPdfMsg"));nfImgs=r?r.images:[];if(r&&r.text)mk.querySelector("#nfT").value=r.text};
+  mk.querySelector("#nfGo").onclick=async()=>{
+    const txt=mk.querySelector("#nfT").value.trim(),msg=mk.querySelector("#nfMsg"),prev=mk.querySelector("#nfPrev");
+    if(txt.length<200&&!nfImgs.length){msg.textContent="Déposez un PDF ou collez un texte de cours plus long.";return}
+    if(!SAMPLE){msg.textContent="Claude n'est pas disponible dans cette vue.";return}
+    const btn=mk.querySelector("#nfGo");btn.disabled=true;msg.textContent="Claude rédige la fiche… (souvent 30 à 90 secondes)";prev.innerHTML="";
+    const prompt=`Rédige une fiche de révision en français à partir de ce support de cours, sans rien inventer. Structure : sections avec titres, définitions, règles et articles, tableaux de synthèse quand c'est utile, puis une section « À retenir » (pièges fréquents).
+Réponds UNIQUEMENT en JSON : {"titre": "titre court de la fiche", "description": "une phrase qui résume le contenu", "tags": "mots-clés séparés par des espaces", "html": "le corps de la fiche en HTML"}.
+Dans "html", utilise seulement <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, <em>, <table>, <thead>, <tbody>, <tr>, <th>, <td>, <blockquote>. Aucun attribut, aucun style.
+${nfImgs.length?"Le support est fourni sous forme d'images des pages, dans l'ordre.":`Support de cours :
+"""
+${txt.slice(0,200000)}
+"""`}`;
+    try{
+      const r=await SAMPLE.json(prompt,{modelTier:"complex",cache:false,...(nfImgs.length?{images:nfImgs}:{})});
+      if(!r||!r.html||!r.titre)throw {code:"invalid_json"};
+      const html=sanitize(r.html);const m=mat(mk.querySelector("#nfM").value);
+      prev.innerHTML=`<div class="note-prev" style="--c:var(${m.c})"><div class="badge">Aperçu · ${esc(m.nom)}</div><h2>${esc(r.titre)}</h2><p class="muted">${esc(r.description||"")}</p><div class="note">${html}</div></div>
+        <div class="row"><button type="button" class="btn primary" id="nfAdd">Ajouter au Classeur</button><button type="button" class="btn" id="nfDrop">Jeter</button></div>`;
+      msg.textContent="Relisez l'aperçu avant de l'ajouter.";
+      prev.querySelector("#nfDrop").onclick=()=>{prev.innerHTML="";msg.textContent=""};
+      prev.querySelector("#nfAdd").onclick=()=>{
+        let id=slug(r.titre);while(NOTES.some(n=>n.id===id))id+="-2";
+        const d=mk.querySelector("#nfD").value||new Date().toISOString().slice(0,10);
+        NOTES.push({id,html});
+        FICHES.push({m:m.id,type:"Fiche",titre:r.titre,desc:r.description||"",href:"#fiche-"+id,cours:[d],ajout:new Date().toISOString().slice(0,10),tags:r.tags||""});
+        markChanged();
+      };
+    }catch(e){msg.textContent=e&&e.code==="not_granted"?"Vous avez refusé l'accès à Claude pour cette page.":e&&e.code==="rate_limited"?"Trop de demandes d'affilée, réessayez dans un moment.":"Claude n'a pas pu rédiger la fiche. Essayez avec un texte plus court."}
+    finally{btn.disabled=false}
+  };
+
+  /* 3. Add an exam */
+  const ex=document.createElement("section");ex.className="panel";
+  ex.innerHTML=`<h2>Ajouter un examen</h2>
+    ${field("Matière",`<select id="exM">${matOptions()}</select>`)}
+    <div class="row2">${field("Date",`<input type="date" id="exD">`)}${field("Heure",`<input type="text" id="exH" placeholder="14h00">`)}</div>
+    ${field("Salle (facultatif)",`<input type="text" id="exL" placeholder="Amphi A">`)}
+    <div class="row"><button type="button" class="btn primary" id="exGo">Ajouter</button><span class="msg" id="exMsg" role="status"></span></div>`;
+  grid.appendChild(ex);
+  ex.querySelector("#exGo").onclick=()=>{const d=ex.querySelector("#exD").value;if(!d){ex.querySelector("#exMsg").textContent="Choisissez une date.";return}
+    EXAMS.push({m:ex.querySelector("#exM").value,date:d,heure:ex.querySelector("#exH").value.trim(),titre:"Examen",lieu:ex.querySelector("#exL").value.trim()});markChanged()};
+
+  /* 4. Add a subject */
+  const ma=document.createElement("section");ma.className="panel";
+  ma.innerHTML=`<h2>Ajouter une matière</h2>
+    ${field("Nom",`<input type="text" id="maN" placeholder="Fiscalité internationale">`)}
+    ${field("Professeur (facultatif)",`<input type="text" id="maP" placeholder="A. Martin">`)}
+    <div class="row"><button type="button" class="btn primary" id="maGo">Ajouter</button><span class="msg" id="maMsg" role="status"></span></div>`;
+  grid.appendChild(ma);
+  ma.querySelector("#maGo").onclick=()=>{const n=ma.querySelector("#maN").value.trim();if(!n){ma.querySelector("#maMsg").textContent="Donnez un nom.";return}
+    let id=slug(n).slice(0,12);while(MATIERES.some(m=>m.id===id))id+="2";
+    MATIERES.push({id,nom:n,prof:ma.querySelector("#maP").value.trim(),c:COLORS[MATIERES.length%COLORS.length]});markChanged()};
+
+  /* 5. Manage */
+  const mg=document.createElement("section");mg.className="panel wide";
+  const exRows=[...EXAMS].map((e,i)=>({e,i})).sort((a,b)=>a.e.date.localeCompare(b.e.date));
+  const myNotes=FICHES.map((f,i)=>({f,i})).filter(x=>x.f.href.startsWith("#fiche-"));
+  mg.innerHTML=`<h2>Gérer</h2>
+    <h3>Examens</h3><ul class="mlist">${exRows.map(({e,i})=>`<li><span>${esc(mat(e.m).nom)} · ${fmt(e.date)}${e.heure?" · "+esc(e.heure):""}</span><button type="button" class="btn small" data-delx="${i}">Retirer</button></li>`).join("")||"<li class='muted'>Aucun examen.</li>"}</ul>
+    <h3>Fiches créées ici</h3><ul class="mlist">${myNotes.map(({f,i})=>`<li><span>${esc(mat(f.m).nom)} · ${esc(f.titre)}</span><button type="button" class="btn small" data-delf="${i}">Retirer</button></li>`).join("")||"<li class='muted'>Aucune pour l'instant. Les fiches faites dans la conversation Claude se gèrent depuis la conversation.</li>"}</ul>`;
+  grid.appendChild(mg);
+  mg.querySelectorAll("[data-delx]").forEach(b=>b.onclick=()=>{EXAMS.splice(+b.dataset.delx,1);markChanged()});
+  mg.querySelectorAll("[data-delf]").forEach(b=>b.onclick=()=>{const f=FICHES[+b.dataset.delf];const id=f.href.slice(7);FICHES.splice(+b.dataset.delf,1);const k=NOTES.findIndex(n=>n.id===id);if(k>=0)NOTES.splice(k,1);markChanged()});
+}
+
+/* ---- owner-made fiche viewer ---- */
+function vNote(id){
+  const n=NOTES.find(x=>x.id===id),f=FICHES.find(x=>x.href==="#fiche-"+id);
+  const v=view();
+  if(!n||!f){v.innerHTML=`<p class="empty">Cette fiche n'existe plus.</p>`;return}
+  const m=mat(f.m);paint(v,m.c);
+  const back=document.createElement("button");back.className="link";back.type="button";back.textContent="← "+m.nom;back.onclick=()=>go("m-"+m.id+"_fiches");
+  const crumb=document.createElement("div");crumb.className="crumb";crumb.appendChild(back);v.appendChild(crumb);
+  const h=document.createElement("section");h.className="mhead";
+  h.innerHTML=`<span class="mono">${SHORT[m.id]||esc(m.nom[0])}</span><div><h1></h1><p>${coursLabel(f)}</p></div>`;h.querySelector("h1").textContent=f.titre;v.appendChild(h);
+  const art=document.createElement("article");art.className="note";art.innerHTML=sanitize(n.html);v.appendChild(art);
+}
+
 /* ---------- routing ---------- */
 let current="accueil";
 function go(r){current=r;document.getElementById("q").value="";try{if(location.hash.slice(1)!==r)history.pushState(null,"","#"+r)}catch(e){}route();window.scrollTo({top:0})}
 function route(){
   const q=document.getElementById("q").value.trim();
   let r=q?"recherche":((location.hash||"").slice(1)||current);
-  const navKey=r.startsWith("m-")?"matieres":r;
+  const navKey=r.startsWith("m-")||r.startsWith("fiche-")?"matieres":r;
   document.querySelectorAll(".nav button").forEach(b=>{if(b.dataset.go===navKey)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
   if(q)return vSearch(q);
+  if(r==="admin")return vAdmin();
+  if(r.startsWith("fiche-"))return vNote(r.slice(6));
   if(r.startsWith("m-")){const [id,tab]=r.slice(2).split("_");if(MATIERES.some(m=>m.id===id))return vMatiere(id,tab)}
   ({matieres:vMatieres,cartes:vCartes,flashcards:vFlash,examens:vExamens}[r]||vHome)();
 }
@@ -411,7 +689,8 @@ document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=
 window.addEventListener("hashchange",()=>{current=(location.hash||"").slice(1)||"accueil";route()});
 window.addEventListener("popstate",()=>{current=(location.hash||"").slice(1)||"accueil";route()});
 let st;document.getElementById("q").addEventListener("input",()=>{clearTimeout(st);st=setTimeout(route,120)});
+try{const g=sessionStorage.getItem("classeur-go");if(g){sessionStorage.removeItem("classeur-go");current=g;history.replaceState(null,"","#"+g)}}catch(e){}
 route();
+initOwner();
 </script>
-
 </body></html>
