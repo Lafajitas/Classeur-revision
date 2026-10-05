@@ -8,17 +8,17 @@
 :root{
   --bg:#f2f4f2; --paper:#fbfcfb; --fg:#1b2420; --muted:#5f6b66; --line:#d5dbd6; --accent:#1f4d3f;
   --ok:#1f7a4d; --ko:#b4531f;
-  --m1:#0f6b5c; --m2:#3c5aa8; --m3:#8a3f86; --m4:#b4531f; --m5:#8a6d12; --m6:#b0303f; --m9:#7a4b2a;
+  --m1:#0f6b5c; --m2:#3c5aa8; --m3:#8a3f86; --m4:#b4531f; --m5:#8a6d12; --m6:#b0303f; --m9:#7a4b2a;--m7:#4f6b12;
   --display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
   --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
   color-scheme:light; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#121715; --paper:#181f1c; --fg:#e3ebe7; --muted:#97a39e; --line:#2e3834; --accent:#8fd3b8; --ok:#6fcf9b; --ko:#f08a52;
-  --m1:#4cc3ad; --m2:#8aa6f2; --m3:#d38bd0; --m4:#f08a52; --m5:#d9b54a; --m6:#f07a87; --m9:#d9a07a; color-scheme:dark}}
+  --m1:#4cc3ad; --m2:#8aa6f2; --m3:#d38bd0; --m4:#f08a52; --m5:#d9b54a; --m6:#f07a87; --m9:#d9a07a;--m7:#b5cf5e; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#121715; --paper:#181f1c; --fg:#e3ebe7; --muted:#97a39e; --line:#2e3834; --accent:#8fd3b8; --ok:#6fcf9b; --ko:#f08a52;
-  --m1:#4cc3ad; --m2:#8aa6f2; --m3:#d38bd0; --m4:#f08a52; --m5:#d9b54a; --m6:#f07a87; --m9:#d9a07a; color-scheme:dark}
+  --m1:#4cc3ad; --m2:#8aa6f2; --m3:#d38bd0; --m4:#f08a52; --m5:#d9b54a; --m6:#f07a87; --m9:#d9a07a;--m7:#b5cf5e; color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
 .wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:grid;gap:18px}
@@ -204,10 +204,42 @@ const CARDS = [
 ["ingf","2026-10-05","Taux de croissance soutenable ?","g = b × ROE, avec b le taux de rétention des bénéfices."],
 ["ingf","2026-10-05","Bêta d'une société non cotée ?","Désendetter le bêta d'un comparable : βU = βE / (1 + D/E), puis réendetter : β′E = βU (1 + D′/E′) avec la structure de la cible."],
 ["ingf","2026-10-05","Bêta ajusté ?","β ajusté = 2/3 × β brut + 1/3 × 1 (les bêtas tendent vers 1)."],
-["ingf","2026-10-05","Formule du CMPC ?","WACC = D/(D+E) · rd(1 − T) + E/(D+E) · re, en valeurs de marché."]
+["ingf","2026-10-05","Formule du CMPC ?","WACC = D/(D+E) · rd(1 − T) + E/(D+E) · re, en valeurs de marché."],
+["treso", "2026-10-05", "Formule du FRNG ?", "FRNG = Ressources stables − Emplois stables (bilan fonctionnel, valeurs brutes)."],
+["treso", "2026-10-05", "Lien entre FRNG, BFR et trésorerie ?", "TN = FRNG − BFR, avec BFR = BFE + BFHE. Et aussi TN = actif de trésorerie − passif de trésorerie."],
+["treso", "2026-10-05", "Deux grandes causes d'une crise de trésorerie ?", "Une hausse du BFR (croissance non maîtrisée, mauvaise gestion, baisse d'activité) ou une baisse du FR (erreur de financement, pertes)."],
+["treso", "2026-10-05", "Remède à une erreur de financement (emprunt trop court) ?", "Financement à moyen ou long terme, lease-back, allongement des durées de remboursement."],
+["treso", "2026-10-05", "Qu'est-ce que le lease-back ?", "L'entreprise vend un actif et le reprend aussitôt en location longue durée : elle récupère du cash et renforce son FR."],
+["treso", "2026-10-05", "Objectif principal du trésorier ?", "Assurer au moindre coût l'équilibre financier à court terme : liquidité, coût bancaire, résultat financier, risques de change et de taux."],
+["treso", "2026-10-05", "Qu'est-ce que le budget de trésorerie ?", "Document interne de prévisions mensuelles des encaissements et décaissements, en principe sur un an. Synthèse de tous les budgets."],
+["treso", "2026-10-05", "Objectif « trésorerie zéro » ?", "Placer les excédents prévus et financer les déficits au plus bas coût, pour minimiser les frais financiers nets."],
+["treso", "2026-10-05", "Les quatre tableaux du budget, dans l'ordre ?", "1. Budget de TVA ; 2. encaissements ; 3. décaissements ; 4. budget de trésorerie."],
+["treso", "2026-10-05", "HT ou TTC dans le budget ?", "TTC pour tout ce qui est soumis à TVA. HT pour l'export et les charges non soumises. Les postes du bilan d'ouverture sont déjà TTC."],
+["treso", "2026-10-05", "Quand la TVA est-elle payée ?", "Le mois suivant (M+1). En janvier, on paie la TVA à décaisser du bilan N−1."],
+["treso", "2026-10-05", "Que faire d'un crédit de TVA ?", "Ce n'est pas un décaissement. Il est remboursé plus tard (M+2 si l'énoncé le dit) : on l'inscrit alors en encaissement."],
+["treso", "2026-10-05", "TVA déductible sur un investissement : quel mois ?", "Le mois de l'opération (facture), même si le paiement a lieu plus tard."],
+["treso", "2026-10-05", "Qu'est-ce qui n'entre jamais dans le budget de trésorerie ?", "Les charges et produits calculés : dotations, reprises, résultat, variation de stocks."],
+["treso", "2026-10-05", "Vente à 30 jours en janvier : quand l'encaisser ?", "En février, en TTC (montant HT × 1,2)."],
+["treso", "2026-10-05", "Qu'est-ce que l'affacturage ?", "L'entreprise cède ses factures à un factor qui lui avance les fonds, gère le recouvrement et peut garantir les impayés."],
+["treso", "2026-10-05", "Le fonds de garantie de l'affacturage est-il un coût ?", "Non : c'est une retenue (jusqu'à 15 % du CA financé) rendue une fois les créances soldées."],
+["treso", "2026-10-05", "Billet de trésorerie : émetteur, minimum, durée ?", "Entreprises solides ; 150 000 € minimum ; 1 jour à 1 an ; intérêts fixes et précomptés."],
+["treso", "2026-10-05", "Certificat de dépôt (CDN) ?", "TCN émis par une banque (ou la CDC), 1 jour à 1 an. Placement peu risqué pour une entreprise excédentaire."],
+["treso", "2026-10-05", "Escompte : qui supporte le risque d'impayé ?", "L'entreprise : la banque se retourne contre le tireur. L'escompte est une garantie pour la banque, pas un transfert de risque."],
+["treso", "2026-10-05", "Cession Dailly ?", "Cession groupée de factures à une banque via un bordereau, contre une avance. L'entreprise reste responsable en cas de défaut."],
+["treso", "2026-10-05", "Lettre de change ou billet à ordre ?", "Lettre de change : le créancier ordonne au client de payer. Billet à ordre : le client s'engage à payer."],
+["treso", "2026-10-05", "Qu'est-ce que la CPFD ?", "Commission du plus fort découvert : 0,05 % du plus fort découvert de chaque mois. Une par mois concerné."],
+["treso", "2026-10-05", "Comment compter les jours d'un escompte ?", "Date de négociation exclue, échéance incluse, puis on ajoute les jours de banque."],
+["treso", "2026-10-05", "Taux de l'escompte dans le calcul ?", "Taux d'escompte + commission d'endos, puis on ajoute la commission de manipulation par effet."],
+["treso", "2026-10-05", "Comment calculer un taux réel ?", "Coût total = somme réellement disponible × t × durée réelle / 365, puis on isole t."],
+["treso", "2026-10-05", "Intérêts précomptés ou postcomptés ?", "Précomptés : payés d'avance, on reçoit moins que le nominal. Postcomptés : on reçoit le nominal et on paie les intérêts à l'échéance."],
+["treso", "2026-10-05", "Pourquoi l'escompte coûte cher pour un déficit court ?", "Il court jusqu'à l'échéance de l'effet, souvent bien après la fin du déficit : on paie des jours inutiles."],
+["treso", "2026-10-05", "Les cinq critères de choix d'un placement ?", "Montant, durée, liquidité, sécurité, rendement."],
+["treso", "2026-10-05", "Pourquoi un compte à terme d'1 mois est mauvais pour un excédent de 20 jours ?", "Il bloque les fonds 10 jours de trop : le découvert nécessaire efface presque tout le gain (EPAR : 644 € contre 3 419 € pour le BT)."],
+["treso", "2026-10-05", "NADONE : quel financement retenir ?", "Le billet de trésorerie (taux réel 5,52 %), devant le découvert (9,41 %) et l'escompte + découvert (11,34 %)."],
+["treso", "2026-10-05", "Examen 2024, ex. 1 : placer 3 000 k€ à 7 % et payer 7 jours de découvert ?", "Oui : gain 17,26 k€, coût du découvert 4,20 k€, gain net 13,06 k€."]
 ];
 
-const MATIERES={eval:["Évaluation d'entreprises","--m1"],eco:["Économétrie","--m2"],ingf:["Ingénierie financière","--m3"],bank:["Banque","--m4"],trans:["Transmission d'entreprise","--m5"],port:["Gestion de portefeuille","--m6"],jurpat:["Gestion juridique du patrimoine","--m9"]};
+const MATIERES={eval:["Évaluation d'entreprises","--m1"],eco:["Économétrie","--m2"],ingf:["Ingénierie financière","--m3"],bank:["Banque","--m4"],trans:["Transmission d'entreprise","--m5"],port:["Gestion de portefeuille","--m6"],treso:["Gestion de trésorerie","--m7"],jurpat:["Gestion juridique du patrimoine","--m9"]};
 const all=CARDS.map(([m,c,q,a])=>({m,c,q,a,id:m+"|"+q}));
 const fmt=d=>new Date(d+"T12:00:00").toLocaleDateString("fr-FR",{weekday:"short",day:"numeric",month:"short"});
 let st={};try{st=JSON.parse(localStorage.getItem("fc-state")||"{}")}catch(e){}

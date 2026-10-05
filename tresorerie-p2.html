@@ -1,0 +1,401 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Trésorerie · Partie 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column, sticky section nav, budget tables with tabular figures */
+:root{
+  --bg:#f6f4f1; --surface:#ffffff; --fg:#231c17; --muted:#6a5d53; --line:#e2dbd3;
+  --accent:#4f6b12; --accent-soft:#eef3df; --plus:#1f6b45; --warn-bg:#fff4dc; --warn-fg:#7a5200;
+  --f-display:"Source Serif 4", Georgia, serif;
+  --f-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme:light; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#171310; --surface:#201a16; --fg:#ece4dc; --muted:#a8998c; --line:#3a3029;
+  --accent:#b5cf5e; --accent-soft:#262d17; --plus:#7fd3a5; --warn-bg:#2f2614; --warn-fg:#f0c86a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#171310; --surface:#201a16; --fg:#ece4dc; --muted:#a8998c; --line:#3a3029;
+  --accent:#b5cf5e; --accent-soft:#262d17; --plus:#7fd3a5; --warn-bg:#2f2614; --warn-fg:#f0c86a; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--f-body)}
+.wrap{max-width:52rem;margin:0 auto;padding-inline:16px;padding-block:0 4rem}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(1.9rem,5vw,2.6rem)}
+h2{font-size:1.6rem}
+h3{font-size:1.18rem;margin-top:.6rem}
+p{margin:0}
+.eyebrow{font:600 .75rem/1 var(--f-body);letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+header.hero{padding-block:2.5rem 1.5rem;display:flex;flex-direction:column;gap:.75rem;border-bottom:1px solid var(--line)}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:.25rem;overflow-x:auto;padding-block:.5rem}
+nav.toc a{font:500 .9rem var(--f-body);color:var(--fg);text-decoration:none;padding:.35rem .7rem;border-radius:6px;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--accent-soft);color:var(--accent);outline:none}
+section.part{display:flex;flex-direction:column;gap:1.1rem;padding-top:2rem}
+.partHead{display:flex;flex-direction:column;gap:.35rem;border-top:3px solid var(--accent);padding-top:1rem}
+ul,ol{margin:0;padding-left:1.25rem;display:flex;flex-direction:column;gap:.3rem}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.art{font-family:var(--f-mono);font-size:.82em;color:var(--accent);white-space:nowrap}
+.warn{background:var(--warn-bg);color:var(--warn-fg);border-radius:6px;padding:.7rem .9rem;font-size:.95rem}
+.key{background:var(--accent-soft);border-radius:6px;padding:.8rem 1rem}
+.key strong:first-child{color:var(--accent)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{padding:.5rem .75rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font:600 .75rem var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td.q{font-family:var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+.steps{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;font-size:.92rem}
+.steps span{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.3rem .6rem}
+.steps i{color:var(--muted);font-style:normal}
+details{background:var(--surface);border:1px solid var(--line);border-radius:8px}
+details>summary{cursor:pointer;padding:.75rem 1rem;font-weight:600;color:var(--accent);list-style:none}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"▸ "} details[open]>summary::before{content:"▾ "}
+details>.body{padding:0 1rem 1rem;display:flex;flex-direction:column;gap:.6rem}
+.ex{display:flex;flex-direction:column;gap:.6rem}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+
+td.n,th.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.tot td{font-weight:600;border-top:2px solid var(--line)}
+tr.neg td.n.v,td.neg{color:#a1311f}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) td.neg{color:#f08a76}}
+:root[data-theme="dark"] td.neg{color:#f08a76}
+td.sub{padding-left:1.6rem;color:var(--muted)}
+.calc{font-family:var(--f-mono);font-size:.88rem;background:var(--accent-soft);border-radius:6px;padding:.6rem .8rem;display:flex;flex-direction:column;gap:.2rem;overflow-x:auto}
+.calc span{white-space:nowrap}
+.given{display:flex;flex-wrap:wrap;gap:6px}
+.given span{font-size:.85rem;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.2rem .65rem}
+.st{font-family:var(--f-body);font-weight:600;color:var(--accent);font-size:.95rem;border-top:1px dashed var(--line);padding-top:.6rem}
+.res{border-left:3px solid var(--accent);padding:.5rem .9rem;background:var(--surface);border-radius:0 6px 6px 0}
+.src{font-size:.82rem;color:var(--muted)}
+@media print{nav.toc,.cl-back{display:none}details{border:none}details>summary{display:none}details>.body{display:flex!important;padding:0}}
+</style></head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-treso_fiches">← Gestion de trésorerie</a><span>· Classeur de révision</span></nav>
+
+<div class="wrap">
+<header class="hero">
+  <span class="eyebrow">Gestion de trésorerie · Cours du 5 oct.</span>
+  <h1>Partie 2 · Financer un déficit, placer un excédent</h1>
+  <p class="muted">Fiche tirée du support « Gestion de trésorerie, partie 2 » de la fiche d'exercices et des corrections faites en cours. Les exercices 6 et 7, non corrigés en cours, ont un corrigé proposé ici. Elle couvre les financements à court terme, le calcul de leur coût et de leur taux réel, puis les placements.</p>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <a href="#financements">1 · Financements CT</a>
+  <a href="#affacturage">2 · Affacturage</a>
+  <a href="#tcn">3 · TCN</a>
+  <a href="#bancaire">4 · Circuit bancaire</a>
+  <a href="#cout">5 · Coût et taux réel</a>
+  <a href="#placements">6 · Placements</a>
+  <a href="#exos">7 · Exercices</a>
+  <a href="#pieges">8 · À retenir</a>
+</nav>
+
+<section id="financements" class="part">
+  <div class="partHead"><span class="eyebrow">Introduction</span><h2>Deux situations, deux décisions</h2></div>
+  <div class="grid2">
+    <div class="box"><strong>Déficit de trésorerie</strong><p>Choisir le financement à court terme <strong>le moins cher</strong> : découvert, facilité de caisse, escompte, Dailly, affacturage, billet de trésorerie, crédit de campagne.</p></div>
+    <div class="box"><strong>Excédent de trésorerie</strong><p>Placer selon cinq critères : <strong>montant, durée, liquidité, sécurité, rendement</strong>.</p></div>
+  </div>
+  <h3>Synthèse des financements à court terme</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Outil</th><th>Principe</th><th>Durée</th><th>Avantage</th><th>Limite</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Facilité de caisse</strong></td><td>Découvert ponctuel autorisé</td><td>&lt; 15 jours dans le mois</td><td>Rapide</td><td>À la discrétion de la banque, agios élevés</td></tr>
+      <tr><td><strong>Découvert autorisé</strong></td><td>Prévu par la convention de compte</td><td>&lt; 3 mois</td><td>Rapide, souple</td><td>Révocable, coûteux</td></tr>
+      <tr><td><strong>Escompte</strong></td><td>Cession d'un effet de commerce contre le nominal moins les agios</td><td>&lt; 60 jours</td><td>Simple, peu cher</td><td>L'entreprise reste responsable du recouvrement</td></tr>
+      <tr><td><strong>Crédit de campagne</strong></td><td>Ligne de crédit pour une activité saisonnière</td><td>Jusqu'à 12 mois</td><td>Frais sur les seules sommes utilisées</td><td>Garanties importantes exigées</td></tr>
+      <tr><td><strong>Dailly / affacturage</strong></td><td>Mobilisation d'un ensemble de créances</td><td>Pas de limite légale</td><td>Finance plusieurs factures d'un coup</td><td>Dailly : impayés à la charge de l'entreprise ; coût parfois élevé</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="affacturage" class="part">
+  <div class="partHead"><span class="eyebrow">Financement 1</span><h2>L'affacturage</h2></div>
+  <p>L'entreprise <strong>cède ses factures</strong> à un <strong>factor</strong>. Il lui verse tout de suite une avance de trésorerie et se charge du recouvrement auprès des clients.</p>
+  <div class="grid2">
+    <div class="box"><strong>Trois services</strong>
+      <ul>
+        <li><strong>Financement</strong> : avance de fonds rapide.</li>
+        <li><strong>Gestion</strong> : suivi et recouvrement externalisés.</li>
+        <li><strong>Garantie</strong> contre les impayés, si le contrat est « sans recours ».</li>
+      </ul>
+    </div>
+    <div class="box"><strong>Son coût</strong>
+      <ul>
+        <li>Commission d'affacturage (de service) : 0,5 % à 3 % du CA financé.</li>
+        <li>Commission de financement : 0,5 % à 3 % <strong>+ Euribor 3 mois</strong>.</li>
+        <li>Frais annexes (dossier, ouverture de compte), négociables.</li>
+        <li><strong>Fonds de garantie</strong> : jusqu'à 15 % du CA financé. Ce n'est pas un coût mais une retenue, rendue une fois les créances soldées.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="muted">Acteurs : filiales des grandes banques, et fintechs 100 % en ligne (ex. Edebex). Solution efficace mais onéreuse.</p>
+  <div class="key"><strong>Euribor</strong> : taux moyen auquel les grandes banques de la zone euro se prêtent à court terme sur le marché interbancaire.</div>
+</section>
+
+<section id="tcn" class="part">
+  <div class="partHead"><span class="eyebrow">Financement 2</span><h2>Les titres de créances négociables (TCN)</h2></div>
+  <p>Titres émis au gré de l'émetteur, négociables sur un marché réglementé ou de gré à gré, chacun représentant un droit de créance pour une durée fixée. Ils permettent de se financer à des taux proches de l'interbancaire. La Banque de France en assure l'information.</p>
+  <div class="tw"><table>
+    <thead><tr><th></th><th>Billet de trésorerie (BT)</th><th>Certificat de dépôt (CDN)</th><th>Bon à moyen terme (BMTN / NEU MTN)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Émetteurs</strong></td><td>Entreprises (résidentes ou non), secteur public, coopératives, GIE, organisations internationales</td><td>Établissements de crédit, Caisse des dépôts</td><td>Tous</td></tr>
+      <tr><td><strong>Minimum</strong></td><td>150 000 €</td><td>150 000 €</td><td>150 000 €</td></tr>
+      <tr><td><strong>Durée</strong></td><td>1 jour à 1 an</td><td>1 jour à 1 an</td><td>Plus d'1 an</td></tr>
+      <tr><td><strong>Intérêts</strong></td><td>Fixes et <strong>précomptés</strong></td><td>Le plus souvent fixes et postcomptés</td><td>Fixes ou variables, postcomptés</td></tr>
+    </tbody>
+  </table></div>
+  <div class="warn"><strong>Billet de trésorerie</strong> : crédit entre entreprises, réservé aux entreprises solides (cotées, environ 1,5 Md€ de CA dans le cours). L'investisseur reçoit la rémunération, l'émetteur la paie. Les titres courts imposent des conditions à l'émetteur, pas les titres à moyen terme.</div>
+</section>
+
+<section id="bancaire" class="part">
+  <div class="partHead"><span class="eyebrow">Financement 3</span><h2>Le circuit bancaire</h2></div>
+  <div class="grid2">
+    <div class="box"><strong>Crédits de trésorerie</strong>
+      <ul>
+        <li>Solde débiteur du compte, assimilé à un crédit à court terme.</li>
+        <li>Découvert autorisé, crédit de campagne, facilité de caisse (exceptionnelle, petit montant).</li>
+      </ul>
+    </div>
+    <div class="box"><strong>Mobilisation de créances</strong>
+      <ul>
+        <li>Escompte d'un effet de commerce.</li>
+        <li>Cession Dailly : un bordereau regroupe les créances remises à la banque, contre une avance.</li>
+      </ul>
+    </div>
+  </div>
+  <h3>L'effet de commerce</h3>
+  <p>Document écrit par lequel le créancier ordonne au débiteur de payer une somme à une date donnée. C'est une <strong>promesse de paiement</strong> qui peut circuler et se négocier.</p>
+  <ul>
+    <li><strong>Lettre de change</strong> : le créancier (tireur) ordonne au client (tiré) de payer.</li>
+    <li><strong>Billet à ordre</strong> : c'est le client qui s'engage à payer avant une date précise.</li>
+  </ul>
+  <h3>L'escompte</h3>
+  <p>L'entreprise cède l'effet à la banque <strong>avant l'échéance</strong> et reçoit le nominal <strong>moins les agios</strong>. La banque fixe un plafond et peut refuser les effets risqués.</p>
+  <div class="warn">En cas d'impayé, la banque se retourne contre l'entreprise (le tireur) : l'escompte est une <strong>garantie pour la banque, pas un transfert de risque</strong>.</div>
+  <h3>La cession Dailly</h3>
+  <ul>
+    <li>Cession groupée de factures (créances non représentées par des effets) à une banque, dans le cadre d'une convention.</li>
+    <li>Le bordereau Dailly liste les clients, montants, lieux de paiement et échéances.</li>
+    <li>Crédit par escompte ou avance en compte. L'entreprise recouvre et rembourse en cas de défaut ; le débiteur peut payer la banque directement après notification.</li>
+  </ul>
+</section>
+
+<section id="cout" class="part">
+  <div class="partHead"><span class="eyebrow">Calculs</span><h2>Coût d'un financement et taux réel</h2></div>
+  <div class="calc"><span>Taux nominal = taux de référence (Euribor…) + majoration selon le crédit + majoration selon l'entreprise</span></div>
+  <div class="tw"><table>
+    <thead><tr><th>Commission</th><th>Calcul</th><th>Exemple</th></tr></thead>
+    <tbody>
+      <tr><td>Fixe</td><td>Par opération</td><td>Commission de manipulation, par effet remis</td></tr>
+      <tr><td>Proportionnelle au montant</td><td>% du montant</td><td><strong>CPFD</strong> : 0,05 % du plus fort découvert de <strong>chaque mois</strong> ; commission de mouvement 0,025 % des débits</td></tr>
+      <tr><td>Proportionnelle au montant et à la durée</td><td>% × jours / 365</td><td>Commission d'endos 0,40 à 0,60 %, ajoutée au taux d'escompte</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Les formules</h3>
+  <div class="calc">
+    <span>Intérêts = Montant × taux × jours / 365</span>
+    <span>Découvert : agios + CPFD (une par mois touché)</span>
+    <span>Escompte : Nominal × (taux + endos) × (jours + jours de banque) / 365 + manipulation</span>
+    <span>Taux réel t : Coût total = Somme réellement disponible × t × durée réelle / 365</span>
+  </div>
+
+  <h3>Exemple du cours · le découvert</h3>
+  <div class="given"><span>120 000 € du 25 au 30 mai inclus (6 jours)</span><span>Taux 7,2 %</span><span>CPFD 0,05 %</span></div>
+  <div class="calc"><span>Intérêts = 120 000 × 7,2 % × 6/365 = 142,03 €</span><span>CPFD = 120 000 × 0,05 % = 60 €</span><span>Coût total = 202,03 €</span><span>Taux réel : 120 000 × t × 6/365 = 202,03 → t = 10,24 %</span></div>
+
+  <h3>Exemple du cours · l'escompte</h3>
+  <div class="given"><span>Remise le 20 mai : 2 effets de 1 000 et 2 000 € au 10 juin</span><span>Escompte 6,40 % + endos 0,60 %</span><span>Manipulation 4 € par effet</span><span>2 jours de banque</span><span>Date de valeur : échéance + 4 jours</span></div>
+  <div class="calc">
+    <span>Jours : 20 mai exclu → 10 juin inclus = 11 + 10 = 21 ; + 2 jours de banque = 23</span>
+    <span>Intérêts + endos = 3 000 × 7 % × 23/365 = 13,23 €</span>
+    <span>Manipulation = 2 × 4 = 8 € → coût total = 21,23 €</span>
+    <span>Montant reçu = 3 000 − 21,23 = 2 978,77 € pendant 21 + 4 = 25 jours</span>
+    <span>Taux réel : 2 978,77 × t × 25/365 = 21,23 → t = 10,41 %</span>
+  </div>
+  <div class="key"><strong>Comptage des jours :</strong> jour de négociation <strong>exclu</strong>, échéance <strong>incluse</strong>, puis on ajoute les jours de banque. Pour le taux réel, on prend la durée réelle de mise à disposition (jusqu'à la date de valeur) et le montant réellement reçu, car les intérêts d'escompte sont <strong>précomptés</strong>.</div>
+</section>
+
+<section id="placements" class="part">
+  <div class="partHead"><span class="eyebrow">Excédents</span><h2>Les placements à court terme</h2></div>
+  <div class="tw"><table>
+    <thead><tr><th>Placement</th><th>Caractéristiques</th><th>Risque</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Dépôt / compte à terme</strong></td><td>1 mois à 2 ans ; rémunération proche du marché monétaire, selon durée et montant</td><td>Faible</td></tr>
+      <tr><td><strong>OPCVM (Sicav, FCP)</strong></td><td>Monétaires, obligataires, actions, diversifiés ; grande liquidité</td><td>Faible pour les monétaires</td></tr>
+      <tr><td><strong>Certificat de dépôt</strong></td><td>Titre de dette émis par une banque, 1 jour à 1 an, revendable avant l'échéance</td><td>Faible, mais risque de défaillance de la banque</td></tr>
+      <tr><td><strong>Bon du Trésor</strong></td><td>Prêt à l'État, court à long terme</td><td>Très faible, rendement modéré</td></tr>
+      <tr><td><strong>Billet de trésorerie</strong></td><td>Prêt à une grande entreprise</td><td>Plus risqué qu'un bon du Trésor</td></tr>
+    </tbody>
+  </table></div>
+  <div class="steps"><span>Montant</span><i>·</i><span>Durée</span><i>·</i><span>Liquidité</span><i>·</i><span>Sécurité</span><i>·</i><span>Rendement</span></div>
+</section>
+
+<section id="exos" class="part">
+  <div class="partHead"><span class="eyebrow">Entraînement</span><h2>Exercices corrigés</h2></div>
+
+  <div class="ex"><h3>Exercice 1 (suite) · Vauban SA, questions 5 et 6 : découvert ou escompte ?</h3>
+  <div class="given"><span>Déficit 80 000 € du 1ᵉʳ au 25 mai inclus</span><span>Découvert 6,5 %, CPFD 0,05 %</span><span>Effets : 30 000 au 15 mai, 50 000 au 30 mai, 17 effets</span><span>Escompte 7 % + endos 0,5 % = 7,5 %</span><span>Commission fixe 8 € par effet, 2 jours de banque</span><span>Effets remis le 1ᵉʳ mai</span></div>
+  <details><summary>Voir la correction</summary><div class="body">
+    <p class="st">Découvert</p>
+    <div class="calc"><span>Agios = 80 000 × 6,5 % × 25/365 = 356,16 €</span><span>CPFD = 80 000 × 0,05 % = 40 €</span><span>Coût = 396,16 €</span></div>
+    <p class="st">Escompte</p>
+    <div class="calc"><span>1ᵉʳ mai exclu → 15 mai = 14 j + 2 = 16 j ; → 30 mai = 29 j + 2 = 31 j</span><span>30 000 × 7,5 % × 16/365 = 98,63 €</span><span>50 000 × 7,5 % × 31/365 = 318,49 €</span><span>Manipulation = 8 × 17 = 136 €</span><span>Coût = 553,12 €</span></div>
+    <p class="st">Taux réel du découvert</p>
+    <div class="calc"><span>80 000 × t × 25/365 = 396,16 → t = 7,23 %</span></div>
+    <div class="res"><strong>Le découvert est le moins cher</strong> (396 € contre 553 €) : l'escompte du second effet court jusqu'au 30 mai, au-delà du déficit, et les 136 € de manipulation pèsent lourd.</div>
+    <p class="src">Une version du corrigé écrit 7,05 % dans la formule : c'est une coquille, l'énoncé donne 7 % + 0,5 % = 7,5 %.</p>
+  </div></details></div>
+
+  <div class="ex"><h3>Exercice 2 · Société Robert, question 2 : billet de trésorerie postcompté</h3>
+  <div class="given"><span>Suite de l'exercice 2 de la Partie 1</span><span>Déficit février : −354 K€</span><span>BT 20 jours à 3 %, intérêts postcomptés</span></div>
+  <details><summary>Voir la correction</summary><div class="body">
+    <div class="calc"><span>Intérêts = 354 × 3 % × 20/365 = 0,58 K€ (le corrigé arrondit à 0,59)</span><span>Février : la trésorerie reçoit 354</span><span>Mars : on rembourse 354 + 0,59 = 354,59</span></div>
+    <div class="tw"><table>
+      <thead><tr><th>En K€</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th></tr></thead>
+      <tbody>
+        <tr><td>Trésorerie début</td><td class="n">15</td><td class="n">146</td><td class="n">0</td></tr>
+        <tr><td>Encaissements</td><td class="n">1 510</td><td class="n">1 200</td><td class="n">1 080</td></tr>
+        <tr><td>Billet de trésorerie</td><td class="n"></td><td class="n">354</td><td class="n neg">−354,59</td></tr>
+        <tr><td>Décaissements</td><td class="n">1 379</td><td class="n">1 700</td><td class="n">1 440</td></tr>
+        <tr class="tot"><td>Trésorerie fin</td><td class="n">146</td><td class="n">0</td><td class="n neg">−714,59</td></tr>
+      </tbody>
+    </table></div>
+    <div class="res">Postcomptés : on reçoit le nominal tout de suite et on paie les intérêts à l'échéance. Le déficit de mars reste à financer.</div>
+  </div></details></div>
+
+  <div class="ex"><h3>Exercice 3 · Société Rabol, question 2 : billet de trésorerie précompté</h3>
+  <div class="given"><span>Suite de l'exercice 3 de la Partie 1</span><span>Déficit mois 1 : −162 K€</span><span>Déficit apparu le 10 janvier, stable 24 jours</span><span>BT : nominal = déficit (162), 4 %, intérêts précomptés</span></div>
+  <details><summary>Voir la correction</summary><div class="body">
+    <div class="calc"><span>Intérêts payés d'avance = 162 × 4 % × 24/365 = 0,43 K€</span><span>Reçu au mois 1 = 162 − 0,43 = 161,57</span><span>Remboursé à l'échéance (mois 2) = 162</span></div>
+    <div class="tw"><table>
+      <thead><tr><th>En K€</th><th class="n">1</th><th class="n">2</th><th class="n">3</th><th class="n">4</th></tr></thead>
+      <tbody>
+        <tr><td>Trésorerie début</td><td class="n">12,00</td><td class="n neg">−0,43</td><td class="n">21,57</td><td class="n">73,57</td></tr>
+        <tr><td>Encaissements</td><td class="n">1 096,00</td><td class="n">1 284,00</td><td class="n">1 272,00</td><td class="n">1 440,00</td></tr>
+        <tr><td>Billet de trésorerie</td><td class="n">161,57</td><td class="n neg">−162,00</td><td class="n"></td><td class="n"></td></tr>
+        <tr><td>Décaissements</td><td class="n">1 270,00</td><td class="n">1 100,00</td><td class="n">1 220,00</td><td class="n">1 240,00</td></tr>
+        <tr class="tot"><td>Trésorerie fin</td><td class="n neg">−0,43</td><td class="n">21,57</td><td class="n">73,57</td><td class="n">273,57</td></tr>
+      </tbody>
+    </table></div>
+    <div class="res">Avec des intérêts précomptés, emprunter exactement le déficit laisse un petit trou (−0,43) : il faut emprunter un nominal un peu plus grand, comme dans l'exercice 5.</div>
+  </div></details></div>
+
+  <div class="ex"><h3>Exercice 5 · Le cas NADONE : billet, escompte ou découvert ?</h3>
+  <div class="given"><span>Déficit 980 000 € du 1ᵉʳ au 20 avril inclus (20 jours)</span><span>BT 5,5 %, précomptés</span><span>Escompte 7,5 % + endos 0,6 %, 5 € HT par effet, 1 jour de banque</span><span>Du 21/04 au 30/06 : solde voisin de 0</span><span>Effets : 300 000 au 20/04 (5 effets), 620 000 au 30/04 (12 effets)</span><span>Découvert 8,5 %, CPFD 0,05 %</span></div>
+  <details><summary>Voir la correction</summary><div class="body">
+    <p class="st">1. Billet de trésorerie</p>
+    <p>Intérêts précomptés : on cherche le nominal X qui laisse 980 000 € nets.</p>
+    <div class="calc"><span>980 000 = X − X × 5,5 % × 20/365 → X ≈ 982 962 €</span><span>Intérêts ≈ 2 962 € (le corrigé donne 2 953,53, écart d'arrondi)</span><span>Taux réel : 2 962 = 980 000 × t × 20/365 → t ≈ 5,52 %</span></div>
+    <p class="st">2. Escompte (+ découvert pour le reste)</p>
+    <div class="calc"><span>Taux = 7,5 % + 0,6 % = 8,1 %</span><span>300 000 × 8,1 % × 21/365 = 1 398,08 €</span><span>620 000 × 8,1 % × 31/365 = 4 265,26 €</span><span>Manipulation = 5 × 17 = 85 € → escompte = 5 748,34 €</span><span>Reçu = 920 000 − 5 748,34 = 914 251,66 → il manque 65 748,34 €</span><span>Découvert sur le reste = 65 748,34 × 8,5 % × 20/365 + 65 748,34 × 0,05 % = 339,10 €</span><span>Coût total = 6 087,44 € → t = 11,34 %</span></div>
+    <p class="st">3. Découvert seul</p>
+    <div class="calc"><span>Agios = 980 000 × 8,5 % × 20/365 = 4 564,38 €</span><span>CPFD = 980 000 × 0,05 % = 490 €</span><span>Coût = 5 054,38 € → t = 9,41 %</span></div>
+    <div class="tw"><table>
+      <thead><tr><th>Solution</th><th class="n">Coût</th><th class="n">Taux réel</th></tr></thead>
+      <tbody>
+        <tr class="tot"><td>Billet de trésorerie</td><td class="n">≈ 2 962 €</td><td class="n">5,52 %</td></tr>
+        <tr><td>Découvert</td><td class="n">5 054 €</td><td class="n">9,41 %</td></tr>
+        <tr><td>Escompte + découvert</td><td class="n">6 087 €</td><td class="n">11,34 %</td></tr>
+      </tbody>
+    </table></div>
+    <div class="res"><strong>Le billet de trésorerie est le moins cher</strong>, à condition d'avoir accès au marché (150 000 € minimum, entreprise solide). L'escompte est le plus cher : le second effet est financé jusqu'au 30 avril, dix jours après la fin du déficit.</div>
+  </div></details></div>
+<div class="ex"><h3>Exercice 6 · EPAR : quel placement ?</h3>
+  <div class="given"><span>Excédent 2 000 000 € pendant 20 jours, puis solde voisin de 0</span><span>Compte à terme : 3 %, durée 1 mois</span><span>Sicav monétaires : 2,9 %</span><span>Billet de trésorerie 2 000 000 € sur 20 jours : 3,12 %</span><span>Découvert 6 %, CPFD 1/2000</span></div>
+  <details><summary>Voir la correction proposée</summary><div class="body">
+    <p class="src">Pas de corrigé en cours : correction proposée avec les méthodes du cours (base 365 jours, 1 mois = 30 jours).</p>
+    <p class="st">1. Compte à terme</p>
+    <p>Il bloque les fonds <strong>1 mois</strong>, alors que l'excédent ne dure que 20 jours : il faut un découvert de 2 000 000 € pendant les 10 jours restants.</p>
+    <div class="calc"><span>Intérêts = 2 000 000 × 3 % × 30/365 = 4 931,51 €</span><span>Agios = 2 000 000 × 6 % × 10/365 = 3 287,67 €</span><span>CPFD = 2 000 000 / 2 000 = 1 000 €</span><span>Gain net = 4 931,51 − 3 287,67 − 1 000 = 643,84 €</span></div>
+    <p class="st">2. Sicav monétaires</p>
+    <div class="calc"><span>Gain = 2 000 000 × 2,9 % × 20/365 = 3 178,08 €</span></div>
+    <p>Liquides : on les revend au bout de 20 jours, sans découvert. Le rendement n'est qu'une prévision.</p>
+    <p class="st">3. Billet de trésorerie</p>
+    <div class="calc"><span>Gain = 2 000 000 × 3,12 % × 20/365 = 3 419,18 €</span></div>
+    <div class="tw"><table>
+      <thead><tr><th>Placement</th><th class="n">Gain net</th></tr></thead>
+      <tbody>
+        <tr class="tot"><td>Billet de trésorerie</td><td class="n">3 419,18 €</td></tr>
+        <tr><td>Sicav monétaires</td><td class="n">3 178,08 €</td></tr>
+        <tr><td>Compte à terme + découvert</td><td class="n">643,84 €</td></tr>
+      </tbody>
+    </table></div>
+    <div class="res"><strong>Retenir le billet de trésorerie</strong> : durée exactement égale à l'excédent, meilleur taux, gain certain. Le compte à terme a un bon taux mais sa durée ne colle pas au besoin : le découvert qu'il impose efface presque tout le gain.</div>
+  </div></details></div>
+
+  <div class="ex"><h3>Exercice 7 · DUPLAN : plan de trésorerie</h3>
+  <div class="given"><span>Compte à terme : 5 %/an, d'une fin de mois à la suivante</span><span>Escompte : 9 % sur 30 jours, montant exact possible</span><span>Effets mobilisables : 4 000 échéant en mars, 3 500 en avril</span><span>Fin janvier : 1 000 plaçables</span></div>
+  <div class="tw"><table>
+    <thead><tr><th>En K€</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th><th class="n">Avril</th></tr></thead>
+    <tbody>
+      <tr><td>Début</td><td class="n neg">−10</td><td class="n">1 002</td><td class="n neg">−2 500</td><td class="n">1 200</td></tr>
+      <tr><td>Encaissements</td><td class="n">5 012</td><td class="n">6 000</td><td class="n">6 500</td><td class="n">5 800</td></tr>
+      <tr><td>Décaissements</td><td class="n">4 000</td><td class="n">9 502</td><td class="n">2 800</td><td class="n">7 025</td></tr>
+      <tr class="tot"><td>Fin</td><td class="n">1 002</td><td class="n neg">−2 500</td><td class="n">1 200</td><td class="n neg">−25</td></tr>
+    </tbody>
+  </table></div>
+  <details><summary>Voir la correction proposée</summary><div class="body">
+    <p class="src">Pas de corrigé en cours : plan proposé avec les méthodes du cours (compte à terme : 5 % / 12 par mois ; escompte sur 30 jours, base 365).</p>
+    <p class="st">Fin janvier : placer 1 000 sur le compte à terme</p>
+    <div class="calc"><span>Récupéré fin février : 1 000 + 1 000 × 5 % / 12 = 1 004,17</span></div>
+    <p class="st">Février : escompter des effets de mars</p>
+    <div class="calc"><span>Flux de février : 2 + 6 000 − 9 502 + 1 004,17 = −2 495,83</span><span>Escompte du montant exact : X × (1 − 9 % × 30/365) = 2 495,83 → X ≈ 2 514,43</span><span>Agios ≈ 18,60</span></div>
+    <p class="st">Mars : moins d'encaissements</p>
+    <p>Les effets escomptés ne seront plus encaissés en mars : encaissements = 6 500 − 2 514,43 = 3 985,57.</p>
+    <div class="calc"><span>Fin mars : 0 + 3 985,57 − 2 800 = 1 185,57</span><span>Placer 1 185 sur le compte à terme jusqu'à fin avril → 1 185 + 4,94 = 1 189,94</span></div>
+    <p class="st">Avril</p>
+    <div class="calc"><span>Fin avril : 0,57 + 5 800 − 7 025 + 1 189,94 ≈ −34,5</span></div>
+    <div class="tw"><table>
+      <thead><tr><th>En K€</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th><th class="n">Avril</th></tr></thead>
+      <tbody>
+        <tr><td>Début</td><td class="n neg">−10</td><td class="n">2</td><td class="n">0</td><td class="n">0,57</td></tr>
+        <tr><td>Encaissements</td><td class="n">5 012</td><td class="n">6 000</td><td class="n">3 985,57</td><td class="n">5 800</td></tr>
+        <tr><td>Escompte reçu</td><td class="n"></td><td class="n">2 495,83</td><td class="n"></td><td class="n"></td></tr>
+        <tr><td>Compte à terme (placé − / récupéré +)</td><td class="n neg">−1 000</td><td class="n">1 004,17</td><td class="n neg">−1 185</td><td class="n">1 189,94</td></tr>
+        <tr><td>Décaissements</td><td class="n">4 000</td><td class="n">9 502</td><td class="n">2 800</td><td class="n">7 025</td></tr>
+        <tr class="tot"><td>Fin</td><td class="n">2</td><td class="n">0</td><td class="n">0,57</td><td class="n neg">≈ −34,5</td></tr>
+      </tbody>
+    </table></div>
+    <div class="res">La trésorerie reste autour de 0 chaque fin de mois. Le léger déficit d'avril (≈ 35 K€) peut être couvert en escomptant une petite partie des 3 500 d'effets d'avril (coût ≈ 0,26 K€), ou laissé en découvert quelques jours.</div>
+  </div></details></div>
+</section>
+
+<section id="pieges" class="part">
+  <div class="partHead"><span class="eyebrow">Avant l'examen</span><h2>À retenir et pièges</h2></div>
+  <div class="grid2">
+    <div class="box"><strong>Méthode de comparaison</strong>
+      <ol>
+        <li>Compter les jours (négociation exclue, échéance incluse, + jours de banque).</li>
+        <li>Calculer le coût de chaque solution, commissions comprises.</li>
+        <li>Si une solution ne couvre pas tout le déficit, compléter par du découvert.</li>
+        <li>Ramener chaque coût à un taux réel sur la somme réellement disponible.</li>
+        <li>Conclure : moins cher, mais aussi accessible et sans risque de retrait.</li>
+      </ol>
+    </div>
+    <div class="box"><strong>Pièges</strong>
+      <ul>
+        <li>CPFD : <strong>une par mois</strong> où le découvert existe.</li>
+        <li>Précompté : on reçoit moins que le nominal. Postcompté : on reçoit le nominal et on paie les intérêts à la fin.</li>
+        <li>L'escompte court jusqu'à l'<strong>échéance de l'effet</strong>, pas jusqu'à la fin du déficit.</li>
+        <li>Endos s'ajoute au taux d'escompte ; manipulation se multiplie par le nombre d'effets.</li>
+        <li>Fonds de garantie de l'affacturage : retenue rendue, pas un coût.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>Classeur de révision · Gestion de trésorerie · Partie 2. Sources : support « Gestion de trésorerie, partie 2 » et corrections des exercices 1, 2, 3 et 5.</footer>
+</div>
+<script>addEventListener("beforeprint",()=>document.querySelectorAll("details").forEach(d=>d.open=true))</script>
+</body></html>

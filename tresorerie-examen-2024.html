@@ -1,0 +1,265 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Trésorerie · Examen 2024</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column, sticky section nav, budget tables with tabular figures */
+:root{
+  --bg:#f6f4f1; --surface:#ffffff; --fg:#231c17; --muted:#6a5d53; --line:#e2dbd3;
+  --accent:#4f6b12; --accent-soft:#eef3df; --plus:#1f6b45; --warn-bg:#fff4dc; --warn-fg:#7a5200;
+  --f-display:"Source Serif 4", Georgia, serif;
+  --f-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme:light; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#171310; --surface:#201a16; --fg:#ece4dc; --muted:#a8998c; --line:#3a3029;
+  --accent:#b5cf5e; --accent-soft:#262d17; --plus:#7fd3a5; --warn-bg:#2f2614; --warn-fg:#f0c86a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#171310; --surface:#201a16; --fg:#ece4dc; --muted:#a8998c; --line:#3a3029;
+  --accent:#b5cf5e; --accent-soft:#262d17; --plus:#7fd3a5; --warn-bg:#2f2614; --warn-fg:#f0c86a; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--f-body)}
+.wrap{max-width:52rem;margin:0 auto;padding-inline:16px;padding-block:0 4rem}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(1.9rem,5vw,2.6rem)}
+h2{font-size:1.6rem}
+h3{font-size:1.18rem;margin-top:.6rem}
+p{margin:0}
+.eyebrow{font:600 .75rem/1 var(--f-body);letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+header.hero{padding-block:2.5rem 1.5rem;display:flex;flex-direction:column;gap:.75rem;border-bottom:1px solid var(--line)}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:.25rem;overflow-x:auto;padding-block:.5rem}
+nav.toc a{font:500 .9rem var(--f-body);color:var(--fg);text-decoration:none;padding:.35rem .7rem;border-radius:6px;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--accent-soft);color:var(--accent);outline:none}
+section.part{display:flex;flex-direction:column;gap:1.1rem;padding-top:2rem}
+.partHead{display:flex;flex-direction:column;gap:.35rem;border-top:3px solid var(--accent);padding-top:1rem}
+ul,ol{margin:0;padding-left:1.25rem;display:flex;flex-direction:column;gap:.3rem}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.art{font-family:var(--f-mono);font-size:.82em;color:var(--accent);white-space:nowrap}
+.warn{background:var(--warn-bg);color:var(--warn-fg);border-radius:6px;padding:.7rem .9rem;font-size:.95rem}
+.key{background:var(--accent-soft);border-radius:6px;padding:.8rem 1rem}
+.key strong:first-child{color:var(--accent)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{padding:.5rem .75rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font:600 .75rem var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td.q{font-family:var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+.steps{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;font-size:.92rem}
+.steps span{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.3rem .6rem}
+.steps i{color:var(--muted);font-style:normal}
+details{background:var(--surface);border:1px solid var(--line);border-radius:8px}
+details>summary{cursor:pointer;padding:.75rem 1rem;font-weight:600;color:var(--accent);list-style:none}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"▸ "} details[open]>summary::before{content:"▾ "}
+details>.body{padding:0 1rem 1rem;display:flex;flex-direction:column;gap:.6rem}
+.ex{display:flex;flex-direction:column;gap:.6rem}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+
+td.n,th.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.tot td{font-weight:600;border-top:2px solid var(--line)}
+tr.neg td.n.v,td.neg{color:#a1311f}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) td.neg{color:#f08a76}}
+:root[data-theme="dark"] td.neg{color:#f08a76}
+td.sub{padding-left:1.6rem;color:var(--muted)}
+.calc{font-family:var(--f-mono);font-size:.88rem;background:var(--accent-soft);border-radius:6px;padding:.6rem .8rem;display:flex;flex-direction:column;gap:.2rem;overflow-x:auto}
+.calc span{white-space:nowrap}
+.given{display:flex;flex-wrap:wrap;gap:6px}
+.given span{font-size:.85rem;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.2rem .65rem}
+.st{font-family:var(--f-body);font-weight:600;color:var(--accent);font-size:.95rem;border-top:1px dashed var(--line);padding-top:.6rem}
+.res{border-left:3px solid var(--accent);padding:.5rem .9rem;background:var(--surface);border-radius:0 6px 6px 0}
+.src{font-size:.82rem;color:var(--muted)}
+@media print{nav.toc,.cl-back{display:none}details{border:none}details>summary{display:none}details>.body{display:flex!important;padding:0}}
+</style></head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-treso_fiches">← Gestion de trésorerie</a><span>· Classeur de révision</span></nav>
+
+<div class="wrap">
+<header class="hero">
+  <span class="eyebrow">Gestion de trésorerie · Annale du 18 nov. 2024</span>
+  <h1>Examen 2024 corrigé</h1>
+  <p class="muted">Énoncé de l'examen du 18 novembre 2024 (1 heure, calculatrice, sans document) et corrigé détaillé. Le corrigé n'est pas celui du professeur : il applique les méthodes du cours et signale les hypothèses prises.</p>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <a href="#ex1">Ex. 1 · Placement (2 pts)</a>
+  <a href="#ex2">Ex. 2 · GAIAC (8 pts)</a>
+  <a href="#ex3">Ex. 3 · Ratisbonne (10 pts)</a>
+  <a href="#bilan">Ce qu'il faut savoir faire</a>
+</nav>
+
+<section id="ex1" class="part">
+  <div class="partHead"><span class="eyebrow">Exercice 1 · 2 points</span><h2>Placer l'excédent et passer en découvert ?</h2></div>
+  <div class="box">
+    <p>En mai, l'entreprise a un excédent allant jusqu'à <strong>3 000 k€</strong>. Le trésorier veut le placer à <strong>7 %</strong> pendant <strong>30 jours</strong>. Un paiement URSSAF le 15 mai créerait alors un déficit de <strong>1 500 k€ pendant 7 jours</strong>. Découvert : <strong>12 %</strong>, CPFD <strong>0,05 %</strong>. Faut-il placer et recourir au découvert ?</p>
+  </div>
+  <details><summary>Voir la correction</summary><div class="body">
+    <p class="st">Gain du placement</p>
+    <div class="calc"><span>3 000 × 7 % × 30/365 = 17,26 k€</span></div>
+    <p class="st">Coût du découvert</p>
+    <div class="calc"><span>Agios = 1 500 × 12 % × 7/365 = 3,45 k€</span><span>CPFD = 1 500 × 0,05 % = 0,75 k€</span><span>Coût = 4,20 k€</span></div>
+    <p class="st">Comparaison</p>
+    <div class="calc"><span>Gain net = 17,26 − 4,20 = 13,06 k€</span><span>Sans découvert, on ne pourrait placer que 1 500 k€ sur 30 jours : 1 500 × 7 % × 30/365 = 8,63 k€</span></div>
+    <div class="res"><strong>Oui, il faut placer.</strong> Le placement rapporte plus que ne coûte le découvert : gain net de 13,06 k€, contre 8,63 k€ en ne plaçant que la moitié. Même en plaçant aussi les 1 500 k€ restants du 1ᵉʳ au 15 mai (+4,03 k€, soit 12,66 k€), la solution placement + découvert reste meilleure. Le taux du découvert (12 %) est plus élevé, mais il ne joue que 7 jours, contre 30 jours de placement.</div>
+  </div></details>
+</section>
+
+<section id="ex2" class="part">
+  <div class="partHead"><span class="eyebrow">Exercice 2 · 8 points</span><h2>GAIAC : escompte, découvert ou panachage ?</h2></div>
+  <div class="box">
+    <div class="given"><span>Déficit 50 000 € du 15 février au 18 mars</span><span>Escompte 10 % + endos 0,60 %, 0,60 € par effet, 1 jour de banque</span><span>Découvert 12 %, CPFD 0,05 % par mois</span></div>
+    <div class="given"><span>Effet A : 24 000 € au 20 mars</span><span>Effet B : 26 000 € au 31 mars</span><span>Effet C : 2 000 € au 2 avril</span></div>
+    <p>Consigne : compter le 15 février (ne pas l'exclure). 1) Coût de l'escompte. 2) Coût du découvert. 3) Escompte de A et B, découvert pour le reste. 4) Escompte de A seul, découvert pour le reste. Conclure.</p>
+  </div>
+  <details><summary>Voir la correction</summary><div class="body">
+    <p class="src">Hypothèse : février de 28 jours (année non bissextile). Avec 29 jours, ajoutez un jour partout ; le classement final ne change pas.</p>
+    <p class="st">Nombre de jours (15 février inclus)</p>
+    <div class="tw"><table>
+      <thead><tr><th>Période</th><th>Calcul</th><th class="n">Jours</th></tr></thead>
+      <tbody>
+        <tr><td>Déficit : 15 fév. → 18 mars</td><td>14 + 18</td><td class="n">32</td></tr>
+        <tr><td>Effet A : 15 fév. → 20 mars</td><td>14 + 20 + 1 jour de banque</td><td class="n">35</td></tr>
+        <tr><td>Effet B : 15 fév. → 31 mars</td><td>14 + 31 + 1</td><td class="n">46</td></tr>
+        <tr><td>Effet C : 15 fév. → 2 avril</td><td>14 + 31 + 2 + 1</td><td class="n">48</td></tr>
+      </tbody>
+    </table></div>
+
+    <p class="st">1. Escompte des trois effets (taux 10,6 %)</p>
+    <div class="calc"><span>A : 24 000 × 10,6 % × 35/365 = 243,95 €</span><span>B : 26 000 × 10,6 % × 46/365 = 347,33 €</span><span>C : 2 000 × 10,6 % × 48/365 = 27,88 €</span><span>Manipulation : 3 × 0,60 = 1,80 €</span><span>Coût = 620,96 € (reçu : 51 379 €, le déficit est couvert)</span></div>
+
+    <p class="st">2. Découvert seul</p>
+    <div class="calc"><span>Agios = 50 000 × 12 % × 32/365 = 526,03 €</span><span>CPFD sur 2 mois (février et mars) = 50 000 × 0,05 % × 2 = 50 €</span><span>Coût = 576,03 €</span></div>
+
+    <p class="st">3. Escompte de A et B + découvert</p>
+    <div class="calc"><span>Escompte = 243,95 + 347,33 + 2 × 0,60 = 592,48 €</span><span>Reçu = 50 000 − 592,48 = 49 407,52 → reste 592,48 € en découvert</span><span>Découvert = 592,48 × 12 % × 32/365 + 592,48 × 0,05 % × 2 = 6,23 + 0,59 = 6,82 €</span><span>Coût = 599,30 €</span></div>
+
+    <p class="st">4. Escompte de A seul + découvert</p>
+    <div class="calc"><span>Escompte A = 243,95 + 0,60 = 244,55 €</span><span>Reçu = 24 000 − 244,55 = 23 755,45 → reste 26 244,55 € en découvert</span><span>Agios = 26 244,55 × 12 % × 32/365 = 276,11 €</span><span>CPFD = 26 244,55 × 0,05 % × 2 = 26,24 €</span><span>Coût = 244,55 + 276,11 + 26,24 = 546,90 €</span></div>
+
+    <div class="tw"><table>
+      <thead><tr><th>Solution</th><th class="n">Coût</th></tr></thead>
+      <tbody>
+        <tr class="tot"><td>4 · Escompte de A + découvert</td><td class="n">546,90 €</td></tr>
+        <tr><td>2 · Découvert seul</td><td class="n">576,03 €</td></tr>
+        <tr><td>3 · Escompte A et B + découvert</td><td class="n">599,30 €</td></tr>
+        <tr><td>1 · Escompte des trois effets</td><td class="n">620,96 €</td></tr>
+      </tbody>
+    </table></div>
+    <div class="res"><strong>Conclusion :</strong> la solution 4 est la moins chère. L'escompte a un taux plus faible que le découvert (10,6 % contre 12 %) mais il court jusqu'à l'échéance de chaque effet, donc bien après la fin du déficit (18 mars). Il n'est intéressant que pour l'effet dont l'échéance est la plus proche de la fin du déficit (A, 2 jours d'écart). Pour B et C, on paierait 13 et 15 jours de financement inutiles : mieux vaut le découvert.</div>
+  </div></details>
+</section>
+
+<section id="ex3" class="part">
+  <div class="partHead"><span class="eyebrow">Exercice 3 · 10 points</span><h2>Ratisbonne SA : budget du 1ᵉʳ trimestre N+1</h2></div>
+  <div class="box">
+    <div class="tw"><table>
+      <thead><tr><th>En €</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th></tr></thead>
+      <tbody>
+        <tr><td>Ventes HT</td><td class="n">210 000</td><td class="n">190 000</td><td class="n">185 000</td></tr>
+        <tr><td>Achats HT</td><td class="n">185 000</td><td class="n">180 000</td><td class="n">170 000</td></tr>
+        <tr><td>Autres charges HT soumises à TVA</td><td class="n">12 000</td><td class="n">11 800</td><td class="n">9 200</td></tr>
+        <tr><td>Autres charges HT non soumises</td><td class="n">4 000</td><td class="n">3 500</td><td class="n">3 500</td></tr>
+        <tr><td>Cession d'immobilisation HT</td><td class="n"></td><td class="n"></td><td class="n">15 000</td></tr>
+        <tr><td>Achat d'immobilisation HT</td><td class="n">50 000</td><td class="n"></td><td class="n"></td></tr>
+        <tr><td>Salaires</td><td class="n">55 000</td><td class="n">50 000</td><td class="n">52 000</td></tr>
+        <tr><td>Cotisations sociales</td><td class="n">27 200</td><td class="n">25 600</td><td class="n">17 000</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Véhicules vendus en mars (15 000 HT, TVA 20 %), payés comptant. Nouveaux véhicules en janvier (50 000 HT), <strong>payés en février</strong>. Emprunt de 40 000 € reçu en février, première annuité en février N+2.</li>
+      <li>Clients : 50 % comptant, 50 % à 30 jours. Fournisseurs : 30 % à 30 jours, 70 % à 60 jours.</li>
+      <li>Autres charges et charges sociales payées le mois suivant ; salaires le mois même.</li>
+      <li>TVA 20 %, payée le mois suivant ; crédit de TVA remboursé en M+2.</li>
+      <li>Bilan au 31/12/N : créances clients 55 000 (janvier) ; fournisseurs 150 000 (30 % janvier, 70 % février) ; disponibilités 9 000 ; TVA à décaisser 5 600 ; IS 45 000 (mars).</li>
+    </ul>
+  </div>
+  <details><summary>Voir la correction</summary><div class="body">
+    <p class="st">1. Budget de TVA</p>
+    <div class="tw"><table>
+      <thead><tr><th>En €</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th></tr></thead>
+      <tbody>
+        <tr><td>TVA collectée sur ventes</td><td class="n">42 000</td><td class="n">38 000</td><td class="n">37 000</td></tr>
+        <tr><td>TVA collectée sur cession</td><td class="n"></td><td class="n"></td><td class="n">3 000</td></tr>
+        <tr><td>TVA déductible sur achats</td><td class="n">37 000</td><td class="n">36 000</td><td class="n">34 000</td></tr>
+        <tr><td>TVA déductible sur autres charges</td><td class="n">2 400</td><td class="n">2 360</td><td class="n">1 840</td></tr>
+        <tr><td>TVA déductible sur immobilisation</td><td class="n">10 000</td><td class="n"></td><td class="n"></td></tr>
+        <tr><td>TVA à décaisser</td><td class="n neg">−7 400</td><td class="n neg">−360</td><td class="n">4 160</td></tr>
+        <tr class="tot"><td>TVA décaissée</td><td class="n">5 600</td><td class="n">0</td><td class="n">0</td></tr>
+        <tr class="tot"><td>Crédit de TVA remboursé</td><td class="n"></td><td class="n"></td><td class="n">7 400</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>La TVA sur l'immobilisation est déductible en <strong>janvier</strong>, mois de l'opération, même si elle est payée en février.</li>
+      <li>Crédit de janvier (7 400) remboursé en mars (M+2) ; crédit de février (360) remboursé en avril ; TVA de mars (4 160) payée en avril.</li>
+    </ul>
+
+    <p class="st">2. Budget des encaissements</p>
+    <div class="tw"><table>
+      <thead><tr><th>En €</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th></tr></thead>
+      <tbody>
+        <tr><td>Créances clients (bilan)</td><td class="n">55 000</td><td class="n"></td><td class="n"></td></tr>
+        <tr><td>Ventes comptant (50 % TTC)</td><td class="n">126 000</td><td class="n">114 000</td><td class="n">111 000</td></tr>
+        <tr><td>Ventes à 30 jours (50 % TTC)</td><td class="n"></td><td class="n">126 000</td><td class="n">114 000</td></tr>
+        <tr><td>Emprunt</td><td class="n"></td><td class="n">40 000</td><td class="n"></td></tr>
+        <tr><td>Cession (15 000 × 1,2)</td><td class="n"></td><td class="n"></td><td class="n">18 000</td></tr>
+        <tr><td>Remboursement crédit de TVA</td><td class="n"></td><td class="n"></td><td class="n">7 400</td></tr>
+        <tr class="tot"><td>Total</td><td class="n">181 000</td><td class="n">280 000</td><td class="n">250 400</td></tr>
+      </tbody>
+    </table></div>
+    <div class="calc"><span>Comptant janvier = 50 % × 210 000 × 1,2 = 126 000</span></div>
+
+    <p class="st">3. Budget des décaissements</p>
+    <div class="tw"><table>
+      <thead><tr><th>En €</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th></tr></thead>
+      <tbody>
+        <tr><td>Dettes fournisseurs (30 % / 70 % de 150 000)</td><td class="n">45 000</td><td class="n">105 000</td><td class="n"></td></tr>
+        <tr><td>Achats à 30 jours (30 % TTC)</td><td class="n"></td><td class="n">66 600</td><td class="n">64 800</td></tr>
+        <tr><td>Achats à 60 jours (70 % TTC)</td><td class="n"></td><td class="n"></td><td class="n">155 400</td></tr>
+        <tr><td>Autres charges (mois suivant)</td><td class="n"></td><td class="n">18 400</td><td class="n">17 660</td></tr>
+        <tr><td>Salaires</td><td class="n">55 000</td><td class="n">50 000</td><td class="n">52 000</td></tr>
+        <tr><td>Cotisations sociales (mois suivant)</td><td class="n"></td><td class="n">27 200</td><td class="n">25 600</td></tr>
+        <tr><td>TVA décaissée</td><td class="n">5 600</td><td class="n"></td><td class="n"></td></tr>
+        <tr><td>Véhicules (50 000 × 1,2)</td><td class="n"></td><td class="n">60 000</td><td class="n"></td></tr>
+        <tr><td>Impôt sur les sociétés</td><td class="n"></td><td class="n"></td><td class="n">45 000</td></tr>
+        <tr class="tot"><td>Total</td><td class="n">105 600</td><td class="n">327 200</td><td class="n">360 460</td></tr>
+      </tbody>
+    </table></div>
+    <div class="calc"><span>Achats à 30 j (février) = 30 % × 185 000 × 1,2 = 66 600</span><span>Achats à 60 j (mars) = 70 % × 185 000 × 1,2 = 155 400</span><span>Autres charges février = 12 000 × 1,2 + 4 000 = 18 400</span><span>Autres charges mars = 11 800 × 1,2 + 3 500 = 17 660</span></div>
+    <p class="src">Hypothèse : le bilan ne mentionne ni charges sociales ni autres charges de décembre à payer, donc rien en janvier sur ces lignes. Pas de remboursement d'emprunt dans le trimestre (première annuité en février N+2).</p>
+
+    <p class="st">4. Budget de trésorerie</p>
+    <div class="tw"><table>
+      <thead><tr><th>En €</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th></tr></thead>
+      <tbody>
+        <tr><td>Trésorerie début</td><td class="n">9 000</td><td class="n">84 400</td><td class="n">37 200</td></tr>
+        <tr><td>+ Encaissements</td><td class="n">181 000</td><td class="n">280 000</td><td class="n">250 400</td></tr>
+        <tr><td>− Décaissements</td><td class="n">105 600</td><td class="n">327 200</td><td class="n">360 460</td></tr>
+        <tr><td>Solde du mois</td><td class="n">75 400</td><td class="n neg">−47 200</td><td class="n neg">−110 060</td></tr>
+        <tr class="tot"><td>Trésorerie fin</td><td class="n">84 400</td><td class="n">37 200</td><td class="n neg">−72 860</td></tr>
+      </tbody>
+    </table></div>
+    <div class="res">La trésorerie devient négative en mars (−72 860 €) : achats de janvier payés à 60 jours, IS et absence d'encaissement exceptionnel suffisant. Pistes : placer l'excédent de janvier-février à court terme, puis couvrir mars par un découvert, un escompte ou une cession Dailly des créances à 30 jours.</div>
+  </div></details>
+</section>
+
+<section id="bilan" class="part">
+  <div class="partHead"><span class="eyebrow">Bilan de l'annale</span><h2>Ce qu'il faut savoir faire le 1ᵉʳ décembre</h2></div>
+  <ul>
+    <li><strong>Un budget complet</strong> en quatre tableaux (la moitié des points).</li>
+    <li><strong>Comparer des financements</strong> : escompte, découvert, panachage, avec le bon nombre de jours et la CPFD par mois.</li>
+    <li><strong>Arbitrer placement contre découvert</strong> en comparant gain et coût.</li>
+    <li>Toujours <strong>conclure</strong> par une phrase : quelle solution et pourquoi.</li>
+  </ul>
+</section>
+
+<footer>Classeur de révision · Gestion de trésorerie · Examen du 18 novembre 2024. Corrigé établi à partir des méthodes du cours, pas fourni par l'enseignant.</footer>
+</div>
+<script>addEventListener("beforeprint",()=>document.querySelectorAll("details").forEach(d=>d.open=true))</script>
+</body></html>

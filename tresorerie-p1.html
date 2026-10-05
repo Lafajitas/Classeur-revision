@@ -1,0 +1,421 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Trésorerie · Partie 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column, sticky section nav, budget tables with tabular figures */
+:root{
+  --bg:#f6f4f1; --surface:#ffffff; --fg:#231c17; --muted:#6a5d53; --line:#e2dbd3;
+  --accent:#4f6b12; --accent-soft:#eef3df; --plus:#1f6b45; --warn-bg:#fff4dc; --warn-fg:#7a5200;
+  --f-display:"Source Serif 4", Georgia, serif;
+  --f-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme:light; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#171310; --surface:#201a16; --fg:#ece4dc; --muted:#a8998c; --line:#3a3029;
+  --accent:#b5cf5e; --accent-soft:#262d17; --plus:#7fd3a5; --warn-bg:#2f2614; --warn-fg:#f0c86a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#171310; --surface:#201a16; --fg:#ece4dc; --muted:#a8998c; --line:#3a3029;
+  --accent:#b5cf5e; --accent-soft:#262d17; --plus:#7fd3a5; --warn-bg:#2f2614; --warn-fg:#f0c86a; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--f-body)}
+.wrap{max-width:52rem;margin:0 auto;padding-inline:16px;padding-block:0 4rem}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(1.9rem,5vw,2.6rem)}
+h2{font-size:1.6rem}
+h3{font-size:1.18rem;margin-top:.6rem}
+p{margin:0}
+.eyebrow{font:600 .75rem/1 var(--f-body);letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+header.hero{padding-block:2.5rem 1.5rem;display:flex;flex-direction:column;gap:.75rem;border-bottom:1px solid var(--line)}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:.25rem;overflow-x:auto;padding-block:.5rem}
+nav.toc a{font:500 .9rem var(--f-body);color:var(--fg);text-decoration:none;padding:.35rem .7rem;border-radius:6px;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--accent-soft);color:var(--accent);outline:none}
+section.part{display:flex;flex-direction:column;gap:1.1rem;padding-top:2rem}
+.partHead{display:flex;flex-direction:column;gap:.35rem;border-top:3px solid var(--accent);padding-top:1rem}
+ul,ol{margin:0;padding-left:1.25rem;display:flex;flex-direction:column;gap:.3rem}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.art{font-family:var(--f-mono);font-size:.82em;color:var(--accent);white-space:nowrap}
+.warn{background:var(--warn-bg);color:var(--warn-fg);border-radius:6px;padding:.7rem .9rem;font-size:.95rem}
+.key{background:var(--accent-soft);border-radius:6px;padding:.8rem 1rem}
+.key strong:first-child{color:var(--accent)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{padding:.5rem .75rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font:600 .75rem var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td.q{font-family:var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+.steps{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;font-size:.92rem}
+.steps span{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.3rem .6rem}
+.steps i{color:var(--muted);font-style:normal}
+details{background:var(--surface);border:1px solid var(--line);border-radius:8px}
+details>summary{cursor:pointer;padding:.75rem 1rem;font-weight:600;color:var(--accent);list-style:none}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"▸ "} details[open]>summary::before{content:"▾ "}
+details>.body{padding:0 1rem 1rem;display:flex;flex-direction:column;gap:.6rem}
+.ex{display:flex;flex-direction:column;gap:.6rem}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+
+td.n,th.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.tot td{font-weight:600;border-top:2px solid var(--line)}
+tr.neg td.n.v,td.neg{color:#a1311f}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) td.neg{color:#f08a76}}
+:root[data-theme="dark"] td.neg{color:#f08a76}
+td.sub{padding-left:1.6rem;color:var(--muted)}
+.calc{font-family:var(--f-mono);font-size:.88rem;background:var(--accent-soft);border-radius:6px;padding:.6rem .8rem;display:flex;flex-direction:column;gap:.2rem;overflow-x:auto}
+.calc span{white-space:nowrap}
+.given{display:flex;flex-wrap:wrap;gap:6px}
+.given span{font-size:.85rem;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.2rem .65rem}
+.st{font-family:var(--f-body);font-weight:600;color:var(--accent);font-size:.95rem;border-top:1px dashed var(--line);padding-top:.6rem}
+.res{border-left:3px solid var(--accent);padding:.5rem .9rem;background:var(--surface);border-radius:0 6px 6px 0}
+.src{font-size:.82rem;color:var(--muted)}
+@media print{nav.toc,.cl-back{display:none}details{border:none}details>summary{display:none}details>.body{display:flex!important;padding:0}}
+</style></head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-treso_fiches">← Gestion de trésorerie</a><span>· Classeur de révision</span></nav>
+
+<div class="wrap">
+<header class="hero">
+  <span class="eyebrow">Gestion de trésorerie · Cours du 5 oct.</span>
+  <h1>Partie 1 · Diagnostic et budget de trésorerie</h1>
+  <p class="muted">Fiche tirée du support « Gestion de trésorerie », de la fiche d'exercices et des corrections des exercices 1 à 4. Elle couvre la place de la trésorerie dans le bilan fonctionnel, les crises de trésorerie, les missions du trésorier et la construction du budget en quatre tableaux.</p>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <a href="#bilan">1 · Bilan fonctionnel</a>
+  <a href="#crises">2 · Crises</a>
+  <a href="#tresorier">3 · Trésorier</a>
+  <a href="#budget">4 · Budget</a>
+  <a href="#methode">5 · Méthode</a>
+  <a href="#exos">6 · Exercices</a>
+  <a href="#pieges">7 · À retenir</a>
+</nav>
+
+<section id="bilan" class="part">
+  <div class="partHead"><span class="eyebrow">Chapitre 1 · Situer la trésorerie</span><h2>L'approche statique par le bilan fonctionnel</h2></div>
+  <p>Le bilan fonctionnel classe les postes <strong>en valeurs brutes</strong> selon le cycle auquel ils appartiennent : investissement et financement (stable), exploitation, hors exploitation, trésorerie.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Actif</th><th>Passif</th></tr></thead>
+    <tbody>
+      <tr><td>Emplois stables (ES)</td><td>Ressources stables (RS)</td></tr>
+      <tr><td>Actif circulant d'exploitation (ACE)</td><td>Dettes non financières d'exploitation (DNFE)</td></tr>
+      <tr><td>Actif circulant hors exploitation (ACHE)</td><td>Dettes non financières hors exploitation (DNFHE)</td></tr>
+      <tr><td>Actif de trésorerie (AT)</td><td>Passif de trésorerie (PT)</td></tr>
+    </tbody>
+  </table></div>
+  <div class="grid2">
+    <div class="box"><strong>Les quatre soldes</strong>
+      <div class="calc"><span>FRNG = RS − ES</span><span>BFE = ACE − DNFE</span><span>BFHE = ACHE − DNFHE</span><span>TN = AT − PT</span></div>
+    </div>
+    <div class="box"><strong>La relation clé</strong>
+      <div class="calc"><span>BFR = BFE + BFHE</span><span>TN = FRNG − BFR</span></div>
+      <p class="muted">La trésorerie est le solde : elle est positive quand le fonds de roulement couvre le besoin en fonds de roulement.</p>
+    </div>
+  </div>
+</section>
+
+<section id="crises" class="part">
+  <div class="partHead"><span class="eyebrow">Chapitre 1 · Diagnostic</span><h2>Diagnostiquer les crises de trésorerie</h2></div>
+  <p>Une trésorerie négative vient soit d'un <strong>BFR qui augmente</strong> plus vite que le FR, soit d'un <strong>FR qui diminue</strong> sous le BFR.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Cause</th><th>Mécanisme</th><th>Pistes de solutions</th></tr></thead>
+    <tbody>
+      <tr><td colspan="3"><strong>Hausse du BFR</strong></td></tr>
+      <tr><td>Croissance non maîtrisée</td><td>Le CA progresse vite, le BFR suit, le FR reste stable : la trésorerie passe sous zéro.</td><td>Renforcer le FR, modérer la croissance.</td></tr>
+      <tr><td>Mauvaise gestion du BFR</td><td>Stocks trop lourds, clients qui paient tard.</td><td>Gestion des stocks, délais de paiement, démarche qualité, procédures de recouvrement.</td></tr>
+      <tr><td>Baisse conjoncturelle de l'activité</td><td>Le CA recule mais les stocks et les achats ne s'ajustent pas tout de suite.</td><td>Gestion des stocks, ajuster les achats, politique de remise.</td></tr>
+      <tr><td colspan="3"><strong>Baisse du FR</strong></td></tr>
+      <tr><td>Erreur de financement</td><td>Investissements financés par autofinancement excessif ou par un emprunt trop court.</td><td>Financement à moyen ou long terme, <strong>lease-back</strong> (l'entreprise vend un actif et le reprend en location longue durée), allonger les durées de remboursement.</td></tr>
+      <tr><td>Perte de profitabilité</td><td>Les pertes rongent les capitaux propres, donc le FR.</td><td>Augmentation de capital.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="tresorier" class="part">
+  <div class="partHead"><span class="eyebrow">Chapitre 2 · Gérer au quotidien</span><h2>Les missions du trésorier</h2></div>
+  <div class="key"><strong>Objectif :</strong> assurer <strong>au moindre coût</strong> l'équilibre financier à court terme de l'entreprise. Le trésorier gère les flux à court terme ; le choix des financements à long terme relève d'une autre décision.</div>
+  <div class="tw"><table>
+    <thead><tr><th>Mission</th><th>Outil</th></tr></thead>
+    <tbody>
+      <tr><td>Assurer la liquidité : des ressources suffisantes face aux engagements</td><td>Budget de trésorerie</td></tr>
+      <tr><td>Réduire le coût des services bancaires</td><td>Négocier les conditions bancaires</td></tr>
+      <tr><td>Améliorer le résultat financier</td><td>Décisions de placement et de financement</td></tr>
+      <tr><td>Gérer les risques propres à la fonction</td><td>Couverture des risques de change et de taux</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="budget" class="part">
+  <div class="partHead"><span class="eyebrow">Chapitre 2 · L'outil</span><h2>Le budget de trésorerie</h2></div>
+  <div class="grid2">
+    <div class="box"><strong>Définition</strong>
+      <ul>
+        <li>Document <strong>interne</strong> qui détaille les prévisions <strong>mensuelles</strong> de trésorerie, en principe sur <strong>un an</strong>.</li>
+        <li>Outil d'anticipation : il regroupe tous les flux prévus, classés par nature, quelle que soit leur origine (activité, investissement, financement).</li>
+        <li>C'est la synthèse de tous les autres budgets.</li>
+      </ul>
+    </div>
+    <div class="box"><strong>Objectifs et utilité</strong>
+      <ul>
+        <li>Vérifier l'équilibre global de la trésorerie future et la solvabilité à court terme ; prévenir la cessation de paiements.</li>
+        <li>Vérifier la cohérence entre FRNG et BFR.</li>
+        <li>Choisir la date des opérations exceptionnelles (investissement, cession…).</li>
+        <li>Servir de cadre à la politique de financement et de placement à court terme.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="key"><strong>Objectif « trésorerie zéro » :</strong> placer les excédents prévus et financer les déficits au plus bas coût, pour minimiser les frais financiers nets.</div>
+  <h3>Ce qu'on met dans le budget</h3>
+  <ul>
+    <li><strong>Seulement des flux de trésorerie</strong> : pas de dotations ni reprises, pas de résultat, pas de variation de stocks.</li>
+    <li>Ventes et achats en <strong>TTC</strong>. Opérations non soumises à TVA (exportations, déchets, franchise) en <strong>HT</strong>.</li>
+    <li>Les montants du <strong>bilan d'ouverture</strong> (créances clients, dettes fournisseurs, TVA à décaisser, dettes sociales et fiscales) sont déjà en TTC et se règlent dans les premiers mois.</li>
+    <li><strong>TVA à décaisser = TVA collectée − TVA déductible</strong>, calculée le mois de l'opération et payée le <strong>mois suivant</strong>.</li>
+  </ul>
+</section>
+
+<section id="methode" class="part">
+  <div class="partHead"><span class="eyebrow">Méthode</span><h2>Construire le budget en quatre tableaux</h2></div>
+  <div class="steps" aria-label="Étapes">
+    <span>1 · Budget de TVA</span><i>→</i><span>2 · Encaissements</span><i>→</i><span>3 · Décaissements</span><i>→</i><span>4 · Budget de trésorerie</span>
+  </div>
+
+  <h3>1. Le budget de TVA</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Ligne</th><th>Comment la remplir</th></tr></thead>
+    <tbody>
+      <tr><td>TVA collectée</td><td>Ventes HT soumises × 20 %, plus la TVA sur les cessions d'immobilisations. Jamais sur les ventes à l'export.</td></tr>
+      <tr><td>− TVA déductible</td><td>Achats HT × 20 %, plus autres charges soumises, plus investissements, au mois de l'opération (pas du paiement).</td></tr>
+      <tr><td>= TVA à décaisser</td><td>Différence. Négative : c'est un <strong>crédit de TVA</strong>.</td></tr>
+      <tr><td>TVA décaissée</td><td>Celle du mois précédent. En janvier : la TVA à décaisser du bilan N−1.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="calc"><span>Exemple du cours : TVA collectée 180, déductible 110 → à décaisser 70 en janvier</span><span>Janvier paie 84 (bilan N−1), février paie 70, mars paie 93.</span></div>
+
+  <h3>2. Les encaissements (TTC)</h3>
+  <ul>
+    <li>Créances clients du bilan N−1, au mois prévu.</li>
+    <li>Ventes du mois, réparties selon les délais : comptant le mois même, à 30 jours le mois suivant, à 60 jours deux mois après.</li>
+    <li>Autres encaissements : cessions d'immobilisations (TTC), emprunt reçu, apport en capital, remboursement d'un crédit de TVA.</li>
+  </ul>
+
+  <h3>3. Les décaissements (TTC)</h3>
+  <ul>
+    <li>Dettes fournisseurs du bilan N−1.</li>
+    <li>Achats du mois, selon les délais fournisseurs.</li>
+    <li>TVA décaissée (ligne du tableau 1), salaires, charges sociales (souvent le mois suivant), autres charges.</li>
+    <li>Hors exploitation : immobilisations (TTC), remboursement d'emprunt, dividendes, impôt sur les sociétés.</li>
+  </ul>
+
+  <h3>4. Le budget de trésorerie</h3>
+  <div class="calc"><span>Trésorerie début de mois (disponibilités du bilan en janvier)</span><span>+ Encaissements − Décaissements</span><span>= Trésorerie fin de mois → début du mois suivant</span></div>
+</section>
+
+<section id="exos" class="part">
+  <div class="partHead"><span class="eyebrow">Entraînement</span><h2>Exercices corrigés</h2></div>
+  <p class="muted">Énoncés de la fiche d'exercices et corrections faites en cours. Les questions sur le financement des déficits (exercice 1, questions 5 et 6 ; exercices 2 et 3, question 2 ; exercices 5 à 7) sont dans la fiche Partie 2.</p>
+
+  <div class="ex"><h3>Exercice 1 · Vauban SA, questions 1 à 4</h3>
+  <div class="given"><span>Ventes HT : 157 000 / 121 000 / 135 000</span><span>Achats HT : 135 000 / 101 000 / 112 000</span><span>Autres charges soumises : 12 000 / 13 800 / 12 200 ; non soumises : 2 000 / 3 500 / 1 500</span><span>Salaires : 25 000 / 31 000 / 35 000 ; cotisations : 12 200 / 15 600 / 17 300</span><span>Machine 90 000 HT en février, payée 20 % février, 75 % mars, solde avril</span><span>Emprunt 80 000 reçu en février</span><span>Clients : 20 % comptant, 80 % à 30 jours</span><span>Fournisseurs : 35 % à 30 jours, 65 % à 60 jours</span><span>Autres charges et cotisations payées le mois suivant</span><span>TVA 20 %, payée M+1, crédit remboursé M+2</span><span>Bilan : clients 40 000, fournisseurs 150 000 (35 % / 65 %), disponibilités 20 000, TVA 4 600, IS 55 000 en mars</span></div>
+  <details><summary>Voir la correction</summary><div class="body">
+    <p class="st">1. Budget de TVA</p>
+    <div class="tw"><table>
+      <thead><tr><th>En €</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th></tr></thead>
+      <tbody>
+        <tr><td>TVA collectée (ventes × 20 %)</td><td class="n">31 400</td><td class="n">24 200</td><td class="n">27 000</td></tr>
+        <tr><td class="sub">TVA déductible sur achats</td><td class="n">27 000</td><td class="n">20 200</td><td class="n">22 400</td></tr>
+        <tr><td class="sub">sur autres charges</td><td class="n">2 400</td><td class="n">2 760</td><td class="n">2 440</td></tr>
+        <tr><td class="sub">sur investissement (90 000 × 20 %)</td><td class="n"></td><td class="n">18 000</td><td class="n"></td></tr>
+        <tr><td>TVA à décaisser</td><td class="n">2 000</td><td class="n neg">−16 760</td><td class="n">2 160</td></tr>
+        <tr class="tot"><td>TVA décaissée</td><td class="n">4 600</td><td class="n">2 000</td><td class="n">0</td></tr>
+      </tbody>
+    </table></div>
+    <p>Janvier paie la TVA du bilan (4 600). Le crédit de février (−16 760) est remboursé à M+2, donc en avril : il ne figure pas dans le trimestre. Le slide écrit « 0,5 × 135 000 » pour la TVA sur achats de janvier : c'est bien 0,2 × 135 000 = 27 000.</p>
+    <p class="st">2. Encaissements</p>
+    <div class="tw"><table>
+      <thead><tr><th>En €</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th></tr></thead>
+      <tbody>
+        <tr><td>Créances clients (bilan)</td><td class="n">40 000</td><td class="n"></td><td class="n"></td></tr>
+        <tr><td>Ventes au comptant (20 % TTC)</td><td class="n">37 680</td><td class="n">29 040</td><td class="n">32 400</td></tr>
+        <tr><td>Ventes à 30 jours (80 % TTC)</td><td class="n"></td><td class="n">150 720</td><td class="n">116 160</td></tr>
+        <tr><td>Emprunt</td><td class="n"></td><td class="n">80 000</td><td class="n"></td></tr>
+        <tr class="tot"><td>Total</td><td class="n">77 680</td><td class="n">259 760</td><td class="n">148 560</td></tr>
+      </tbody>
+    </table></div>
+    <div class="calc"><span>Comptant janvier = 20 % × 157 000 × 1,2 = 37 680</span><span>30 jours (encaissé en février) = 80 % × 157 000 × 1,2 = 150 720</span></div>
+    <p class="st">3. Décaissements</p>
+    <div class="tw"><table>
+      <thead><tr><th>En €</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th></tr></thead>
+      <tbody>
+        <tr><td>Dettes fournisseurs (35 % / 65 % de 150 000)</td><td class="n">52 500</td><td class="n">97 500</td><td class="n"></td></tr>
+        <tr><td>Achats à 30 jours (35 % TTC)</td><td class="n"></td><td class="n">56 700</td><td class="n">42 420</td></tr>
+        <tr><td>Achats à 60 jours (65 % TTC)</td><td class="n"></td><td class="n"></td><td class="n">105 300</td></tr>
+        <tr><td>Autres charges (mois suivant)</td><td class="n"></td><td class="n">16 400</td><td class="n">20 060</td></tr>
+        <tr><td>Salaires</td><td class="n">25 000</td><td class="n">31 000</td><td class="n">35 000</td></tr>
+        <tr><td>Charges sociales</td><td class="n"></td><td class="n">12 200</td><td class="n">15 600</td></tr>
+        <tr><td>TVA décaissée</td><td class="n">4 600</td><td class="n">2 000</td><td class="n"></td></tr>
+        <tr><td>Immobilisation (108 000 TTC : 20 % puis 75 %)</td><td class="n"></td><td class="n">21 600</td><td class="n">81 000</td></tr>
+        <tr><td>Impôt sur les sociétés</td><td class="n"></td><td class="n"></td><td class="n">55 000</td></tr>
+        <tr class="tot"><td>Total</td><td class="n">82 100</td><td class="n">237 400</td><td class="n">354 380</td></tr>
+      </tbody>
+    </table></div>
+    <div class="calc"><span>Achats à 30 j (février) = 35 % × 135 000 × 1,2 = 56 700</span><span>Achats à 60 j (mars) = 65 % × 135 000 × 1,2 = 105 300</span><span>Autres charges mars = 13 800 × 1,2 + 3 500 = 20 060</span></div>
+    <p class="st">4. Budget de trésorerie</p>
+    <div class="tw"><table>
+      <thead><tr><th>En €</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th></tr></thead>
+      <tbody>
+        <tr><td>Trésorerie début</td><td class="n">20 000</td><td class="n">15 580</td><td class="n">37 940</td></tr>
+        <tr><td>+ Encaissements</td><td class="n">77 680</td><td class="n">259 760</td><td class="n">148 560</td></tr>
+        <tr><td>− Décaissements</td><td class="n">82 100</td><td class="n">237 400</td><td class="n">354 380</td></tr>
+        <tr class="tot"><td>Trésorerie fin</td><td class="n">15 580</td><td class="n">37 940</td><td class="n neg">−167 880</td></tr>
+      </tbody>
+    </table></div>
+    <div class="res">Mars est très déficitaire (−167 880 €) : fin des achats à 60 jours, 75 % de l'investissement et l'IS tombent le même mois. Il faut prévoir un financement à court terme (voir Partie 2).</div>
+  </div></details></div>
+
+  <div class="ex"><h3>Exercice 2 · Société Robert, question 1</h3>
+  <div class="given"><span>CA HT : 1 000 / 900 / 1 200, clients à 30 jours fin de mois</span><span>Achats HT : 400 / 600 / 500, 50 % comptant, 50 % à 30 jours fin de mois</span><span>Salaires : 500 / 500 / 530 (comptant)</span><span>Charges sociales : 200 / 200 / 212 (mois suivant)</span><span>Autres charges : 20 soumises + 10 non soumises par mois (comptant)</span><span>Investissement 200 HT en février, cession 50 HT en janvier (comptant)</span><span>Bilan : clients 1 450, TVA 105, charges sociales 200, fournisseurs 300, trésorerie 15</span></div>
+  <details><summary>Voir la correction</summary><div class="body">
+    <p class="st">1. Budget de TVA</p>
+    <div class="tw"><table>
+      <thead><tr><th>En K€</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th></tr></thead>
+      <tbody>
+        <tr><td>TVA collectée</td><td class="n">210</td><td class="n">180</td><td class="n">240</td></tr>
+        <tr><td>TVA déductible</td><td class="n">84</td><td class="n">164</td><td class="n">104</td></tr>
+        <tr><td>TVA à décaisser</td><td class="n">126</td><td class="n">16</td><td class="n">136</td></tr>
+        <tr class="tot"><td>Règlement de TVA</td><td class="n">105</td><td class="n">126</td><td class="n">16</td></tr>
+      </tbody>
+    </table></div>
+    <div class="calc"><span>Collectée janvier = (1 000 + 50 de cession) × 20 % = 210</span><span>Déductible janvier = (400 + 20 d'autres charges) × 20 % = 84</span><span>Déductible février = (600 + 20 + 200 d'investissement) × 20 % = 164</span></div>
+    <p class="st">2. Encaissements et 3. Décaissements</p>
+    <div class="tw"><table>
+      <thead><tr><th>En K€</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th></tr></thead>
+      <tbody>
+        <tr><td>Créances clients (bilan)</td><td class="n">1 450</td><td class="n"></td><td class="n"></td></tr>
+        <tr><td>Ventes à 30 jours (TTC)</td><td class="n"></td><td class="n">1 200</td><td class="n">1 080</td></tr>
+        <tr><td>Cession (50 × 1,2)</td><td class="n">60</td><td class="n"></td><td class="n"></td></tr>
+        <tr class="tot"><td>Total encaissements</td><td class="n">1 510</td><td class="n">1 200</td><td class="n">1 080</td></tr>
+        <tr><td>Dettes fournisseurs (bilan)</td><td class="n">300</td><td class="n"></td><td class="n"></td></tr>
+        <tr><td>Achats comptant (50 % TTC)</td><td class="n">240</td><td class="n">360</td><td class="n">300</td></tr>
+        <tr><td>Achats à 30 jours (50 % TTC)</td><td class="n"></td><td class="n">240</td><td class="n">360</td></tr>
+        <tr><td>Autres charges soumises (20 × 1,2)</td><td class="n">24</td><td class="n">24</td><td class="n">24</td></tr>
+        <tr><td>Autres charges non soumises</td><td class="n">10</td><td class="n">10</td><td class="n">10</td></tr>
+        <tr><td>Salaires</td><td class="n">500</td><td class="n">500</td><td class="n">530</td></tr>
+        <tr><td>Charges sociales (mois suivant)</td><td class="n">200</td><td class="n">200</td><td class="n">200</td></tr>
+        <tr><td>TVA</td><td class="n">105</td><td class="n">126</td><td class="n">16</td></tr>
+        <tr><td>Investissement (200 × 1,2)</td><td class="n"></td><td class="n">240</td><td class="n"></td></tr>
+        <tr class="tot"><td>Total décaissements</td><td class="n">1 379</td><td class="n">1 700</td><td class="n">1 440</td></tr>
+      </tbody>
+    </table></div>
+    <p class="st">4. Budget de trésorerie</p>
+    <div class="tw"><table>
+      <thead><tr><th>En K€</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th></tr></thead>
+      <tbody>
+        <tr><td>Trésorerie début</td><td class="n">15</td><td class="n">146</td><td class="n neg">−354</td></tr>
+        <tr><td>Encaissements − décaissements</td><td class="n">131</td><td class="n neg">−500</td><td class="n neg">−360</td></tr>
+        <tr class="tot"><td>Trésorerie fin</td><td class="n">146</td><td class="n neg">−354</td><td class="n neg">−714</td></tr>
+      </tbody>
+    </table></div>
+    <div class="res">Déficit dès février. La Partie 2 (exercice 2) le comble avec un billet de trésorerie.</div>
+  </div></details></div>
+
+  <div class="ex"><h3>Exercice 3 · Société Rabol, question 1</h3>
+  <div class="given"><span>Ventes HT : 1 100 / 1 000 / 1 200 / 1 200</span><span>Achats HT : 600 / 500 / 600 / 600</span><span>Autres charges décaissées : 400 par mois, TVA sur 50 %</span><span>Clients : 30 % comptant, 70 % à 30 jours fin de mois</span><span>Achats et charges payés comptant</span><span>Bilan : clients 700, TVA 60, fournisseurs 50, trésorerie 12</span></div>
+  <details><summary>Voir la correction</summary><div class="body">
+    <div class="tw"><table>
+      <thead><tr><th>En K€</th><th class="n">Mois 1</th><th class="n">Mois 2</th><th class="n">Mois 3</th><th class="n">Mois 4</th></tr></thead>
+      <tbody>
+        <tr><td>TVA collectée</td><td class="n">220</td><td class="n">200</td><td class="n">240</td><td class="n">240</td></tr>
+        <tr><td>TVA déductible</td><td class="n">160</td><td class="n">140</td><td class="n">160</td><td class="n">160</td></tr>
+        <tr><td>TVA à décaisser</td><td class="n">60</td><td class="n">60</td><td class="n">80</td><td class="n">80</td></tr>
+        <tr><td>Règlement de TVA</td><td class="n">60</td><td class="n">60</td><td class="n">60</td><td class="n">80</td></tr>
+      </tbody>
+    </table></div>
+    <div class="calc"><span>Collectée mois 1 = 1 100 × 0,2 = 220</span><span>Déductible mois 1 = 0,2 × 600 + 0,2 × (50 % × 400) = 160</span><span>Comptant mois 1 = 30 % × 1 100 × 1,2 = 396 ; 30 jours (mois 2) = 70 % × 1 100 × 1,2 = 924</span></div>
+    <div class="tw"><table>
+      <thead><tr><th>En K€</th><th class="n">Mois 1</th><th class="n">Mois 2</th><th class="n">Mois 3</th><th class="n">Mois 4</th></tr></thead>
+      <tbody>
+        <tr><td>Trésorerie début</td><td class="n">12</td><td class="n neg">−162</td><td class="n">22</td><td class="n">74</td></tr>
+        <tr><td>Encaissements</td><td class="n">1 096</td><td class="n">1 284</td><td class="n">1 272</td><td class="n">1 440</td></tr>
+        <tr><td>Décaissements</td><td class="n">1 270</td><td class="n">1 100</td><td class="n">1 220</td><td class="n">1 240</td></tr>
+        <tr class="tot"><td>Trésorerie fin</td><td class="n neg">−162</td><td class="n">22</td><td class="n">74</td><td class="n">274</td></tr>
+      </tbody>
+    </table></div>
+    <div class="res">Seul le mois 1 est déficitaire (−162). La Partie 2 (exercice 3) le couvre par un billet de trésorerie à intérêts précomptés.</div>
+  </div></details></div>
+
+  <div class="ex"><h3>Exercice 4 · Budget sur six mois avec export</h3>
+  <div class="given"><span>CA France 24 000 HT/an, 30 jours fin de mois</span><span>CA export 9 000 HT/an, 60 jours, sans TVA</span><span>Achats 1 000 HT tous les 2 mois (1ʳᵉ livraison début janvier), à 60 jours</span><span>Personnel 8 100/an dont 1/3 de charges sociales (payées le 10 du mois suivant)</span><span>Services extérieurs 3 600/an, moitié avec TVA</span><span>Frais financiers 900, impôts et taxes 660, amortissements 1 200 (non décaissés)</span><span>TVA réglée le 22 du mois suivant</span><span>Bilan : clients 1 800 (dont 300 étrangers), disponibilités 30, fournisseurs 520, TVA 160, régularisation 240 (payée en janvier), emprunt : 100 par an en mars</span></div>
+  <details><summary>Voir la correction</summary><div class="body">
+    <p class="st">1. Budget de TVA</p>
+    <div class="tw"><table>
+      <thead><tr><th>En K€</th><th class="n">1</th><th class="n">2</th><th class="n">3</th><th class="n">4</th><th class="n">5</th><th class="n">6</th></tr></thead>
+      <tbody>
+        <tr><td>TVA collectée</td><td class="n">400</td><td class="n">400</td><td class="n">400</td><td class="n">400</td><td class="n">400</td><td class="n">400</td></tr>
+        <tr><td>Déductible sur achats</td><td class="n">200</td><td class="n"></td><td class="n">200</td><td class="n"></td><td class="n">200</td><td class="n"></td></tr>
+        <tr><td>Déductible sur services ext.</td><td class="n">30</td><td class="n">30</td><td class="n">30</td><td class="n">30</td><td class="n">30</td><td class="n">30</td></tr>
+        <tr><td>TVA à décaisser</td><td class="n">170</td><td class="n">370</td><td class="n">170</td><td class="n">370</td><td class="n">170</td><td class="n">370</td></tr>
+        <tr class="tot"><td>Règlement</td><td class="n">160</td><td class="n">170</td><td class="n">370</td><td class="n">170</td><td class="n">370</td><td class="n">170</td></tr>
+      </tbody>
+    </table></div>
+    <div class="calc"><span>Collectée = 24 000 / 12 × 20 % = 400 (rien sur l'export)</span><span>Services ext. avec TVA = 3 600 / 12 / 2 = 150 → TVA 30</span></div>
+    <p class="st">2. Encaissements</p>
+    <ul>
+      <li>Créances du bilan : 1 800 dont 300 à l'étranger → 1 500 France en janvier ; étranger 150 (ventes de novembre) en janvier et 150 (décembre) en février.</li>
+      <li>France : 2 000 HT × 1,2 = 2 400 par mois, à partir de février.</li>
+      <li>Export : 9 000 / 12 = 750 HT, sans TVA, à partir de mars.</li>
+    </ul>
+    <p class="st">3. Décaissements (mois 1 à 6)</p>
+    <ul>
+      <li>Dettes fournisseurs 520 et compte de régularisation 240 en janvier.</li>
+      <li>Achats 1 000 × 1,2 = 1 200 payés en mars et en mai (60 jours).</li>
+      <li>Salaires 8 100 × 2/3 / 12 = 450 ; charges sociales 8 100 × 1/3 / 12 = 225, le 10 du mois suivant.</li>
+      <li>Services ext. 180 TTC + 150 hors TVA ; impôts et taxes 55 ; frais financiers 75 ; TVA ; emprunt 100 en mars.</li>
+    </ul>
+    <p class="st">4. Budget de trésorerie</p>
+    <div class="tw"><table>
+      <thead><tr><th>En K€</th><th class="n">1</th><th class="n">2</th><th class="n">3</th><th class="n">4</th><th class="n">5</th><th class="n">6</th></tr></thead>
+      <tbody>
+        <tr><td>Début</td><td class="n">30</td><td class="n neg">−150</td><td class="n">1 095</td><td class="n">1 440</td><td class="n">3 285</td><td class="n">3 730</td></tr>
+        <tr><td>Encaissements</td><td class="n">1 650</td><td class="n">2 550</td><td class="n">3 150</td><td class="n">3 150</td><td class="n">3 150</td><td class="n">3 150</td></tr>
+        <tr><td>Décaissements</td><td class="n">1 830</td><td class="n">1 305</td><td class="n">2 805</td><td class="n">1 305</td><td class="n">2 705</td><td class="n">1 305</td></tr>
+        <tr class="tot"><td>Fin</td><td class="n neg">−150</td><td class="n">1 095</td><td class="n">1 440</td><td class="n">3 285</td><td class="n">3 730</td><td class="n">5 575</td></tr>
+      </tbody>
+    </table></div>
+    <div class="res">Un seul mois négatif (janvier), puis des excédents croissants à placer.</div>
+  </div></details></div>
+</section>
+
+<section id="pieges" class="part">
+  <div class="partHead"><span class="eyebrow">Avant l'examen</span><h2>À retenir et pièges</h2></div>
+  <div class="grid2">
+    <div class="box"><strong>Les réflexes</strong>
+      <ul>
+        <li>Tout passer en <strong>TTC</strong>, sauf l'export et les charges non soumises à TVA.</li>
+        <li>La TVA du mois M se paie en <strong>M+1</strong> ; janvier paie celle du bilan.</li>
+        <li>Un <strong>crédit de TVA</strong> n'est pas un décaissement : il est remboursé plus tard (M+2 si l'énoncé le dit).</li>
+        <li>Les postes du bilan d'ouverture sont <strong>déjà TTC</strong> : ne pas les multiplier par 1,2.</li>
+      </ul>
+    </div>
+    <div class="box"><strong>Les erreurs classiques</strong>
+      <ul>
+        <li>Mettre des amortissements ou une variation de stock dans le budget.</li>
+        <li>Placer un encaissement au mois de la vente alors que le client paie à 30 ou 60 jours.</li>
+        <li>Oublier la TVA collectée sur une cession d'immobilisation.</li>
+        <li>Calculer la TVA déductible d'un investissement au mois du paiement au lieu du mois de l'opération.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>Classeur de révision · Gestion de trésorerie · Partie 1. Sources : support « Gestion de trésorerie » et corrections des exercices 1 à 4.</footer>
+</div>
+<script>addEventListener("beforeprint",()=>document.querySelectorAll("details").forEach(d=>d.open=true))</script>
+</body></html>
