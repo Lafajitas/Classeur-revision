@@ -1,0 +1,931 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fiche Gestion de portefeuille</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: same binder as the other fiches — crimson accent (Gestion de portefeuille colour), one reading column, formula strips in mono, corrigés folded */
+:root{
+  --paper:#FCFAFA; --surface:#ffffff; --ink:#2A2224; --muted:#665A5D; --acc:#8E2433; --acc-soft:#F6E8EA;
+  --rule:#E0D6D8; --amber:#9A5418; --amber-soft:#FBF1E6; --green:#2F6B4F; --green-soft:#EAF4EE;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#1A1517; --surface:#221B1E; --ink:#EEE6E8; --muted:#B3A6AA; --acc:#F2A3AD; --acc-soft:#3A2227;
+  --rule:#3D3135; --amber:#E8A66A; --amber-soft:#33261A; --green:#8FD1AE; --green-soft:#1C2E25; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#1A1517; --surface:#221B1E; --ink:#EEE6E8; --muted:#B3A6AA; --acc:#F2A3AD; --acc-soft:#3A2227;
+  --rule:#3D3135; --amber:#E8A66A; --amber-soft:#33261A; --green:#8FD1AE; --green-soft:#1C2E25; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:1.05rem/1.62 var(--serif)}
+h1,h2,h3,h4,nav,th,.tag,.kicker,summary{font-family:var(--sans)}
+.wrap{max-width:54rem;margin:0 auto;padding-inline:16px;padding-block:0 4rem}
+header.hero{padding-block:2.6rem 1.6rem;display:grid;gap:.8rem}
+.kicker{color:var(--acc);font-weight:600;font-size:.92rem;margin:0}
+h1{font-size:clamp(2rem,5vw,3rem);line-height:1.05;margin:0;letter-spacing:-.02em;text-wrap:balance}
+.hero p{color:var(--muted);margin:0;max-width:62ch}
+.strip{display:flex;flex-wrap:wrap;gap:8px;margin-top:.4rem}
+.strip span{background:var(--acc-soft);color:var(--acc);border-radius:999px;padding:5px 12px;font:600 .85rem var(--mono)}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-block:1px solid var(--rule);display:flex;gap:.2rem;overflow-x:auto;padding-block:.45rem}
+nav.toc a{font:500 .9rem var(--sans);color:var(--ink);text-decoration:none;padding:.35rem .7rem;border-radius:6px;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--acc-soft);color:var(--acc);outline:none}
+section{padding-top:1.8rem;display:grid;gap:.9rem}
+h2{font-size:1.65rem;margin:0;padding-top:.8rem;border-top:3px solid var(--acc);text-wrap:balance}
+h2 .n{color:var(--acc);margin-right:.4em}
+h3{font-size:1.18rem;margin:.6rem 0 0;color:var(--acc)}
+h4{font-size:1rem;margin:.3rem 0 0}
+p{margin:0;max-width:74ch}
+ul,ol{margin:0;padding-left:1.25em;display:grid;gap:.25rem;max-width:74ch}
+.eq{font-family:var(--mono);font-size:.92rem;background:var(--acc-soft);color:var(--ink);padding:.75rem 1rem;border-radius:8px;overflow-x:auto;white-space:pre}
+.tw{overflow-x:auto;border:1px solid var(--rule);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th{text-align:left;font-weight:600;font-size:.8rem;color:var(--muted);border-bottom:2px solid var(--ink);padding:8px 10px;text-transform:uppercase;letter-spacing:.04em}
+td{border-bottom:1px solid var(--rule);padding:8px 10px;vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-family:var(--mono);font-size:.88rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:12px}
+.box{border-radius:8px;padding:14px 16px;display:grid;gap:6px;min-width:0}
+.box .tag{font-size:.82rem;font-weight:700}
+.key{background:var(--acc-soft)} .key .tag{color:var(--acc)}
+.warn{background:var(--amber-soft)} .warn .tag{color:var(--amber)}
+.ex{background:var(--green-soft)} .ex .tag{color:var(--green)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:6px}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;position:relative;padding-left:32px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:3px;font:600 .8rem var(--mono);color:var(--paper);background:var(--acc);border-radius:50%;width:22px;height:22px;display:grid;place-items:center}
+details{background:var(--surface);border:1px solid var(--rule);border-radius:8px}
+summary{cursor:pointer;padding:.7rem 1rem;font-weight:600;color:var(--green);list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸ "} details[open] summary::before{content:"▾ "}
+details>.body{padding:0 1rem 1rem;display:grid;gap:.5rem}
+.exo{display:grid;gap:.6rem}
+.exo h3 .src{font:600 .75rem var(--sans);color:var(--muted);border:1px solid var(--rule);border-radius:999px;padding:2px 8px;margin-left:.5em;vertical-align:middle}
+.res{font-family:var(--sans);font-weight:600}
+.muted{color:var(--muted);font-size:.95rem}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+a{color:var(--acc)}
+.given{display:flex;flex-wrap:wrap;gap:6px}
+.given span{font:500 .85rem var(--sans);background:var(--acc-soft);border-radius:6px;padding:4px 9px}
+.given b{color:var(--acc);margin-right:4px}
+.st{font-family:var(--sans);font-weight:700;color:var(--acc);margin-top:.5rem;padding-top:.5rem;border-top:1px dashed var(--rule)}
+details .box ul{padding-left:1.1em}
+.part{font:700 .8rem var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:2.2rem}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:var(--muted);font:.85rem var(--sans)}
+@media print{nav.toc,.cl-back{display:none!important}details{break-inside:auto}h2,h3{break-after:avoid}.box,.card,.tw,.eq{break-inside:avoid}body{font-size:.95rem}.eq{white-space:pre-wrap;font-size:.8rem}.exo.card{break-inside:auto}.part{break-after:avoid}}
+</style></head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-port_fiches">← Gestion de portefeuille</a><span>· Classeur de révision</span></nav>
+
+<div class="wrap">
+<header class="hero">
+  <p class="kicker">Gestion de portefeuille · P. Grandin · 5 supports de cours</p>
+  <h1>Gestion de portefeuille : la fiche complète</h1>
+  <p>Les marchés d'actions, la théorie moderne du portefeuille, l'efficience des marchés, la gestion active et passive, la mesure de performance, puis tous les exercices du cours corrigés pas à pas.</p>
+  <div class="strip"><span>σ²p = a²σ²A + (1−a)²σ²B + 2a(1−a)ρσAσB</span><span>E(Ri) = rf + βi[E(Rm) − rf]</span><span>Sharpe = (Rp − rf)/σp</span><span>Actions = m × (VL − plancher)</span></div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <a href="#marches">0 · Marchés d'actions</a><a href="#theorie">1 · Théorie du portefeuille</a><a href="#efficience">2 · Efficience</a><a href="#gestion">3 · Gestion active/passive</a><a href="#perf">4 · Performance</a><a href="#exos">5 · Exercices</a><a href="#retenir">6 · À retenir</a>
+</nav>
+
+<!-- ============ 0. MARCHÉS D'ACTIONS ============ -->
+<section id="marches">
+  <h2><span class="n">0</span>Les marchés d'actions : produits et réglementation</h2>
+  <p>Le <strong>marché primaire</strong> est celui des titres neufs (introductions en bourse, augmentations de capital) : l'entreprise lève des fonds. Le <strong>marché secondaire</strong> est le marché « d'occasion » où les investisseurs s'échangent des titres déjà émis : il assure la liquidité et fixe les prix.</p>
+
+  <h3>L'autorité de tutelle en France : l'AMF</h3>
+  <ul>
+    <li>Réglemente et contrôle les opérations financières des sociétés cotées et la qualité de leur information.</li>
+    <li>Agrée les acteurs de marché et les produits (notamment les OPCVM) et vérifie la conformité de l'information.</li>
+    <li>Veille à la protection de l'épargne et au bon fonctionnement des marchés.</li>
+    <li>Mène des enquêtes et peut agir en justice.</li>
+  </ul>
+
+  <h3>Deux types de marchés (et un mélange)</h3>
+  <div class="grid2">
+    <div class="box key"><span class="tag">Marché d'agence (dirigé par les ordres)</span><p>Les ordres d'achat et de vente sont centralisés dans un carnet d'ordres ; le prix naît de leur confrontation.</p></div>
+    <div class="box key"><span class="tag">Marché de contrepartie (dirigé par les prix)</span><p>Des teneurs de marché affichent en permanence un prix d'achat et un prix de vente et se portent contrepartie.</p></div>
+    <div class="box warn"><span class="tag">Marché mixte</span><p>Fonctionne avec un carnet d'ordres, mais la contrepartie (teneur de marché) reste possible.</p></div>
+  </div>
+
+  <h3>Les directives MIF</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Directive</th><th>Apports</th></tr></thead>
+    <tbody>
+      <tr><td><strong>MIF 1 (2007)</strong></td><td>Fin du monopole des bourses → nouveaux lieux : <strong>MTF</strong> (Multilateral Trading Facilities), ECN (Electronic Communication Network), ATS (Alternative Trading System). Encadrement du conseil en investissement, obligation de <strong>best execution</strong>, nouvelle classification des clients.</td></tr>
+      <tr><td><strong>MIF 2 (2014)</strong></td><td>Applicable depuis janvier 2018 : renforcement des obligations de transparence.</td></tr>
+    </tbody>
+  </table></div>
+  <p>Trois types de MTF : <strong>transparents</strong> comparables à Euronext (Bats Chi-X, Turquoise), <strong>opaques ou dark pools</strong> (Chi-Delta, Liquidnet, SmartPool), <strong>plateformes pour particuliers</strong> (Tradegate).</p>
+
+  <h3>Les marchés d'actions en France</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Lieu</th><th>Statut</th><th>Entreprises</th><th>Cotation</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Euronext</strong></td><td>Marché réglementé par l'AMF</td><td>Grandes capitalisations</td><td>Continu ou double fixing</td></tr>
+      <tr><td><strong>Euronext Growth</strong> (ex-Alternext)</td><td>SMN (système multilatéral de négociation), règles approuvées par l'AMF</td><td>PME</td><td>Continu ou fixing quotidien</td></tr>
+      <tr><td><strong>Euronext Access</strong> (ex-Marché Libre)</td><td>SMN, règles approuvées par l'AMF</td><td>PME en forte croissance</td><td>Double, avec phase continue au dernier cours</td></tr>
+      <tr><td><strong>Autres SMN</strong> (Turquoise, Chi-X, BATS…)</td><td>Règles validées par l'autorité du pays d'agrément ; exploités par un PSI ou une entreprise de marché</td><td>Surtout grandes capitalisations</td><td>Continu</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>La journée de cotation sur Euronext Paris</h3>
+  <div class="grid2">
+    <div class="card"><h4>En continu</h4><ul>
+      <li><strong>7h15–9h00</strong> pré-ouverture : on enregistre les ordres, sans transaction.</li>
+      <li><strong>9h00</strong> ouverture : calcul du cours d'ouverture.</li>
+      <li><strong>9h00–17h30</strong> négociation en continu.</li>
+      <li><strong>17h30–17h35</strong> pré-clôture (ordres sans transaction).</li>
+      <li><strong>17h35</strong> clôture par confrontation des ordres.</li>
+      <li><strong>17h35–17h40</strong> négociation au dernier cours.</li></ul></div>
+    <div class="card"><h4>Au fixing</h4><ul>
+      <li><strong>7h15–11h30</strong> pré-ouverture.</li>
+      <li><strong>11h30</strong> fixing : prix qui fait s'échanger le plus grand nombre de titres.</li>
+      <li><strong>11h30–12h00</strong> négociation au dernier cours.</li>
+      <li><strong>12h00–16h30</strong> pré-clôture.</li>
+      <li><strong>16h30</strong> fixing de clôture, puis <strong>16h30–17h00</strong> dernier cours.</li>
+      <li>Marché libre : <strong>fixing unique à 15h</strong>.</li></ul></div>
+  </div>
+
+  <h3>L'ordre de bourse</h3>
+  <p>Il doit préciser : le <strong>sens</strong> (achat/vente), le <strong>titre</strong> (nom ou code ISIN), la <strong>quantité</strong>, le <strong>type d'ordre</strong>, la <strong>validité</strong> (jour, date déterminée, à révocation) et le <strong>règlement</strong> (comptant ou SRD).</p>
+  <div class="grid2">
+    <div class="card"><h4>Types d'ordres</h4><ul><li>À cours limite</li><li>À la meilleure limite</li><li>Au marché</li><li>À seuil de déclenchement</li><li>À plage de déclenchement</li><li>Indexé</li><li>À prix moyen pondéré</li><li>Ordres groupés</li></ul></div>
+    <div class="card"><h4>Conditions spéciales d'exécution</h4><ul><li><strong>Exécuté et éliminé</strong> (Immediate or cancel) : on exécute ce qui peut l'être, le reste est annulé.</li><li><strong>Exécuté ou éliminé</strong> (Fill or kill) : tout ou rien.</li><li>À quantité minimale</li><li><strong>Iceberg</strong> : seule une partie de la quantité est visible.</li></ul></div>
+  </div>
+
+  <h3>Le service de règlement différé (SRD)</h3>
+  <p>Le SRD permet d'acheter ou de vendre en reportant la livraison des titres et le paiement au <strong>dernier jour du mois</strong>, contre une commission.</p>
+  <ul>
+    <li>Réservé aux valeurs françaises avec capitalisation ≥ 1 Md€ et volume quotidien moyen &gt; 1 M€, et aux valeurs étrangères avec volume quotidien moyen &gt; 500 000 €.</li>
+    <li>Ordre passé après le <strong>5ᵉ jour de bourse avant la fin du mois</strong> → réglé à la fin du mois suivant.</li>
+  </ul>
+  <div class="tw"><table>
+    <thead><tr><th>Couverture déposée</th><th class="num">Exigence</th></tr></thead>
+    <tbody>
+      <tr><td>Espèces, bons du Trésor, OPCVM monétaires</td><td class="num">20 %</td></tr>
+      <tr><td>Obligations cotées, OPCVM obligataires</td><td class="num">25 %</td></tr>
+      <tr><td>Actions cotées, OPCVM actions</td><td class="num">40 %</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Plus le support de couverture est risqué, plus il en faut.</p>
+
+  <h3>Les seuils de réservation (marché continu)</h3>
+  <div class="grid2">
+    <div class="box key"><span class="tag">Seuil statique</span><p>Variation de <strong>±10 %</strong> par rapport au cours d'ouverture (ou au dernier cours coté après une réservation) → arrêt des cotations <strong>5 minutes</strong>. Valeurs &lt; 5 € : réservation prolongée la 4ᵉ fois ; valeurs &gt; 5 € : dès la 2ᵉ fois.</p></div>
+    <div class="box key"><span class="tag">Seuil dynamique</span><p>Tout ordre entraînant une variation de <strong>±2 %</strong> par rapport au <strong>dernier cours</strong> → arrêt des cotations 5 minutes.</p></div>
+  </div>
+  <p class="muted">Les trois cas du cours sont détaillés dans l'<a href="#ex-reservation">exercice 2</a>.</p>
+</section>
+
+<!-- ============ 1. THÉORIE DU PORTEFEUILLE ============ -->
+<section id="theorie">
+  <h2><span class="n">1</span>La théorie moderne du portefeuille</h2>
+
+  <h3>Rentabilité d'une action</h3>
+  <div class="eq">Rentabilité simple :      R(t) = [C(t) − C(0)] / C(0)
+Avec dividende :          R(t) = [C(t) + D(t) − C(0)] / C(0)
+                               = [C(t) − C(0)]/C(0)  +  D(t)/C(0)
+                                  plus-value            rendement
+Rentabilité continue :    X(t) = ln C(t) − ln C(0) = ln[C(t)/C(0)]</div>
+  <p>La rentabilité simple est le gain (ou la perte) réel exprimé en %. La rentabilité continue est la limite d'une capitalisation sur des périodes qui tendent vers zéro : c'est une <strong>convention de calcul qui rend symétriques les hausses et les baisses</strong> (+10 % puis −10 % en continu ramènent au point de départ). En cas de <em>split</em> (division d'action), il faut ajuster les cours.</p>
+
+  <h3>Risque d'une action</h3>
+  <div class="eq">σ²ᵢ = [1/(T−1)] × Σₜ (Rᵢₜ − R̄ᵢ)²        volatilité = σᵢ = √σ²ᵢ</div>
+  <p>Le risque est la dispersion des rentabilités autour de leur moyenne (fluctuations totales). La volatilité « normale » d'une action est d'environ <strong>20 %</strong> par an ; la rentabilité annuelle d'un marché actions tourne autour de 10 %.</p>
+  <div class="grid2">
+    <div class="box key"><span class="tag">Hypothèse de loi normale</span><p>68 % des rentabilités dans [M − σ ; M + σ], 95 % dans [M − 2σ ; M + 2σ].</p></div>
+    <div class="box warn"><span class="tag">Limite</span><p>Bonne approximation, mais les <strong>queues de distribution sont plus épaisses</strong> : les extrêmes sont plus fréquents que prévu.</p></div>
+  </div>
+
+  <h3>L'importance des rentabilités extrêmes</h3>
+  <ul>
+    <li><strong>Walter (2003)</strong>, CAC 40, 3 460 séances (1988–2001) : progression moyenne 13,79 %/an. Sans les 34 plus fortes hausses (1 % des séances) : 4,10 %. Sans les 52 plus fortes hausses : 0 %. Sans les 34 plus fortes baisses : 23,80 %. Plus forte hausse +7,05 % (17/01/1991), plus forte baisse −7,29 % (19/08/1991).</li>
+    <li><strong>Bessembinder (2019)</strong>, États-Unis 1926–2016 : <strong>4 % des titres</strong> font toute la création de richesse du marché ; 42,6 % des rentabilités mensuelles battent les bons du Trésor à 1 mois ; 30,8 % des titres battent l'indice pondéré ; 11,83 % des sociétés ont tout perdu.</li>
+    <li><strong>Alpha Architect (2015)</strong> : 63 % des valeurs sous-performent le benchmark sur 1983–2006, 54 % sur 2007–2014.</li>
+  </ul>
+
+  <h3>Le principe de diversification (Markowitz, 1952, 1959)</h3>
+  <p>Raisonnement dans un univers à deux actifs A et B, avec a la part investie dans A, généralisé ensuite à N actifs.</p>
+  <div class="eq">Rentabilité :  Rp = a·rA + (1−a)·rB          E(Rp) = a·E(rA) + (1−a)·E(rB)
+Variance :     Var(Rp) = a²Var(rA) + (1−a)²Var(rB) + 2a(1−a)Cov(rA,rB)
+Corrélation :  ρA,B = Cov(rA,rB) / [σ(rA)·σ(rB)]       (−1 ≤ ρ ≤ 1)
+Donc :         σ²p = a²σ²A + (1−a)²σ²B + 2a(1−a)·ρA,B·σA·σB</div>
+  <p>La rentabilité du portefeuille est la moyenne pondérée, <strong>pas le risque</strong> : tant que ρ &lt; 1, l'écart-type du portefeuille est inférieur à la moyenne pondérée des écarts-types. C'est le gain de diversification.</p>
+
+  <h4>Portefeuille de variance minimale</h4>
+  <p>On dérive la variance par rapport à a et on l'annule :</p>
+  <div class="eq">∂Var(rP)/∂a = 2a·Var(rA) − 2Var(rB) + 2a·Var(rB) + 2Cov − 4a·Cov = 0
+
+a* = [Var(rB) − Cov(rA,rB)] / [Var(rA) + Var(rB) − 2Cov(rA,rB)]
+   = [σ²B − ρσAσB] / [σ²A + σ²B − 2ρσAσB]</div>
+
+  <h4>Les cas extrêmes de corrélation</h4>
+  <div class="tw"><table>
+    <thead><tr><th>Corrélation</th><th>Écart-type du portefeuille</th><th>Conséquence</th></tr></thead>
+    <tbody>
+      <tr><td><strong>ρ = +1</strong></td><td>σp = a·σA + (1−a)·σB</td><td>Aucun gain de diversification : la frontière est une droite entre A et B.</td></tr>
+      <tr><td><strong>ρ = −1</strong></td><td>σp = |a·σA − (1−a)·σC|</td><td>Deux branches (pentes + et −) qui se rejoignent au portefeuille de variance minimale, de risque <strong>nul</strong> : a* = σC / (σA + σC).</td></tr>
+      <tr><td><strong>−1 &lt; ρ &lt; 1</strong></td><td>formule générale</td><td>Courbe (« hyperbole ») : le risque baisse d'autant plus que ρ est faible.</td></tr>
+    </tbody>
+  </table></div>
+  <p>Exemple du cours (Air Liquide/Pernod Ricard) : le mélange des deux titres donne un portefeuille de volatilité minimale (≈ 15,4 %) plus faible que chacun des titres seuls. Les corrélations entre grandes valeurs françaises (2000–2008) sont presque toutes positives, entre 0 et 0,7 : la diversification réduit le risque sans jamais l'annuler.</p>
+
+  <h4>La frontière efficiente</h4>
+  <p>Avec N actifs, l'ensemble des portefeuilles possibles forme une zone ; sa bordure supérieure gauche est la <strong>frontière efficiente de Markowitz</strong> : pour chaque niveau de risque, le portefeuille de rentabilité maximale. En écriture matricielle : σ²p = wᵀΣw (Σ = matrice de variances-covariances).</p>
+
+  <h4>Diversification non raisonnée : y a-t-il une limite ?</h4>
+  <p>Pour un portefeuille équipondéré de N titres (poids 1/N) :</p>
+  <div class="eq">Var(rp) = (1/N)·σ̄²  +  [(N−1)/N]·σ̄n,m
+          variance moyenne   covariance moyenne
+Quand N → ∞ :  Var(rp) → σ̄n,m  (covariance moyenne)</div>
+  <div class="box key"><span class="tag">À retenir</span><p>La diversification élimine le <strong>risque spécifique</strong> (diversifiable) mais pas le <strong>risque systématique</strong> (risque de marché, lié aux covariances). La courbe volatilité/nombre de titres s'aplatit vite : 20 à 30 titres suffisent à capter l'essentiel du gain.</p></div>
+
+  <h3>L'actif sans risque et la Capital Market Line (CML)</h3>
+  <p>Avec un actif sans risque (rentabilité rf, variance nulle, covariance nulle) :</p>
+  <div class="eq">rp = a·rA + (1−a)·rf     Var(rp) = a²·Var(rA)     σp = a·σA</div>
+  <p>Les combinaisons forment une <strong>droite</strong>. La meilleure droite est celle qui est tangente à la frontière efficiente, au point <strong>M (portefeuille de marché)</strong> : c'est la CML.</p>
+  <div class="eq">CML :  rp = rf + [(rM − rf) / σM] × σp
+                pente = prix du risque total (ratio de Sharpe du marché)</div>
+  <p>À gauche de M, on prête au taux sans risque (a &lt; 1) ; à droite de M, on emprunte pour investir plus de 100 % dans M (a &gt; 1).</p>
+  <div class="box key"><span class="tag">Théorème de séparation de Tobin (1955)</span><p>« La composition du portefeuille risqué optimal est indépendante de l'allocation entre actif sans risque et portefeuille risqué. » Tous les investisseurs détiennent le même portefeuille risqué M ; seule la répartition M/actif sans risque dépend de leur <strong>aversion au risque</strong>.</p></div>
+
+  <h3>Le modèle de marché (Sharpe, 1963)</h3>
+  <div class="eq">rᵢₜ = αᵢ + βᵢ·rₘₜ + εᵢₜ</div>
+  <p>La rentabilité d'un titre est une fonction linéaire de celle du marché ; αᵢ et βᵢ sont estimés par régression, εᵢₜ est la rentabilité résiduelle (spécifique).</p>
+
+  <h3>Le MEDAF (CAPM)</h3>
+  <p>Taux de rentabilité exigé par l'actionnaire = taux sans risque + prime de risque. Le MEDAF donne la relation <em>ex ante</em>, à l'équilibre, entre risque systématique et rentabilité :</p>
+  <div class="eq">E(rᵢ) = rf + βᵢ × [E(rm) − rf]          βᵢ = Cov(Rᵢ, Rm) / Var(Rm)</div>
+  <ul>
+    <li>β mesure la <strong>sensibilité</strong> du titre aux variations du marché (β = 1 : comme le marché ; β &gt; 1 : amplifie ; β &lt; 1 : amortit).</li>
+    <li>On l'obtient par régression de la rentabilité du titre sur celle du marché, ou par covariance/variance.</li>
+  </ul>
+  <h4>Bêta et endettement</h4>
+  <div class="eq">Effet de levier :  Rᵉ = Rⁿᵉ + (Rⁿᵉ − Rf) × D/CPᵉ
+Donc :             βE = βNE × (1 + D/CP)        (NE = firme non endettée)</div>
+  <p>Le bêta dépend donc du <strong>risque d'exploitation</strong> (βNE) et du <strong>risque financier</strong> (structure de financement).</p>
+  <h4>La prime de risque</h4>
+  <div class="grid2">
+    <div class="card"><h4>Historique (1926–2015)</h4><ul><li>CAC 40 : 4,9 % vs monétaire, 1,0 % vs emprunts d'État longs.</li><li>S&amp;P 500 : 7,7 % vs monétaire, 5,9 % vs emprunts d'État longs.</li></ul></div>
+    <div class="card"><h4>Ex ante (Gordon-Shapiro)</h4><div class="eq">rm = Div₁/P₀ + g</div><p>Rendement attendu + croissance espérée du dividende de l'ensemble du marché ; prime = rm − rf.</p></div>
+  </div>
+
+  <h3>Le modèle de la droite de marché</h3>
+  <p>But : extraire des données de marché une équation du MEDAF <em>ex ante</em>.</p>
+  <ol class="steps">
+    <li>Prendre un échantillon de sociétés.</li>
+    <li>Calculer leur <strong>rentabilité actuarielle</strong> à partir du cours (modèle d'actualisation des flux à l'infini, flux = dividendes (DDM) ou cash-flows) : <span class="res">Cours = Σ FFₜ / (1 + E(rᵢ))ᵗ</span>.</li>
+    <li>Calculer leur risque systématique (β), puis placer les sociétés dans le plan rentabilité/β et ajuster une droite empirique.</li>
+  </ol>
+  <p>Le modèle met en évidence :</p>
+  <ul>
+    <li>l'<strong>écart</strong> entre la rentabilité offerte par les actions et celle des obligations d'État → jugement sur le niveau de valorisation du marché ;</li>
+    <li>la <strong>pente</strong> de la droite empirique → le marché rémunère-t-il correctement le risque ? (à comparer à la pente théorique) ;</li>
+    <li>la <strong>position de chaque titre</strong> : au-dessus de la droite, rentabilité attendue trop forte pour son risque → titre <strong>sous-évalué</strong> ; en dessous → <strong>surévalué</strong>.</li>
+  </ul>
+  <p class="muted">Il faut réestimer régulièrement les paramètres (nouvelles informations, cours qui bougent), même si le risque présente une assez forte inertie.</p>
+
+  <h3>Les modèles multifacteurs</h3>
+  <div class="eq">APT (Ross, 1976) :  rᵢ,ₜ = Aₜ + β₁,ᵢF₁,ₜ + β₂,ᵢF₂,ₜ + … + βₙ,ᵢFₙ,ₜ + εᵢ,ₜ
+À l'équilibre :     E(rᵢ) = λ₀ + β₁,ᵢλ₁ + … + βₙ,ᵢλₙ    (λ = prime du facteur)</div>
+  <div class="tw"><table>
+    <thead><tr><th>Génération</th><th>Objet / méthode</th><th>Exemple</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Facteurs macroéconomiques</strong> (explicites)</td><td>Obtenir des bêtas de facteurs ; régression en séries temporelles</td><td>Chen, Roll et Ross (1986) : croissance du PIB, écart taux longs/courts, prime de risque obligataire, inflation</td></tr>
+      <tr><td><strong>Facteurs fondamentaux</strong> (microéconomiques)</td><td>Déterminer les facteurs ; régression en coupe instantanée sur les caractéristiques des titres</td><td>Fama et French (1993) à 3 facteurs</td></tr>
+      <tr><td><strong>Facteurs statistiques</strong> (implicites)</td><td>Facteurs et bêtas tirés des données : ACP, analyse factorielle (Roll et Ross, 1980)</td><td>Gestion indicielle, benchmarkée, classement des fonds</td></tr>
+    </tbody>
+  </table></div>
+  <div class="eq">Fama-French :  Rpt − Rft = αp + βp(Rmt − Rft) + sp·SMBt + hp·HMLt + et
+SMB = petites − grosses capitalisations ;  HML = ratio VC/VM élevé − faible</div>
+</section>
+
+<!-- ============ 2. EFFICIENCE ============ -->
+<section id="efficience">
+  <h2><span class="n">2</span>L'efficience des marchés</h2>
+  <h3>Quatre notions d'efficience</h3>
+  <div class="grid2">
+    <div class="card"><h4>Allocationnelle / fonctionnelle</h4><p>Le système financier remplit six fonctions : transférer des ressources dans le temps et l'espace, compenser et payer, mettre en commun les ressources, gérer les risques, informer sur les prix, gérer les problèmes d'incitations (aléa moral, sélection adverse).</p></div>
+    <div class="card"><h4>Microstructurelle</h4><p>Le fonctionnement des marchés (coûts, liquidité, organisation des échanges).</p></div>
+    <div class="card"><h4>Rationalité des acteurs</h4><p>La finance comportementale étudie les anomalies : sur- et sous-réaction, ancrage, traitement asymétrique des gains et pertes, <em>house money effect</em>, comptabilité mentale, excès de confiance, biais rétrospectif, mimétisme.</p></div>
+    <div class="card"><h4>Informationnelle</h4><p>Les cours reflètent-ils l'information disponible ? C'est le cœur du chapitre.</p></div>
+  </div>
+
+  <h3>Les définitions de l'efficience informationnelle</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Auteur</th><th>Le marché est efficient si…</th></tr></thead>
+    <tbody>
+      <tr><td>Fama (1965)</td><td>les cours sont de bons estimateurs de la valeur intrinsèque, compte tenu de l'information disponible.</td></tr>
+      <tr><td>Fama (1970)</td><td>les cours reflètent pleinement toute l'information disponible.</td></tr>
+      <tr><td>Fama (1976)</td><td>les cours reflètent correctement toute l'information utilisée par les opérateurs.</td></tr>
+      <tr><td>Jensen (1978)</td><td>il est impossible de réaliser un gain à partir d'un ensemble d'informations donné.</td></tr>
+      <tr><td>Beaver (1981)</td><td>communiquer l'information à tous n'a pas d'impact sur les cours.</td></tr>
+      <tr><td>Malkiel (1989)</td><td>synthèse : les cours reflètent pleinement et correctement l'information pertinente ; la diffuser ne change pas les cours ; on ne peut pas gagner en s'en servant.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Les trois niveaux (Fama, 1970)</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Niveau</th><th>Les cours intègrent</th><th>Ce qui devient inutile</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Faible</strong></td><td>l'information passée (historique des cours)</td><td>analyse technique / chartisme</td></tr>
+      <tr><td><strong>Semi-forte</strong></td><td>passée + publique</td><td>analyse fondamentale sur données publiques</td></tr>
+      <tr><td><strong>Forte</strong></td><td>passée + publique + privée</td><td>même l'information d'initié</td></tr>
+    </tbody>
+  </table></div>
+  <p>Fama (1991) propose une nouvelle classification intégrant les « anomalies ». Jusqu'au début des années 1980, unanimité sur l'efficience faible et semi-forte ; depuis, plus de consensus à cause de l'autocorrélation des rentabilités (momentum, surréaction) et des anomalies (calendaires, effets taille, PER, PBR).</p>
+
+  <h3>Tests de prévisibilité : l'analyse graphique et technique</h3>
+  <div class="grid2">
+    <div class="card"><h4>Chartisme</h4><p>Reconnaître des figures : <strong>tendances</strong> (droites de support et de résistance), <strong>configurations</strong> (double sommet, tête-épaules, triangle), <strong>bar charts</strong> (plus haut, plus bas, ouverture, clôture). Aucun consensus sur les figures → très peu d'études de performance.</p></div>
+    <div class="card"><h4>Analyse technique</h4><p><strong>Filtres</strong> : acheter (vendre) quand le cours dépasse de x % le dernier minimum (maximum) local. <strong>Moyennes mobiles</strong> : acheter quand le cours coupe la moyenne par le dessous, vendre par le dessus. <strong>Oscillateurs</strong> : momentum, RSI.</p></div>
+  </div>
+  <div class="eq">Momentum = Cours(t) − Cours(t−n)   → acheter s'il devient positif
+RSI(x jours) = 100 − 100 / [1 + (moyenne des hausses / moyenne des baisses)]
+               → acheter quand le RSI repasse au-dessus de 30, vendre sous 70</div>
+  <ul>
+    <li><strong>Fama et Blume (1965)</strong>, filtres sur le Dow Jones 1928–1961 : rentabilité brute positive pour les petits filtres mais, après coûts, nette très négative (−103,6 % pour un filtre de 0,5 % avec 12 514 transactions). Au mieux +2,3 % net, contre <strong>9,9 %</strong> pour un simple achat-conservation.</li>
+    <li><strong>Van Horne et Parker (1969)</strong>, moyennes mobiles 1960–1966 : meilleure valeur finale nette ≈ 1 860 $ contre <strong>2 487 $</strong> pour un portefeuille non géré.</li>
+  </ul>
+
+  <h3>Autocorrélation et surréaction</h3>
+  <ul>
+    <li><strong>De Bondt et Thaler (1985)</strong> : acheter les 35 « perdants » des 36 derniers mois et vendre les 35 « gagnants », garder 3 ans. Rentabilité anormale : perdants +6,5 %, gagnants −1,7 %, écart 8,2 % (9,6 % sur 5 ans avec 50 titres) → <strong>surréaction</strong> puis retour à la moyenne.</li>
+    <li><strong>Lo et MacKinlay</strong> : 1 $ placé de 1926 à 1996 donne 14 $ en bons du Trésor, 1 370 $ en S&amp;P 500, 2,3 milliards de $ avec un choix parfait. Autocorrélation hebdomadaire d'un portefeuille équipondéré NYSE : 20 % (35 % pour les petites capitalisations).</li>
+    <li>Décomposition : autocorrélation nulle pour les titres individuels et sur 1 mois à 1 an ; c'est l'<strong>autocorrélation croisée</strong> (les grosses capitalisations « tirent » les petites, asynchronisme des transactions) qui explique celle des portefeuilles.</li>
+  </ul>
+  <div class="eq">Test du ratio de variance :  si rentabilités non corrélées et identiquement distribuées,
+σ²(rT) = t·σ²(rt)   ⇒   RV = σ²(rT) / [t·σ²(rt)] = 1     (RV ≠ 1 ⇒ autocorrélation)</div>
+
+  <h3>Les anomalies calendaires</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Anomalie</th><th>Constat</th><th>Explications</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Effet janvier</strong></td><td>Rozeff et Kinney (1976) : 3,48 % en janvier vs 0,42 % les autres mois (1904–1974). Plus fort pour les petites capitalisations, concentré sur le dernier jour de décembre et les 5 premiers de janvier (Keim, 1983).</td><td>Fiscale (Ritter, 1988). Net 1982–1995, faible ou absent depuis (Dzhabarov et Ziemba, 2010).</td></tr>
+      <tr><td><strong>Effet baromètre</strong></td><td>Janvier positif → année positive dans 86,4 % des cas ; janvier négatif → année négative dans 50 % des cas.</td><td></td></tr>
+      <tr><td><strong>Effet lundi / week-end</strong></td><td>Rentabilité moyenne du lundi négative (French, 1980 : −0,17 %). Rogalski (1984) : la baisse a lieu pendant le week-end.</td><td>Data mining, annonces de bénéfices le vendredi soir, faible activité institutionnelle le lundi, restrictions de vente, « blues du lundi ».</td></tr>
+      <tr><td><strong>Autres</strong></td><td>Changement de mois, jour férié (optimisme avant), Halloween (« Sell in May and go away » : rentabilité concentrée en hiver), septembre/octobre, vendredi 13, changement d'heure, <em>winter blues</em>.</td><td></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Les anomalies en coupe instantanée</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Effet</th><th>Constat</th><th>Explications avancées</th></tr></thead>
+    <tbody>
+      <tr><td><strong>PER</strong></td><td>Basu (1977) : PER faibles → prime 12,6 % (α = +4,67 %) ; PER élevés → 5,65 % (α = −3,3 %).</td><td></td></tr>
+      <tr><td><strong>Taille</strong></td><td>Banz (1981) : petites capitalisations plus rentables (19,8 % vs 11,9 % pour les grandes, 1951–1989). 1er quintile du S&amp;P : +5,79 %/an.</td><td>Data mining, mesure, facteur de risque hors β, moins d'information (moins suivies par les analystes), prime de liquidité.</td></tr>
+      <tr><td><strong>Book-to-market</strong></td><td>Fama et French (1992) : titres à fort B/M (« value ») plus rentables que ceux à faible B/M.</td><td>Biais du survivant, prime de risque APT, caractéristiques des titres, surréaction aux performances passées.</td></tr>
+      <tr><td><strong>Momentum</strong></td><td>Jegadeesh et Titman (1993) : acheter les gagnants, vendre les perdants → 11,4 %/an (1965–1989) ; l'avantage se concentre sur les mois qui suivent la formation du portefeuille puis s'estompe.</td><td></td></tr>
+      <tr><td><strong>Autres</strong></td><td>Corrélation négative de la rentabilité avec les accruals, les scores Z/O de faillite, la volatilité (anomalie de faible volatilité), les investissements ; positive avec la croissance des actifs, le rendement, la profitabilité opérationnelle (Novy-Marx, 2013).</td><td></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Les études d'événement</h3>
+  <p>On mesure la réaction du cours à l'annonce d'une information (jour t). Marché efficient = <strong>ajustement immédiat</strong>, sans sur-réaction ni sous-réaction. Exemples : divisions d'actions (Fama, Fisher, Jensen et Roll, 1969), changements de dividende, annonces de bénéfices (Bernard, 1992).</p>
+  <p><strong>Tests d'information privée</strong> : les initiés gagnent (Seyhun, 1986) ; les prévisions des analystes ont un contenu informationnel (Womack, 1996) mais ne permettent pas de battre le marché (Barber et al., 2001) et sont en retard sur les cours.</p>
+
+  <h3>Les « puzzles »</h3>
+  <ul>
+    <li><strong>Volatilité excessive</strong> (Shiller, 1981) : les cours fluctuent trop par rapport aux fondamentaux. Non résolu : krachs, jours de forte volatilité sans information, réactions aux changements de nom (sociétés « .com » : +74 % en 10 jours ; puis +64 % en retirant le « .com »).</li>
+    <li><strong>Biais domestique</strong> : sur-pondération des titres nationaux (barrières, change, réglementation, familiarité, langue et culture) et biais géographique.</li>
+    <li><strong>Énigme de la prime de risque</strong> : prime trop élevée pour être expliquée (biais du survivant, mesure ex ante, fonctions d'utilité, <em>myopic loss aversion</em>).</li>
+    <li><strong>Asset allocation puzzle</strong> : les conseils des professionnels (ratio obligations/actions qui baisse quand l'investisseur est agressif) contredisent le théorème de séparation de Tobin.</li>
+    <li><strong>Violation de la loi du prix unique</strong> : décote des fonds fermés, titres jumeaux Royal Dutch/Shell, carve-out 3Com/Palm (3Com devait valoir au moins 1,5 × Palm, mais le 2 mars 2000 Palm cotait 95,06 $ et 3Com 81,81 $).</li>
+  </ul>
+</section>
+
+<!-- ============ 3. GESTION ACTIVE / PASSIVE ============ -->
+<section id="gestion">
+  <h2><span class="n">3</span>La gestion active et la gestion passive</h2>
+  <div class="grid2">
+    <div class="box key"><span class="tag">Gestion active</span><p>Repose sur des <strong>anticipations</strong> d'évolution des marchés et/ou des valeurs ; vise la performance la plus élevée pour un niveau de risque donné. Traditionnelle, quantitative ou non, automatisée ou non, avec ou sans benchmark, définie par des styles. La gestion alternative est une gestion active.</p></div>
+    <div class="box key"><span class="tag">Gestion passive</span><p>Ne repose <strong>pas</strong> sur des anticipations : on réplique un indice (gestion indicielle, ETF) ou on applique une formule (fonds structurés).</p></div>
+  </div>
+
+  <h3>Top-down et bottom-up</h3>
+  <div class="grid2">
+    <div class="card"><h4>Top-down</h4><p>On définit d'abord l'allocation entre compartiments (classes d'actifs, zones), puis on sélectionne les titres dans une liste restreinte au sein de chaque compartiment.</p></div>
+    <div class="card"><h4>Bottom-up</h4><p>La sélection de titres est la compétence centrale ; grande liberté sur l'univers étudié, mais il faut équilibrer au final l'exposition aux risques sectoriels, géographiques, etc.</p></div>
+  </div>
+
+  <h3>Les trois phases de la gestion top-down</h3>
+  <h4>1. La phase stratégique</h4>
+  <p>Définir les objectifs de gestion et les moyens de les atteindre. Trois principes admis :</p>
+  <ol>
+    <li>Il existe une <strong>hiérarchie des risques et des rentabilités</strong> des classes d'actifs (États-Unis 1872–2008, réel : actions 6,0 %, obligations 2,4 %, monétaire 1,7 % en moyenne géométrique).</li>
+    <li>La volatilité <strong>ne croît pas linéairement avec la durée</strong> de détention : la volatilité annualisée des actions passe de 19 % à 1 an à 9 % à 30 ans ; la probabilité de rentabilité réelle négative des actions passe de 31 % à 1 an à 0 % à 20 ans.</li>
+    <li>La <strong>combinaison des classes d'actifs réduit le risque</strong>.</li>
+  </ol>
+  <div class="box warn"><span class="tag">Attention</span><p>La moyenne arithmétique surestime la rentabilité de long terme (actions : 7,8 % arithmétique vs 6,0 % géométrique). Le long terme peut être très long : 55 ans de rentabilité réelle cumulée négative en Allemagne, 53 ans en France, 73 ans en Italie (Dimson, Marsh et Staunton). Le réinvestissement des dividendes compte énormément.</p></div>
+  <p><strong>Diversification temporelle</strong> : la variance des rentabilités annualisées baisse avec la durée de détention ; d'où la règle pratique (contestée) <span class="res">% actions = 100 − âge de l'investisseur</span>.</p>
+  <p><strong>Étapes de l'allocation stratégique</strong> : analyse actif-passif et contraintes, horizon d'investissement, niveau de risque accepté (questionnaires de tolérance au risque), choix d'un benchmark, liste des supports autorisés.</p>
+  <div class="card"><h4>Un « bon » benchmark doit…</h4><p>être spécifié à l'avance, correspondre à l'univers du gérant, avoir une performance observable, être réplicable, avoir des règles de composition bien définies.</p></div>
+  <p><strong>Gestion profilée</strong> (triomphe de la théorie du portefeuille) : une gamme d'OPCVM de risques différents, jugés contre un indice composite.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Profil</th><th class="num">Monétaire</th><th class="num">Obligations</th><th class="num">Actions</th></tr></thead>
+    <tbody>
+      <tr><td>Prudent (« Sérénité », « Sécurité »)</td><td class="num">50 %</td><td class="num">30 %</td><td class="num">20 %</td></tr>
+      <tr><td>Équilibré (« Diversifié »)</td><td class="num">15 %</td><td class="num">45 %</td><td class="num">40 %</td></tr>
+      <tr><td>Dynamique (« Opportunités »)</td><td class="num">5 %</td><td class="num">35 %</td><td class="num">60 %</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>2. La phase tactique</h4>
+  <p>Politique de court et moyen terme dans le cadre fixé par la phase stratégique, souvent avec un comité de placement. Quatre approches (Davanne, 2007) : fondamentalisme pur, fondamentalisme sceptique, chartisme, analyse <em>contrarian</em>.</p>
+  <p><strong>Investment sentiment</strong> (Siegel, 1998) : quand la part de lettres d'investissement haussières est faible (0,2–0,3), le marché rapporte ensuite ~20 % sur 12 mois ; quand elle est très élevée (0,9–1,0), −10 %. Une stratégie payante : aller <strong>à contre-courant</strong> de l'opinion dominante.</p>
+
+  <h4>3. La sélection de valeurs</h4>
+  <p>Choisir les titres qui respectent les choix précédents : analyse financière, bases de consensus, droite de marché, analyse graphique, modélisation. Rotation plus ou moins forte ; choix sous la responsabilité du gérant.</p>
+  <div class="box key"><span class="tag">Le paradoxe du temps passé</span><p>La sélection de valeurs prend ~70 % du temps du gérant mais n'explique que ~10 % de la performance ; la phase stratégique : ~10 % du temps, ~70 % de la performance. Brinson, Hood et Beebower (1986) : l'allocation stratégique explique ~90 % de la variation des rentabilités ; Ibbotson et Kaplan (2000) : 99 % du niveau et 90 % de la variabilité.</p></div>
+  <div class="tw"><table>
+    <thead><tr><th>Classification d'Ambachtsheer</th><th>Market timing élevé</th><th>Market timing faible</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Stock picking élevé</strong></td><td>Portefeuille concentré ; gérer le β autour de sa moyenne de long terme</td><td>Portefeuille concentré ; garder le β à sa moyenne</td></tr>
+      <tr><td><strong>Stock picking faible</strong></td><td>Portefeuille diversifié ; gérer le β</td><td>Portefeuille diversifié ; garder le β à sa moyenne</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>Frais de gestion en baisse</strong> (fonds actions US : 2 % en 1990, 0,95 % en 2010) : essor des fonds indiciels, plans d'épargne retraite moins chers, investisseurs sensibles aux frais, économies d'échelle. L'impact des frais sur la rentabilité de long terme est important.</p>
+
+  <h3>Les styles et formes de gestion active</h3>
+  <ul>
+    <li><strong>Styles</strong> value / growth / mixte et grosses / moyennes / petites capitalisations, fondés sur les effets PBR et taille. <strong>Boîte de style Morningstar</strong> : 3 × 3 (Large/Mid/Small × Value/Blend/Growth). Bourguignon et de Jong : croisement value/non-value et growth/non-growth (GARP = <em>Growth At Reasonable Price</em>).</li>
+    <li><strong>Smart beta</strong> : pondérer les titres d'un indice selon d'autres critères que la capitalisation flottante (variance minimale, exposition aux facteurs qualité, value, faible volatilité, momentum, taille).</li>
+    <li><strong>Multigestion et fonds de fonds</strong> : confier le fonds à des gérants sélectionnés ou investir dans d'autres fonds ; le problème est de choisir les bons gérants.</li>
+    <li><strong>Fonds thématiques et multisectoriels</strong> : santé, eau, robotique, climat, éducation, disruption… souvent avec une approche mondiale.</li>
+    <li><strong>ISR</strong> : critères ESG (environnement, social, gouvernance), du passage de l'exclusion à l'intégration positive. Approches <strong>best-in-class</strong> (les meilleurs de chaque secteur), <strong>best-in-universe</strong> (les mieux notés quel que soit le secteur), <strong>best-effort</strong> (ceux qui progressent). Agences : MSCI, Vigeo, Sustainalytics… À l'opposé : le Vice Fund (tabac, alcool, jeu, armement) ; fonds charia (exclusions tabac, alcool, jeux, porc, prêts à intérêts).</li>
+    <li><strong>Hedge funds</strong> (gestion alternative) : performance élevée et décorrélée, levier, liquidité réduite (<em>lock-up</em>), risque de défaut. Rémunération : frais de 1–2 % + commission de performance de 15–25 %, avec <strong>hurdle rate</strong> (rentabilité minimale) et <strong>high water mark</strong> (rattraper les pertes passées). Directionnels (long/short, macro, vente à découvert), non directionnels (arbitrage de taux, convertibles, market neutral), situations spéciales (titres en difficulté, fusions). Bogle : 11,8 % vs 7,2 % pour le S&amp;P de 1990 à 2008, mais 5,3 % vs 13,5 % de 2009 à 2016.</li>
+    <li><strong>Diversification internationale</strong> : gain réel, mais les corrélations entre marchés actions ont augmenté.</li>
+  </ul>
+
+  <h3>La gestion passive</h3>
+  <h4>La gestion indicielle</h4>
+  <p>Répliquer au mieux un indice : le gérant minimise l'écart avec l'indice (la <strong>tracking error</strong>), seul critère d'appréciation. La gestion benchmarkée n'est <em>pas</em> de la gestion indicielle. Problème commun : gérer les souscriptions et rachats.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Réplication</th><th>Principe</th><th>Limites</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Pure</strong></td><td>Détenir tous les titres de l'indice</td><td>Coûts de frottement, titres peu liquides</td></tr>
+      <tr><td><strong>Synthétique</strong></td><td>Contrats à terme sur indice ; <strong>equity swap</strong> (le fonds verse les intérêts d'un portefeuille obligataire et reçoit la variation de l'indice + dividendes)</td><td>Renouvellement des contrats, risque de base</td></tr>
+      <tr><td><strong>Par approximation</strong></td><td><strong>Stratification</strong> (une partie des titres) ou <strong>optimisation</strong> (minimiser la tracking error, ex. APT statistique)</td><td>Écart résiduel</td></tr>
+    </tbody>
+  </table></div>
+  <h4>Les ETF (trackers)</h4>
+  <p>Fonds indiciels (ou actifs) cotés en continu : marché primaire (souscription/rachat en nature par les participants) et secondaire (particuliers, teneurs de marché), dividendes versés, valeur liquidative indicative recalculée toutes les 15 secondes. Encours ~6 000 Md$ fin 2019 ; BlackRock, Vanguard et State Street ≈ 95 % de l'encours. Avantages : accès facile, frais faibles, réplication fidèle, restitution des dividendes. Trackers sur indices de marché, de matières premières, de stratégie, actifs.</p>
+
+  <h4>Les fonds structurés (OPCVM à formule)</h4>
+  <p>Performance issue de l'application mécanique d'une formule à des indices : fonds <strong>à capital garanti</strong> et <strong>à capital protégé</strong>. Inconvénients : capital bloqué, sortie contraignante, frais élevés, opacité, participation partielle à la hausse.</p>
+  <div class="grid2">
+    <div class="card"><h4>OBPI (à base d'options)</h4><p>Obligation zéro-coupon qui garantit le capital à l'échéance + achat d'options d'achat (calls) qui donnent la participation à la hausse.</p></div>
+    <div class="card"><h4>CPPI (méthode du coussin)</h4><div class="eq">Coussin  = VL − plancher
+Actions  = m × coussin
+Sans risque = VL − actions</div><p>Plancher = valeur actualisée du montant garanti à l'échéance ; multiplicateur m = 1 / perte maximale estimée. Gestion <strong>dynamique</strong> : on rééquilibre à chaque période (voir <a href="#ex-coussin">exercice 10</a>).</p></div>
+  </div>
+  <p>Exemples : fonds garanti « 100 % de la moyenne des progressions trimestrielles positives du CAC 40 » ; fonds à capital protégé Benefic (La Poste), Écureuil Europe 2003, Doubl'Ô (doublement du capital promis si aucune des 12 valeurs du panier ne passe sous sa valeur initiale).</p>
+</section>
+
+<!-- ============ 4. PERFORMANCE ============ -->
+<section id="perf">
+  <h2><span class="n">4</span>La mesure de performance</h2>
+  <h3>Quelle rentabilité ?</h3>
+  <div class="grid2">
+    <div class="box key"><span class="tag">Pondérée par les capitaux (TRI)</span><p>Taux qui égalise flux investis et valeur finale. Dépend du <strong>calendrier des apports</strong>, que le gérant ne maîtrise pas → mesure la performance de l'investisseur.</p></div>
+    <div class="box key"><span class="tag">Pondérée par le temps</span><p>On chaîne les rentabilités de chaque sous-période (entre deux apports) : <span class="res">(1+r)ⁿ = Π(1+rₜ)</span>. Neutralise les apports → mesure la performance <strong>du gérant</strong>.</p></div>
+  </div>
+  <p>Autres questions : réinvestir ou non les dividendes, traiter les frais de gestion, moyenne arithmétique ou géométrique.</p>
+  <h3>Quelle période de référence ?</h3>
+  <p>Trois fonds A, B et C ont la même rentabilité annuelle moyenne sur 1998–1999 (9,54 %) mais des parcours différents (A : 11 % puis 8,11 % ; C : 5 % puis 14,28 %).</p>
+  <ul>
+    <li><strong>Plusieurs horizons</strong> : simple, mais une bonne année « contamine » tous les horizons qui la contiennent ; l'année civile n'est pas représentative et pousse les gérants à « optimiser » leur fin d'année.</li>
+    <li><strong>Périodes glissantes</strong> (ex. glissement mensuel : A 9,46 %, B 12,07 %, C 4,73 %) : plus représentatif et sans « optimisation », mais la rentabilité ne correspond à aucune période précise et il faut au moins 2 ans d'historique pour une rentabilité sur 1 an.</li>
+  </ul>
+  <h3>Quelle mesure du risque ?</h3>
+  <p>Comparer des rentabilités sans le risque n'a aucun sens. Risque <strong>total</strong> : variance ou écart-type (A : 0,56 %, B : 20,09 %, C : 36,55 % de variance annualisée). Risque <strong>systématique</strong> : <span class="res">βp = Cov(rp, rm) / Var(rm)</span>, mais le β d'un fonds est instable (il change si le gérant modifie son exposition).</p>
+
+  <h3>Les mesures de performance ajustées du risque</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Mesure</th><th>Formule</th><th>Lecture</th><th>Avantages / limites</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Sharpe</strong></td><td><span class="res">S = (Rp − rf) / σp</span></td><td>Excès de rentabilité par unité de <strong>risque total</strong>. Pente de la droite rf → fonds.</td><td>+ simple, permet de classer. − ininterprétable si numérateur négatif ; ignore l'asymétrie ; problème si taux de prêt ≠ taux d'emprunt.</td></tr>
+      <tr><td><strong>Roy</strong></td><td><span class="res">(Rp − RL) / σp</span></td><td>Variante avec un seuil minimal RL au lieu de rf.</td><td></td></tr>
+      <tr><td><strong>Sortino</strong></td><td><span class="res">(Rp − RL) / SV(Rp)</span></td><td>Divise par la <strong>semi-variance</strong> (risque à la baisse seulement).</td><td>Corrige l'asymétrie.</td></tr>
+      <tr><td><strong>Treynor</strong></td><td><span class="res">T = (Rp − rf) / βp</span></td><td>Excès de rentabilité par unité de <strong>risque systématique</strong>.</td><td>+ fondement théorique (MEDAF), classement, adapté à un fonds parmi d'autres dans un patrimoine diversifié. − choix de l'indice, instabilité du β, numérateur négatif.</td></tr>
+      <tr><td><strong>Alpha de Jensen</strong></td><td><span class="res">Rp − rf = αp + βp(Rm − rf) + ε</span></td><td>Part de la rentabilité <strong>non expliquée par le marché</strong> : α &gt; 0 = au-dessus de la droite du MEDAF.</td><td>+ facile à interpréter. − mêmes limites que Treynor ; ne classe pas des fonds de β différents ; α négatif pour les bons market-timers.</td></tr>
+      <tr><td><strong>Ratio d'information</strong></td><td><span class="res">RI = ER̄ / σ(ER)</span> avec ERₜ = rpₜ − rbₜ</td><td>Surperformance par rapport au <strong>benchmark</strong> par unité de <strong>tracking error</strong>.</td><td>Mesure de la gestion benchmarkée.</td></tr>
+      <tr><td><strong>Alpha multifacteur</strong></td><td>Régression sur plusieurs indices (taille, PBR…)</td><td>Même logique que Jensen, pour des portefeuilles composites.</td><td>Ne dépend plus d'un seul indice.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="eq">Tracking error :  σ(ER) = √{ [1/(N−1)] × Σ (ERₜ − ER̄)² }</div>
+  <div class="box warn"><span class="tag">Pourquoi Jensen pénalise le market-timer</span><p>Un bon market-timer prend un β élevé quand le marché monte et un β faible quand il baisse. Sur l'ensemble de la période, la régression mélange les deux nuages de points : la droite estimée a une pente moyenne et coupe l'axe sous zéro → α négatif alors que le gérant a bien anticipé.</p></div>
+
+  <h3>Les études de performance</h3>
+  <ul>
+    <li>Premières études (Sharpe, Treynor et Mazuy 1966, Jensen 1968) : en moyenne, les fonds <strong>ne battent pas</strong> le marché. Ippolito (1989) conteste, mais avec des indices de référence bien spécifiés, les fonds ne font pas mieux. Le market timing est difficile à mettre en évidence ; certains gérants montrent une bonne sélectivité.</li>
+    <li><strong>Persistance</strong> : instable (Sharpe 1966, Bogle 1992) ; stable à court terme (Hendricks, Patel et Zeckhauser 1993 ; Elton, Gruber et Blake 1996) ; stable sur longue période (Grinblatt et Titman 1992…).</li>
+  </ul>
+</section>
+
+<!-- ============ 5. EXERCICES ============ -->
+<section id="exos">
+  <h2><span class="n">5</span>Exercices corrigés pas à pas</h2>
+  <p class="muted">Les exercices marqués <strong>Cours</strong> reprennent les applications des supports ; ceux marqués <strong>Entraînement</strong> sont construits sur le même modèle pour s'exercer sur les autres formules. Essayez avant d'ouvrir le corrigé.</p>
+
+  <p class="part">Marchés d'actions</p>
+
+  <!-- EX 1 -->
+  <div class="exo card" id="ex-rentab">
+    <h3>Exercice 1 · Rentabilité simple et continue <span class="src">Entraînement</span></h3>
+    <p>Vous achetez une action 40 €. Un an plus tard elle cote 44 € et a versé un dividende de 1,20 €.</p>
+    <ol><li>Calculez la rentabilité simple, en séparant plus-value et rendement.</li><li>Calculez la rentabilité continue (hors dividende).</li><li>Le cours revient ensuite de 44 € à 40 €. Comparez les deux mesures sur l'aller-retour.</li></ol>
+    <details><summary>Voir le corrigé</summary><div class="body">
+      <p class="st">1. Rentabilité simple</p>
+      <div class="eq">R = [C(1) + D − C(0)] / C(0) = (44 + 1,20 − 40) / 40 = 5,20 / 40 = 13 %
+  dont plus-value = (44 − 40)/40 = 4/40 = 10 %
+  dont rendement  = 1,20/40          = 3 %</div>
+      <p class="st">2. Rentabilité continue</p>
+      <div class="eq">X = ln(44) − ln(40) = ln(44/40) = ln(1,10) = 0,0953 → 9,53 %</div>
+      <p>La rentabilité continue est toujours un peu inférieure à la rentabilité simple pour une hausse.</p>
+      <p class="st">3. L'aller-retour 40 → 44 → 40</p>
+      <div class="eq">Simple :    +10 %  puis  (40 − 44)/44 = −9,09 %   → pas symétrique
+Continue :  +9,53 % puis  ln(40/44)   = −9,53 %   → symétrique</div>
+      <p class="res">En continu, une hausse et une baisse qui ramènent au même prix ont la même valeur absolue : c'est l'intérêt de cette convention.</p>
+    </div></details>
+  </div>
+
+  <!-- EX 2 -->
+  <div class="exo card" id="ex-reservation">
+    <h3>Exercice 2 · Les seuils de réservation <span class="src">Cours</span></h3>
+    <p>Le cours de référence (clôture de la veille) d'une action est CR = 100 €. Seuils statiques ±10 %, dynamiques ±2 %.</p>
+    <ol><li>Cas 1 : la valeur ouvre à 104 €, puis le cours monte jusqu'à 114,40 €. Donnez les fourchettes successives.</li><li>Cas 2 : en pré-ouverture, le cours théorique d'ouverture ressort à 112 €. Que se passe-t-il ?</li><li>Seuil dynamique : après l'ouverture à 104 €, une transaction a lieu à 104,50 €. Donnez les fourchettes.</li></ol>
+    <details><summary>Voir le corrigé</summary><div class="body">
+      <p class="st">Étape préalable : la fourchette de pré-ouverture</p>
+      <div class="eq">100 × 1,10 = 110      100 × 0,90 = 90      → l'ouverture doit se faire dans [90 ; 110]</div>
+      <p class="st">1. Cas 1 (ouverture dans la fourchette)</p>
+      <ol class="steps">
+        <li>104 € est dans [90 ; 110] → la valeur ouvre normalement : CO = 104.</li>
+        <li>Nouveaux seuils statiques, calculés sur le cours d'ouverture : <span class="res">104 × 1,10 = 114,40</span> et <span class="res">104 × 0,90 = 93,60</span>.</li>
+        <li>Le cours atteint 114,40 → seuil touché → <strong>réservation</strong> (cotation suspendue 5 minutes).</li>
+        <li>Les seuils sont recalculés sur ce dernier cours : <span class="res">114,40 × 1,10 = 125,84 ≈ 125,80</span> et <span class="res">114,40 × 0,90 = 102,96 ≈ 103</span>.</li>
+      </ol>
+      <p class="st">2. Cas 2 (ouverture hors fourchette)</p>
+      <ol class="steps">
+        <li>112 &gt; 110 → l'ouverture est impossible : la valeur est <strong>réservée à la hausse</strong> à 9h00.</li>
+        <li>Pendant la réservation (9h00–9h05), la fourchette est élargie à partir du seuil touché : <span class="res">110 × 1,10 = 121</span>.</li>
+        <li>112 est maintenant dans la fourchette → la valeur ouvre à 9h05 à <span class="res">CO = 112</span>.</li>
+        <li>Nouveaux seuils statiques : <span class="res">112 × 1,10 = 123,20</span> et <span class="res">112 × 0,90 = 100,80</span>.</li>
+      </ol>
+      <p class="st">3. Seuil dynamique</p>
+      <ol class="steps">
+        <li>Après l'ouverture à 104 : seuils statiques 93,60 / 114,40 (inchangés) et seuils dynamiques <span class="res">104 × 1,02 = 106,08 ≈ 106</span> et <span class="res">104 × 0,98 = 101,92 ≈ 102</span>.</li>
+        <li>Transaction à 104,50 (dans [102 ; 106]) → elle passe, et le seuil dynamique se déplace avec le <strong>dernier cours</strong> : <span class="res">104,50 × 1,02 = 106,59 ≈ 106,5</span> et <span class="res">104,50 × 0,98 = 102,41 ≈ 102,5</span>.</li>
+        <li>Les seuils statiques (93,60 / 114,40) ne bougent pas : ils restent ancrés sur le cours d'ouverture.</li>
+      </ol>
+      <p class="res">Statique = ±10 % autour du cours d'ouverture (ou du dernier cours après réservation) ; dynamique = ±2 % autour du dernier cours, qui glisse à chaque transaction.</p>
+    </div></details>
+  </div>
+
+  <!-- EX 3 -->
+  <div class="exo card">
+    <h3>Exercice 3 · Couverture au SRD <span class="src">Entraînement</span></h3>
+    <p>Un client passe au SRD un ordre d'achat de 12 000 € sur une valeur du CAC 40. Quelle couverture doit-il déposer s'il la constitue (a) en espèces, (b) en obligations cotées, (c) en actions cotées ? L'ordre est passé 3 jours de bourse avant la fin du mois : quand est-il réglé ?</p>
+    <details><summary>Voir le corrigé</summary><div class="body">
+      <ol class="steps">
+        <li>Espèces, bons du Trésor, OPCVM monétaires : 20 % → <span class="res">12 000 × 0,20 = 2 400 €</span>.</li>
+        <li>Obligations, OPCVM obligataires : 25 % → <span class="res">12 000 × 0,25 = 3 000 €</span>.</li>
+        <li>Actions, OPCVM actions : 40 % → <span class="res">12 000 × 0,40 = 4 800 €</span>.</li>
+        <li>L'ordre est passé après le 5ᵉ jour de bourse avant la fin du mois → il est reporté : <strong>règlement et livraison à la fin du mois suivant</strong>.</li>
+      </ol>
+      <p class="res">Plus le support de couverture est volatil, plus le pourcentage exigé est élevé.</p>
+    </div></details>
+  </div>
+
+  <p class="part">Théorie du portefeuille</p>
+
+  <!-- EX 4 -->
+  <div class="exo card" id="ex-markowitz">
+    <h3>Exercice 4 · Portefeuille de deux actifs A et B <span class="src">Cours</span></h3>
+    <div class="tw"><table>
+      <thead><tr><th>Période</th><th class="num">rA</th><th class="num">rB</th></tr></thead>
+      <tbody><tr><td>1</td><td class="num">11 %</td><td class="num">−3 %</td></tr><tr><td>2</td><td class="num">9 %</td><td class="num">15 %</td></tr><tr><td>3</td><td class="num">25 %</td><td class="num">2 %</td></tr><tr><td>4</td><td class="num">7 %</td><td class="num">20 %</td></tr><tr><td>5</td><td class="num">−2 %</td><td class="num">6 %</td></tr></tbody>
+    </table></div>
+    <ol><li>Calculez E(rA), E(rB), Var(rA), Var(rB), Cov(rA,rB) et ρA,B (on divise par 5, comme dans le cours).</li><li>Calculez la rentabilité et le risque du portefeuille équipondéré.</li><li>Retrouvez le tableau du cours pour a = 100 %, 75 %, 25 %, 0 %.</li></ol>
+    <details><summary>Voir le corrigé</summary><div class="body">
+      <p class="st">1. Moyennes</p>
+      <div class="eq">E(rA) = (11 + 9 + 25 + 7 − 2) / 5 = 50/5 = 10 %
+E(rB) = (−3 + 15 + 2 + 20 + 6) / 5 = 40/5 = 8 %</div>
+      <p class="st">Écarts à la moyenne et produits</p>
+      <div class="tw"><table>
+        <thead><tr><th>t</th><th class="num">rA − 10 %</th><th class="num">(…)²</th><th class="num">rB − 8 %</th><th class="num">(…)²</th><th class="num">produit</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="num">+0,01</td><td class="num">0,0001</td><td class="num">−0,11</td><td class="num">0,0121</td><td class="num">−0,0011</td></tr>
+          <tr><td>2</td><td class="num">−0,01</td><td class="num">0,0001</td><td class="num">+0,07</td><td class="num">0,0049</td><td class="num">−0,0007</td></tr>
+          <tr><td>3</td><td class="num">+0,15</td><td class="num">0,0225</td><td class="num">−0,06</td><td class="num">0,0036</td><td class="num">−0,0090</td></tr>
+          <tr><td>4</td><td class="num">−0,03</td><td class="num">0,0009</td><td class="num">+0,12</td><td class="num">0,0144</td><td class="num">−0,0036</td></tr>
+          <tr><td>5</td><td class="num">−0,12</td><td class="num">0,0144</td><td class="num">−0,02</td><td class="num">0,0004</td><td class="num">+0,0024</td></tr>
+          <tr><td><strong>Somme</strong></td><td></td><td class="num"><strong>0,0380</strong></td><td></td><td class="num"><strong>0,0354</strong></td><td class="num"><strong>−0,0120</strong></td></tr>
+        </tbody>
+      </table></div>
+      <div class="eq">Var(rA) = 0,0380/5 = 0,0076     → σA = √0,0076  = 8,72 %
+Var(rB) = 0,0354/5 = 0,00708    → σB = √0,00708 = 8,41 %
+Cov(rA,rB) = −0,0120/5 = −0,0024
+ρA,B = −0,0024 / (0,0872 × 0,0841) = −0,0024 / 0,007335 = −0,33</div>
+      <p>La corrélation est négative : quand A monte, B a tendance à baisser. La diversification va être très efficace.</p>
+      <p class="st">2. Portefeuille équipondéré (a = 0,5)</p>
+      <div class="eq">E(Rp) = 0,5 × 10 % + 0,5 × 8 % = 9 %
+
+Var(Rp) = 0,5² × 0,0076 + 0,5² × 0,00708 + 2 × 0,5 × 0,5 × (−0,0024)
+        = 0,0019   + 0,00177   − 0,0012
+        = 0,00247   → σp = √0,00247 = 4,97 %</div>
+      <p class="res">Avec 9 % de rentabilité, le portefeuille a un risque de 4,97 %, presque deux fois plus faible que celui de chaque titre (8,72 % et 8,41 %).</p>
+      <p class="st">3. Autres pondérations</p>
+      <div class="eq">a = 75 % : E = 0,75×10 + 0,25×8 = 9,5 %
+          Var = 0,5625×0,0076 + 0,0625×0,00708 + 2×0,75×0,25×(−0,0024)
+              = 0,004275 + 0,0004425 − 0,0009 = 0,0038175 → σ = 6,18 %
+a = 25 % : E = 0,25×10 + 0,75×8 = 8,5 %
+          Var = 0,0625×0,0076 + 0,5625×0,00708 − 0,0009
+              = 0,000475 + 0,0039825 − 0,0009 = 0,0035575 → σ = 5,96 %
+a = 100 % : 10 % ; 8,72 %       a = 0 % : 8 % ; 8,41 %</div>
+      <div class="tw"><table>
+        <thead><tr><th class="num">a</th><th class="num">1 − a</th><th class="num">E(Rp)</th><th class="num">σ(Rp)</th></tr></thead>
+        <tbody><tr><td class="num">100 %</td><td class="num">0 %</td><td class="num">10 %</td><td class="num">8,72 %</td></tr><tr><td class="num">75 %</td><td class="num">25 %</td><td class="num">9,5 %</td><td class="num">6,18 %</td></tr><tr><td class="num">50 %</td><td class="num">50 %</td><td class="num">9 %</td><td class="num">4,97 %</td></tr><tr><td class="num">25 %</td><td class="num">75 %</td><td class="num">8,5 %</td><td class="num">5,96 %</td></tr><tr><td class="num">0 %</td><td class="num">100 %</td><td class="num">8 %</td><td class="num">8,41 %</td></tr></tbody>
+      </table></div>
+      <p>La rentabilité évolue linéairement, le risque non : il passe par un minimum entre 25 % et 75 %.</p>
+    </div></details>
+  </div>
+
+  <!-- EX 5 -->
+  <div class="exo card">
+    <h3>Exercice 5 · Le portefeuille de variance minimale <span class="src">Cours</span></h3>
+    <p>Avec les données de l'exercice 4, déterminez la pondération a* qui minimise le risque, puis la rentabilité et l'écart-type de ce portefeuille.</p>
+    <details><summary>Voir le corrigé</summary><div class="body">
+      <p class="st">1. Formule (dérivée de la variance annulée)</p>
+      <div class="eq">a* = [Var(rB) − Cov(rA,rB)] / [Var(rA) + Var(rB) − 2Cov(rA,rB)]</div>
+      <p class="st">2. Application</p>
+      <div class="eq">Numérateur   = 0,00708 − (−0,0024)          = 0,00948
+Dénominateur = 0,0076 + 0,00708 − 2×(−0,0024) = 0,01948
+a* = 0,00948 / 0,01948 = 0,4867 → 48,67 % en A et 51,33 % en B</div>
+      <p class="st">3. Rentabilité</p>
+      <div class="eq">E(Rp) = 0,4867 × 10 % + 0,5133 × 8 % = 4,867 + 4,107 = 8,97 %</div>
+      <p class="st">4. Risque</p>
+      <div class="eq">Var = 0,4867² × 0,0076 + 0,5133² × 0,00708 + 2 × 0,4867 × 0,5133 × (−0,0024)
+    = 0,2368 × 0,0076 + 0,2635 × 0,00708 − 0,4996 × 0,0024
+    = 0,0018000 + 0,0018658 − 0,0011992
+    = 0,0024665   → σ = √0,0024665 = 4,97 %</div>
+      <p class="muted">Le cours affiche 0,0024565 et 4,956 % : c'est une petite coquille de recopie ; le bon calcul donne 0,0024665 et 4,966 %.</p>
+      <p class="res">Le portefeuille de variance minimale (48,7 % / 51,3 %) a un risque à peine plus faible que le 50/50 : avec ρ = −0,33, on est déjà tout près du minimum.</p>
+    </div></details>
+  </div>
+
+  <!-- EX 6 -->
+  <div class="exo card">
+    <h3>Exercice 6 · Deux actifs parfaitement anti-corrélés <span class="src">Entraînement</span></h3>
+    <div class="given"><span><b>A</b>E = 12 %, σ = 20 %</span><span><b>C</b>E = 6 %, σ = 10 %</span><span><b>ρA,C</b>−1</span></div>
+    <ol><li>Trouvez le portefeuille de variance minimale, sa rentabilité et son risque.</li><li>Quel serait le risque de ce même portefeuille si ρ = +1 ?</li></ol>
+    <details><summary>Voir le corrigé</summary><div class="body">
+      <p class="st">1. ρ = −1</p>
+      <div class="eq">a* = σC / (σA + σC) = 10 / (20 + 10) = 1/3 = 33,3 % en A, 66,7 % en C
+σp = |a·σA − (1−a)·σC| = |0,333×20 − 0,667×10| = |6,67 − 6,67| = 0 %
+E(Rp) = 0,333 × 12 + 0,667 × 6 = 4 + 4 = 8 %</div>
+      <p>Les deux actifs bougent exactement en sens inverse : les pertes de l'un compensent les gains de l'autre, le risque disparaît.</p>
+      <p class="st">2. ρ = +1</p>
+      <div class="eq">σp = a·σA + (1−a)·σC = 0,333×20 + 0,667×10 = 6,67 + 6,67 = 13,33 %</div>
+      <p class="res">Même composition, même rentabilité (8 %), mais 13,33 % de risque au lieu de 0 % : toute la réduction du risque vient de la corrélation.</p>
+    </div></details>
+  </div>
+
+  <!-- EX 7 -->
+  <div class="exo card">
+    <h3>Exercice 7 · Actif sans risque et CML <span class="src">Entraînement</span></h3>
+    <div class="given"><span><b>rf</b>2 %</span><span><b>Marché M</b>E = 8 %, σ = 16 %</span></div>
+    <ol><li>Écrivez l'équation de la CML.</li><li>Un investisseur accepte 12 % de volatilité : quelle allocation et quelle rentabilité ?</li><li>Un autre vise 10 % de rentabilité : quelle allocation et quel risque ?</li></ol>
+    <details><summary>Voir le corrigé</summary><div class="body">
+      <p class="st">1. Équation</p>
+      <div class="eq">Pente = (rM − rf)/σM = (8 − 2)/16 = 0,375
+CML : E(rp) = 2 % + 0,375 × σp</div>
+      <p class="st">2. σp = 12 %</p>
+      <div class="eq">σp = a × σM  ⇒  a = 12/16 = 0,75   → 75 % dans M, 25 % prêtés à rf
+E(rp) = 0,75 × 8 + 0,25 × 2 = 6 + 0,5 = 6,5 %     (vérif. : 2 + 0,375×12 = 6,5 %)</div>
+      <p class="st">3. E(rp) = 10 %</p>
+      <div class="eq">10 = 2 + 0,375 × σp  ⇒  σp = 8/0,375 = 21,33 %
+a = 21,33/16 = 1,333  → 133,3 % dans M, financé en empruntant 33,3 % au taux rf</div>
+      <p class="res">Les deux investisseurs détiennent le même portefeuille risqué M (Tobin) ; seule la part M/actif sans risque change selon leur aversion au risque.</p>
+    </div></details>
+  </div>
+
+  <!-- EX 8 -->
+  <div class="exo card">
+    <h3>Exercice 8 · MEDAF, levier et prime de risque <span class="src">Entraînement</span></h3>
+    <p>Une société non endettée a un bêta de 0,8. Elle s'endette jusqu'à D/CP = 0,5. Taux sans risque 3 %. Pour l'ensemble du marché, le rendement en dividende attendu est de 3 % et la croissance espérée des dividendes de 4,5 %.</p>
+    <ol><li>Calculez la rentabilité attendue du marché et la prime de risque ex ante.</li><li>Calculez le bêta après endettement.</li><li>Calculez la rentabilité exigée avant et après endettement.</li><li>Le titre offre une rentabilité actuarielle de 10 %. Est-il sur- ou sous-évalué ?</li></ol>
+    <details><summary>Voir le corrigé</summary><div class="body">
+      <p class="st">1. Prime de risque (Gordon-Shapiro)</p>
+      <div class="eq">rm = Div₁/P₀ + g = 3 % + 4,5 % = 7,5 %
+Prime = rm − rf = 7,5 − 3 = 4,5 %</div>
+      <p class="st">2. Bêta endetté</p>
+      <div class="eq">βE = βNE × (1 + D/CP) = 0,8 × (1 + 0,5) = 0,8 × 1,5 = 1,2</div>
+      <p class="st">3. MEDAF</p>
+      <div class="eq">Avant : E(r) = 3 + 0,8 × 4,5 = 3 + 3,6 = 6,6 %
+Après : E(r) = 3 + 1,2 × 4,5 = 3 + 5,4 = 8,4 %</div>
+      <p>L'endettement ajoute un risque financier au risque d'exploitation : l'actionnaire exige 1,8 point de plus.</p>
+      <p class="st">4. Position par rapport à la droite</p>
+      <p>Le marché offre 10 % pour un risque qui n'en justifie que 8,4 % : le titre est <strong>au-dessus</strong> de la droite de marché. Sa rentabilité attendue est trop élevée, donc son prix est trop bas.</p>
+      <p class="res">Titre sous-évalué → à acheter (son cours devrait monter jusqu'à ce que sa rentabilité revienne sur la droite).</p>
+    </div></details>
+  </div>
+
+  <p class="part">Efficience des marchés</p>
+
+  <!-- EX 9 -->
+  <div class="exo card">
+    <h3>Exercice 9 · RSI et règle des filtres <span class="src">Entraînement + données du cours</span></h3>
+    <ol><li>Sur 14 jours, la moyenne des hausses d'un titre est de 1,50 € et la moyenne des baisses de 0,50 €. Calculez le RSI et interprétez.</li><li>Même question avec 0,40 € de hausse moyenne et 1,20 € de baisse moyenne.</li><li>Fama et Blume : avec un filtre de 0,5 %, la rentabilité brute est de 11,5 % mais la nette de −103,6 % (12 514 transactions). Qu'en concluez-vous sur l'efficience ?</li></ol>
+    <details><summary>Voir le corrigé</summary><div class="body">
+      <p class="st">1. Premier titre</p>
+      <div class="eq">Ratio = 1,50 / 0,50 = 3
+RSI = 100 − 100/(1 + 3) = 100 − 25 = 75</div>
+      <p>RSI &gt; 70 : titre « suracheté ». Signal de <strong>vente</strong> quand le RSI repasse sous 70.</p>
+      <p class="st">2. Second titre</p>
+      <div class="eq">Ratio = 0,40 / 1,20 = 0,333
+RSI = 100 − 100/1,333 = 100 − 75 = 25</div>
+      <p>RSI &lt; 30 : titre « survendu ». Signal d'<strong>achat</strong> quand le RSI repasse au-dessus de 30.</p>
+      <p class="st">3. Filtres</p>
+      <ol class="steps">
+        <li>En brut, 11,5 % bat l'achat-conservation (9,9 %) : il existe une légère dépendance de court terme dans les cours.</li>
+        <li>Mais la stratégie demande 12 514 transactions : les frais détruisent tout le gain (−103,6 % net).</li>
+        <li>Plus le filtre est large, moins il y a de transactions, mais aucun filtre ne bat les 9,9 % en net (maximum +2,3 %).</li>
+      </ol>
+      <p class="res">Conclusion : on ne peut pas gagner de façon systématique avec l'historique des cours une fois les coûts pris en compte → résultat compatible avec l'efficience faible.</p>
+    </div></details>
+  </div>
+
+  <p class="part">Gestion passive</p>
+
+  <!-- EX 10 -->
+  <div class="exo card" id="ex-coussin">
+    <h3>Exercice 10 · La méthode du coussin (CPPI) <span class="src">Cours</span></h3>
+    <div class="given"><span><b>Portefeuille</b>1 000 000 €</span><span><b>Garantie</b>90 % à l'échéance</span><span><b>Multiplicateur</b>3</span><span><b>rf</b>1 %</span></div>
+    <ol><li>Structurez le portefeuille initial.</li><li>Hypothèse H1 : le marché monte de 10 %. Valeur du portefeuille et nouvelle structure ?</li><li>Hypothèse H2 : le marché baisse de 10 %. Mêmes questions.</li></ol>
+    <details><summary>Voir le corrigé</summary><div class="body">
+      <p class="st">1. Structure initiale</p>
+      <ol class="steps">
+        <li>Plancher : 90 % × 1 000 000 = <span class="res">900 000 €</span> (le cours le prend tel quel ; en toute rigueur on l'actualise au taux sans risque jusqu'à l'échéance).</li>
+        <li>Coussin = VL − plancher = 1 000 000 − 900 000 = <span class="res">100 000 €</span>.</li>
+        <li>Actions = coussin × m = 100 000 × 3 = <span class="res">300 000 €</span>.</li>
+        <li>Bons du Trésor = 1 000 000 − 300 000 = <span class="res">700 000 €</span>.</li>
+      </ol>
+      <p>Avec m = 3, on accepte une baisse maximale des actions de 1/3 ≈ 33 % : 300 000 × 33 % = 100 000 = le coussin.</p>
+      <p class="st">2. H1 : hausse de 10 %</p>
+      <div class="eq">Actions : 300 000 × 1,10 = 330 000
+BdT :     700 000 × 1,01 = 707 000
+Pf₁ = 330 000 + 707 000 = 1 037 000
+
+Rééquilibrage : Actions = (1 037 000 − 900 000) × 3 = 137 000 × 3 = 411 000
+                BdT     = 1 037 000 − 411 000             = 626 000</div>
+      <p>Le marché monte → le coussin grossit → on <strong>achète</strong> des actions (300 000 → 411 000).</p>
+      <p class="st">3. H2 : baisse de 10 %</p>
+      <div class="eq">Actions : 300 000 × 0,90 = 270 000
+BdT :     700 000 × 1,01 = 707 000
+Pf₁ = 270 000 + 707 000 = 977 000
+
+Rééquilibrage : Actions = (977 000 − 900 000) × 3 = 77 000 × 3 = 231 000
+                BdT     = 977 000 − 231 000               = 746 000</div>
+      <p>Le marché baisse → le coussin fond → on <strong>vend</strong> des actions (270 000 → 231 000).</p>
+      <p class="res">Le CPPI achète à la hausse et vend à la baisse : il participe à la hausse tout en protégeant le plancher, tant que la baisse entre deux rééquilibrages ne dépasse pas 1/m.</p>
+    </div></details>
+  </div>
+
+  <p class="part">Mesure de performance</p>
+
+  <!-- EX 11 -->
+  <div class="exo card">
+    <h3>Exercice 11 · TRI ou rentabilité pondérée par le temps ? <span class="src">Cours</span></h3>
+    <p>Un portefeuille vaut 100 USD au 1ᵉʳ janvier t et 105 USD au 31 décembre t. Un apport de 5 USD est fait le 1ᵉʳ janvier t+1, et le portefeuille vaut 125 USD au 31 décembre t+1. Quelle est sa rentabilité ?</p>
+    <details><summary>Voir le corrigé</summary><div class="body">
+      <p class="st">1. Méthode du TRI (pondérée par les capitaux)</p>
+      <div class="eq">100 + 5/(1+r) = 125/(1+r)²
+⇔ 100(1+r)² + 5(1+r) − 125 = 0</div>
+      <p>On pose x = 1 + r : 100x² + 5x − 125 = 0.</p>
+      <div class="eq">Δ = 5² + 4 × 100 × 125 = 25 + 50 000 = 50 025     √Δ = 223,66
+x = (−5 + 223,66) / 200 = 1,0933   → r = 9,33 %</div>
+      <p class="st">2. Méthode pondérée par le temps</p>
+      <ol class="steps">
+        <li>Année t : (105 − 100)/100 = <span class="res">5 %</span>.</li>
+        <li>Valeur juste après l'apport : 105 + 5 = 110.</li>
+        <li>Année t+1 : (125 − 110)/110 = <span class="res">13,64 %</span>.</li>
+        <li>Moyenne géométrique : √(1,05 × 1,1364) − 1 = √1,1932 − 1 = <span class="res">9,23 %</span>.</li>
+      </ol>
+      <p class="res">TRI = 9,33 % ; pondérée par le temps = 9,23 %. Le TRI est un peu plus élevé car l'apport a été fait juste avant la meilleure année : un mérite de calendrier qui ne revient pas au gérant. Pour juger le gérant, on retient la rentabilité pondérée par le temps.</p>
+    </div></details>
+  </div>
+
+  <!-- EX 12 -->
+  <div class="exo card">
+    <h3>Exercice 12 · Les limites du ratio de Sharpe <span class="src">Cours</span></h3>
+    <div class="tw"><table>
+      <thead><tr><th>Fonds A</th><th class="num">Fréquence</th><th>Fonds B</th><th class="num">Fréquence</th></tr></thead>
+      <tbody><tr><td>+18 %</td><td class="num">3/10</td><td>+42 %</td><td class="num">1/10</td></tr><tr><td>+11 %</td><td class="num">4/10</td><td>+12 %</td><td class="num">2/10</td></tr><tr><td>+8 %</td><td class="num">2/10</td><td>+7 %</td><td class="num">4/10</td></tr><tr><td>−24 %</td><td class="num">1/10</td><td>0 %</td><td class="num">3/10</td></tr></tbody>
+    </table></div>
+    <ol><li>Calculez la moyenne et l'écart-type de chaque fonds.</li><li>Comparez les ratios de Sharpe. Lequel préfèrent les investisseurs, et pourquoi ?</li></ol>
+    <details><summary>Voir le corrigé</summary><div class="body">
+      <p class="st">1. Moyennes</p>
+      <div class="eq">A : 0,3×18 + 0,4×11 + 0,2×8 + 0,1×(−24) = 5,4 + 4,4 + 1,6 − 2,4 = 9 %
+B : 0,1×42 + 0,2×12 + 0,4×7 + 0,3×0     = 4,2 + 2,4 + 2,8 + 0   = 9 %</div>
+      <p class="st">2. Écarts-types (écarts à 9 %, en points)</p>
+      <div class="eq">A : 0,3×(9)² + 0,4×(2)² + 0,2×(−1)² + 0,1×(−33)²
+    = 24,3 + 1,6 + 0,2 + 108,9 = 135      → σA = √135   = 11,6 %
+B : 0,1×(33)² + 0,2×(3)² + 0,4×(−2)² + 0,3×(−9)²
+    = 108,9 + 1,8 + 1,6 + 24,3 = 136,6    → σB = √136,6 = 11,7 %</div>
+      <p class="st">3. Sharpe</p>
+      <p>Même moyenne, même écart-type (≈ 11,6 %) → <strong>même ratio de Sharpe</strong>, quel que soit rf.</p>
+      <p class="st">4. Pourquoi B est préféré</p>
+      <p>Les distributions sont symétriques l'une de l'autre : A a un gros risque de <strong>perte</strong> (−24 % une fois sur dix), B a une grosse chance de <strong>gain</strong> (+42 %) et ne perd jamais. L'écart-type traite pareil les écarts à la hausse et à la baisse ; l'investisseur, lui, ne craint que la baisse.</p>
+      <div class="eq">Semi-écart-type sous 0 % :  A = √(0,1 × 24²) = 7,6 %     B = 0 %
+→ ratio de Sortino de B infini (aucune perte), celui de A fini : B l'emporte</div>
+      <p class="res">Le ratio de Sharpe ignore l'asymétrie des rentabilités ; Sortino (semi-variance) ou Roy (seuil minimal) corrigent ce défaut.</p>
+    </div></details>
+  </div>
+
+  <!-- EX 13 -->
+  <div class="exo card">
+    <h3>Exercice 13 · Treynor contre Jensen <span class="src">Cours</span></h3>
+    <div class="given"><span><b>rf</b>6 %</span><span><b>A</b>E = 13 %, β = 0,5</span><span><b>B</b>E = 19 %, β = 1,5</span></div>
+    <p>Sur la droite du MEDAF, un β de 0,5 correspond à 9 % et un β de 1,5 à 15 %. Calculez l'alpha de Jensen et le ratio de Treynor des deux fonds. Que constatez-vous ?</p>
+    <details><summary>Voir le corrigé</summary><div class="body">
+      <p class="st">1. Retrouver la rentabilité du marché</p>
+      <div class="eq">9 = 6 + 0,5 × (E(Rm) − 6)  ⇒  E(Rm) − 6 = 6  ⇒  E(Rm) = 12 %
+Vérif. β = 1,5 : 6 + 1,5 × 6 = 15 % ✓</div>
+      <p class="st">2. Alpha de Jensen = rentabilité − rentabilité MEDAF</p>
+      <div class="eq">αA = 13 − 9  = 4 %
+αB = 19 − 15 = 4 %</div>
+      <p class="st">3. Ratio de Treynor = (Rp − rf)/βp</p>
+      <div class="eq">TA = (13 − 6)/0,5 = 7/0,5 = 14 %
+TB = (19 − 6)/1,5 = 13/1,5 = 8,67 %
+Marché : (12 − 6)/1 = 6 %</div>
+      <p class="res">Jensen ne départage pas les fonds (4 % chacun), Treynor classe A devant B : A obtient la même surperformance avec trois fois moins de risque systématique. L'alpha ne permet pas de classer des fonds de β différents ; Treynor le permet.</p>
+    </div></details>
+  </div>
+
+  <!-- EX 14 -->
+  <div class="exo card">
+    <h3>Exercice 14 · Classer deux fonds avec toutes les mesures <span class="src">Entraînement</span></h3>
+    <div class="given"><span><b>rf</b>2 %</span><span><b>Marché</b>Rm = 7 %, σm = 12 %</span><span><b>X</b>Rp = 10 %, σ = 15 %, β = 1,2</span><span><b>Y</b>Rp = 8 %, σ = 10 %, β = 0,8</span></div>
+    <p>Écarts annuels de X par rapport à son benchmark : +3 %, −1 %, +2 %, +4 %, +2 %.</p>
+    <ol><li>Calculez Sharpe, Treynor et alpha de Jensen pour X, Y et le marché.</li><li>Calculez le ratio d'information de X.</li><li>Quel fonds choisir ?</li></ol>
+    <details><summary>Voir le corrigé</summary><div class="body">
+      <p class="st">1. Sharpe = (Rp − rf)/σp</p>
+      <div class="eq">X : (10 − 2)/15 = 0,533     Y : (8 − 2)/10 = 0,600     M : (7 − 2)/12 = 0,417</div>
+      <p class="st">2. Treynor = (Rp − rf)/βp</p>
+      <div class="eq">X : 8/1,2 = 6,67 %     Y : 6/0,8 = 7,50 %     M : 5/1 = 5,00 %</div>
+      <p class="st">3. Jensen = Rp − [rf + β(Rm − rf)]</p>
+      <div class="eq">X : 10 − (2 + 1,2 × 5) = 10 − 8 = +2 %
+Y :  8 − (2 + 0,8 × 5) =  8 − 6 = +2 %</div>
+      <p class="st">4. Ratio d'information de X</p>
+      <div class="eq">ER̄ = (3 − 1 + 2 + 4 + 2)/5 = 10/5 = 2 %
+Écarts à 2 % : +1, −3, 0, +2, 0  → carrés : 1, 9, 0, 4, 0 → somme = 14
+σ(ER) = √[14/(5 − 1)] = √3,5 = 1,87 %
+RI = 2 / 1,87 = 1,07</div>
+      <p class="st">5. Conclusion</p>
+      <div class="tw"><table>
+        <thead><tr><th>Mesure</th><th class="num">X</th><th class="num">Y</th><th class="num">Marché</th><th>Meilleur</th></tr></thead>
+        <tbody><tr><td>Sharpe</td><td class="num">0,533</td><td class="num">0,600</td><td class="num">0,417</td><td>Y</td></tr><tr><td>Treynor</td><td class="num">6,67 %</td><td class="num">7,50 %</td><td class="num">5,00 %</td><td>Y</td></tr><tr><td>Jensen</td><td class="num">+2 %</td><td class="num">+2 %</td><td class="num">0</td><td>égalité</td></tr></tbody>
+      </table></div>
+      <p class="res">Les deux fonds battent le marché (α &gt; 0, Sharpe et Treynor supérieurs à ceux du marché), mais Y est meilleur par unité de risque, total comme systématique. X reste un bon fonds benchmarké (RI ≈ 1,07 : il gagne régulièrement sur son indice).</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============ 6. À RETENIR ============ -->
+<section id="retenir">
+  <h2><span class="n">6</span>À retenir</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Notion</th><th>Formule ou idée clé</th></tr></thead>
+    <tbody>
+      <tr><td>Rentabilité</td><td>R = [C(t) + D − C(0)]/C(0) ; continue : ln[C(t)/C(0)]</td></tr>
+      <tr><td>Risque d'un portefeuille</td><td>σ²p = a²σ²A + (1−a)²σ²B + 2a(1−a)ρσAσB</td></tr>
+      <tr><td>Variance minimale</td><td>a* = (σ²B − Cov)/(σ²A + σ²B − 2Cov) ; si ρ = −1 : a* = σC/(σA + σC), risque nul</td></tr>
+      <tr><td>Diversification</td><td>Élimine le risque spécifique ; reste la covariance moyenne (risque de marché)</td></tr>
+      <tr><td>CML</td><td>E(rp) = rf + [(rM − rf)/σM]·σp ; Tobin : même portefeuille risqué pour tous</td></tr>
+      <tr><td>MEDAF</td><td>E(ri) = rf + βi[E(rm) − rf] ; β = Cov(Ri,Rm)/Var(Rm) ; βE = βNE(1 + D/CP)</td></tr>
+      <tr><td>Prime ex ante</td><td>rm = Div₁/P₀ + g ; au-dessus de la droite de marché = sous-évalué</td></tr>
+      <tr><td>Efficience</td><td>Faible (passé), semi-forte (+ public), forte (+ privé) ; anomalies : janvier, lundi, taille, PER, B/M, momentum</td></tr>
+      <tr><td>Allocation</td><td>La stratégie explique ~90 % des rentabilités ; % actions ≈ 100 − âge (règle contestée)</td></tr>
+      <tr><td>CPPI</td><td>Actions = m × (VL − plancher) ; achète à la hausse, vend à la baisse</td></tr>
+      <tr><td>Performance</td><td>Sharpe (σ), Treynor (β), Jensen (α), RI (tracking error) ; rentabilité pondérée par le temps pour juger le gérant</td></tr>
+      <tr><td>Marchés</td><td>Seuils ±10 % statique, ±2 % dynamique, 5 min ; SRD : 20/25/40 % de couverture</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box warn"><span class="tag">Pièges fréquents</span><ul>
+    <li>Le risque d'un portefeuille n'est <strong>pas</strong> la moyenne pondérée des risques (sauf si ρ = 1).</li>
+    <li>Sharpe utilise σ (risque total), Treynor et Jensen utilisent β (risque systématique).</li>
+    <li>Un α identique ne veut pas dire une performance identique : comparer avec Treynor.</li>
+    <li>Le TRI dépend du calendrier des apports ; pour noter le gérant, on chaîne les sous-périodes.</li>
+    <li>Le seuil dynamique se recalcule sur le dernier cours, le statique sur le cours d'ouverture (ou après réservation).</li>
+  </ul></div>
+</section>
+
+<footer>Fiche réalisée à partir des supports de P. Grandin : Les marchés d'actions, ch. 1 Théorie moderne du portefeuille, ch. 2 Efficience des marchés, ch. 3 Gestion active et passive, ch. 4 Mesure de performance. Classeur de révision.</footer>
+</div>
+</body></html>
