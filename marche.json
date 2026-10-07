@@ -1,34 +1,34 @@
 {
- "maj": "2026-10-05T08:45:00+02:00",
- "seance": "Clôture du vendredi 2 octobre 2026",
+ "maj": "2026-10-07T07:56:00+02:00",
+ "seance": "Clôture du mardi 6 octobre 2026",
  "source": {"nom": "Boursorama", "url": "https://www.boursorama.com/bourse/"},
  "groupes": [
   {"titre": "Actions Europe", "lignes": [
-   {"nom": "CAC 40", "valeur": "7 897,19", "var": 0.79},
-   {"nom": "Euro Stoxx 50", "valeur": "6 238,50", "var": 1.02},
-   {"nom": "DAX", "valeur": "25 231,20", "var": 1.17}]},
+   {"nom": "CAC 40", "valeur": "7 865,07", "var": 0.40},
+   {"nom": "Euro Stoxx 50", "valeur": "6 272,23", "var": 0.48},
+   {"nom": "DAX", "valeur": "25 461,96", "var": 0.82}]},
   {"titre": "Actions monde", "lignes": [
-   {"nom": "S&P 500", "valeur": "7 722,72", "var": 0.73},
-   {"nom": "Nasdaq", "valeur": "27 190,86", "var": 1.19},
-   {"nom": "Dow Jones", "valeur": "51 176,96", "var": 0.49},
-   {"nom": "Nikkei 225", "valeur": "70 037,61", "var": 2.53}]},
+   {"nom": "S&P 500", "valeur": "7 818,93", "var": 0.58},
+   {"nom": "Nasdaq", "valeur": "27 599,79", "var": 0.45},
+   {"nom": "Dow Jones", "valeur": "51 521,28", "var": 0.49},
+   {"nom": "Nikkei 225", "valeur": "70 683,98", "var": 1.05}]},
   {"titre": "Change, matières premières, crypto", "lignes": [
-   {"nom": "EUR/USD", "valeur": "1,1253", "var": 0.00},
-   {"nom": "Pétrole Brent ($)", "valeur": "102,61", "var": -0.38},
-   {"nom": "Or ($/once)", "valeur": "4 137,55", "var": 0.00},
-   {"nom": "Bitcoin ($)", "valeur": "85 121,30", "var": 0.50}]}
+   {"nom": "EUR/USD", "valeur": "1,1231", "var": -0.28},
+   {"nom": "Pétrole Brent ($)", "valeur": "101,41", "var": 0.33},
+   {"nom": "Or ($/once)", "valeur": "4 146,53", "var": -0.43},
+   {"nom": "Bitcoin ($)", "valeur": "84 066,00", "var": -1.76}]}
  ],
  "actu": {
-  "titre": "Wall Street finit la semaine en hausse, l'emploi américain conforte une pause de la Fed",
-  "date": "2026-10-02",
-  "resume": "Vendredi, les Bourses américaines ont clôturé dans le vert, portées par la technologie : le Nasdaq gagne 1,19 % et le Dow Jones 0,49 %. Les chiffres de l'emploi aux États-Unis, jugés décevants, renforcent l'idée que la Réserve fédérale laissera ses taux inchangés. En Europe, les valeurs de semi-conducteurs ont aussi brillé, avec Soitec et STMicroelectronics en forte hausse.",
-  "cours": "Lien avec tes cours : quand le marché anticipe des taux stables ou plus bas, le taux d'actualisation baisse et la valeur actuelle des flux futurs monte. Les valeurs de croissance, dont la valeur dépend de flux lointains, en profitent le plus : c'est pour ça que le Nasdaq monte davantage que le Dow Jones (MEDAF, DCF).",
-  "source": "Boursorama",
-  "url": "https://www.boursorama.com/bourse/actualites/wall-street-termine-en-hausse-l-emploi-plaide-pour-un-statu-quo-de-la-fed-3b772901e8a28a56c32c380a9e973f46"
+  "titre": "Détente du pétrole et des taux longs : la Bourse de Paris reprend des couleurs",
+  "date": "2026-10-06",
+  "resume": "Le CAC 40 a gagné 0,40 % mardi pour finir à 7 865,07 points, porté par le repli du pétrole (Brent de décembre en baisse d'environ 1 % vers 99 dollars) et par une baisse des rendements des emprunts d'État. Le taux de l'OAT française à 10 ans est revenu vers 4,75 %, contre 3,47 % pour le Bund allemand, malgré les tensions politiques en France et en Espagne. Les banques ont profité de cette accalmie (BNP Paribas +2,5 %, Société Générale +2 %), tout comme Legrand (+3,7 %), tandis que Schneider Electric a encore reculé de 4,5 % après l'annonce du rachat de PTC. À New York, le S&P 500 et le Nasdaq ont terminé à des niveaux records.",
+  "cours": "Lien avec tes cours : quand les taux longs baissent, le taux sans risque utilisé dans le MEDAF et donc le coût des fonds propres et le CMPC reculent, ce qui augmente la valeur actuelle des flux futurs dans un DCF et soutient les cours. L'écart d'environ 1,3 point entre l'OAT et le Bund est une prime de risque souverain : il renchérit le financement de l'État français et se répercute sur le coût de la dette des entreprises et des banques. Enfin, une hausse des taux fait baisser le prix des obligations déjà émises (notion de duration), d'où le soulagement des banques qui en détiennent beaucoup au bilan.",
+  "source": "BFM Bourse",
+  "url": "https://www.tradingsat.com/cac-40-FR0003500008/actualites/cac-40-relance-par-l-accalmie-sur-le-petrole-et-les-taux-le-cac-40-tente-de-recoller-aux-7900-points-1171352.html"
  },
  "titres": [
-  {"t": "Renault va investir plus de 10 milliards d'euros sur cinq ans dans l'électrique en France", "url": "https://www.boursorama.com/bourse/actualites/renault-va-investir-plus-de-10-mds-sur-cinq-ans-dans-l-electrique-en-france-155bc3e3d01e423705437fa3bca012c2"},
-  {"t": "L'Opep+ devrait maintenir ses objectifs de production", "url": "https://www.boursorama.com/bourse/actualites/l-opep-devrait-maintenir-ses-objectifs-de-production-delegue-1288d221f110d72520b34c60eb06f19b"},
-  {"t": "Citi relève ses prévisions sur le bitcoin et l'ether", "url": "https://www.boursorama.com/bourse/actualites/citi-revoit-a-la-hausse-ses-previsions-concernant-le-bitcoin-et-l-ether-en-raison-d-une-forte-activite-sur-le-marche-des-cryptomonnaies-f590628accd2ea886dde535c3fa5a6ae"}
+  {"t": "Wall Street termine en hausse, le S&P 500 et le Nasdaq à des sommets", "url": "https://www.boursorama.com/bourse/actualites/wall-street-cloture-en-hausse-le-s-p-500-et-le-nasdaq-au-sommet-f99d00ddb146f970e2ccec9ac524469b"},
+  {"t": "SpaceX chercherait à lever 40 milliards de dollars, avec Apollo, pour acheter des puces Nvidia", "url": "https://www.boursorama.com/bourse/actualites/spacex-cherche-a-lever-40-milliards-de-dollars-dans-le-cadre-d-un-tour-de-table-mene-par-apollo-pour-acheter-des-puces-nvidia-selon-le-financial-times-ad37c4306e31fa14a5a8a22afc62b929"},
+  {"t": "La dette liée à l'IA explose et pousse les taux d'intérêt à la hausse", "url": "https://www.boursorama.com/bourse/actualites/la-dette-de-l-ia-explose-et-accelere-la-hausse-des-taux-d-interet-36dbfac6238c28b25c2890944499dfe8"}
  ]
 }

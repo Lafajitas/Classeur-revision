@@ -1,0 +1,8 @@
+Classeur de révision — dossier complet (version du 7 octobre 2026, avec Économétrie Jour 3)
+
+Ouvrir index.html : c'est la page d'accueil, toutes les fiches, cartes mentales et flashcards sont reliées entre elles.
+
+À savoir si tu l'ouvres en double-cliquant (fichier local) :
+- le bloc « L'actu du jour / Les marchés » ne s'affiche pas, car le navigateur bloque la lecture de marche.json en local. Il s'affiche si le dossier est mis sur un hébergeur (GitHub Pages, Netlify…) ou servi avec un petit serveur local ;
+- « Mon espace », « Demander à Claude » et « Version imprimable » ne marchent que sur la version en ligne dans Claude ;
+- les formules (MathJax) et les polices se chargent depuis Internet : il faut une connexion.

@@ -62,9 +62,9 @@ svg text{fill:var(--fg)}
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Économétrie · G. Vu · Cours du 30 sept. et du 2 oct.</div>
+    <div class="eyebrow">Économétrie · G. Vu · Cours du 30 sept., du 2 oct. et du 7 oct.</div>
     <h1>Cartes mentales Économétrie</h1>
-    <p class="lede">Quatre cartes pour les deux premiers jours : statistiques de base, tests et intervalles, régression simple, puis validation du modèle avec les résultats des exercices.</p>
+    <p class="lede">Six cartes pour les trois premiers jours : statistiques de base, tests et intervalles, régression simple, validation du modèle, puis régression multiple et variables muettes / interactions avec les résultats des exercices.</p>
   </header>
   <nav id="tabs" role="tablist" aria-label="Cartes"></nav>
   <section class="sheet">
@@ -125,6 +125,26 @@ const MAPS = [
   {t:"Hypothèses LINE", c:[{t:"Linéarité"},{t:"Indépendance des erreurs"},{t:"Normalité des erreurs"},{t:"Égalité des variances"},{t:"→ MCO = BLUE"}]},
   {t:"Lire les résidus", c:[F("eᵢ = Yᵢ − Ŷᵢ"),{t:"Courbe → relation non linéaire"},{t:"Entonnoir → variance non constante"},{t:"Vagues → erreurs dépendantes"}]},
   {t:"Exercices J2", c:[{t:"Apple β = 1,28 ; r² = 0,71"},{t:"Coca β = 0,46 ; Walmart β = 0,43 : défensives"},{t:"Baseball : Ŷ = −533,8 + 5,20 X ; r² = 0,94"},{t:"Entrepôt : ≈ 16 $ par commande ; r² = 0,84"},{t:"Loyers : Ŷ = 177,12 + 1,065 X ; r² = 0,72"}]}
+ ]}},
+{id:"multi", tab:"J3 · Régression multiple", title:"Jour 3 · Régression linéaire multiple", sub:"Plusieurs X, un Y : estimer, lire, tester",
+ root:{t:"Régression multiple", c:[
+  {t:"Modèle", c:[F("Yᵢ = β₀ + β₁X₁ᵢ + … + βₖXₖᵢ + εᵢ"),F("Ŷᵢ = b₀ + b₁X₁ᵢ + … + bₖXₖᵢ"),{t:"Toujours les moindres carrés"}]},
+  {t:"Lire une pente", c:[{t:"Effet moyen de +1 unité de Xⱼ"},{t:"Les autres X restant constants"},{t:"Tartes : +1 $ de prix → −24,975 tartes"},{t:"+100 $ de pub → +74,131 tartes"}]},
+  {t:"Prédire", c:[{t:"Convertir dans l'unité des X"},{t:"350 $ de pub → X₂ = 3,5"},{t:"Tartes : 5,50 $ et 350 $ → 428,62"}]},
+  {t:"r² et r² ajusté", c:[F("r² = SSR / SST"),{t:"r² ne baisse jamais quand on ajoute un X"},F("r²adj = 1 − (1 − r²)(n − 1)/(n − k − 1)"),{t:"Comparer des modèles avec r²adj"},{t:"Tartes : 0,521 et 0,442"}]},
+  {t:"Test F global", c:[{t:"H₀ : β₁ = … = βₖ = 0"},F("F = MSR / MSE"),{t:"df = (k ; n − k − 1)"},{t:"p-value = Significance F"},{t:"Tartes : F = 6,54 > 3,885"}]},
+  {t:"Tests t", c:[{t:"H₀ : βⱼ = 0, autres X constants"},F("t = bⱼ / S_bⱼ"),{t:"df = n − k − 1"},{t:"Tartes : prix p = 0,040 ; pub p = 0,015"}]},
+  {t:"Exercices 1 à 3", c:[{t:"Advertise : 156,43 + 13,08 Radio + 16,80 News", c:[{t:"20 k$ + 20 k$ → 753,95 k$"},{t:"r² = 0,809"}]},{t:"WareCost : −2,73 + 0,0471 Sales + 0,0119 Orders", c:[{t:"400 k$ et 4 500 → 69,88 k$"},{t:"r²adj 0,864 > 0,837 (J2)"}]},{t:"Sleep : 1 h de travail → −10 min de sommeil", c:[{t:"Hommes +88 min/sem (p = 0,011)"},{t:"educ −11,8 (p = 0,045) ; âge n.s."}]}]}
+ ]}},
+{id:"dummy", tab:"J3 · Muettes et interactions", title:"Jour 3 · Variables muettes et interactions", sub:"Intégrer une catégorie, laisser un effet dépendre d'un autre",
+ root:{t:"Qualitatif et interactions", c:[
+  {t:"Variable muette", c:[{t:"Catégorie codée 0 / 1"},{t:"Même pente, ordonnée décalée"},{t:"Deux droites parallèles"}]},
+  {t:"Deux niveaux", c:[F("Ŷ = 465 − 13 Prix + 81 Fête"),{t:"Fête : +81 tartes à prix égal"}]},
+  {t:"Plus de deux niveaux", c:[{t:"(niveaux − 1) dummies"},{t:"Une catégorie de référence"},F("Ŷ = 101 + 0,14 X₁ − 104 X₂ − 53 X₃"),{t:"District 2 : −104 k$ vs district 1"}]},
+  {t:"Piège", c:[{t:"Toutes les dummies + intercept"},{t:"→ colinéarité parfaite"},{t:"Lire chaque b par rapport à la référence"}]},
+  {t:"Interaction", c:[F("Y = β₀ + β₁X₁ + β₂X₂ + β₃X₁X₂"),F("Effet de X₁ = β₁ + β₃X₂"),{t:"Tester β₃ par un t"},{t:"Pub × Fête : p = 0,230 → non"}]},
+  {t:"Logiciels", c:[{t:"Excel : =SI(C2=\"Web-based\";1;0)"},{t:"Interaction : colonne =D2*B2"},{t:"XLSTAT ANCOVA, contrainte a1 = 0"}]},
+  {t:"Exercices 4 à 6", c:[{t:"Underwriting : réf. Traditional", c:[{t:"CD +30,4 ; Web +22,3 ; +1,13 par point"},{t:"Prof 100, Web → 48,60"}]},{t:"Neighbor : 243,74 + 9,22 Rooms + 12,70 West", c:[{t:"9 pièces, est → 326,71 k$"}]},{t:"Earning : exper, educ, male significatifs", c:[{t:"black −2 153 $, p = 0,16 : n.s."},{t:"male × exper = +108,5 (p = 0,045)"},{t:"Pente : femmes 60,6 ; hommes 169,1 $/an"}]}]}
  ]}}
 ];
 
