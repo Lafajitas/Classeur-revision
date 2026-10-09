@@ -121,7 +121,7 @@ footer{margin-top:48px;font-size:13px;color:var(--muted);border-top:1px solid va
   <li><b>Panel</b> : <i>plusieurs</i> entités, chacune observée à <i>2 périodes ou plus</i> (ex. : criminalité de 150 villes en 1986 et 1990).</li>
 </ul></div>
 </div>
-<div class="ex"><span class="t">Exercice du cours</span>Tableau « Data from Two Rice Farms » : 2 exploitations (FIRM 1 et 2) suivies de 1990 à 1997 (PROD, AREA, LABOR, FERT) → plusieurs entités observées sur plusieurs années = <b>données de panel</b> (et observationnelles : pas d'expérience conçue).</div>
+<div class="ex"><span class="t">Exercice du cours · Data from Two Rice Farms</span><span class="qq"><b>Question </b> Le tableau suit deux exploitations de riz (FIRM 1 et FIRM 2) de 1990 à 1997 avec leur production (PROD), surface (AREA), travail (LABOR) et engrais (FERT). De quel type de données s'agit-il ? Sont-elles expérimentales ou observationnelles ?</span><ol class="steps"><li><span><b>Combien d'entités ?</b> Deux exploitations → plusieurs entités (ce n'est donc pas une série temporelle, qui suit une seule entité).</span></li><li><span><b>Combien de périodes ?</b> 1990 à 1997 = 8 années → plusieurs périodes (ce n'est donc pas une coupe transversale, qui n'a qu'une période).</span></li><li><span><b>Conclusion sur le type</b> : plusieurs entités observées chacune sur plusieurs périodes = <b>données de panel</b>.</span></li><li><span><b>Expérimentales ou observationnelles ?</b> Personne n'a fixé la quantité d'engrais pour mesurer son effet : on a relevé ce que les fermes ont fait → <b>observationnelles</b>.</span></li></ol></div>
 
 <!-- PARTIE 2 -->
 <h2 id="p2"><span class="n">PARTIE 2</span>Mesures descriptives numériques</h2>
@@ -140,7 +140,7 @@ footer{margin-top:48px;font-size:13px;color:var(--muted);border-top:1px solid va
 <tr><td><b>Médiane</b></td><td>Valeur du « milieu » d'une série <b>ordonnée</b> (50 % au-dessus, 50 % en dessous)</td><td>Non affectée par les valeurs extrêmes (11,12,13,14,15 et 11,12,13,14,20 → médiane = 13 dans les deux cas)</td></tr>
 <tr><td><b>Mode</b></td><td>Valeur la plus fréquente</td><td>Non affecté par les valeurs extrêmes ; utilisable pour données numériques <b>ou catégorielles</b> ; il peut n'y avoir <b>aucun</b> mode ou <b>plusieurs</b></td></tr>
 </table></div>
-<div class="ex"><span class="t">Exemple : prix de maisons</span>2 000 000 · 500 000 · 300 000 · 100 000 · 100 000 (somme 3 000 000) → <b>moyenne</b> = 3 000 000 / 5 = 600 000 $ ; <b>médiane</b> = 300 000 ; <b>mode</b> = 100 000. La moyenne est tirée vers le haut par la valeur extrême.</div>
+<div class="ex"><span class="t">Exemple du cours : prix de maisons</span><span class="qq"><b>Question </b> Cinq maisons valent 2 000 000, 500 000, 300 000, 100 000 et 100 000 $. Calculer la moyenne, la médiane et le mode. Quelle mesure décrit le mieux un prix « typique » ?</span><ol class="steps"><li><span><b>Moyenne</b> : somme / n = (2 000 000 + 500 000 + 300 000 + 100 000 + 100 000) / 5 = 3 000 000 / 5 = <b>600 000 $</b>.</span></li><li><span><b>Médiane</b> : on range les valeurs (100 000 ; 100 000 ; 300 000 ; 500 000 ; 2 000 000) ; n = 5 est impair, la médiane est la 3ᵉ valeur = <b>300 000 $</b>.</span></li><li><span><b>Mode</b> : valeur la plus fréquente = <b>100 000 $</b> (2 fois).</span></li><li><span><b>Conclusion</b> : la maison à 2 000 000 $ tire la moyenne vers le haut (4 maisons sur 5 valent moins de 600 000 $). La <b>médiane</b> (300 000 $), insensible aux valeurs extrêmes, décrit mieux le prix typique.</span></li></ol></div>
 
 <h3>2.3 Variation (échantillon)</h3>
 <p>Renseigne sur l'étalement / la dispersion des données (même centre possible avec des variations différentes).</p>
@@ -152,8 +152,8 @@ footer{margin-top:48px;font-size:13px;color:var(--muted);border-top:1px solid va
     <div class="f">\[ S = \sqrt{\frac{\sum_{i=1}^{n}(X_i - \bar X)^2}{n-1}} \]</div></li>
 </ul>
 <div class="two">
-<div class="ex"><span class="t">Variance – prix maisons (k$)</span>Écarts : 1 400 ; −100 ; −300 ; −500 ; −500. Carrés : 1 960 000 ; 10 000 ; 90 000 ; 250 000 ; 250 000. Somme = 2 560 000 → variance affichée = <b>640 000</b> (= 2 560 000 / 4, soit n − 1).</div>
-<div class="ex"><span class="t">Écart-type – exemple</span>10, 12, 14, 15, 17, 18, 18, 24 ; n = 8 ; \(\bar X = 16\). \(S = \sqrt{\tfrac{(10-16)^2+\dots+(24-16)^2}{8-1}} = \sqrt{\tfrac{130}{7}} = \mathbf{4.3095}\) → dispersion « moyenne » autour de la moyenne.</div>
+<div class="ex"><span class="t">Exemple du cours : variance des prix (k$)</span><span class="qq"><b>Question </b> Avec les mêmes prix en milliers de $ (2 000 ; 500 ; 300 ; 100 ; 100), calculer la variance d'échantillon.</span><ol class="steps"><li><span><b>Moyenne</b> : X̄ = 3 000 / 5 = 600.</span></li><li><span><b>Écarts à la moyenne</b> Xᵢ − X̄ : 2 000 − 600 = 1 400 ; 500 − 600 = −100 ; 300 − 600 = −300 ; 100 − 600 = −500 ; −500.</span></li><li><span><b>Carrés des écarts</b> : 1 960 000 ; 10 000 ; 90 000 ; 250 000 ; 250 000. Somme = <b>2 560 000</b>.</span></li><li><span><b>Diviser par n − 1</b> (échantillon) : S² = 2 560 000 / 4 = <b>640 000</b> (k$)². Écart-type S = √640 000 = 800 k$.</span></li></ol></div>
+<div class="ex"><span class="t">Exemple du cours : écart-type</span><span class="qq"><b>Question </b> Calculer l'écart-type de l'échantillon 10, 12, 14, 15, 17, 18, 18, 24.</span><ol class="steps"><li><span><b>Moyenne</b> : (10 + 12 + 14 + 15 + 17 + 18 + 18 + 24) / 8 = 128 / 8 = <b>16</b>.</span></li><li><span><b>Carrés des écarts</b> : (−6)² = 36 ; (−4)² = 16 ; (−2)² = 4 ; (−1)² = 1 ; 1² = 1 ; 2² = 4 ; 2² = 4 ; 8² = 64. Somme = <b>130</b>.</span></li><li><span><b>Variance</b> : 130 / (8 − 1) = 18,571.</span></li><li><span><b>Écart-type</b> : S = √18,571 = <b>4,3095</b> : en moyenne, les valeurs s'écartent d'environ 4,3 de la moyenne 16.</span></li></ol></div>
 </div>
 <p>Comparaison (données A, B, C sur 11–21) : B, très regroupée, a le plus petit écart-type ; C, concentrée aux deux extrémités, le plus grand.</p>
 
@@ -233,20 +233,12 @@ footer{margin-top:48px;font-size:13px;color:var(--muted);border-top:1px solid va
 </ul>
 <div class="f">\[ \text{Estimation ponctuelle} \pm (\text{Valeur critique}) \times (\text{Erreur-type}) \]</div>
 
-<div class="ex"><span class="t">Exemple 1 échantillon : hôtels à New York</span>
-Coût moyen annoncé 168 $/nuit. Échantillon de n = 25 hôtels : \(\bar Y = 172.50\), S = 15.40 ; α = 0,05 ; population supposée normale.
-<ul>
-  <li>H₀ : μ = 168 ; H₁ : μ ≠ 168</li>
-  <li>df = 24 ; valeurs critiques ± t<sub>24 ; 0,025</sub> = <b>± 2,0639</b></li>
-  <li>\(t_{STAT} = \dfrac{172.50 - 168}{15.40/\sqrt{25}} = 1.46\)</li>
-  <li>−2,0639 &lt; 1,46 &lt; 2,0639 → <b>ne pas rejeter H₀</b> : pas assez de preuves que le coût moyen diffère de 168 $.</li>
-  <li>IC 95 % : \(172.5 \pm 2.0639 \times 15.4/\sqrt{25}\) → <b>166,14 ≤ μ ≤ 178,86</b> (contient 168).</li>
-</ul></div>
+<div class="ex"><span class="t">Exemple du cours : hôtels à New York</span><span class="qq"><b>Question </b> Le coût moyen annoncé d'une nuit d'hôtel à New York est de 168 $. Sur un échantillon de 25 hôtels, on trouve Ȳ = 172,50 $ et S = 15,40 $. Au seuil de 5 %, le coût moyen est-il différent de 168 $ ? Construire l'intervalle de confiance à 95 %.</span><ol class="steps"><li><span><b>Hypothèses</b> : H₀ : μ = 168 ; H₁ : μ ≠ 168 (test bilatéral, car on cherche « différent »).</span></li><li><span><b>Seuil</b> : α = 0,05 → 0,025 dans chaque queue.</span></li><li><span><b>Valeurs critiques</b> : σ inconnu → loi de Student avec df = n − 1 = 24 : ± t<sub>24 ; 0,025</sub> = <b>± 2,0639</b> (Excel : <span class="mono">=LOI.STUDENT.INVERSE.BILATERALE(0,05;24)</span>).</span></li><li><span><b>Statistique</b> : erreur-type = S / √n = 15,40 / 5 = 3,08 ; t = (172,50 − 168) / 3,08 = 4,50 / 3,08 = <b>1,46</b>.</span></li><li><span><b>Décision</b> : −2,0639 &lt; 1,46 &lt; 2,0639 → t est dans la zone de non-rejet → <b>on ne rejette pas H₀</b>. Il n'y a pas assez de preuves que le coût moyen diffère de 168 $.</span></li><li><span><b>Intervalle de confiance à 95 %</b> : 172,50 ± 2,0639 × 3,08 = 172,50 ± 6,36 → <b>[166,14 ; 178,86]</b>. Il contient 168, ce qui confirme le non-rejet.</span></li></ol></div>
 
 <div class="ex"><span class="t">Logiciel (XLSTAT, captures du cours)</span>
 Menu « Parametric tests » → <b>One-sample t-test and z-test</b> ou <b>Two-sample t-test and z-test</b>. Onglet General : sélectionner les données (ex. variable Teabags ; ou Data = testscr, Sample identifiers = group, « One column per variable »), cocher Column labels, choisir <b>Student's t test</b>. Onglet Options : hypothèse alternative (Mean 1 ≠ Theoretical mean, ou Mean 1 − Mean 2 ≠ D), moyenne théorique / différence D (0), seuil 5 %. Onglet Missing data : possibilité d'« Ignore missing data ».</div>
 
-<h3 id="ex">3.4 Exemple : taille des classes et résultats scolaires (Californie)</h3>
+<h3 id="ex">3.4 Exemple : taille des classes et résultats scolaires (Californie)</h3><div class="enonce"><span class="t">Questions du cas</span><p>420 districts scolaires de Californie. Petites classes (STR &lt; 20) : score moyen 657,4, écart-type 19,4, n = 238. Grandes classes (STR ≥ 20) : score moyen 650,0, écart-type 17,9, n = 182.</p><ol type="a"><li>Estimer l'écart de score moyen entre petites et grandes classes.</li><li>Au seuil de 5 %, cet écart est-il significatif (test de différence de moyennes) ?</li><li>Construire l'intervalle de confiance à 95 % de l'écart.</li></ol></div>
 <p><b>Question politique</b> : effet sur les scores d'une réduction de la taille des classes d'1 élève ? de 8 élèves ?<br>
 <b>Données</b> : tous les districts K-6 et K-8 de Californie (<b>n = 420</b>). Variables : score moyen de 5e année au test Stanford-9 (maths + lecture) ; <b>STR</b> (student-teacher ratio) = nb d'élèves / nb d'enseignants équivalent temps plein.<br>
 Nuage de points score vs STR : relation négative (droite décroissante), mais très dispersée.</p>
@@ -276,4 +268,12 @@ Nuage de points score vs STR : relation négative (droite décroissante), mais t
 <footer>Fiche construite uniquement à partir du support « Lecture note – Econometrics – Day 1 Basic » (G. Vu, d'après Levine et al. et Gujarati).</footer>
 </div>
 
-</body></html>
+<style id="qp-css">.enonce{border:1px solid rgba(128,128,128,.35);border-radius:10px;padding:10px 14px;margin:10px 0 14px;background:rgba(128,128,128,.07)}
+.enonce>.t{display:block;font:600 11.5px/1.3 ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;opacity:.75;margin-bottom:6px}
+.enonce ol,.enonce ul{margin:4px 0 0;padding-left:22px}.enonce li{margin:3px 0}
+.qq{display:block;margin:12px 0 6px;padding:7px 11px;border-left:4px solid #c2571f;background:rgba(194,87,31,.09);border-radius:0 7px 7px 0;font-weight:600;line-height:1.45}
+.qq>b:first-child{color:#c2571f;margin-right:4px}
+.why{display:block;margin:6px 0;padding:6px 10px;border-left:3px solid rgba(128,128,128,.5);font-size:.95em;opacity:.95}
+.why>b:first-child{opacity:.8}
+.rep{display:block;margin:4px 0 0}.rep>b:first-child{color:#1f7a4d}
+@media print{.enonce,.qq{break-inside:avoid}}</style></body></html>

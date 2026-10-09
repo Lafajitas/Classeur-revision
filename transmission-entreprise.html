@@ -559,7 +559,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Exemple (sur une base 100) :</strong></p>
+<p><strong>Exemple (sur une base 100) :</strong></p><span class="qq"><b>Question </b> Un dirigeant veut céder son entreprise (valeur 100) et transmettre le produit à ses enfants. Comparer ce qui arrive aux enfants (1) s'il cède puis donne et (2) s'il donne puis cède (impôt sur la plus-value 31 %, droits de donation 20 %, plus-value égale au prix de cession).</span><span class="why"><b>Méthode :</b> on suit les 100 étape par étape dans chaque ordre. <b>Céder puis donner</b> : la cession déclenche l'impôt sur la plus-value (100 × 31 % = 31), il reste 69 ; la donation de 69 coûte 69 × 20 % ≈ 14 de droits ; les enfants reçoivent 69 − 14 = <b>55</b>. <b>Donner puis céder</b> : la donation de 100 coûte 20 de droits ; les enfants détiennent les titres à une valeur fiscale de 100 (valeur au jour de la donation) ; en les cédant 100, leur plus-value est nulle, donc 0 d'impôt ; ils gardent <b>80</b>. Écart : 80 − 55 = <b>25</b> en faveur de « donner puis céder », car la donation efface la plus-value.</span>
 <table>
 <thead>
 <tr>
@@ -725,7 +725,7 @@ PV nette (si négative → MV nette, reportable 10 ans sur PV de même nature)
    (abattement fixe et proportionnel NON cumulables)
 </code></pre>
 <h3>6.7 Exemple chiffré complet — calcul de l'impôt sur une PV de cession</h3>
-<p><em>Cas : cession de titres détenus &gt; 8 ans par un dirigeant partant à la retraite, prix de cession 700 000 €, prix d'acquisition 12 000 €, PV brute = 688 000 €.</em></p>
+<p><em>Cas : cession de titres détenus &gt; 8 ans par un dirigeant partant à la retraite, prix de cession 700 000 €, prix d'acquisition 12 000 €, PV brute = 688 000 €.</em></p><span class="qq"><b>Question </b> Calculer l'impôt total sur la plus-value (1) au PFU avec l'abattement fixe de 500 000 € « départ en retraite » et (2) au barème progressif avec l'abattement renforcé de 85 %. Quelle option choisir ?</span><span class="why"><b>Méthode :</b> (1) la plus-value brute = prix de cession − prix d'acquisition = 700 000 − 12 000 = 688 000 € ; (2) les prélèvements sociaux (17,2 %) se calculent toujours sur la plus-value <b>brute</b>, sans abattement ; (3) l'impôt sur le revenu se calcule sur la plus-value <b>après abattement</b> : 12,8 % au PFU, ou barème progressif (TMI) en option ; (4) on additionne PS + IR pour chaque option et on retient la moins chère. Les deux abattements ne se cumulent pas.</span>
 <p><strong>Option 1 — PFU avec abattement fixe retraite (500 000 €) :</strong></p>
 <ul>
 <li>PS (17,2 %) sur PV brute : 688 000 × 17,2 % = <strong>118 336 €</strong></li>
@@ -763,4 +763,12 @@ PV nette (si négative → MV nette, reportable 10 ans sur PV de même nature)
 <hr>
 <p><em>Fiche enrichie avec les cas pratiques DUPONT et &quot;Céder et reprendre&quot; (supports 2023). Les données chiffrées (barèmes IRPP, DMTG, taux d'IS historiques) doivent être vérifiées/actualisées si ton énoncé de partiel fournit ses propres barèmes.</em></p>
 
-</body></html>
+<style id="qp-css">.enonce{border:1px solid rgba(128,128,128,.35);border-radius:10px;padding:10px 14px;margin:10px 0 14px;background:rgba(128,128,128,.07)}
+.enonce>.t{display:block;font:600 11.5px/1.3 ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;opacity:.75;margin-bottom:6px}
+.enonce ol,.enonce ul{margin:4px 0 0;padding-left:22px}.enonce li{margin:3px 0}
+.qq{display:block;margin:12px 0 6px;padding:7px 11px;border-left:4px solid #c2571f;background:rgba(194,87,31,.09);border-radius:0 7px 7px 0;font-weight:600;line-height:1.45}
+.qq>b:first-child{color:#c2571f;margin-right:4px}
+.why{display:block;margin:6px 0;padding:6px 10px;border-left:3px solid rgba(128,128,128,.5);font-size:.95em;opacity:.95}
+.why>b:first-child{opacity:.8}
+.rep{display:block;margin:4px 0 0}.rep>b:first-child{color:#1f7a4d}
+@media print{.enonce,.qq{break-inside:avoid}}</style></body></html>

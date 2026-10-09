@@ -245,21 +245,21 @@ td.sub{padding-left:1.6rem;color:var(--muted)}
   <div class="partHead"><span class="eyebrow">Entraînement</span><h2>Exercices corrigés</h2></div>
 
   <div class="ex"><h3>Exercice 1 (suite) · Vauban SA, questions 5 et 6 : découvert ou escompte ?</h3>
-  <div class="given"><span>Déficit 80 000 € du 1ᵉʳ au 25 mai inclus</span><span>Découvert 6,5 %, CPFD 0,05 %</span><span>Effets : 30 000 au 15 mai, 50 000 au 30 mai, 17 effets</span><span>Escompte 7 % + endos 0,5 % = 7,5 %</span><span>Commission fixe 8 € par effet, 2 jours de banque</span><span>Effets remis le 1ᵉʳ mai</span></div>
+  <div class="given"><span>Déficit 80 000 € du 1ᵉʳ au 25 mai inclus</span><span>Découvert 6,5 %, CPFD 0,05 %</span><span>Effets : 30 000 au 15 mai, 50 000 au 30 mai, 17 effets</span><span>Escompte 7 % + endos 0,5 % = 7,5 %</span><span>Commission fixe 8 € par effet, 2 jours de banque</span><span>Effets remis le 1ᵉʳ mai</span></div><div class="enonce"><span class="t">Questions</span><ol type="a"><li>Question 5 : calculer le coût du découvert pour couvrir le déficit de mai.</li><li>Question 6 : calculer le coût de l'escompte des effets, comparer et calculer le taux réel du découvert.</li></ol></div>
   <details><summary>Voir la correction</summary><div class="body">
-    <p class="st">Découvert</p>
+    <p class="st">Découvert</p><span class="qq"><b>Question </b> 5. Quel est le coût du découvert ?</span><span class="why"><b>Méthode :</b> coût du découvert = montant × taux × jours / 365 + CPFD (commission sur le plus fort découvert, une fois par mois de découvert).</span>
     <div class="calc"><span>Agios = 80 000 × 6,5 % × 25/365 = 356,16 €</span><span>CPFD = 80 000 × 0,05 % = 40 €</span><span>Coût = 396,16 €</span></div>
-    <p class="st">Escompte</p>
+    <p class="st">Escompte</p><span class="qq"><b>Question </b> 6a. Quel est le coût de l'escompte ?</span><span class="why"><b>Méthode :</b> coût de l'escompte = Σ (valeur de chaque effet × (taux d'escompte + endos) × jours / 365) + commissions par effet. Les jours vont du lendemain de la remise jusqu'à l'<b>échéance de l'effet</b> (pas la fin du déficit), plus les jours de banque.</span>
     <div class="calc"><span>1ᵉʳ mai exclu → 15 mai = 14 j + 2 = 16 j ; → 30 mai = 29 j + 2 = 31 j</span><span>30 000 × 7,5 % × 16/365 = 98,63 €</span><span>50 000 × 7,5 % × 31/365 = 318,49 €</span><span>Manipulation = 8 × 17 = 136 €</span><span>Coût = 553,12 €</span></div>
-    <p class="st">Taux réel du découvert</p>
+    <p class="st">Taux réel du découvert</p><span class="qq"><b>Question </b> 6b. Quel est le taux réel du découvert ?</span><span class="why"><b>Méthode :</b> on cherche le taux t tel que montant × t × jours / 365 = coût total (agios + CPFD).</span>
     <div class="calc"><span>80 000 × t × 25/365 = 396,16 → t = 7,23 %</span></div>
     <div class="res"><strong>Le découvert est le moins cher</strong> (396 € contre 553 €) : l'escompte du second effet court jusqu'au 30 mai, au-delà du déficit, et les 136 € de manipulation pèsent lourd.</div>
     <p class="src">Une version du corrigé écrit 7,05 % dans la formule : c'est une coquille, l'énoncé donne 7 % + 0,5 % = 7,5 %.</p>
   </div></details></div>
 
   <div class="ex"><h3>Exercice 2 · Société Robert, question 2 : billet de trésorerie postcompté</h3>
-  <div class="given"><span>Suite de l'exercice 2 de la Partie 1</span><span>Déficit février : −354 K€</span><span>BT 20 jours à 3 %, intérêts postcomptés</span></div>
-  <details><summary>Voir la correction</summary><div class="body">
+  <div class="given"><span>Suite de l'exercice 2 de la Partie 1</span><span>Déficit février : −354 K€</span><span>BT 20 jours à 3 %, intérêts postcomptés</span></div><div class="enonce"><span class="t">Questions</span><ol type="a"><li>Le déficit de février est couvert par un billet de trésorerie de 20 jours à 3 %, intérêts postcomptés. Calculer les intérêts et corriger le budget de trésorerie.</li></ol></div>
+  <details><summary>Voir la correction</summary><div class="body"><span class="qq"><b>Question </b> Calculer les intérêts du billet postcompté et les flux qu'il crée dans le budget.</span><span class="why"><b>Méthode :</b> intérêts = nominal × taux × jours / 365 ; postcomptés : on reçoit le nominal tout de suite et on rembourse nominal + intérêts à l'échéance.</span>
     <div class="calc"><span>Intérêts = 354 × 3 % × 20/365 = 0,58 K€ (le corrigé arrondit à 0,59)</span><span>Février : la trésorerie reçoit 354</span><span>Mars : on rembourse 354 + 0,59 = 354,59</span></div>
     <div class="tw"><table>
       <thead><tr><th>En K€</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th></tr></thead>
@@ -275,8 +275,8 @@ td.sub{padding-left:1.6rem;color:var(--muted)}
   </div></details></div>
 
   <div class="ex"><h3>Exercice 3 · Société Rabol, question 2 : billet de trésorerie précompté</h3>
-  <div class="given"><span>Suite de l'exercice 3 de la Partie 1</span><span>Déficit mois 1 : −162 K€</span><span>Déficit apparu le 10 janvier, stable 24 jours</span><span>BT : nominal = déficit (162), 4 %, intérêts précomptés</span></div>
-  <details><summary>Voir la correction</summary><div class="body">
+  <div class="given"><span>Suite de l'exercice 3 de la Partie 1</span><span>Déficit mois 1 : −162 K€</span><span>Déficit apparu le 10 janvier, stable 24 jours</span><span>BT : nominal = déficit (162), 4 %, intérêts précomptés</span></div><div class="enonce"><span class="t">Questions</span><ol type="a"><li>Le déficit du mois 1 est couvert par un billet de trésorerie à 4 % à intérêts précomptés, de nominal égal au déficit. Calculer les intérêts, la somme reçue et corriger le budget.</li></ol></div>
+  <details><summary>Voir la correction</summary><div class="body"><span class="qq"><b>Question </b> Calculer les intérêts précomptés, la somme reçue et le remboursement.</span><span class="why"><b>Méthode :</b> intérêts = nominal × taux × jours / 365 ; précomptés : on reçoit nominal − intérêts tout de suite, on rembourse le nominal à l'échéance.</span>
     <div class="calc"><span>Intérêts payés d'avance = 162 × 4 % × 24/365 = 0,43 K€</span><span>Reçu au mois 1 = 162 − 0,43 = 161,57</span><span>Remboursé à l'échéance (mois 2) = 162</span></div>
     <div class="tw"><table>
       <thead><tr><th>En K€</th><th class="n">1</th><th class="n">2</th><th class="n">3</th><th class="n">4</th></tr></thead>
@@ -292,14 +292,14 @@ td.sub{padding-left:1.6rem;color:var(--muted)}
   </div></details></div>
 
   <div class="ex"><h3>Exercice 5 · Le cas NADONE : billet, escompte ou découvert ?</h3>
-  <div class="given"><span>Déficit 980 000 € du 1ᵉʳ au 20 avril inclus (20 jours)</span><span>BT 5,5 %, précomptés</span><span>Escompte 7,5 % + endos 0,6 %, 5 € HT par effet, 1 jour de banque</span><span>Du 21/04 au 30/06 : solde voisin de 0</span><span>Effets : 300 000 au 20/04 (5 effets), 620 000 au 30/04 (12 effets)</span><span>Découvert 8,5 %, CPFD 0,05 %</span></div>
+  <div class="given"><span>Déficit 980 000 € du 1ᵉʳ au 20 avril inclus (20 jours)</span><span>BT 5,5 %, précomptés</span><span>Escompte 7,5 % + endos 0,6 %, 5 € HT par effet, 1 jour de banque</span><span>Du 21/04 au 30/06 : solde voisin de 0</span><span>Effets : 300 000 au 20/04 (5 effets), 620 000 au 30/04 (12 effets)</span><span>Découvert 8,5 %, CPFD 0,05 %</span></div><div class="enonce"><span class="t">Questions</span><ol type="a"><li>Calculer le coût d'un billet de trésorerie couvrant le déficit (intérêts précomptés).</li><li>Calculer le coût de l'escompte des effets, complété par du découvert pour le reste.</li><li>Calculer le coût du découvert seul.</li><li>Comparer les trois solutions (coût et taux réel) et conclure.</li></ol></div>
   <details><summary>Voir la correction</summary><div class="body">
-    <p class="st">1. Billet de trésorerie</p>
+    <p class="st">1. Billet de trésorerie</p><span class="qq"><b>Question </b> 1. Coût du billet de trésorerie ?</span><span class="why"><b>Méthode :</b> intérêts précomptés : on reçoit nominal − intérêts, donc on cherche le nominal X tel que X − X × taux × jours/365 = besoin.</span>
     <p>Intérêts précomptés : on cherche le nominal X qui laisse 980 000 € nets.</p>
     <div class="calc"><span>980 000 = X − X × 5,5 % × 20/365 → X ≈ 982 962 €</span><span>Intérêts ≈ 2 962 € (le corrigé donne 2 953,53, écart d'arrondi)</span><span>Taux réel : 2 962 = 980 000 × t × 20/365 → t ≈ 5,52 %</span></div>
-    <p class="st">2. Escompte (+ découvert pour le reste)</p>
+    <p class="st">2. Escompte (+ découvert pour le reste)</p><span class="qq"><b>Question </b> 2. Coût de l'escompte complété par du découvert ?</span><span class="why"><b>Méthode :</b> coût de l'escompte = Σ (valeur de chaque effet × (taux d'escompte + endos) × jours / 365) + commissions par effet. Les jours vont du lendemain de la remise jusqu'à l'<b>échéance de l'effet</b> (pas la fin du déficit), plus les jours de banque. Si la somme reçue ne couvre pas tout le déficit, on finance le reste en découvert.</span>
     <div class="calc"><span>Taux = 7,5 % + 0,6 % = 8,1 %</span><span>300 000 × 8,1 % × 21/365 = 1 398,08 €</span><span>620 000 × 8,1 % × 31/365 = 4 265,26 €</span><span>Manipulation = 5 × 17 = 85 € → escompte = 5 748,34 €</span><span>Reçu = 920 000 − 5 748,34 = 914 251,66 → il manque 65 748,34 €</span><span>Découvert sur le reste = 65 748,34 × 8,5 % × 20/365 + 65 748,34 × 0,05 % = 339,10 €</span><span>Coût total = 6 087,44 € → t = 11,34 %</span></div>
-    <p class="st">3. Découvert seul</p>
+    <p class="st">3. Découvert seul</p><span class="qq"><b>Question </b> 3. Coût du découvert seul ?</span><span class="why"><b>Méthode :</b> coût du découvert = montant × taux × jours / 365 + CPFD (commission sur le plus fort découvert, une fois par mois de découvert).</span>
     <div class="calc"><span>Agios = 980 000 × 8,5 % × 20/365 = 4 564,38 €</span><span>CPFD = 980 000 × 0,05 % = 490 €</span><span>Coût = 5 054,38 € → t = 9,41 %</span></div>
     <div class="tw"><table>
       <thead><tr><th>Solution</th><th class="n">Coût</th><th class="n">Taux réel</th></tr></thead>
@@ -312,16 +312,16 @@ td.sub{padding-left:1.6rem;color:var(--muted)}
     <div class="res"><strong>Le billet de trésorerie est le moins cher</strong>, à condition d'avoir accès au marché (150 000 € minimum, entreprise solide). L'escompte est le plus cher : le second effet est financé jusqu'au 30 avril, dix jours après la fin du déficit.</div>
   </div></details></div>
 <div class="ex"><h3>Exercice 6 · EPAR : quel placement ?</h3>
-  <div class="given"><span>Excédent 2 000 000 € pendant 20 jours, puis solde voisin de 0</span><span>Compte à terme : 3 %, durée 1 mois</span><span>Sicav monétaires : 2,9 %</span><span>Billet de trésorerie 2 000 000 € sur 20 jours : 3,12 %</span><span>Découvert 6 %, CPFD 1/2000</span></div>
+  <div class="given"><span>Excédent 2 000 000 € pendant 20 jours, puis solde voisin de 0</span><span>Compte à terme : 3 %, durée 1 mois</span><span>Sicav monétaires : 2,9 %</span><span>Billet de trésorerie 2 000 000 € sur 20 jours : 3,12 %</span><span>Découvert 6 %, CPFD 1/2000</span></div><div class="enonce"><span class="t">Questions</span><ol type="a"><li>Calculer le gain net d'un compte à terme d'un mois (avec le découvert qu'il impose).</li><li>Calculer le gain des Sicav monétaires.</li><li>Calculer le gain du billet de trésorerie.</li><li>Quel placement retenir ?</li></ol></div>
   <details><summary>Voir la correction proposée</summary><div class="body">
     <p class="src">Pas de corrigé en cours : correction proposée avec les méthodes du cours (base 365 jours, 1 mois = 30 jours).</p>
-    <p class="st">1. Compte à terme</p>
+    <p class="st">1. Compte à terme</p><span class="qq"><b>Question </b> 1. Gain net du compte à terme ?</span><span class="why"><b>Méthode :</b> intérêts du placement − coût du découvert créé si la durée dépasse celle de l'excédent.</span>
     <p>Il bloque les fonds <strong>1 mois</strong>, alors que l'excédent ne dure que 20 jours : il faut un découvert de 2 000 000 € pendant les 10 jours restants.</p>
     <div class="calc"><span>Intérêts = 2 000 000 × 3 % × 30/365 = 4 931,51 €</span><span>Agios = 2 000 000 × 6 % × 10/365 = 3 287,67 €</span><span>CPFD = 2 000 000 / 2 000 = 1 000 €</span><span>Gain net = 4 931,51 − 3 287,67 − 1 000 = 643,84 €</span></div>
-    <p class="st">2. Sicav monétaires</p>
+    <p class="st">2. Sicav monétaires</p><span class="qq"><b>Question </b> 2. Gain des Sicav ?</span><span class="why"><b>Méthode :</b> montant × taux × jours / 365, sur la seule durée de l'excédent (revente possible à tout moment).</span>
     <div class="calc"><span>Gain = 2 000 000 × 2,9 % × 20/365 = 3 178,08 €</span></div>
     <p>Liquides : on les revend au bout de 20 jours, sans découvert. Le rendement n'est qu'une prévision.</p>
-    <p class="st">3. Billet de trésorerie</p>
+    <p class="st">3. Billet de trésorerie</p><span class="qq"><b>Question </b> 3. Gain du billet de trésorerie ?</span><span class="why"><b>Méthode :</b> montant × taux × jours / 365.</span>
     <div class="calc"><span>Gain = 2 000 000 × 3,12 % × 20/365 = 3 419,18 €</span></div>
     <div class="tw"><table>
       <thead><tr><th>Placement</th><th class="n">Gain net</th></tr></thead>
@@ -335,7 +335,7 @@ td.sub{padding-left:1.6rem;color:var(--muted)}
   </div></details></div>
 
   <div class="ex"><h3>Exercice 7 · DUPLAN : plan de trésorerie</h3>
-  <div class="given"><span>Compte à terme : 5 %/an, d'une fin de mois à la suivante</span><span>Escompte : 9 % sur 30 jours, montant exact possible</span><span>Effets mobilisables : 4 000 échéant en mars, 3 500 en avril</span><span>Fin janvier : 1 000 plaçables</span></div>
+  <div class="given"><span>Compte à terme : 5 %/an, d'une fin de mois à la suivante</span><span>Escompte : 9 % sur 30 jours, montant exact possible</span><span>Effets mobilisables : 4 000 échéant en mars, 3 500 en avril</span><span>Fin janvier : 1 000 plaçables</span></div><div class="enonce"><span class="t">Questions</span><ol type="a"><li>Proposer, mois par mois, les placements et financements (compte à terme, escompte) qui ramènent la trésorerie vers zéro en fin de mois, et en calculer les montants.</li></ol></div>
   <div class="tw"><table>
     <thead><tr><th>En K€</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th><th class="n">Avril</th></tr></thead>
     <tbody>
@@ -347,14 +347,14 @@ td.sub{padding-left:1.6rem;color:var(--muted)}
   </table></div>
   <details><summary>Voir la correction proposée</summary><div class="body">
     <p class="src">Pas de corrigé en cours : plan proposé avec les méthodes du cours (compte à terme : 5 % / 12 par mois ; escompte sur 30 jours, base 365).</p>
-    <p class="st">Fin janvier : placer 1 000 sur le compte à terme</p>
+    <p class="st">Fin janvier : placer 1 000 sur le compte à terme</p><span class="qq"><b>Question </b> Que faire de l'excédent de fin janvier ?</span><span class="why"><b>Méthode :</b> placer l'excédent sur le compte à terme d'une fin de mois à la suivante (taux mensuel = 5 % / 12).</span>
     <div class="calc"><span>Récupéré fin février : 1 000 + 1 000 × 5 % / 12 = 1 004,17</span></div>
-    <p class="st">Février : escompter des effets de mars</p>
+    <p class="st">Février : escompter des effets de mars</p><span class="qq"><b>Question </b> Comment couvrir le déficit de février ?</span><span class="why"><b>Méthode :</b> escompter juste le montant nécessaire d'effets de mars : X × (1 − 9 % × 30/365) = déficit.</span>
     <div class="calc"><span>Flux de février : 2 + 6 000 − 9 502 + 1 004,17 = −2 495,83</span><span>Escompte du montant exact : X × (1 − 9 % × 30/365) = 2 495,83 → X ≈ 2 514,43</span><span>Agios ≈ 18,60</span></div>
-    <p class="st">Mars : moins d'encaissements</p>
+    <p class="st">Mars : moins d'encaissements</p><span class="qq"><b>Question </b> Quel est l'effet sur mars ?</span><span class="why"><b>Méthode :</b> les effets escomptés en février ne seront plus encaissés en mars.</span>
     <p>Les effets escomptés ne seront plus encaissés en mars : encaissements = 6 500 − 2 514,43 = 3 985,57.</p>
     <div class="calc"><span>Fin mars : 0 + 3 985,57 − 2 800 = 1 185,57</span><span>Placer 1 185 sur le compte à terme jusqu'à fin avril → 1 185 + 4,94 = 1 189,94</span></div>
-    <p class="st">Avril</p>
+    <p class="st">Avril</p><span class="qq"><b>Question </b> Et en avril ?</span><span class="why"><b>Méthode :</b> même logique : trésorerie de début + flux du mois + placement récupéré.</span>
     <div class="calc"><span>Fin avril : 0,57 + 5 800 − 7 025 + 1 189,94 ≈ −34,5</span></div>
     <div class="tw"><table>
       <thead><tr><th>En K€</th><th class="n">Janvier</th><th class="n">Février</th><th class="n">Mars</th><th class="n">Avril</th></tr></thead>
@@ -398,4 +398,12 @@ td.sub{padding-left:1.6rem;color:var(--muted)}
 <footer>Classeur de révision · Gestion de trésorerie · Partie 2. Sources : support « Gestion de trésorerie, partie 2 » et corrections des exercices 1, 2, 3 et 5.</footer>
 </div>
 <script>addEventListener("beforeprint",()=>document.querySelectorAll("details").forEach(d=>d.open=true))</script>
-</body></html>
+<style id="qp-css">.enonce{border:1px solid rgba(128,128,128,.35);border-radius:10px;padding:10px 14px;margin:10px 0 14px;background:rgba(128,128,128,.07)}
+.enonce>.t{display:block;font:600 11.5px/1.3 ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;opacity:.75;margin-bottom:6px}
+.enonce ol,.enonce ul{margin:4px 0 0;padding-left:22px}.enonce li{margin:3px 0}
+.qq{display:block;margin:12px 0 6px;padding:7px 11px;border-left:4px solid #c2571f;background:rgba(194,87,31,.09);border-radius:0 7px 7px 0;font-weight:600;line-height:1.45}
+.qq>b:first-child{color:#c2571f;margin-right:4px}
+.why{display:block;margin:6px 0;padding:6px 10px;border-left:3px solid rgba(128,128,128,.5);font-size:.95em;opacity:.95}
+.why>b:first-child{opacity:.8}
+.rep{display:block;margin:4px 0 0}.rep>b:first-child{color:#1f7a4d}
+@media print{.enonce,.qq{break-inside:avoid}}</style></body></html>

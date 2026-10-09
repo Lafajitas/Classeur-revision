@@ -562,16 +562,16 @@ Sans risque = VL − actions</div><p>Plancher = valeur actualisée du montant ga
   <div class="exo card" id="ex-rentab">
     <h3>Exercice 1 · Rentabilité simple et continue <span class="src">Entraînement</span></h3>
     <p>Vous achetez une action 40 €. Un an plus tard elle cote 44 € et a versé un dividende de 1,20 €.</p>
-    <ol><li>Calculez la rentabilité simple, en séparant plus-value et rendement.</li><li>Calculez la rentabilité continue (hors dividende).</li><li>Le cours revient ensuite de 44 € à 40 €. Comparez les deux mesures sur l'aller-retour.</li></ol>
+    <div class="enonce"><span class="t">Questions</span><ol><li>Calculez la rentabilité simple, en séparant plus-value et rendement.</li><li>Calculez la rentabilité continue (hors dividende).</li><li>Le cours revient ensuite de 44 € à 40 €. Comparez les deux mesures sur l'aller-retour.</li></ol></div>
     <details><summary>Voir le corrigé</summary><div class="body">
-      <p class="st">1. Rentabilité simple</p>
+      <p class="st">1. Rentabilité simple</p><span class="qq"><b>Question 1</b> Calculez la rentabilité simple, en séparant plus-value et rendement.</span>
       <div class="eq">R = [C(1) + D − C(0)] / C(0) = (44 + 1,20 − 40) / 40 = 5,20 / 40 = 13 %
   dont plus-value = (44 − 40)/40 = 4/40 = 10 %
   dont rendement  = 1,20/40          = 3 %</div>
-      <p class="st">2. Rentabilité continue</p>
+      <p class="st">2. Rentabilité continue</p><span class="qq"><b>Question 2</b> Calculez la rentabilité continue (hors dividende).</span>
       <div class="eq">X = ln(44) − ln(40) = ln(44/40) = ln(1,10) = 0,0953 → 9,53 %</div>
       <p>La rentabilité continue est toujours un peu inférieure à la rentabilité simple pour une hausse.</p>
-      <p class="st">3. L'aller-retour 40 → 44 → 40</p>
+      <p class="st">3. L'aller-retour 40 → 44 → 40</p><span class="qq"><b>Question 3</b> Le cours revient ensuite de 44 € à 40 €. Comparez les deux mesures sur l'aller-retour.</span>
       <div class="eq">Simple :    +10 %  puis  (40 − 44)/44 = −9,09 %   → pas symétrique
 Continue :  +9,53 % puis  ln(40/44)   = −9,53 %   → symétrique</div>
       <p class="res">En continu, une hausse et une baisse qui ramènent au même prix ont la même valeur absolue : c'est l'intérêt de cette convention.</p>
@@ -582,25 +582,25 @@ Continue :  +9,53 % puis  ln(40/44)   = −9,53 %   → symétrique</div>
   <div class="exo card" id="ex-reservation">
     <h3>Exercice 2 · Les seuils de réservation <span class="src">Cours</span></h3>
     <p>Le cours de référence (clôture de la veille) d'une action est CR = 100 €. Seuils statiques ±10 %, dynamiques ±2 %.</p>
-    <ol><li>Cas 1 : la valeur ouvre à 104 €, puis le cours monte jusqu'à 114,40 €. Donnez les fourchettes successives.</li><li>Cas 2 : en pré-ouverture, le cours théorique d'ouverture ressort à 112 €. Que se passe-t-il ?</li><li>Seuil dynamique : après l'ouverture à 104 €, une transaction a lieu à 104,50 €. Donnez les fourchettes.</li></ol>
+    <div class="enonce"><span class="t">Questions</span><ol><li>Cas 1 : la valeur ouvre à 104 €, puis le cours monte jusqu'à 114,40 €. Donnez les fourchettes successives.</li><li>Cas 2 : en pré-ouverture, le cours théorique d'ouverture ressort à 112 €. Que se passe-t-il ?</li><li>Seuil dynamique : après l'ouverture à 104 €, une transaction a lieu à 104,50 €. Donnez les fourchettes.</li></ol></div>
     <details><summary>Voir le corrigé</summary><div class="body">
       <p class="st">Étape préalable : la fourchette de pré-ouverture</p>
       <div class="eq">100 × 1,10 = 110      100 × 0,90 = 90      → l'ouverture doit se faire dans [90 ; 110]</div>
-      <p class="st">1. Cas 1 (ouverture dans la fourchette)</p>
+      <p class="st">1. Cas 1 (ouverture dans la fourchette)</p><span class="qq"><b>Question 1</b> Cas 1 : la valeur ouvre à 104 €, puis le cours monte jusqu'à 114,40 €. Donnez les fourchettes successives.</span>
       <ol class="steps">
         <li>104 € est dans [90 ; 110] → la valeur ouvre normalement : CO = 104.</li>
         <li>Nouveaux seuils statiques, calculés sur le cours d'ouverture : <span class="res">104 × 1,10 = 114,40</span> et <span class="res">104 × 0,90 = 93,60</span>.</li>
         <li>Le cours atteint 114,40 → seuil touché → <strong>réservation</strong> (cotation suspendue 5 minutes).</li>
         <li>Les seuils sont recalculés sur ce dernier cours : <span class="res">114,40 × 1,10 = 125,84 ≈ 125,80</span> et <span class="res">114,40 × 0,90 = 102,96 ≈ 103</span>.</li>
       </ol>
-      <p class="st">2. Cas 2 (ouverture hors fourchette)</p>
+      <p class="st">2. Cas 2 (ouverture hors fourchette)</p><span class="qq"><b>Question 2</b> Cas 2 : en pré-ouverture, le cours théorique d'ouverture ressort à 112 €. Que se passe-t-il ?</span>
       <ol class="steps">
         <li>112 &gt; 110 → l'ouverture est impossible : la valeur est <strong>réservée à la hausse</strong> à 9h00.</li>
         <li>Pendant la réservation (9h00–9h05), la fourchette est élargie à partir du seuil touché : <span class="res">110 × 1,10 = 121</span>.</li>
         <li>112 est maintenant dans la fourchette → la valeur ouvre à 9h05 à <span class="res">CO = 112</span>.</li>
         <li>Nouveaux seuils statiques : <span class="res">112 × 1,10 = 123,20</span> et <span class="res">112 × 0,90 = 100,80</span>.</li>
       </ol>
-      <p class="st">3. Seuil dynamique</p>
+      <p class="st">3. Seuil dynamique</p><span class="qq"><b>Question 3</b> Seuil dynamique : après l'ouverture à 104 €, une transaction a lieu à 104,50 €. Donnez les fourchettes.</span>
       <ol class="steps">
         <li>Après l'ouverture à 104 : seuils statiques 93,60 / 114,40 (inchangés) et seuils dynamiques <span class="res">104 × 1,02 = 106,08 ≈ 106</span> et <span class="res">104 × 0,98 = 101,92 ≈ 102</span>.</li>
         <li>Transaction à 104,50 (dans [102 ; 106]) → elle passe, et le seuil dynamique se déplace avec le <strong>dernier cours</strong> : <span class="res">104,50 × 1,02 = 106,59 ≈ 106,5</span> et <span class="res">104,50 × 0,98 = 102,41 ≈ 102,5</span>.</li>
@@ -614,7 +614,7 @@ Continue :  +9,53 % puis  ln(40/44)   = −9,53 %   → symétrique</div>
   <div class="exo card">
     <h3>Exercice 3 · Couverture au SRD <span class="src">Entraînement</span></h3>
     <p>Un client passe au SRD un ordre d'achat de 12 000 € sur une valeur du CAC 40. Quelle couverture doit-il déposer s'il la constitue (a) en espèces, (b) en obligations cotées, (c) en actions cotées ? L'ordre est passé 3 jours de bourse avant la fin du mois : quand est-il réglé ?</p>
-    <details><summary>Voir le corrigé</summary><div class="body">
+    <details><summary>Voir le corrigé</summary><div class="body"><span class="qq"><b>Question </b> Un client passe au SRD un ordre d'achat de 12 000 € sur une valeur du CAC 40. Quelle couverture doit-il déposer s'il la constitue (a) en espèces, (b) en obligations cotées, (c) en actions cotées ? L'ordre est passé 3 jours de bourse avant la fin du mois : quand est-il réglé ?</span>
       <ol class="steps">
         <li>Espèces, bons du Trésor, OPCVM monétaires : 20 % → <span class="res">12 000 × 0,20 = 2 400 €</span>.</li>
         <li>Obligations, OPCVM obligataires : 25 % → <span class="res">12 000 × 0,25 = 3 000 €</span>.</li>
@@ -634,9 +634,9 @@ Continue :  +9,53 % puis  ln(40/44)   = −9,53 %   → symétrique</div>
       <thead><tr><th>Période</th><th class="num">rA</th><th class="num">rB</th></tr></thead>
       <tbody><tr><td>1</td><td class="num">11 %</td><td class="num">−3 %</td></tr><tr><td>2</td><td class="num">9 %</td><td class="num">15 %</td></tr><tr><td>3</td><td class="num">25 %</td><td class="num">2 %</td></tr><tr><td>4</td><td class="num">7 %</td><td class="num">20 %</td></tr><tr><td>5</td><td class="num">−2 %</td><td class="num">6 %</td></tr></tbody>
     </table></div>
-    <ol><li>Calculez E(rA), E(rB), Var(rA), Var(rB), Cov(rA,rB) et ρA,B (on divise par 5, comme dans le cours).</li><li>Calculez la rentabilité et le risque du portefeuille équipondéré.</li><li>Retrouvez le tableau du cours pour a = 100 %, 75 %, 25 %, 0 %.</li></ol>
+    <div class="enonce"><span class="t">Questions</span><ol><li>Calculez E(rA), E(rB), Var(rA), Var(rB), Cov(rA,rB) et ρA,B (on divise par 5, comme dans le cours).</li><li>Calculez la rentabilité et le risque du portefeuille équipondéré.</li><li>Retrouvez le tableau du cours pour a = 100 %, 75 %, 25 %, 0 %.</li></ol></div>
     <details><summary>Voir le corrigé</summary><div class="body">
-      <p class="st">1. Moyennes</p>
+      <p class="st">1. Moyennes</p><span class="qq"><b>Question 1</b> Calculez E(rA), E(rB), Var(rA), Var(rB), Cov(rA,rB) et ρA,B (on divise par 5, comme dans le cours).</span>
       <div class="eq">E(rA) = (11 + 9 + 25 + 7 − 2) / 5 = 50/5 = 10 %
 E(rB) = (−3 + 15 + 2 + 20 + 6) / 5 = 40/5 = 8 %</div>
       <p class="st">Écarts à la moyenne et produits</p>
@@ -656,14 +656,14 @@ Var(rB) = 0,0354/5 = 0,00708    → σB = √0,00708 = 8,41 %
 Cov(rA,rB) = −0,0120/5 = −0,0024
 ρA,B = −0,0024 / (0,0872 × 0,0841) = −0,0024 / 0,007335 = −0,33</div>
       <p>La corrélation est négative : quand A monte, B a tendance à baisser. La diversification va être très efficace.</p>
-      <p class="st">2. Portefeuille équipondéré (a = 0,5)</p>
+      <p class="st">2. Portefeuille équipondéré (a = 0,5)</p><span class="qq"><b>Question 2</b> Calculez la rentabilité et le risque du portefeuille équipondéré.</span>
       <div class="eq">E(Rp) = 0,5 × 10 % + 0,5 × 8 % = 9 %
 
 Var(Rp) = 0,5² × 0,0076 + 0,5² × 0,00708 + 2 × 0,5 × 0,5 × (−0,0024)
         = 0,0019   + 0,00177   − 0,0012
         = 0,00247   → σp = √0,00247 = 4,97 %</div>
       <p class="res">Avec 9 % de rentabilité, le portefeuille a un risque de 4,97 %, presque deux fois plus faible que celui de chaque titre (8,72 % et 8,41 %).</p>
-      <p class="st">3. Autres pondérations</p>
+      <p class="st">3. Autres pondérations</p><span class="qq"><b>Question 3</b> Retrouvez le tableau du cours pour a = 100 %, 75 %, 25 %, 0 %.</span>
       <div class="eq">a = 75 % : E = 0,75×10 + 0,25×8 = 9,5 %
           Var = 0,5625×0,0076 + 0,0625×0,00708 + 2×0,75×0,25×(−0,0024)
               = 0,004275 + 0,0004425 − 0,0009 = 0,0038175 → σ = 6,18 %
@@ -683,7 +683,7 @@ a = 100 % : 10 % ; 8,72 %       a = 0 % : 8 % ; 8,41 %</div>
   <div class="exo card">
     <h3>Exercice 5 · Le portefeuille de variance minimale <span class="src">Cours</span></h3>
     <p>Avec les données de l'exercice 4, déterminez la pondération a* qui minimise le risque, puis la rentabilité et l'écart-type de ce portefeuille.</p>
-    <details><summary>Voir le corrigé</summary><div class="body">
+    <details><summary>Voir le corrigé</summary><div class="body"><span class="qq"><b>Question </b> Avec les données de l'exercice 4, déterminez la pondération a* qui minimise le risque, puis la rentabilité et l'écart-type de ce portefeuille.</span>
       <p class="st">1. Formule (dérivée de la variance annulée)</p>
       <div class="eq">a* = [Var(rB) − Cov(rA,rB)] / [Var(rA) + Var(rB) − 2Cov(rA,rB)]</div>
       <p class="st">2. Application</p>
@@ -706,14 +706,14 @@ a* = 0,00948 / 0,01948 = 0,4867 → 48,67 % en A et 51,33 % en B</div>
   <div class="exo card">
     <h3>Exercice 6 · Deux actifs parfaitement anti-corrélés <span class="src">Entraînement</span></h3>
     <div class="given"><span><b>A</b>E = 12 %, σ = 20 %</span><span><b>C</b>E = 6 %, σ = 10 %</span><span><b>ρA,C</b>−1</span></div>
-    <ol><li>Trouvez le portefeuille de variance minimale, sa rentabilité et son risque.</li><li>Quel serait le risque de ce même portefeuille si ρ = +1 ?</li></ol>
+    <div class="enonce"><span class="t">Questions</span><ol><li>Trouvez le portefeuille de variance minimale, sa rentabilité et son risque.</li><li>Quel serait le risque de ce même portefeuille si ρ = +1 ?</li></ol></div>
     <details><summary>Voir le corrigé</summary><div class="body">
-      <p class="st">1. ρ = −1</p>
+      <p class="st">1. ρ = −1</p><span class="qq"><b>Question 1</b> Trouvez le portefeuille de variance minimale, sa rentabilité et son risque.</span>
       <div class="eq">a* = σC / (σA + σC) = 10 / (20 + 10) = 1/3 = 33,3 % en A, 66,7 % en C
 σp = |a·σA − (1−a)·σC| = |0,333×20 − 0,667×10| = |6,67 − 6,67| = 0 %
 E(Rp) = 0,333 × 12 + 0,667 × 6 = 4 + 4 = 8 %</div>
       <p>Les deux actifs bougent exactement en sens inverse : les pertes de l'un compensent les gains de l'autre, le risque disparaît.</p>
-      <p class="st">2. ρ = +1</p>
+      <p class="st">2. ρ = +1</p><span class="qq"><b>Question 2</b> Quel serait le risque de ce même portefeuille si ρ = +1 ?</span>
       <div class="eq">σp = a·σA + (1−a)·σC = 0,333×20 + 0,667×10 = 6,67 + 6,67 = 13,33 %</div>
       <p class="res">Même composition, même rentabilité (8 %), mais 13,33 % de risque au lieu de 0 % : toute la réduction du risque vient de la corrélation.</p>
     </div></details>
@@ -723,15 +723,15 @@ E(Rp) = 0,333 × 12 + 0,667 × 6 = 4 + 4 = 8 %</div>
   <div class="exo card">
     <h3>Exercice 7 · Actif sans risque et CML <span class="src">Entraînement</span></h3>
     <div class="given"><span><b>rf</b>2 %</span><span><b>Marché M</b>E = 8 %, σ = 16 %</span></div>
-    <ol><li>Écrivez l'équation de la CML.</li><li>Un investisseur accepte 12 % de volatilité : quelle allocation et quelle rentabilité ?</li><li>Un autre vise 10 % de rentabilité : quelle allocation et quel risque ?</li></ol>
+    <div class="enonce"><span class="t">Questions</span><ol><li>Écrivez l'équation de la CML.</li><li>Un investisseur accepte 12 % de volatilité : quelle allocation et quelle rentabilité ?</li><li>Un autre vise 10 % de rentabilité : quelle allocation et quel risque ?</li></ol></div>
     <details><summary>Voir le corrigé</summary><div class="body">
-      <p class="st">1. Équation</p>
+      <p class="st">1. Équation</p><span class="qq"><b>Question 1</b> Écrivez l'équation de la CML.</span>
       <div class="eq">Pente = (rM − rf)/σM = (8 − 2)/16 = 0,375
 CML : E(rp) = 2 % + 0,375 × σp</div>
-      <p class="st">2. σp = 12 %</p>
+      <p class="st">2. σp = 12 %</p><span class="qq"><b>Question 2</b> Un investisseur accepte 12 % de volatilité : quelle allocation et quelle rentabilité ?</span>
       <div class="eq">σp = a × σM  ⇒  a = 12/16 = 0,75   → 75 % dans M, 25 % prêtés à rf
 E(rp) = 0,75 × 8 + 0,25 × 2 = 6 + 0,5 = 6,5 %     (vérif. : 2 + 0,375×12 = 6,5 %)</div>
-      <p class="st">3. E(rp) = 10 %</p>
+      <p class="st">3. E(rp) = 10 %</p><span class="qq"><b>Question 3</b> Un autre vise 10 % de rentabilité : quelle allocation et quel risque ?</span>
       <div class="eq">10 = 2 + 0,375 × σp  ⇒  σp = 8/0,375 = 21,33 %
 a = 21,33/16 = 1,333  → 133,3 % dans M, financé en empruntant 33,3 % au taux rf</div>
       <p class="res">Les deux investisseurs détiennent le même portefeuille risqué M (Tobin) ; seule la part M/actif sans risque change selon leur aversion au risque.</p>
@@ -742,18 +742,18 @@ a = 21,33/16 = 1,333  → 133,3 % dans M, financé en empruntant 33,3 % au taux 
   <div class="exo card">
     <h3>Exercice 8 · MEDAF, levier et prime de risque <span class="src">Entraînement</span></h3>
     <p>Une société non endettée a un bêta de 0,8. Elle s'endette jusqu'à D/CP = 0,5. Taux sans risque 3 %. Pour l'ensemble du marché, le rendement en dividende attendu est de 3 % et la croissance espérée des dividendes de 4,5 %.</p>
-    <ol><li>Calculez la rentabilité attendue du marché et la prime de risque ex ante.</li><li>Calculez le bêta après endettement.</li><li>Calculez la rentabilité exigée avant et après endettement.</li><li>Le titre offre une rentabilité actuarielle de 10 %. Est-il sur- ou sous-évalué ?</li></ol>
+    <div class="enonce"><span class="t">Questions</span><ol><li>Calculez la rentabilité attendue du marché et la prime de risque ex ante.</li><li>Calculez le bêta après endettement.</li><li>Calculez la rentabilité exigée avant et après endettement.</li><li>Le titre offre une rentabilité actuarielle de 10 %. Est-il sur- ou sous-évalué ?</li></ol></div>
     <details><summary>Voir le corrigé</summary><div class="body">
-      <p class="st">1. Prime de risque (Gordon-Shapiro)</p>
+      <p class="st">1. Prime de risque (Gordon-Shapiro)</p><span class="qq"><b>Question 1</b> Calculez la rentabilité attendue du marché et la prime de risque ex ante.</span>
       <div class="eq">rm = Div₁/P₀ + g = 3 % + 4,5 % = 7,5 %
 Prime = rm − rf = 7,5 − 3 = 4,5 %</div>
-      <p class="st">2. Bêta endetté</p>
+      <p class="st">2. Bêta endetté</p><span class="qq"><b>Question 2</b> Calculez le bêta après endettement.</span>
       <div class="eq">βE = βNE × (1 + D/CP) = 0,8 × (1 + 0,5) = 0,8 × 1,5 = 1,2</div>
-      <p class="st">3. MEDAF</p>
+      <p class="st">3. MEDAF</p><span class="qq"><b>Question 3</b> Calculez la rentabilité exigée avant et après endettement.</span>
       <div class="eq">Avant : E(r) = 3 + 0,8 × 4,5 = 3 + 3,6 = 6,6 %
 Après : E(r) = 3 + 1,2 × 4,5 = 3 + 5,4 = 8,4 %</div>
       <p>L'endettement ajoute un risque financier au risque d'exploitation : l'actionnaire exige 1,8 point de plus.</p>
-      <p class="st">4. Position par rapport à la droite</p>
+      <p class="st">4. Position par rapport à la droite</p><span class="qq"><b>Question 4</b> Le titre offre une rentabilité actuarielle de 10 %. Est-il sur- ou sous-évalué ?</span>
       <p>Le marché offre 10 % pour un risque qui n'en justifie que 8,4 % : le titre est <strong>au-dessus</strong> de la droite de marché. Sa rentabilité attendue est trop élevée, donc son prix est trop bas.</p>
       <p class="res">Titre sous-évalué → à acheter (son cours devrait monter jusqu'à ce que sa rentabilité revienne sur la droite).</p>
     </div></details>
@@ -764,9 +764,9 @@ Après : E(r) = 3 + 1,2 × 4,5 = 3 + 5,4 = 8,4 %</div>
   <div class="exo card" id="ex-ff5">
     <h3>Exercice 9 · Lire une régression Fama-French à 5 facteurs <span class="src">Entraînement</span></h3>
     <p>La régression mensuelle d'un fonds donne : α = 0,2 %, β = 1,05, s = 0,6, h = −0,3, r = 0,4, c = −0,2. Le mois prochain, on anticipe : Rm − Rf = 1,5 %, SMB = 0,8 %, HML = −0,5 %, RMW = 0,6 %, CMA = 0,4 %, Rf = 0,3 %.</p>
-    <ol><li>Décrivez le style du fonds à partir des coefficients.</li><li>Calculez la rentabilité attendue du fonds.</li><li>Quelle part vient des facteurs et quelle part du gérant ?</li></ol>
+    <div class="enonce"><span class="t">Questions</span><ol><li>Décrivez le style du fonds à partir des coefficients.</li><li>Calculez la rentabilité attendue du fonds.</li><li>Quelle part vient des facteurs et quelle part du gérant ?</li></ol></div>
     <details><summary>Voir le corrigé</summary><div class="body">
-      <p class="st">1. Lecture des coefficients</p>
+      <p class="st">1. Lecture des coefficients</p><span class="qq"><b>Question 1</b> Décrivez le style du fonds à partir des coefficients.</span>
       <ul>
         <li>β = 1,05 : un peu plus sensible que le marché.</li>
         <li>s = 0,6 &gt; 0 : biais <strong>petites capitalisations</strong>.</li>
@@ -774,7 +774,7 @@ Après : E(r) = 3 + 1,2 × 4,5 = 3 + 5,4 = 8,4 %</div>
         <li>r = 0,4 &gt; 0 : entreprises à <strong>rentabilité robuste</strong>.</li>
         <li>c = −0,2 &lt; 0 : entreprises qui <strong>investissent de façon agressive</strong>.</li>
       </ul>
-      <p class="st">2. Prime attendue, facteur par facteur</p>
+      <p class="st">2. Prime attendue, facteur par facteur</p><span class="qq"><b>Question 2</b> Calculez la rentabilité attendue du fonds.</span>
       <div class="eq">Marché : 1,05 × 1,5  = 1,575 %
 SMB :    0,6  × 0,8  = 0,480 %
 HML :   −0,3  × (−0,5) = +0,150 %
@@ -783,7 +783,7 @@ CMA :   −0,2  × 0,4  = −0,080 %
 Total facteurs        = 2,365 %
 + α                   = 0,200 %
 Rp − Rf               = 2,565 %   →   Rp = 2,565 + 0,3 = 2,865 % sur le mois</div>
-      <p class="st">3. Facteurs ou gérant ?</p>
+      <p class="st">3. Facteurs ou gérant ?</p><span class="qq"><b>Question 3</b> Quelle part vient des facteurs et quelle part du gérant ?</span>
       <p>2,365 % sur 2,565 % d'excès de rentabilité (≈ 92 %) viennent des expositions aux facteurs, que l'on pourrait répliquer à bas coût. Seul α = 0,2 % (≈ 8 %) est la vraie valeur ajoutée du gérant.</p>
       <p class="res">Le négatif de HML joue ici en faveur du fonds : comme les titres growth ont battu les titres value (HML &lt; 0), être « anti-value » rapporte. Les signes se multiplient.</p>
     </div></details>
@@ -794,17 +794,17 @@ Rp − Rf               = 2,565 %   →   Rp = 2,565 + 0,3 = 2,865 % sur le mois
   <!-- EX 9 -->
   <div class="exo card">
     <h3>Exercice 10 · RSI et règle des filtres <span class="src">Entraînement + données du cours</span></h3>
-    <ol><li>Sur 14 jours, la moyenne des hausses d'un titre est de 1,50 € et la moyenne des baisses de 0,50 €. Calculez le RSI et interprétez.</li><li>Même question avec 0,40 € de hausse moyenne et 1,20 € de baisse moyenne.</li><li>Fama et Blume : avec un filtre de 0,5 %, la rentabilité brute est de 11,5 % mais la nette de −103,6 % (12 514 transactions). Qu'en concluez-vous sur l'efficience ?</li></ol>
+    <div class="enonce"><span class="t">Questions</span><ol><li>Sur 14 jours, la moyenne des hausses d'un titre est de 1,50 € et la moyenne des baisses de 0,50 €. Calculez le RSI et interprétez.</li><li>Même question avec 0,40 € de hausse moyenne et 1,20 € de baisse moyenne.</li><li>Fama et Blume : avec un filtre de 0,5 %, la rentabilité brute est de 11,5 % mais la nette de −103,6 % (12 514 transactions). Qu'en concluez-vous sur l'efficience ?</li></ol></div>
     <details><summary>Voir le corrigé</summary><div class="body">
-      <p class="st">1. Premier titre</p>
+      <p class="st">1. Premier titre</p><span class="qq"><b>Question 1</b> Sur 14 jours, la moyenne des hausses d'un titre est de 1,50 € et la moyenne des baisses de 0,50 €. Calculez le RSI et interprétez.</span>
       <div class="eq">Ratio = 1,50 / 0,50 = 3
 RSI = 100 − 100/(1 + 3) = 100 − 25 = 75</div>
       <p>RSI &gt; 70 : titre « suracheté ». Signal de <strong>vente</strong> quand le RSI repasse sous 70.</p>
-      <p class="st">2. Second titre</p>
+      <p class="st">2. Second titre</p><span class="qq"><b>Question 2</b> Même question avec 0,40 € de hausse moyenne et 1,20 € de baisse moyenne.</span>
       <div class="eq">Ratio = 0,40 / 1,20 = 0,333
 RSI = 100 − 100/1,333 = 100 − 75 = 25</div>
       <p>RSI &lt; 30 : titre « survendu ». Signal d'<strong>achat</strong> quand le RSI repasse au-dessus de 30.</p>
-      <p class="st">3. Filtres</p>
+      <p class="st">3. Filtres</p><span class="qq"><b>Question 3</b> Fama et Blume : avec un filtre de 0,5 %, la rentabilité brute est de 11,5 % mais la nette de −103,6 % (12 514 transactions). Qu'en concluez-vous sur l'efficience ?</span>
       <ol class="steps">
         <li>En brut, 11,5 % bat l'achat-conservation (9,9 %) : il existe une légère dépendance de court terme dans les cours.</li>
         <li>Mais la stratégie demande 12 514 transactions : les frais détruisent tout le gain (−103,6 % net).</li>
@@ -820,9 +820,9 @@ RSI = 100 − 100/1,333 = 100 − 75 = 25</div>
   <div class="exo card" id="ex-coussin">
     <h3>Exercice 11 · La méthode du coussin (CPPI) <span class="src">Cours</span></h3>
     <div class="given"><span><b>Portefeuille</b>1 000 000 €</span><span><b>Garantie</b>90 % à l'échéance</span><span><b>Multiplicateur</b>3</span><span><b>rf</b>1 %</span></div>
-    <ol><li>Structurez le portefeuille initial.</li><li>Hypothèse H1 : le marché monte de 10 %. Valeur du portefeuille et nouvelle structure ?</li><li>Hypothèse H2 : le marché baisse de 10 %. Mêmes questions.</li></ol>
+    <div class="enonce"><span class="t">Questions</span><ol><li>Structurez le portefeuille initial.</li><li>Hypothèse H1 : le marché monte de 10 %. Valeur du portefeuille et nouvelle structure ?</li><li>Hypothèse H2 : le marché baisse de 10 %. Mêmes questions.</li></ol></div>
     <details><summary>Voir le corrigé</summary><div class="body">
-      <p class="st">1. Structure initiale</p>
+      <p class="st">1. Structure initiale</p><span class="qq"><b>Question 1</b> Structurez le portefeuille initial.</span>
       <ol class="steps">
         <li>Plancher : 90 % × 1 000 000 = <span class="res">900 000 €</span> (le cours le prend tel quel ; en toute rigueur on l'actualise au taux sans risque jusqu'à l'échéance).</li>
         <li>Coussin = VL − plancher = 1 000 000 − 900 000 = <span class="res">100 000 €</span>.</li>
@@ -830,7 +830,7 @@ RSI = 100 − 100/1,333 = 100 − 75 = 25</div>
         <li>Bons du Trésor = 1 000 000 − 300 000 = <span class="res">700 000 €</span>.</li>
       </ol>
       <p>Avec m = 3, on accepte une baisse maximale des actions de 1/3 ≈ 33 % : 300 000 × 33 % = 100 000 = le coussin.</p>
-      <p class="st">2. H1 : hausse de 10 %</p>
+      <p class="st">2. H1 : hausse de 10 %</p><span class="qq"><b>Question 2</b> Hypothèse H1 : le marché monte de 10 %. Valeur du portefeuille et nouvelle structure ?</span>
       <div class="eq">Actions : 300 000 × 1,10 = 330 000
 BdT :     700 000 × 1,01 = 707 000
 Pf₁ = 330 000 + 707 000 = 1 037 000
@@ -838,7 +838,7 @@ Pf₁ = 330 000 + 707 000 = 1 037 000
 Rééquilibrage : Actions = (1 037 000 − 900 000) × 3 = 137 000 × 3 = 411 000
                 BdT     = 1 037 000 − 411 000             = 626 000</div>
       <p>Le marché monte → le coussin grossit → on <strong>achète</strong> des actions (300 000 → 411 000).</p>
-      <p class="st">3. H2 : baisse de 10 %</p>
+      <p class="st">3. H2 : baisse de 10 %</p><span class="qq"><b>Question 3</b> Hypothèse H2 : le marché baisse de 10 %. Mêmes questions.</span>
       <div class="eq">Actions : 300 000 × 0,90 = 270 000
 BdT :     700 000 × 1,01 = 707 000
 Pf₁ = 270 000 + 707 000 = 977 000
@@ -856,7 +856,7 @@ Rééquilibrage : Actions = (977 000 − 900 000) × 3 = 77 000 × 3 = 231 000
   <div class="exo card">
     <h3>Exercice 12 · TRI ou rentabilité pondérée par le temps ? <span class="src">Cours</span></h3>
     <p>Un portefeuille vaut 100 USD au 1ᵉʳ janvier t et 105 USD au 31 décembre t. Un apport de 5 USD est fait le 1ᵉʳ janvier t+1, et le portefeuille vaut 125 USD au 31 décembre t+1. Quelle est sa rentabilité ?</p>
-    <details><summary>Voir le corrigé</summary><div class="body">
+    <details><summary>Voir le corrigé</summary><div class="body"><span class="qq"><b>Question </b> Un portefeuille vaut 100 USD au 1ᵉʳ janvier t et 105 USD au 31 décembre t. Un apport de 5 USD est fait le 1ᵉʳ janvier t+1, et le portefeuille vaut 125 USD au 31 décembre t+1. Quelle est sa rentabilité ?</span>
       <p class="st">1. Méthode du TRI (pondérée par les capitaux)</p>
       <div class="eq">100 + 5/(1+r) = 125/(1+r)²
 ⇔ 100(1+r)² + 5(1+r) − 125 = 0</div>
@@ -881,12 +881,12 @@ x = (−5 + 223,66) / 200 = 1,0933   → r = 9,33 %</div>
       <thead><tr><th>Fonds A</th><th class="num">Fréquence</th><th>Fonds B</th><th class="num">Fréquence</th></tr></thead>
       <tbody><tr><td>+18 %</td><td class="num">3/10</td><td>+42 %</td><td class="num">1/10</td></tr><tr><td>+11 %</td><td class="num">4/10</td><td>+12 %</td><td class="num">2/10</td></tr><tr><td>+8 %</td><td class="num">2/10</td><td>+7 %</td><td class="num">4/10</td></tr><tr><td>−24 %</td><td class="num">1/10</td><td>0 %</td><td class="num">3/10</td></tr></tbody>
     </table></div>
-    <ol><li>Calculez la moyenne et l'écart-type de chaque fonds.</li><li>Comparez les ratios de Sharpe. Lequel préfèrent les investisseurs, et pourquoi ?</li></ol>
+    <div class="enonce"><span class="t">Questions</span><ol><li>Calculez la moyenne et l'écart-type de chaque fonds.</li><li>Comparez les ratios de Sharpe. Lequel préfèrent les investisseurs, et pourquoi ?</li></ol></div>
     <details><summary>Voir le corrigé</summary><div class="body">
-      <p class="st">1. Moyennes</p>
+      <p class="st">1. Moyennes</p><span class="qq"><b>Question 1</b> Calculez la moyenne et l'écart-type de chaque fonds.</span>
       <div class="eq">A : 0,3×18 + 0,4×11 + 0,2×8 + 0,1×(−24) = 5,4 + 4,4 + 1,6 − 2,4 = 9 %
 B : 0,1×42 + 0,2×12 + 0,4×7 + 0,3×0     = 4,2 + 2,4 + 2,8 + 0   = 9 %</div>
-      <p class="st">2. Écarts-types (écarts à 9 %, en points)</p>
+      <p class="st">2. Écarts-types (écarts à 9 %, en points)</p><span class="qq"><b>Question 2</b> Comparez les ratios de Sharpe. Lequel préfèrent les investisseurs, et pourquoi ?</span>
       <div class="eq">A : 0,3×(9)² + 0,4×(2)² + 0,2×(−1)² + 0,1×(−33)²
     = 24,3 + 1,6 + 0,2 + 108,9 = 135      → σA = √135   = 11,6 %
 B : 0,1×(33)² + 0,2×(3)² + 0,4×(−2)² + 0,3×(−9)²
@@ -906,7 +906,7 @@ B : 0,1×(33)² + 0,2×(3)² + 0,4×(−2)² + 0,3×(−9)²
     <h3>Exercice 14 · Treynor contre Jensen <span class="src">Cours</span></h3>
     <div class="given"><span><b>rf</b>6 %</span><span><b>A</b>E = 13 %, β = 0,5</span><span><b>B</b>E = 19 %, β = 1,5</span></div>
     <p>Sur la droite du MEDAF, un β de 0,5 correspond à 9 % et un β de 1,5 à 15 %. Calculez l'alpha de Jensen et le ratio de Treynor des deux fonds. Que constatez-vous ?</p>
-    <details><summary>Voir le corrigé</summary><div class="body">
+    <details><summary>Voir le corrigé</summary><div class="body"><span class="qq"><b>Question </b> Sur la droite du MEDAF, un β de 0,5 correspond à 9 % et un β de 1,5 à 15 %. Calculez l'alpha de Jensen et le ratio de Treynor des deux fonds. Que constatez-vous ?</span>
       <p class="st">1. Retrouver la rentabilité du marché</p>
       <div class="eq">9 = 6 + 0,5 × (E(Rm) − 6)  ⇒  E(Rm) − 6 = 6  ⇒  E(Rm) = 12 %
 Vérif. β = 1,5 : 6 + 1,5 × 6 = 15 % ✓</div>
@@ -926,13 +926,13 @@ Marché : (12 − 6)/1 = 6 %</div>
     <h3>Exercice 15 · Classer deux fonds avec toutes les mesures <span class="src">Entraînement</span></h3>
     <div class="given"><span><b>rf</b>2 %</span><span><b>Marché</b>Rm = 7 %, σm = 12 %</span><span><b>X</b>Rp = 10 %, σ = 15 %, β = 1,2</span><span><b>Y</b>Rp = 8 %, σ = 10 %, β = 0,8</span></div>
     <p>Écarts annuels de X par rapport à son benchmark : +3 %, −1 %, +2 %, +4 %, +2 %.</p>
-    <ol><li>Calculez Sharpe, Treynor et alpha de Jensen pour X, Y et le marché.</li><li>Calculez le ratio d'information de X.</li><li>Quel fonds choisir ?</li></ol>
+    <div class="enonce"><span class="t">Questions</span><ol><li>Calculez Sharpe, Treynor et alpha de Jensen pour X, Y et le marché.</li><li>Calculez le ratio d'information de X.</li><li>Quel fonds choisir ?</li></ol></div>
     <details><summary>Voir le corrigé</summary><div class="body">
-      <p class="st">1. Sharpe = (Rp − rf)/σp</p>
+      <p class="st">1. Sharpe = (Rp − rf)/σp</p><span class="qq"><b>Question 1</b> Calculez Sharpe, Treynor et alpha de Jensen pour X, Y et le marché.</span>
       <div class="eq">X : (10 − 2)/15 = 0,533     Y : (8 − 2)/10 = 0,600     M : (7 − 2)/12 = 0,417</div>
-      <p class="st">2. Treynor = (Rp − rf)/βp</p>
+      <p class="st">2. Treynor = (Rp − rf)/βp</p><span class="qq"><b>Question 2</b> Calculez le ratio d'information de X.</span>
       <div class="eq">X : 8/1,2 = 6,67 %     Y : 6/0,8 = 7,50 %     M : 5/1 = 5,00 %</div>
-      <p class="st">3. Jensen = Rp − [rf + β(Rm − rf)]</p>
+      <p class="st">3. Jensen = Rp − [rf + β(Rm − rf)]</p><span class="qq"><b>Question 3</b> Quel fonds choisir ?</span>
       <div class="eq">X : 10 − (2 + 1,2 × 5) = 10 − 8 = +2 %
 Y :  8 − (2 + 0,8 × 5) =  8 − 6 = +2 %</div>
       <p class="st">4. Ratio d'information de X</p>
@@ -982,4 +982,12 @@ RI = 2 / 1,87 = 1,07</div>
 
 <footer>Fiche réalisée à partir des supports de P. Grandin : Les marchés d'actions, ch. 1 Théorie moderne du portefeuille (version 2025), ch. 2 Efficience des marchés, ch. 3 Gestion active et passive, ch. 4 Mesure de performance. Classeur de révision.</footer>
 </div>
-</body></html>
+<style id="qp-css">.enonce{border:1px solid rgba(128,128,128,.35);border-radius:10px;padding:10px 14px;margin:10px 0 14px;background:rgba(128,128,128,.07)}
+.enonce>.t{display:block;font:600 11.5px/1.3 ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;opacity:.75;margin-bottom:6px}
+.enonce ol,.enonce ul{margin:4px 0 0;padding-left:22px}.enonce li{margin:3px 0}
+.qq{display:block;margin:12px 0 6px;padding:7px 11px;border-left:4px solid #c2571f;background:rgba(194,87,31,.09);border-radius:0 7px 7px 0;font-weight:600;line-height:1.45}
+.qq>b:first-child{color:#c2571f;margin-right:4px}
+.why{display:block;margin:6px 0;padding:6px 10px;border-left:3px solid rgba(128,128,128,.5);font-size:.95em;opacity:.95}
+.why>b:first-child{opacity:.8}
+.rep{display:block;margin:4px 0 0}.rep>b:first-child{color:#1f7a4d}
+@media print{.enonce,.qq{break-inside:avoid}}</style></body></html>
