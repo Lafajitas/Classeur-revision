@@ -1,0 +1,682 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-eval_fiches">← Évaluation d'entreprises</a><span>· Classeur de révision</span></nav>
+
+<title>Fiche ANCC complète</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+/* Layout : gabarit des fiches du Classeur — colonne unique, parties du cours puis exercices corrigés, encadrés formule / à retenir / exemple */
+:root{
+  --bg:#f7f8fb; --paper:#ffffff; --fg:#1b2130; --muted:#5b6478; --line:#dfe3ec;
+  --accent:#0f6b5c; --accent-soft:#e3f1ed; --key:#b4540f; --key-soft:#fdf1e6; --ok:#1f7a4d; --bad:#b42318;
+  --display:"Fraunces", Georgia, serif; --body:"Source Sans 3", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#12151d; --paper:#1a1f2a; --fg:#e6e9f0; --muted:#9aa3b6; --line:#2c3342;
+  --accent:#4cc3ad; --accent-soft:#16302b; --key:#f0a868; --key-soft:#35261a; --ok:#6fcf9b; --bad:#ff8a80; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#12151d; --paper:#1a1f2a; --fg:#e6e9f0; --muted:#9aa3b6; --line:#2c3342;
+  --accent:#4cc3ad; --accent-soft:#16302b; --key:#f0a868; --key-soft:#35261a; --ok:#6fcf9b; --bad:#ff8a80; color-scheme:dark }
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:32px 64px}
+header{display:grid;gap:6px;padding-bottom:20px;border-bottom:2px solid var(--fg);margin-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-size:24px;margin:44px 0 14px;text-wrap:balance;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:600}
+h3{font-size:17px;margin:26px 0 8px;color:var(--accent)}
+p,li{max-width:70ch}
+ul,ol{padding-left:20px;margin:6px 0}
+li{margin:3px 0}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+nav a{font-size:14px;color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:4px 10px;border-radius:999px;background:var(--paper)}
+nav a:hover,nav a:focus-visible{border-color:var(--accent);outline:none}
+.f{background:var(--accent-soft);border-radius:8px;padding:10px 14px;margin:10px 0;overflow-x:auto}
+.key{background:var(--key-soft);border-left:3px solid var(--key);padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.key b:first-child{color:var(--key)}
+.ex{border:1px dashed var(--line);background:var(--paper);border-radius:8px;padding:12px 14px;margin:12px 0}
+.ex .t{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
+.q{border-top:1px solid var(--line);padding-top:6px;margin-top:10px}
+.q>b:first-child{font-family:var(--mono);color:var(--accent);margin-right:6px}
+.tbl{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;background:var(--paper);font-variant-numeric:tabular-nums;font-size:15px}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--accent-soft);font-weight:600}
+td.num{text-align:right;font-family:var(--mono);font-size:13.5px}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:6px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:8px}
+.steps li::before{content:counter(s);font-family:var(--mono);font-weight:600;color:var(--paper);background:var(--accent);border-radius:50%;width:24px;height:24px;display:grid;place-items:center;font-size:13px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.two>div{min-width:0}
+.mono{font-family:var(--mono);font-size:14px}
+.ok{color:var(--ok);font-weight:700}
+.no{color:var(--bad);font-weight:700}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+figure.chart{margin:12px 0;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px;overflow-x:auto}
+figure.chart svg{width:100%;min-width:420px;height:auto;display:block}
+.chart .g{stroke:var(--line);stroke-width:1}
+.chart .ax{stroke:var(--muted);stroke-width:1}
+.chart .tk{fill:var(--muted);font:12px var(--mono)}
+.chart .al{fill:var(--muted);font:13px var(--body)}
+.chart .pt{fill:var(--accent);stroke:var(--paper);stroke-width:1.5;fill-opacity:.85}
+.chart .pt:hover{fill:var(--key);fill-opacity:1}
+.chart .fit{stroke:var(--key);stroke-width:2}
+.det{border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--paper);border-radius:0 8px 8px 0;padding:10px 14px;margin:14px 0}
+.det>.t{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2px}
+.st{font-weight:700;margin:14px 0 4px;color:var(--fg)}
+.xl{font-size:14.5px}
+.cap{font-size:13px;color:var(--muted);margin-top:-4px}
+footer{margin-top:48px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+
+.chart .pt2{fill:var(--key);stroke:var(--paper);stroke-width:1.5;fill-opacity:.85}
+.chart .fit2{stroke:var(--accent);stroke-width:2}
+.chart .lg{font:13px var(--body);fill:var(--fg)}
+.sig{display:inline-block;font-family:var(--mono);font-size:12px;padding:1px 7px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+.sig.no{background:color-mix(in srgb,var(--bad) 12%,var(--paper));color:var(--bad)}
+.sig.ok{background:color-mix(in srgb,var(--ok) 14%,var(--paper));color:var(--ok)}
+.trap{background:color-mix(in srgb,var(--bad) 7%,var(--paper));border-left:3px solid var(--bad);padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.trap b:first-child{color:var(--bad)}
+</style>
+
+<style>.f{font-family:var(--mono);font-size:14px;white-space:pre-wrap;line-height:1.6} td.neg{color:var(--bad)} td.pos{color:var(--ok)} tr.tot td,tr.tot th{font-weight:700;border-top:2px solid var(--fg)} .tbl table{min-width:480px}</style>
+<style>details{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;background:var(--paper);padding:8px 14px;margin:10px 0}details summary{cursor:pointer;font-weight:600;color:var(--accent)}details[open] summary{margin-bottom:8px}@media print{details{break-inside:auto}}</style>
+<div class="wrap">
+<header>
+  <span class="eyebrow">Évaluation d'entreprises · Méthode patrimoniale · F. Romon · Cours du 8 octobre</span>
+  <h1>L'actif net comptable corrigé (ANCC) : la fiche complète</h1>
+  <p class="cap" style="margin-top:6px">Tout le chapitre ANCC : principes, fiscalité latente, incorporels, corporels, éléments financiers et circulants, passif, synthèse complète du cas Warrior, puis les cas Mangala et Pastouche corrigés pas à pas et 7 exercices d'entraînement. IS retenu : 33⅓ %.</p>
+</header>
+
+<nav aria-label="Sections">
+  <a href="#p1">1. Principes</a><a href="#p2">2. Impôts différés</a><a href="#p3">3. Incorporels</a><a href="#p4">4. Corporels</a><a href="#p5">5. Financiers et circulants</a><a href="#p6">6. Passif</a><a href="#p7">7. Synthèse Warrior</a><a href="#mangala">Cas Mangala</a><a href="#pastouche">Cas Pastouche</a><a href="#exo">Exercices</a><a href="#recap">Récap et pièges</a>
+</nav>
+
+<h3>Ce qu'il faut savoir faire</h3>
+<ul>
+  <li>Passer de l'<b>ANC</b> (actif net comptable) à l'<b>ANCC</b> en réévaluant chaque poste du bilan, actif <b>et</b> passif.</li>
+  <li>Choisir la bonne valeur : <b>valeur d'utilité</b> (biens d'exploitation) ou <b>valeur vénale</b> (biens hors exploitation).</li>
+  <li>Choisir le bon taux : <b>CMPC</b> pour les actifs, <b>coût de la dette</b> pour le crédit-bail et les emprunts.</li>
+  <li>Ne jamais oublier la <b>fiscalité latente</b> : impôts différés actifs (IDA) et passifs (IDP).</li>
+  <li>Conclure par la <b>valeur mathématique (intrinsèque) de l'action</b> = ANCC / nombre d'actions.</li>
+</ul>
+
+<!-- PARTIE 1 -->
+<h2 id="p1"><span class="n">PARTIE 1</span>Les principes de l'ANCC</h2>
+<h3>1.1 De l'ANC à l'ANCC</h3>
+<div class="two">
+<div class="ex"><span class="t">Étape 1 · ANC</span>L'actif net comptable reflète la valeur <b>comptable</b> de l'entreprise : capitaux propres − actif fictif (± ECP, − dividendes).</div>
+<div class="ex"><span class="t">Étape 2 · ANCC</span><b>Objectif</b> : réévaluer les valeurs du bilan (actif et passif) pour obtenir une valeur patrimoniale plus représentative de la <b>réalité économique</b> de l'entreprise.</div>
+</div>
+<div class="f">ANCC = ANC
+     + plus-values / − moins-values sur les actifs
+     − hausses / + baisses du passif exigible (dettes, provisions, engagements hors bilan)
+     − impôts différés passifs (IDP)
+     + impôts différés actifs (IDA)
+
+Valeur mathématique (intrinsèque) de l'action = ANCC / nombre d'actions</div>
+
+<h3>1.2 Les quatre réflexes de l'évaluateur</h3>
+<p>Deux hypothèses possibles : <b>continuité de l'exploitation</b> (cas général du cours) ou <b>liquidation</b>. Dans tous les cas il faut :</p>
+<div class="tbl"><table>
+<tr><th>Réflexe</th><th>Ce qu'il faut faire</th></tr>
+<tr><td><b>Contrôler</b></td><td>la présence réelle des éléments du patrimoine à la date d'évaluation</td></tr>
+<tr><td><b>Vérifier</b></td><td>l'état actuel des biens : entretien, âge, obsolescence technique</td></tr>
+<tr><td><b>Distinguer</b></td><td>les biens d'exploitation des biens hors exploitation</td></tr>
+<tr><td><b>Prendre en compte</b></td><td>les conséquences fiscales des retraitements</td></tr>
+</table></div>
+
+<h3>1.3 Qu'est-ce que la « valeur » d'un actif ?</h3>
+<div class="key"><b>Définition</b> : le prix qu'un chef d'entreprise <b>prudent et avisé</b> accepterait de décaisser pour cet actif, compte tenu de l'usage qu'il compte en faire pour réaliser les objectifs de l'entreprise.</div>
+<p>Pour l'obtenir, on peut se référer :</p>
+<ul>
+<li>à la valeur pratiquée sur un <b>marché</b> approprié ;</li>
+<li>à la valeur d'entrée en comptabilité × un <b>indice de prix spécifique</b> à la famille de biens ;</li>
+<li>à la valeur d'entrée × un indice d'<b>inflation générale</b> ;</li>
+<li>à l'<b>actualisation des flux futurs</b> de trésorerie.</li>
+</ul>
+
+<h3>1.4 Biens d'exploitation contre biens hors exploitation</h3>
+<div class="tbl"><table>
+<tr><th></th><th>Biens d'exploitation (indissociables)</th><th>Biens hors exploitation (dissociables)</th></tr>
+<tr><td>Définition</td><td>Nécessaires à l'activité. Ex. l'appareil photo d'un photographe.</td><td>Sans utilité pour l'activité : leur vente n'affecte pas l'exploitation. Ex. un véhicule utilitaire d'un photographe qui ne travaille qu'en studio.</td></tr>
+<tr><td>Valeur retenue</td><td><b>Valeur d'utilité</b> : prix d'achat ou de fabrication d'un actif de même usage, même âge, même obsolescence. En pratique : valeur de remplacement × coefficient de vétusté, ou flux futurs actualisés.</td><td><b>Valeur vénale</b> : comparaison avec les transactions sur des biens de même nature, sur le même marché, <b>nette des frais de cession</b>. On suppose que l'acheteur les revendra (équivalent trésorerie).</td></tr>
+<tr><td>Plus-value</td><td><b>Pas d'impôt</b> : la cession est lointaine par définition.</td><td><b>Impôt sur la plus-value déduit</b> : valeur nette = valeur vénale − (valeur vénale − VNC) × ⅓.</td></tr>
+<tr><td>Moins-value</td><td colspan="2"><b>IDA</b> = moins-value × ⅓ : perte de valeur non comptabilisée, donc future économie d'impôt.</td></tr>
+</table></div>
+
+<!-- PARTIE 2 -->
+<h2 id="p2"><span class="n">PARTIE 2</span>L'incidence fiscale : impôts différés</h2>
+<p>L'évaluation se fait à une date précise, à partir des documents comptables. Les règles comptables et les choix fiscaux créent des <b>décalages temporaires d'imposition</b> : pour comparer les entreprises sur des bases identiques, on les prend en compte avec des impôts différés, qui n'apparaissent pas en comptabilité.</p>
+<div class="two">
+<div class="key"><b>IDA · impôt différé actif</b> = créance fiscale latente → <b>s'ajoute</b> à l'ANCC.<br>Une charge déductible plus tard, ou une perte de valeur non encore comptabilisée, fera payer moins d'impôt.</div>
+<div class="trap"><b>IDP · impôt différé passif</b> = dette fiscale latente → <b>se retranche</b> de l'ANCC.<br>Un produit qui sera imposé plus tard ne vaut que ses ⅔ pour l'actionnaire.</div>
+</div>
+<div class="tbl"><table>
+<tr><th>Origine</th><th>IDA (× ⅓, à ajouter)</th><th>IDP (× ⅓, à retrancher)</th></tr>
+<tr><td><b>Respect des règles comptables</b></td><td>Amortissement des actifs fictifs (non-valeurs) : frais d'établissement, frais d'émission d'emprunt, primes de remboursement des obligations, charges à répartir · participation des salariés</td><td></td></tr>
+<tr><td><b>Choix fiscaux</b></td><td></td><td>Provision pour hausse des prix · amortissements dérogatoires · subventions d'investissement</td></tr>
+<tr><td><b>Corrections</b> d'erreurs, d'appréciations, d'omissions</td><td>Dépréciations à constater (actifs immobilisés, stocks, créances), moins-values</td><td>Provisions pour risques et charges devenues sans objet (reprise imposable), plus-values hors exploitation</td></tr>
+</table></div>
+<div class="det"><span class="t">Pourquoi × ⅓ ?</span>
+<ol class="steps">
+<li><span>On retire 42 000 de frais d'établissement de l'actif (actif fictif). Fiscalement, ils resteront déductibles : l'entreprise économisera 42 000 × ⅓ = <b>14 000</b> d'impôt. C'est un IDA.</span></li>
+<li><span>Une subvention d'investissement de 9 000 figure dans les capitaux propres. Elle sera reprise en résultat et imposée : seuls 9 000 × ⅔ = 6 000 reviennent à l'actionnaire. On retranche l'IDP de <b>3 000</b>.</span></li>
+</ol></div>
+
+<!-- PARTIE 3 -->
+<h2 id="p3"><span class="n">PARTIE 3</span>Les éléments incorporels</h2>
+<p>Longtemps jugés non significatifs, les incorporels ont souvent une valeur importante (parts de marché, projets de recherche, synergies). <b>Ce n'est pas parce qu'un élément n'est pas inscrit au bilan qu'il ne faut pas tenir compte de sa valeur.</b></p>
+<div class="two">
+<div class="ex"><span class="t">Critères d'inscription au bilan</span><ul><li>sous le contrôle de l'entreprise</li><li>source d'avantages économiques futurs</li><li>coût mesurable de façon fiable</li><li>identifiable : séparable des autres actifs, ou générateur de cash-flows futurs identifiables</li></ul></div>
+<div class="ex"><span class="t">Comptabilisés ou non</span><b>Non comptabilisés mais à évaluer</b> : parts de marché, projet en phase de recherche, marque créée en interne, liste de clients, publicité, formation.<br><b>Comptabilisés</b> : frais de développement, marques et brevets protégés, logiciels, quotas.</div>
+</div>
+<p class="cap"><b>Fonds commercial ≠ fonds de commerce</b> : le fonds commercial regroupe les éléments incorporels du fonds de commerce non évalués séparément ; le fonds de commerce est l'ensemble des éléments corporels (matériel, marchandises) et incorporels (droit au bail, nom, enseigne, clientèle) organisés pour rechercher une clientèle.</p>
+<p><b>Méthode générale</b> : un incorporel séparable s'évalue en théorie à sa valeur de marché (marché actif) ; comme ces biens sont très spécifiques, on actualise le plus souvent les <b>revenus futurs nets</b> qu'il procure.</p>
+<div class="key"><b>Taux d'actualisation du cas Warrior</b> : <b>CMPC 8 %</b> pour les actifs ; <b>coût de l'endettement 5 %</b> pour les redevances de crédit-bail et les annuités d'emprunt.</div>
+
+<h3>3.1 Le droit au bail</h3>
+<p>Montant versé à l'ancien locataire pour bénéficier des droits des baux commerciaux, en pratique d'un <b>loyer inférieur au marché</b>. Valeur = économies de loyer (loyer de marché − loyer payé) actualisées sur la durée restante du bail.</p>
+<div class="det"><span class="t">Cas Warrior · droit au bail (VNC 20 000)</span>
+<p>Bail de 10 ans depuis le 1/1/N−3 ; loyer 24 000 payable le 1<sup>er</sup> janvier ; loyer de marché 26 500.</p>
+<ol class="steps">
+<li><span><b>Durée restante</b> : bail de N−3 à N+6 → au 31/12/N il reste les loyers du 1/1/N+1 au 1/1/N+6 : <b>6 loyers</b>.</span></li>
+<li><span><b>Économie annuelle</b> : 26 500 − 24 000 = <b>2 500</b>, payable d'avance : le 1<sup>er</sup> flux (1/1/N+1, demain) n'est pas actualisé.</span></li>
+<li><span><b>Valeur</b> : 2 500 + 2 500/1,08 + 2 500/1,08² + … + 2 500/1,08⁵ = 2 500 + 2 500 × [1 − 1,08⁻⁵]/0,08 = 2 500 + 9 981 = <b>12 481</b>.</span></li>
+<li><span><b>Écart</b> : 12 481 − 20 000 = <b>−7 519</b> (surévalué au bilan) → <b>IDA</b> 7 519 × ⅓ = <b>+2 506</b>.</span></li>
+</ol></div>
+
+<h3>3.2 Brevets et licences</h3>
+<ul>
+<li>Brevet exploité en interne : cash-flows prévisionnels actualisés sur la durée de protection restante.</li>
+<li>Brevet ou licence <b>concédé</b> : redevances restant à percevoir, actualisées.</li>
+<li>Contrat <b>non signé</b> : valeur <b>nulle</b> par prudence, même avec 50 % (ou 70 %) de chances.</li>
+</ul>
+<div class="det"><span class="t">Cas Warrior · brevet (VNC 50 000)</span>
+<p>Concédé en Asie depuis le début de N−1 pour 10 ans ; redevance 10 480,2 en fin d'année. Négociation en Amérique du Sud : 5 ans × 10 000, probabilité 50 %.</p>
+<ol class="steps">
+<li><span><b>Durée restante</b> : concession de N−1 à N+8 → <b>8 redevances</b> (fin N+1 à fin N+8).</span></li>
+<li><span><b>Valeur</b> (flux de fin d'année) : 10 480,2 × [1 − 1,08⁻⁸]/0,08 = 10 480,2 × 5,7466 = <b>60 226</b>.</span></li>
+<li><span><b>Amérique du Sud</b> : contrat non signé → <b>0</b>.</span></li>
+<li><span><b>Écart</b> : 60 226 − 50 000 = <b>+10 226</b> (pas d'IDP : bien d'exploitation).</span></li>
+</ol></div>
+
+<h3>3.3 La marque</h3>
+<p>Une marque créée en interne n'est pas inscrite à l'actif (valeur non mesurable de façon fiable), mais elle représente un avantage économique futur à estimer. Deux méthodes fondées sur la valeur d'utilité :</p>
+<div class="tbl"><table>
+<tr><th>Méthode</th><th>Principe</th></tr>
+<tr><td><b>Capitalisation de la redevance</b></td><td>Redevances futures (nettes d'impôt) que toucherait le propriétaire s'il concédait la marque à un tiers = taux de redevance × CA prévisionnel, actualisées sur 3 à 10 ans (jusqu'à 20 ans si la marque est très large ou notoire), + valeur résiduelle actualisée. Taux de 1 à 6 % du CA en grande consommation, plus élevé avec la notoriété spontanée et la valeur intrinsèque des produits.</td></tr>
+<tr><td><b>Capitalisation du différentiel de marge</b></td><td>Rente annuelle = (taux de marge sous marque − taux de marge hors marque) × ventes sous marque, actualisée sur la durée d'exploitation.</td></tr>
+</table></div>
+<p class="cap">Limites du différentiel de marge : 1 ou 2 points d'écart de taux changent fortement la valeur ; les génériques n'existent pas toujours ; ils peuvent être sortis avant ou après la marque ; un produit de marque ne dégage pas toujours une marge supérieure.</p>
+<div class="f">Rente croissante (1er flux R en fin d'année 1, croissance g, taux t, n années) :
+V = R × [(1+g)ⁿ − (1+t)ⁿ] / [(1+g) − (1+t)] × 1/(1+t)ⁿ</div>
+<div class="det"><span class="t">Cas Warrior · marque (non inscrite)</span>
+<ol class="steps">
+<li><span><b>Rente de l'année 1</b> : (33 % − 30 %) × 2 900 000 = <b>87 000</b>.</span></li>
+<li><span><b>Paramètres</b> : croissance g = 6 %, actualisation t = 8 %, n = 10 ans.</span></li>
+<li><span><b>Valeur</b> : 87 000 × (1,06¹⁰ − 1,08¹⁰)/(1,06 − 1,08) × 1/1,08¹⁰ = 87 000 × (1,79085 − 2,15892)/(−0,02) × 0,46319 = <b>741 635</b>.</span></li>
+<li><span><b>Écart</b> : 741 635 − 0 = <b>+741 635</b>. C'est de loin la plus grosse correction du cas.</span></li>
+</ol></div>
+
+<!-- PARTIE 4 -->
+<h2 id="p4"><span class="n">PARTIE 4</span>Les éléments corporels</h2>
+<div class="two">
+<div class="ex"><span class="t">Ensembles immobiliers · valeur d'utilité</span><b>Locaux standards</b> : prix du marché (valeur marchande) + frais d'acquisition (droits de mutation) + travaux d'adaptation.<br><b>Locaux spécifiques</b> : coût de construction (valeur à neuf) × coefficient de vétusté.</div>
+<div class="ex"><span class="t">Terrains nus</span>Référence au marché local. Transaction récente (&lt; 5 ans) : simple indexation du coût d'achat. Terrain hors exploitation : valeur de marché <b>nette des frais de cession</b> (remise en état, impôt sur la plus-value…).</div>
+</div>
+<div class="ex"><span class="t">Matériels, outillages, véhicules</span>Pas la valeur à neuf à l'identique (obsolescence technique) : la valeur d'un bien rendant un <b>service équivalent</b>. Pratique : mercuriales, tarifs fournisseurs, cote Argus. Un bien qui a un marché d'occasion <b>ne vaut jamais plus que ce marché</b>.</div>
+
+<div class="det"><span class="t">Cas Warrior · ensemble immobilier</span>
+<p>Site de production d'Ablain-Saint-Nazaire : VNC 1 387 000 ; valeur d'utilité estimée par des experts 1 650 000.</p>
+<p>Écart = 1 650 000 − 1 387 000 = <b>+263 000</b> (exploitation : pas d'impôt).</p></div>
+
+<div class="det"><span class="t">Cas Warrior · terrain hors exploitation (VNC 100 000)</span>
+<p>7 500 m² acquis 100 000 il y a 13 ans, inutilisé, construction invendable ; démolition et remise en état 20 000 ; prix du m² industriel +4 % par an depuis 20 ans.</p>
+<ol class="steps">
+<li><span><b>Revalorisation</b> : 100 000 × 1,04¹³ = <b>166 507</b>.</span></li>
+<li><span><b>Moins la remise en état</b> : 166 507 − 20 000 = <b>146 507</b>.</span></li>
+<li><span><b>Moins l'impôt sur la plus-value</b> (bien hors exploitation) : (146 507 − 100 000) × ⅓ = 15 502 → 146 507 − 15 502 = <b>131 004</b>.</span></li>
+<li><span><b>Écart</b> : 131 004 − 100 000 = <b>+31 004</b>. Le taux d'impôt peut être plus faible (régime des plus-values à long terme).</span></li>
+</ol></div>
+
+<div class="det"><span class="t">Cas Warrior · véhicules (VNC 73 000)</span>
+<div class="tbl"><table><tr><th>Véhicules</th><th>VNC</th><th>Cote Argus</th><th>Écart</th></tr>
+<tr><td>5 Clio (N−2)</td><td class="num">20 000</td><td class="num">25 000</td><td class="num pos">+5 000</td></tr>
+<tr><td>2 Laguna Break (N−1)</td><td class="num">28 000</td><td class="num">33 000</td><td class="num pos">+5 000</td></tr>
+<tr><td>1 camion Volvo (N−4)</td><td class="num">25 000</td><td class="num">18 000</td><td class="num neg">−7 000</td></tr>
+<tr class="tot"><td>Total</td><td class="num">73 000</td><td class="num">76 000</td><td class="num">+3 000</td></tr></table></div>
+<p><b>IDA</b> sur la seule moins-value du camion : 7 000 × ⅓ = <b>+2 333</b>. On ne compense pas avant de calculer l'IDA : les plus-values d'exploitation ne sont pas fiscalisées, la moins-value donne une économie d'impôt.</p></div>
+
+<h3>4.1 Le crédit-bail</h3>
+<p>On suppose que l'entreprise <b>lèvera l'option</b> et gardera le bien. On ajoute à l'ANC :</p>
+<div class="f">Écart crédit-bail = valeur d'utilité du bien
+                 − valeur actuelle des redevances et de l'option restant à payer (au coût de la dette)</div>
+<div class="det"><span class="t">Cas Warrior · crédit-bail</span>
+<p>Contrat du 2/1/N−1 pour 6 ans ; 6 redevances de 60 000 payables d'avance au 2/1 (N−1 à N+4) ; option 30 000 en janvier N+5 ; coût de la dette 5 % ; valeur d'utilité au 31/12/N : 270 000.</p>
+<ol class="steps">
+<li><span><b>Flux restants au 31/12/N</b> : redevances de janvier N+1 (dans 0 an), N+2 (1 an), N+3 (2 ans), N+4 (3 ans) et option en N+5 (4 ans).</span></li>
+<li><span><b>Valeur actuelle</b> : 60 000 + 60 000 × [1 − 1,05⁻³]/0,05 + 30 000/1,05⁴ = 60 000 + 163 395 + 24 681 = <b>248 076</b>.</span></li>
+<li><span><b>Écart</b> : 270 000 − 248 076 = <b>+21 924</b>, avantage pour l'acquéreur à ajouter à l'ANC.</span></li>
+</ol></div>
+
+<!-- PARTIE 5 -->
+<h2 id="p5"><span class="n">PARTIE 5</span>Les éléments financiers et circulants</h2>
+<h3>5.1 Titres de participation</h3>
+<p>Valeur d'utilité estimée à partir d'un faisceau d'indices : <b>cours de bourse</b>, <b>actif net</b> de la filiale, <b>rentabilité</b> et perspectives, <b>motivations</b> de la détention, <b>conjoncture</b> économique. Écart = valeur d'utilité − VNC (titres déjà dépréciés : comparer à la valeur <b>nette</b>).</p>
+<h3>5.2 Titres de placement</h3>
+<ul>
+<li><b>Cotés</b> : cours moyen du <b>dernier mois</b>.</li>
+<li><b>Non cotés</b> : valeur probable de négociation (valeur de rendement, actif net…), en se référant si possible à des transactions récentes. Faute de liquidité, appliquer un <b>abattement de 15 à 25 %</b>.</li>
+<li>Ce sont des biens hors exploitation : plus-value nette d'impôt (IDP), moins-value avec IDA.</li>
+</ul>
+<h3>5.3 Stocks</h3>
+<p>Vérifier que les stocks <b>existent</b> et sont identifiables, que leur <b>qualité</b> est prise en compte (périmés, obsolètes → dépréciation). Cycle de production long (champagne, spiritueux) : réévaluer les stocks.</p>
+<div class="det"><span class="t">Cas Warrior · stocks (VNC 24 000)</span>
+<p>Pièces abîmées par l'humidité, perte de valeur 30 %, non provisionnée.</p>
+<ol class="steps">
+<li><span><b>Dépréciation</b> : 24 000 × 30 % = <b>7 200</b> → stock = 24 000 − 7 200 = <b>16 800</b>.</span></li>
+<li><span><b>Écart</b> : <b>−7 200</b> ; <b>IDA</b> : 7 200 × ⅓ = <b>+2 400</b>. Impact net : −4 800.</span></li>
+</ol></div>
+<h3>5.4 Créances</h3>
+<p>Retenues à leur valeur nominale avec une provision si la perte est probable. L'évaluateur vérifie le risque de non-recouvrement et ajuste en fonction des événements récents (liquidation d'un client…).</p>
+<div class="det"><span class="t">Cas Warrior · créance Fondu (46 000)</span>
+<p>Client en règlement judiciaire ; 60 % de chances d'être payé ; rien n'est provisionné.</p>
+<ol class="steps">
+<li><span><b>Perte probable</b> : 100 % − 60 % = 40 % → 46 000 × 40 % = <b>18 400</b>.</span></li>
+<li><span><b>Créance retenue</b> : 46 000 − 18 400 = <b>27 600</b> ; écart <b>−18 400</b> ; <b>IDA</b> 18 400 × ⅓ = <b>+6 133</b>.</span></li>
+</ol></div>
+
+<!-- PARTIE 6 -->
+<h2 id="p6"><span class="n">PARTIE 6</span>Le passif</h2>
+<div class="key"><b>Logique inverse de l'actif</b> : une dette qui <b>augmente</b> fait <b>baisser</b> l'ANCC ; une dette qui disparaît le fait monter.</div>
+<h3>6.1 Les dettes financières</h3>
+<p>L'acquéreur ne se soucie pas du taux d'origine mais des <b>annuités</b> qu'il devra payer. Valeur de la dette = annuités restantes actualisées au <b>taux que l'entreprise obtiendrait aujourd'hui</b>.</p>
+<div class="det"><span class="t">Cas Warrior · emprunt de 1 000 000 souscrit le 1/1/N−5</span>
+<p>10 ans, annuités de 149 030 au 31/12, taux à la souscription 8 %, taux actuel 5 %.</p>
+<ol class="steps">
+<li><span><b>Annuités restantes</b> : de fin N−5 à fin N+4 ; au 31/12/N, il reste fin N+1, N+2, N+3, N+4 → <b>4 annuités</b>.</span></li>
+<li><span><b>Capital restant dû au bilan</b> (taux d'origine 8 %) : 149 030 × [1 − 1,08⁻⁴]/0,08 = 149 030 × 3,3121 = <b>493 606</b>.</span></li>
+<li><span><b>Valeur actuelle</b> (taux du jour 5 %) : 149 030 × [1 − 1,05⁻⁴]/0,05 = 149 030 × 3,5460 = <b>528 453</b>.</span></li>
+<li><span><b>Écart</b> : 528 453 − 493 606 = <b>+34 847</b> de dette en plus → <b>−34 847</b> sur l'ANCC. Emprunter à 8 % quand le marché est à 5 % est un désavantage pour l'acquéreur.</span></li>
+</ol></div>
+<h3>6.2 Les provisions pour risques et charges</h3>
+<p>Analyser toutes les provisions existantes et souhaitables (nombre et nature des problèmes). Risque non provisionné → ajouter une dette. Provision <b>injustifiée</b> = réserve latente : la sortir du passif exigible et la reclasser en capitaux propres, <b>nette d'impôt</b> (sa reprise sera imposée).</p>
+<div class="det"><span class="t">Cas Warrior · provision pour litige de 42 000</span>
+<p>Procédure interrompue depuis plus de 2 ans après un accord amiable : le risque est éteint.</p>
+<ol class="steps">
+<li><span><b>Réduction du passif</b> : −42 000 (ce n'est plus une dette probable).</span></li>
+<li><span><b>IDP</b> : la reprise augmentera le résultat imposable → 42 000 × ⅓ = <b>14 000</b>.</span></li>
+<li><span><b>Hausse des capitaux propres</b> : 42 000 × (1 − ⅓) = <b>+28 000</b>.</span></li>
+</ol></div>
+<h3>6.3 Les engagements hors bilan</h3>
+<p>À examiner en détail : ils peuvent cacher une <b>dette latente</b>. Attention particulière aux <b>cautions accordées</b>.</p>
+<div class="det"><span class="t">Cas Warrior · caution pour une SCI</span>
+<p>Prêt de 10 ans, 7 ans restants ; en cas d'appel, 30 000 par an à payer ; risque estimé 10 %.</p>
+<ol class="steps">
+<li><span><b>Flux probable</b> : 10 % × 30 000 = 3 000 par an pendant 7 ans.</span></li>
+<li><span><b>Valeur</b> (taux 8 % retenu dans le cours) : 0,1 × 30 000 × [1 − 1,08⁻⁷]/0,08 = 3 000 × 5,2064 = <b>15 619</b>.</span></li>
+<li><span>C'est une <b>dette probable</b> à ajouter au passif : <b>−15 619</b> sur l'ANCC.</span></li>
+</ol></div>
+
+<!-- PARTIE 7 -->
+<h2 id="p7"><span class="n">PARTIE 7</span>Synthèse complète du cas Warrior</h2>
+<p>Warrior : 60 000 actions, ANC = <b>1 140 000</b> (calculé à l'étape 1 : capitaux propres retraités 1 197 000 − actif fictif 57 000).</p>
+<div class="det"><span class="t">Étape 1 · Synthèse de l'actif réel</span>
+<div class="tbl"><table><tr><th>Actifs</th><th>VNC</th><th>Valeur estimée</th><th>Écart</th><th>IDA</th></tr>
+<tr><td>Droit au bail</td><td class="num">20 000</td><td class="num">12 481</td><td class="num neg">−7 519</td><td class="num">2 506</td></tr>
+<tr><td>Marque</td><td class="num">0</td><td class="num">741 635</td><td class="num pos">741 635</td><td></td></tr>
+<tr><td>Brevet</td><td class="num">50 000</td><td class="num">60 226</td><td class="num pos">10 226</td><td></td></tr>
+<tr><td>Terrain</td><td class="num">100 000</td><td class="num">131 004</td><td class="num pos">31 004</td><td></td></tr>
+<tr><td>Ensemble immobilier</td><td class="num">1 387 000</td><td class="num">1 650 000</td><td class="num pos">263 000</td><td></td></tr>
+<tr><td>Véhicules</td><td class="num">73 000</td><td class="num">76 000</td><td class="num pos">3 000</td><td class="num">2 333</td></tr>
+<tr><td>Crédit-bail</td><td></td><td></td><td class="num pos">21 924</td><td></td></tr>
+<tr><td>Stocks</td><td class="num">24 000</td><td class="num">16 800</td><td class="num neg">−7 200</td><td class="num">2 400</td></tr>
+<tr><td>Créances clients</td><td class="num">46 000</td><td class="num">27 600</td><td class="num neg">−18 400</td><td class="num">6 133</td></tr>
+<tr class="tot"><td>Total</td><td></td><td></td><td class="num">1 037 670</td><td class="num">13 372</td></tr></table></div>
+<p>Accroissement des actifs : 1 037 670 + 13 372 = <b>1 051 042</b>.</p></div>
+<div class="det"><span class="t">Étape 2 · Synthèse du passif exigible</span>
+<div class="tbl"><table><tr><th>Passif exigible</th><th>Valeur comptable</th><th>Valeur nouvelle</th><th>Écart</th><th>IDP</th></tr>
+<tr><td>Provision pour litige</td><td class="num">42 000</td><td class="num">0</td><td class="num">−42 000</td><td class="num">14 000</td></tr>
+<tr><td>Caution</td><td class="num">0</td><td class="num">15 619</td><td class="num">15 619</td><td></td></tr>
+<tr><td>Dettes financières</td><td class="num">493 606</td><td class="num">528 453</td><td class="num">34 847</td><td></td></tr>
+<tr class="tot"><td>Total</td><td class="num">535 606</td><td class="num">544 072</td><td class="num">8 466</td><td class="num">14 000</td></tr></table></div>
+<p>Augmentation du passif exigible : 8 466 + 14 000 = <b>22 466</b>.</p></div>
+<div class="det"><span class="t">Étape 3 · Fiscalité latente sur les postes de l'ANC</span>
+<ul>
+<li>IDA sur prime de remboursement : 4 000 × ⅓ = <b>+1 333</b></li>
+<li>IDA sur frais d'établissement : 42 000 × ⅓ = <b>+14 000</b></li>
+<li>IDA sur charges à répartir : 9 000 × ⅓ = <b>+3 000</b></li>
+<li>IDP sur subvention d'investissement : 9 000 × ⅓ = <b>−3 000</b></li>
+</ul></div>
+<div class="tbl"><table>
+<tr><th>Calcul de l'ANCC Warrior</th><th>€</th></tr>
+<tr><td>Actif net comptable</td><td class="num">1 140 000</td></tr>
+<tr><td>+ Accroissement de la valeur des actifs (écarts + IDA)</td><td class="num">1 051 042</td></tr>
+<tr><td>− Augmentation du passif exigible (écarts + IDP)</td><td class="num">−22 466</td></tr>
+<tr><td>+ IDA prime de remboursement</td><td class="num">1 333</td></tr>
+<tr><td>+ IDA frais d'établissement</td><td class="num">14 000</td></tr>
+<tr><td>+ IDA charges à répartir</td><td class="num">3 000</td></tr>
+<tr><td>− IDP subvention d'investissement</td><td class="num">−3 000</td></tr>
+<tr class="tot"><td>Actif net comptable corrigé</td><td class="num">2 183 909</td></tr>
+<tr><td>Valeur mathématique de l'action (÷ 60 000)</td><td class="num">≈ 36,40 €</td></tr>
+</table></div>
+<p class="cap">L'ANCC (36,40 € par action) est près de deux fois l'ANC (19 €) : la marque explique à elle seule 741 635 €.</p>
+<div class="two">
+<div class="key"><b>Atouts de l'ANCC</b><ul><li>Fondé sur le bilan comptable</li><li>Méthode additive et simple</li><li>Correction poste par poste</li><li>Idéale pour les entreprises à maturité</li></ul></div>
+<div class="trap"><b>Limites</b><ul><li>Fondé sur les chiffres du passé</li><li>Ignore les performances futures de l'entreprise (rentabilité) : d'où le goodwill, thème suivant</li></ul></div>
+</div>
+
+<!-- MANGALA -->
+<h2 id="mangala"><span class="n">CAS 1</span>Mangala : énoncé et correction pas à pas</h2>
+<div class="ex"><span class="t">Énoncé (k€)</span>
+<p>Les dirigeants de Mangala veulent connaître la valeur intrinsèque de l'action sur la base de la valeur patrimoniale. Bilan au 31/12/N :</p>
+<div class="tbl"><table>
+<tr><th>Actif</th><th>Brut</th><th>Amort. et prov.</th><th>Net</th><th>Passif</th><th>Montant</th></tr>
+<tr><td>Frais d'établissement</td><td class="num">50</td><td class="num">30</td><td class="num">20</td><td>Capital social</td><td class="num">19 500</td></tr>
+<tr><td>Frais de R&amp;D</td><td class="num">280</td><td class="num">250</td><td class="num">30</td><td>Réserves</td><td class="num">25 000</td></tr>
+<tr><td>Concessions, brevets, licences</td><td class="num">500</td><td class="num">150</td><td class="num">350</td><td>Report à nouveau</td><td class="num">390</td></tr>
+<tr><td>Terrains</td><td class="num">7 000</td><td></td><td class="num">7 000</td><td>Résultat de l'exercice</td><td class="num">3 800</td></tr>
+<tr><td>Constructions</td><td class="num">75 500</td><td class="num">50 000</td><td class="num">25 500</td><td>Subventions d'investissement</td><td class="num">900</td></tr>
+<tr><td>Installations techniques</td><td class="num">80 500</td><td class="num">35 000</td><td class="num">45 500</td><td>Provisions réglementées</td><td class="num">910</td></tr>
+<tr><td>Participations</td><td class="num">7 000</td><td></td><td class="num">7 000</td><td><b>Capitaux propres</b></td><td class="num"><b>50 500</b></td></tr>
+<tr><td>Titres immobilisés</td><td class="num">650</td><td></td><td class="num">650</td><td>Provisions pour risques et charges</td><td class="num">450</td></tr>
+<tr><td>Prêts</td><td class="num">450</td><td></td><td class="num">450</td><td>Emprunts obligataires</td><td class="num">31 000</td></tr>
+<tr><td>Stocks et en-cours</td><td class="num">9 300</td><td class="num">800</td><td class="num">8 500</td><td>Emprunts auprès des établissements</td><td class="num">16 000</td></tr>
+<tr><td>Créances clients</td><td class="num">14 600</td><td class="num">1 800</td><td class="num">12 800</td><td>Dettes fournisseurs</td><td class="num">8 400</td></tr>
+<tr><td>Disponibilités</td><td class="num">70</td><td></td><td class="num">70</td><td>Dettes fiscales et sociales</td><td class="num">1 400</td></tr>
+<tr><td>Charges constatées d'avance</td><td class="num">650</td><td></td><td class="num">650</td><td>Produits constatés d'avance</td><td class="num">300</td></tr>
+<tr><td>Primes de remboursement des obligations</td><td class="num">180</td><td></td><td class="num">180</td><td>Écart de conversion passif</td><td class="num">750</td></tr>
+<tr><td>Écart de conversion actif</td><td class="num">100</td><td></td><td class="num">100</td><td></td><td></td></tr>
+<tr class="tot"><td>Total</td><td class="num">196 830</td><td class="num">88 030</td><td class="num">108 800</td><td>Total</td><td class="num">108 800</td></tr></table></div>
+<ol>
+<li><b>Brevet</b> produit par la société, concédé à une filiale au début de N−2 pour 10 ans ; redevances de 150 encaissées en fin d'exercice ; taux 10 %.</li>
+<li>Toutes les <b>immobilisations corporelles</b> servent à l'exploitation :
+<div class="tbl"><table><tr><th></th><th>VNC</th><th>Valeur vénale</th><th>Valeur d'utilité</th></tr>
+<tr><td>Terrains</td><td class="num">7 000</td><td class="num">8 000</td><td class="num">9 000</td></tr>
+<tr><td>Constructions</td><td class="num">25 500</td><td class="num">28 000</td><td class="num">30 500</td></tr>
+<tr><td>Installations techniques</td><td class="num">45 500</td><td class="num">42 000</td><td class="num">44 000</td></tr>
+<tr><td>Titres de participation</td><td class="num">7 000</td><td class="num">7 400</td><td class="num">7 500</td></tr>
+<tr><td>Titres immobilisés</td><td class="num">650</td><td class="num">800</td><td>—</td></tr>
+<tr><td>Prêts</td><td class="num">450</td><td class="num">450</td><td>—</td></tr></table></div></li>
+<li>Dividende de <b>8 €</b> aux <b>195 000 actions</b>.</li>
+<li>Provisions réglementées : provision pour hausse des prix <b>610</b>, amortissements dérogatoires <b>300</b>.</li>
+<li>Les provisions pour risques et charges comprennent une provision pour perte de change de <b>100</b>.</li>
+</ol></div>
+
+<div class="det"><span class="t">Question 1 · Actif net comptable</span>
+<ol class="steps">
+<li><span>Point de départ : <b>capitaux propres 50 500</b>.</span></li>
+<li><span>Actif fictif : frais d'établissement <b>−20</b> ; primes de remboursement <b>−180</b>. Les frais de R&amp;D (30) sont un vrai actif : on les garde.</span></li>
+<li><span>Écart de conversion actif 100, entièrement couvert par la provision pour perte de change de 100 → <b>0</b> à retirer.</span></li>
+<li><span>Dividendes : 8 € × 195 000 = 1 560 000 € = <b>−1 560</b> k€.</span></li>
+<li><span>Écart de conversion passif (gain latent) : <b>+750</b>.</span></li>
+<li><span><b>ANC</b> = 50 500 − 20 − 180 − 0 − 1 560 + 750 = <b>49 490 k€</b>, soit 49 490 000 / 195 000 ≈ <b>253,79 €</b> par action.</span></li>
+</ol></div>
+
+<div class="det"><span class="t">Question 2 · Actif net comptable corrigé</span>
+<p class="st">a) Le brevet</p>
+<ol class="steps">
+<li><span>Concession de N−2 à N+7 : au 31/12/N il reste <b>7 redevances</b> (fin N+1 à fin N+7).</span></li>
+<li><span>Valeur : 150 × [1 − 1,1⁻⁷]/0,1 = 150 × 4,8684 = <b>730</b>.</span></li>
+<li><span>Écart : 730 − 350 = <b>+380</b>.</span></li>
+</ol>
+<p class="st">b) Les immobilisations d'exploitation → valeur d'utilité, sans impôt</p>
+<div class="tbl"><table><tr><th>Poste</th><th>Calcul</th><th>Écart</th></tr>
+<tr><td>Terrains</td><td>9 000 − 7 000</td><td class="num pos">+2 000</td></tr>
+<tr><td>Constructions</td><td>30 500 − 25 500</td><td class="num pos">+5 000</td></tr>
+<tr><td>Installations techniques</td><td>44 000 − 45 500</td><td class="num neg">−1 500</td></tr>
+<tr><td>Titres de participation</td><td>7 500 − 7 000</td><td class="num pos">+500</td></tr></table></div>
+<p class="st">c) Les titres immobilisés → hors exploitation (pas de valeur d'utilité) : valeur vénale nette d'impôt</p>
+<p>Plus-value 800 − 650 = 150 ; impôt 150 × ⅓ = 50 ; écart net = <b>+100</b>. Prêts : 450 = 450 → 0.</p>
+<p class="st">d) Fiscalité latente</p>
+<div class="tbl"><table><tr><th></th><th>Base</th><th>× ⅓</th></tr>
+<tr><td>IDP subvention d'investissement</td><td class="num">900</td><td class="num neg">−300</td></tr>
+<tr><td>IDP provision pour hausse des prix</td><td class="num">610</td><td class="num neg">−203,33</td></tr>
+<tr><td>IDP amortissements dérogatoires</td><td class="num">300</td><td class="num neg">−100</td></tr>
+<tr><td>IDA frais d'établissement</td><td class="num">20</td><td class="num pos">+6,67</td></tr>
+<tr><td>IDA primes de remboursement</td><td class="num">180</td><td class="num pos">+60</td></tr>
+<tr><td>IDA moins-value installations techniques</td><td class="num">1 500</td><td class="num pos">+500</td></tr></table></div>
+<div class="tbl"><table><tr><th>Récapitulatif</th><th>k€</th></tr>
+<tr><td>ANC</td><td class="num">49 490</td></tr>
+<tr><td>+ Brevet + terrains + constructions − installations + participations + titres immobilisés</td><td class="num">380 + 2 000 + 5 000 − 1 500 + 500 + 100 = 6 480</td></tr>
+<tr><td>− IDP</td><td class="num">−603,33</td></tr>
+<tr><td>+ IDA</td><td class="num">+566,67</td></tr>
+<tr class="tot"><td>ANCC</td><td class="num">55 933,33</td></tr>
+<tr><td>Valeur intrinsèque de l'action</td><td class="num">55 933 333 / 195 000 ≈ 286,84 €</td></tr></table></div>
+<p class="cap">Valeur d'utilité et non vénale pour les biens d'exploitation : l'entreprise ne va pas les vendre, elle devrait les racheter pour continuer à produire.</p></div>
+
+<!-- PASTOUCHE -->
+<h2 id="pastouche"><span class="n">CAS 2</span>Casino Pastouche : énoncé et correction pas à pas</h2>
+<div class="ex"><span class="t">Énoncé (k€)</span>
+<p>Le casino possède un patrimoine immobilier important mais sa rentabilité est faible. Le PDG veut une évaluation <b>uniquement patrimoniale</b> (il craint qu'une approche par la rentabilité réduise la valeur). 1) Calculer l'ANCC au 31/12/N. 2) Calculer la valeur mathématique de l'action.</p>
+<div class="tbl"><table>
+<tr><th>Actif</th><th>Brut</th><th>Amort. et prov.</th><th>Net</th><th>Passif</th><th>Montant</th></tr>
+<tr><td>Frais d'établissement</td><td class="num">48 000</td><td class="num">19 200</td><td class="num">28 800</td><td>Capital social</td><td class="num">600 000</td></tr>
+<tr><td>Frais de R&amp;D</td><td class="num">2 000</td><td></td><td class="num">2 000</td><td>Réserves</td><td class="num">340 000</td></tr>
+<tr><td>Concessions, brevets, licences</td><td class="num">24 000</td><td class="num">15 000</td><td class="num">9 000</td><td>Report à nouveau</td><td class="num">−600</td></tr>
+<tr><td>Fonds commercial</td><td class="num">500 000</td><td></td><td class="num">500 000</td><td>Résultat de l'exercice</td><td class="num">51 000</td></tr>
+<tr><td>Terrains</td><td class="num">600 000</td><td></td><td class="num">600 000</td><td>Subventions d'investissement</td><td class="num">8 000</td></tr>
+<tr><td>Constructions</td><td class="num">680 000</td><td class="num">150 000</td><td class="num">530 000</td><td>Provisions réglementées</td><td class="num">16 000</td></tr>
+<tr><td>Autres immobilisations corporelles</td><td class="num">440 000</td><td class="num">157 000</td><td class="num">283 000</td><td><b>Capitaux propres</b></td><td class="num"><b>1 014 400</b></td></tr>
+<tr><td>Participations</td><td class="num">100 000</td><td class="num">2 000</td><td class="num">98 000</td><td>Provisions pour risques</td><td class="num">8 400</td></tr>
+<tr><td>Autres immobilisations financières</td><td class="num">1 000</td><td></td><td class="num">1 000</td><td>Provisions pour charges</td><td class="num">41 600</td></tr>
+<tr><td>Stocks et en-cours</td><td class="num">176 000</td><td></td><td class="num">176 000</td><td>Emprunts obligataires</td><td class="num">420 000</td></tr>
+<tr><td>Créances clients</td><td class="num">108 000</td><td class="num">12 000</td><td class="num">96 000</td><td>Emprunts auprès des établissements</td><td class="num">200 000</td></tr>
+<tr><td>Disponibilités</td><td class="num">14 660</td><td></td><td class="num">14 660</td><td>Emprunts et dettes financières</td><td class="num">78 800</td></tr>
+<tr><td>Charges constatées d'avance</td><td class="num">2 460</td><td></td><td class="num">2 460</td><td>Dettes fournisseurs</td><td class="num">265 200</td></tr>
+<tr><td>Frais d'émission d'emprunts</td><td class="num">20 000</td><td class="num">10 000</td><td class="num">10 000</td><td>Dettes fiscales et sociales</td><td class="num">326 000</td></tr>
+<tr><td>Primes de remboursement des obligations</td><td class="num">5 000</td><td class="num">1 800</td><td class="num">3 200</td><td>Dettes diverses</td><td class="num">600</td></tr>
+<tr><td>Écart de conversion actif</td><td class="num">1 400</td><td></td><td class="num">1 400</td><td>Produits constatés d'avance · ECP</td><td class="num">80 · 440</td></tr>
+<tr class="tot"><td>Total</td><td class="num">2 722 520</td><td class="num">367 000</td><td class="num">2 355 520</td><td>Total</td><td class="num">2 355 520</td></tr></table></div>
+<p><b>Annexe</b> :</p>
+<ul>
+<li>R&amp;D : projet de machines à jeux prêt d'aboutir.</li>
+<li>Concessions : logiciel de gestion hôtelière <b>6 000</b> ; licence de l'enseigne Votreoseille <b>3 000</b>, concédée pour 8 ans dont <b>3 restent</b>, redevance annuelle <b>1 600 payable d'avance</b>.</li>
+<li>Terrains évalués à <b>1 300 000</b>.</li>
+<li>Constructions : d'exploitation VNC <b>400 000</b>, estimation <b>680 000</b> ; locatives conservées dans l'espoir d'une plus-value VNC <b>130 000</b>, estimation <b>200 000</b>.</li>
+<li>Valeur d'usage des autres immobilisations corporelles : <b>360 000</b>.</li>
+<li>Participations : Hôtel Croisette valeur d'entrée 44 000, estimation 42 000 ; Casinos du Midi 56 000, estimation 90 000.</li>
+<li>Provisions réglementées : hausse des prix <b>14 400</b>, amortissements dérogatoires <b>1 600</b>.</li>
+<li>Provisions pour charges : dont provision pour perte de change <b>1 400</b>.</li>
+<li>Crédit-bail conclu le 1/7/N−5 pour 15 ans : immeuble (valeur à neuf 400 000), 15 redevances de <b>60 000</b> du 1/7/N−5 au 1/7/N+9, option <b>60 000</b> le 1/7/N+10 ; valeur de l'immeuble au 31/12/N : <b>500 000</b>.</li>
+<li>600 000 actions ; dividende <b>10 €</b> par action ; coût des capitaux propres 9 %, coût de la dette 5 %, CMPC 8 % ; IS 33⅓ %.</li>
+</ul></div>
+
+<div class="det"><span class="t">Question préalable · Actif net comptable</span>
+<div class="tbl"><table><tr><th>Méthode 1</th><th>k€</th><th>Méthode 2</th><th>k€</th></tr>
+<tr><td>Capitaux propres</td><td class="num">1 014 400</td><td>Total actif</td><td class="num">2 355 520</td></tr>
+<tr><td>− Frais d'établissement</td><td class="num">−28 800</td><td>− Primes de remboursement</td><td class="num">−3 200</td></tr>
+<tr><td>− Primes de remboursement</td><td class="num">−3 200</td><td>− Frais d'émission d'emprunts</td><td class="num">−10 000</td></tr>
+<tr><td>− Frais d'émission d'emprunts</td><td class="num">−10 000</td><td>− Frais d'établissement</td><td class="num">−28 800</td></tr>
+<tr><td>ECA (1 400 couvert par la provision de 1 400)</td><td class="num">0</td><td>− Provisions et dettes hors ECP</td><td class="num">−1 340 680</td></tr>
+<tr><td>− Dividendes (10 € × 600 000)</td><td class="num">−6 000</td><td>− Dividendes</td><td class="num">−6 000</td></tr>
+<tr><td>+ Écart de conversion passif</td><td class="num">+440</td><td></td><td></td></tr>
+<tr class="tot"><td>ANC</td><td class="num">966 840</td><td>ANC</td><td class="num">966 840</td></tr></table></div>
+<p class="cap">Provisions et dettes hors ECP : 8 400 + 41 600 + 420 000 + 200 000 + 78 800 + 265 200 + 326 000 + 600 + 80 = 1 340 680. ANC par action : 1 611,40 €.</p></div>
+
+<div class="det"><span class="t">Question 1 · ANCC, poste par poste</span>
+<p class="st">a) Incorporels</p>
+<ol class="steps">
+<li><span><b>R&amp;D</b> (2 000) : projet prêt d'aboutir → maintenu, écart 0. <b>Logiciel</b> (6 000) et <b>fonds commercial</b> (500 000) : aucune information → maintenus.</span></li>
+<li><span><b>Licence</b> : 3 redevances de 1 600 payables d'avance (au taux CMPC 8 %) : 1 600 + 1 600/1,08 + 1 600/1,08² = 1 600 + 1 481,5 + 1 371,7 = <b>4 453</b>. Écart : 4 453 − 3 000 = <b>+1 453</b>.</span></li>
+</ol>
+<p class="st">b) Corporels</p>
+<div class="tbl"><table><tr><th>Poste</th><th>Calcul</th><th>Écart</th></tr>
+<tr><td>Terrains</td><td>1 300 000 − 600 000</td><td class="num pos">+700 000</td></tr>
+<tr><td>Constructions d'exploitation</td><td>680 000 − 400 000 (pas d'impôt)</td><td class="num pos">+280 000</td></tr>
+<tr><td>Constructions locatives (hors exploitation)</td><td>(200 000 − 130 000) × (1 − ⅓)</td><td class="num pos">+46 667</td></tr>
+<tr><td>Autres immobilisations corporelles</td><td>360 000 − 283 000</td><td class="num pos">+77 000</td></tr></table></div>
+<p class="st">c) Titres de participation</p>
+<ol class="steps">
+<li><span><b>Hôtel Croisette</b> : valeur d'entrée 44 000, déjà dépréciée de 2 000 (la dépréciation du bilan) → VNC 42 000 = estimation 42 000 → écart <b>0</b>.</span></li>
+<li><span><b>Casinos du Midi</b> : 90 000 − 56 000 = <b>+34 000</b>.</span></li>
+</ol>
+<p class="st">d) Crédit-bail (actualisation au coût de la dette, 5 %)</p>
+<ol class="steps">
+<li><span>Flux restants au 31/12/N : redevances du 1/7/N+1 au 1/7/N+9 (9 flux) + option le 1/7/N+10 = <b>10 flux de 60 000</b>, le premier dans <b>0,5 an</b>.</span></li>
+<li><span>Méthode Excel : Σ 60 000 / 1,05^(k+0,5), k = 0 à 9 = 58 554 + 55 766 + 53 110 + … + 37 744 = <b>474 745</b>.</span></li>
+<li><span>Méthode formule : au 30/6/N les flux sont de fin de période : 60 000 × [1 − 1,05⁻¹⁰]/0,05 = <b>463 304</b> ; on capitalise d'une demi-année jusqu'au 31/12/N : 463 304 × 1,05^0,5 = <b>474 745</b>.</span></li>
+<li><span>Écart : 500 000 − 474 745 = <b>+25 255</b>.</span></li>
+</ol>
+<p class="st">e) Fiscalité latente</p>
+<div class="tbl"><table><tr><th></th><th>Base × ⅓</th><th>Montant</th></tr>
+<tr><td>IDP subventions d'investissement</td><td>8 000 × ⅓</td><td class="num neg">−2 667</td></tr>
+<tr><td>IDP provision pour hausse des prix</td><td>14 400 × ⅓</td><td class="num neg">−4 800</td></tr>
+<tr><td>IDP amortissements dérogatoires</td><td>1 600 × ⅓</td><td class="num neg">−533</td></tr>
+<tr><td>IDA frais d'établissement</td><td>28 800 × ⅓</td><td class="num pos">+9 600</td></tr>
+<tr><td>IDA primes de remboursement</td><td>3 200 × ⅓</td><td class="num pos">+1 067</td></tr>
+<tr><td>IDA frais d'émission d'emprunts</td><td>10 000 × ⅓</td><td class="num pos">+3 333</td></tr></table></div>
+<div class="tbl"><table><tr><th>Récapitulatif</th><th>k€</th></tr>
+<tr><td>ANC</td><td class="num">966 840</td></tr>
+<tr><td>+ Plus-values : 1 453 + 700 000 + 280 000 + 46 667 + 77 000 + 34 000 + 25 255</td><td class="num">1 164 375</td></tr>
+<tr><td>− IDP (2 667 + 4 800 + 533)</td><td class="num">−8 000</td></tr>
+<tr><td>+ IDA (9 600 + 1 067 + 3 333)</td><td class="num">+14 000</td></tr>
+<tr class="tot"><td>ANCC</td><td class="num">2 137 215</td></tr></table></div></div>
+<div class="det"><span class="t">Question 2 · Valeur mathématique</span>
+<p>2 137 215 000 € / 600 000 actions = <b>3 562 €</b> par action (contre 1 611 € d'ANC). Le PDG a raison de son point de vue : les plus-values immobilières font plus que doubler la valeur, alors qu'une approche par la rentabilité (faible) ferait apparaître un badwill.</p></div>
+
+<!-- EXERCICES -->
+<h2 id="exo"><span class="n">ENTRAÎNEMENT</span>7 exercices corrigés pas à pas</h2>
+<div class="key"><b>Méthode</b> : (1) bien d'exploitation ou hors exploitation ? (2) quel taux : CMPC ou coût de la dette ? (3) combien de flux restent au 31/12/N, payables d'avance ou en fin de période ? (4) écart = nouvelle valeur − VNC ; (5) fiscalité : IDA sur moins-value, IDP sur plus-value hors exploitation ou sur produit futur imposable. IS 33⅓ % partout.</div>
+
+<h3>Exercice 1 · Stocks et créances</h3>
+<p>Stock de marchandises : VNC 50 000 €, dont un lot de 12 000 € périmé (valeur nulle) et le reste sain. Créance de 30 000 € sur un client placé en redressement judiciaire ; l'expert estime qu'on récupérera 25 % ; aucune provision n'a été passée.</p>
+<details><summary>Voir la correction</summary>
+<ol class="steps">
+<li><span><b>Stock</b> : dépréciation du lot périmé = 12 000 → stock retenu 38 000 ; écart <b>−12 000</b> ; IDA 12 000 × ⅓ = <b>+4 000</b>.</span></li>
+<li><span><b>Créance</b> : perte probable 75 % × 30 000 = 22 500 → créance retenue 7 500 ; écart <b>−22 500</b> ; IDA 22 500 × ⅓ = <b>+7 500</b>.</span></li>
+<li><span><b>Impact total sur l'ANCC</b> : −12 000 + 4 000 − 22 500 + 7 500 = <b>−23 000</b> (= −34 500 × ⅔).</span></li>
+</ol></details>
+
+<h3>Exercice 2 · Dette financière à taux élevé</h3>
+<p>Emprunt de 500 000 € souscrit le 1/1/N−2 sur 8 ans au taux de 6 %, remboursé par annuités constantes au 31/12. Taux auquel l'entreprise emprunterait aujourd'hui : 4 %. Évaluez la dette au 31/12/N.</p>
+<details><summary>Voir la correction</summary>
+<ol class="steps">
+<li><span><b>Annuité</b> : a = 500 000 × 0,06 / [1 − 1,06⁻⁸] = <b>80 518 €</b>.</span></li>
+<li><span><b>Annuités restantes</b> : de fin N−2 à fin N+5 ; déjà payées fin N−2, N−1, N → il en reste <b>5</b> (fin N+1 à fin N+5).</span></li>
+<li><span><b>Capital restant dû au bilan</b> (6 %) : 80 518 × [1 − 1,06⁻⁵]/0,06 = 80 518 × 4,2124 = <b>339 171</b>.</span></li>
+<li><span><b>Valeur au taux du jour</b> (4 %) : 80 518 × [1 − 1,04⁻⁵]/0,04 = 80 518 × 4,4518 = <b>358 452</b>.</span></li>
+<li><span><b>Écart</b> : la dette vaut 19 281 € de plus → <b>−19 281</b> sur l'ANCC (pas d'impôt différé retenu dans le cours sur ce poste).</span></li>
+</ol>
+<p class="cap">Si les taux avaient monté (taux du jour supérieur au taux d'origine), la dette vaudrait moins et l'ANCC augmenterait.</p></details>
+
+<h3>Exercice 3 · Provision devenue sans objet</h3>
+<p>Une provision pour litige de 60 000 € figure au bilan. Le litige a été définitivement gagné en N. Que devient-elle dans l'ANCC ?</p>
+<details><summary>Voir la correction</summary>
+<ol class="steps">
+<li><span>Le risque est éteint : ce n'est plus une dette probable mais une <b>réserve latente</b>. On la sort du passif exigible : <b>−60 000</b> de passif.</span></li>
+<li><span>Sa reprise augmentera le résultat imposable : <b>IDP</b> = 60 000 × ⅓ = <b>20 000</b>.</span></li>
+<li><span>Hausse nette des capitaux propres : 60 000 − 20 000 = <b>+40 000</b>.</span></li>
+</ol></details>
+
+<h3>Exercice 4 · Caution accordée</h3>
+<p>L'entreprise s'est portée caution d'un prêt : en cas d'appel, elle paierait 25 000 € par an pendant les 5 années restantes. Risque d'appel estimé à 20 %. Taux d'actualisation : 9 %.</p>
+<details><summary>Voir la correction</summary>
+<ol class="steps">
+<li><span>Flux probable : 20 % × 25 000 = <b>5 000</b> par an pendant 5 ans.</span></li>
+<li><span>Valeur : 5 000 × [1 − 1,09⁻⁵]/0,09 = 5 000 × 3,8897 = <b>19 448</b>.</span></li>
+<li><span>Engagement hors bilan qui devient une <b>dette probable</b> : passif +19 448 → <b>−19 448</b> sur l'ANCC.</span></li>
+</ol></details>
+
+<h3>Exercice 5 · Titres de placement</h3>
+<p>a) 1 000 actions cotées, VNC 40 € l'une, cours moyen du dernier mois 52 €. b) Titres non cotés, VNC 70 000 €, valeur probable de négociation estimée à 80 000 € avant prise en compte de leur illiquidité (abattement retenu : 20 %).</p>
+<details><summary>Voir la correction</summary>
+<ol class="steps">
+<li><span><b>a) Cotés</b> : valeur 1 000 × 52 = 52 000 ; plus-value 12 000. Titres de placement = hors exploitation : <b>IDP</b> 12 000 × ⅓ = 4 000 → impact net <b>+8 000</b>.</span></li>
+<li><span><b>b) Non cotés</b> : 80 000 × (1 − 20 %) = <b>64 000</b> ; moins-value 64 000 − 70 000 = <b>−6 000</b> ; <b>IDA</b> 2 000 → impact net <b>−4 000</b>.</span></li>
+<li><span>Total : +8 000 − 4 000 = <b>+4 000</b>.</span></li>
+</ol></details>
+
+<h3>Exercice 6 · Retrouver le traitement fiscal</h3>
+<p>Pour chaque correction, dites s'il faut un IDA, un IDP ou rien : a) plus-value de 90 000 sur l'usine (exploitation) ; b) plus-value de 30 000 sur un appartement loué (hors exploitation) ; c) moins-value de 15 000 sur une machine ; d) amortissements dérogatoires de 12 000 ; e) frais d'émission d'emprunt de 6 000 retirés à l'ANC.</p>
+<details><summary>Voir la correction</summary>
+<div class="tbl"><table><tr><th>Cas</th><th>Traitement</th><th>Montant</th></tr>
+<tr><td>a) Usine (exploitation)</td><td>Rien : cession lointaine</td><td class="num">0</td></tr>
+<tr><td>b) Appartement loué</td><td>IDP : 30 000 × ⅓</td><td class="num neg">−10 000</td></tr>
+<tr><td>c) Moins-value machine</td><td>IDA : 15 000 × ⅓</td><td class="num pos">+5 000</td></tr>
+<tr><td>d) Amortissements dérogatoires</td><td>IDP : 12 000 × ⅓</td><td class="num neg">−4 000</td></tr>
+<tr><td>e) Frais d'émission d'emprunt</td><td>IDA : 6 000 × ⅓</td><td class="num pos">+2 000</td></tr></table></div></details>
+
+<h3>Exercice 7 · Cas de synthèse Orion</h3>
+<p>Société Orion, 50 000 actions, ANC déjà calculé : <b>900 000 €</b>. CMPC 8 %, IS 33⅓ %. Informations au 31/12/N :</p>
+<ol>
+<li>Droit au bail inscrit 30 000 ; loyer payé inférieur de 3 000 € par an au marché, payable d'avance ; il reste 4 loyers.</li>
+<li>Marque non inscrite : marge de 2 points supérieure aux produits sans marque sur 1 000 000 € de ventes, croissance 3 % par an, durée 5 ans.</li>
+<li>Stock de 40 000 dont 10 000 obsolètes (sans valeur) ; créance de 20 000 sur un client en liquidation, 50 % de chances d'être payée.</li>
+<li>Emprunt : 4 annuités restantes de 50 000 au 31/12 ; taux d'origine 7 %, taux actuel 4 %.</li>
+<li>Provision pour litige de 30 000 devenue sans objet ; caution : 10 000 par an pendant 5 ans en cas d'appel, risque 20 % (taux 8 %).</li>
+<li>Subvention d'investissement 15 000 dans les capitaux propres ; frais d'établissement de 6 000 retirés pour calculer l'ANC.</li>
+</ol>
+<details><summary>Voir la correction</summary>
+<p class="st">a) Actif</p>
+<ol class="steps">
+<li><span><b>Droit au bail</b> : 3 000 + 3 000 × [1 − 1,08⁻³]/0,08 = 3 000 + 7 731 = <b>10 731</b> → écart −19 269 ; IDA +6 423.</span></li>
+<li><span><b>Marque</b> : rente 0,02 × 1 000 000 = 20 000 ; 20 000 × (1,03⁵ − 1,08⁵)/(1,03 − 1,08) / 1,08⁵ = <b>84 407</b> → écart +84 407.</span></li>
+<li><span><b>Stocks</b> : −10 000 ; IDA +3 333. <b>Créance</b> : −10 000 ; IDA +3 333.</span></li>
+<li><span>Total actif : −19 269 + 84 407 − 10 000 − 10 000 = <b>+45 138</b> ; IDA 6 423 + 3 333 + 3 333 = <b>+13 090</b>.</span></li>
+</ol>
+<p class="st">b) Passif</p>
+<ol class="steps">
+<li><span><b>Emprunt</b> : CRD à 7 % : 50 000 × [1 − 1,07⁻⁴]/0,07 = 169 361 ; valeur à 4 % : 50 000 × [1 − 1,04⁻⁴]/0,04 = 181 495 → dette <b>+12 134</b>.</span></li>
+<li><span><b>Provision</b> : passif −30 000 ; IDP 10 000.</span></li>
+<li><span><b>Caution</b> : 0,2 × 10 000 × [1 − 1,08⁻⁵]/0,08 = <b>7 985</b> de dette en plus.</span></li>
+<li><span>Variation du passif : +12 134 − 30 000 + 7 985 = <b>−9 880</b> (le passif baisse) ; IDP 10 000.</span></li>
+</ol>
+<p class="st">c) ANCC</p>
+<div class="tbl"><table><tr><th>Poste</th><th>€</th></tr>
+<tr><td>ANC</td><td class="num">900 000</td></tr>
+<tr><td>+ Écarts sur actifs</td><td class="num">+45 138</td></tr>
+<tr><td>+ IDA sur actifs</td><td class="num">+13 090</td></tr>
+<tr><td>+ Baisse du passif exigible</td><td class="num">+9 880</td></tr>
+<tr><td>− IDP provision</td><td class="num">−10 000</td></tr>
+<tr><td>− IDP subvention (15 000 × ⅓)</td><td class="num">−5 000</td></tr>
+<tr><td>+ IDA frais d'établissement (6 000 × ⅓)</td><td class="num">+2 000</td></tr>
+<tr class="tot"><td>ANCC</td><td class="num">955 108</td></tr>
+<tr><td>Valeur mathématique (÷ 50 000)</td><td class="num">≈ 19,10 €</td></tr></table></div></details>
+
+<!-- RECAP -->
+<h2 id="recap"><span class="n">RÉCAP</span>Tableau de bord et pièges</h2>
+<div class="tbl"><table>
+<tr><th>Poste</th><th>Valeur retenue</th><th>Taux</th><th>Fiscalité</th></tr>
+<tr><td>Droit au bail</td><td>Économies de loyer actualisées, durée restante (payable d'avance : 1<sup>er</sup> flux non actualisé)</td><td>CMPC</td><td>IDA si moins-value</td></tr>
+<tr><td>Brevet, licence concédés</td><td>Redevances restantes actualisées ; contrat non signé = 0</td><td>CMPC (ou taux imposé)</td><td>—</td></tr>
+<tr><td>Marque</td><td>Redevance ou différentiel de marge capitalisé</td><td>CMPC</td><td>—</td></tr>
+<tr><td>Immobilier d'exploitation</td><td>Valeur d'utilité</td><td>—</td><td>Pas d'impôt sur la plus-value</td></tr>
+<tr><td>Bien hors exploitation</td><td>Valeur vénale − frais de cession</td><td>—</td><td>Impôt sur la plus-value déduit (IDP)</td></tr>
+<tr><td>Véhicules, matériel</td><td>Service équivalent, cote, jamais au-dessus du marché d'occasion</td><td>—</td><td>IDA sur les moins-values</td></tr>
+<tr><td>Crédit-bail</td><td>Valeur d'utilité − (redevances + option) actualisées</td><td><b>Coût de la dette</b></td><td>—</td></tr>
+<tr><td>Titres de participation</td><td>Valeur d'utilité (cours, actif net, rentabilité, motivations, conjoncture)</td><td>—</td><td>IDA si moins-value</td></tr>
+<tr><td>Titres de placement</td><td>Cotés : cours moyen du dernier mois ; non cotés : valeur de négociation − abattement 15–25 %</td><td>—</td><td>IDP / IDA</td></tr>
+<tr><td>Stocks, créances</td><td>Déprécier l'obsolète et le risque de non-recouvrement</td><td>—</td><td>IDA × ⅓</td></tr>
+<tr><td>Dettes financières</td><td>Annuités restantes actualisées</td><td><b>Taux du jour</b></td><td>—</td></tr>
+<tr><td>Provision injustifiée</td><td>Sortie du passif</td><td>—</td><td>IDP × ⅓</td></tr>
+<tr><td>Caution, engagement hors bilan</td><td>Flux probable (risque × montant) actualisé, ajouté au passif</td><td>CMPC dans Warrior</td><td>—</td></tr>
+</table></div>
+
+<div class="tbl"><table>
+<tr><th>Piège</th><th>Bon réflexe</th></tr>
+<tr><td>Oublier le passif</td><td>L'ANCC corrige aussi les dettes : une dette qui monte fait baisser l'ANCC (Warrior : emprunt +34 847, caution +15 619).</td></tr>
+<tr><td>Confondre les signes des impôts différés</td><td>IDA = créance → on ajoute ; IDP = dette → on retranche.</td></tr>
+<tr><td>Compenser avant l'IDA</td><td>Véhicules Warrior : écart net +3 000 mais IDA sur la seule moins-value du camion (2 333).</td></tr>
+<tr><td>Provision sans objet entièrement en capitaux propres</td><td>Seulement ses ⅔ : 42 000 → +28 000 et IDP 14 000.</td></tr>
+<tr><td>Taux de la dette</td><td>Taux auquel l'entreprise emprunterait <b>aujourd'hui</b>, pas le taux d'origine.</td></tr>
+<tr><td>Compter les flux restants</td><td>Faire la frise : début N−5 pour 10 ans → dernière annuité fin N+4 → 4 restantes au 31/12/N.</td></tr>
+<tr><td>Crédit-bail en milieu d'année</td><td>Pastouche : flux au 1/7 → actualiser au 30/6 puis × 1,05^0,5.</td></tr>
+<tr><td>Probabilité d'un contrat</td><td>Non signé = 0. Mais une caution ou une créance se pondèrent par leur probabilité (10 %, 40 %…).</td></tr>
+<tr><td>Unités</td><td>Mangala et Pastouche en k€ : ANCC × 1 000 / nombre d'actions.</td></tr>
+</table></div>
+
+<div class="tbl"><table>
+<tr><th>Cas</th><th>ANC</th><th>ANCC</th><th>Valeur par action</th></tr>
+<tr><td>Warrior (€, 60 000 actions)</td><td class="num">1 140 000</td><td class="num">2 183 909</td><td class="num">19 € → 36,40 €</td></tr>
+<tr><td>Mangala (k€, 195 000 actions)</td><td class="num">49 490</td><td class="num">55 933,33</td><td class="num">253,79 € → 286,84 €</td></tr>
+<tr><td>Pastouche (k€, 600 000 actions)</td><td class="num">966 840</td><td class="num">2 137 215</td><td class="num">1 611,40 € → 3 562 €</td></tr>
+<tr><td>Orion (exercice 7)</td><td class="num">900 000</td><td class="num">955 108</td><td class="num">18 € → 19,10 €</td></tr>
+</table></div>
+
+<footer>Fiche construite à partir des supports de F. Romon (FFBC, Université de Lille) : ANCC introduction, éléments incorporels, corporels, financiers et circulants, passif, synthèse Warrior et conclusion, et des corrections des cas Mangala (V3) et Casino Pastouche (V4). Les exercices 1 à 7 sont des exercices d'entraînement inventés sur le modèle du cours. Pour l'ANC et la partie introductive (goodwill, approches), voir aussi la fiche « Évaluation patrimoniale : ANC et ANCC » du 1<sup>er</sup> octobre.</footer>
+</div>
+
+</body></html>

@@ -62,9 +62,9 @@ svg text{fill:var(--fg)}
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Évaluation d'entreprises · F. Romon · Cours du 1er oct.</div>
+    <div class="eyebrow">Évaluation d'entreprises · F. Romon · Cours du 1er et du 8 oct.</div>
     <h1>Cartes mentales ANC · ANCC</h1>
-    <p class="lede">Sept cartes tirées de la fiche de révision : le cours, les retraitements, les cas Warrior, Mangala, Pastouche et Lumen, puis les pièges d'examen. IS retenu : 33⅓ %.</p>
+    <p class="lede">Neuf cartes : le cours, les retraitements, les éléments financiers, circulants et le passif, la synthèse complète de Warrior, les cas Mangala, Pastouche et Lumen, puis les pièges d'examen. IS retenu : 33⅓ %.</p>
   </header>
   <nav id="tabs" role="tablist" aria-label="Cartes"></nav>
   <section class="sheet">
@@ -267,6 +267,25 @@ const MAPS = [
     {t:"ANC 5 170 → 25,85 € / action"},
     {t:"Brevet +23,60 · stocks obsolètes −60"},
     {t:"ANCC 5 906,93 → 29,53 € / action"}]}
+ ]}},
+{id:"circpassif", tab:"Circulants et passif", title:"Éléments financiers, circulants et passif", sub:"Cours du 8 oct. · ce qui manquait pour boucler Warrior",
+ root:{t:"Financiers, circulants, passif", c:[
+  {t:"Titres de participation", c:[{t:"Cours, actif net, rentabilité"},{t:"Motivations, conjoncture"},{t:"Comparer à la VNC"}]},
+  {t:"Titres de placement", c:[{t:"Cotés : cours moyen du dernier mois"},{t:"Non cotés : valeur de négociation"},{t:"Abattement d'illiquidité 15–25 %"}]},
+  {t:"Stocks", c:[{t:"Existence et qualité"},{t:"Warrior : 24 000 × 30 % = −7 200"},{t:"IDA +2 400"}]},
+  {t:"Créances", c:[{t:"Risque de non-recouvrement"},{t:"Fondu : 46 000 × 40 % = −18 400"},{t:"IDA +6 133"}]},
+  {t:"Dettes financières", c:[{t:"Annuités restantes au taux du jour"},F("149 030 × [1 − 1,05⁻⁴]/0,05 = 528 453"),{t:"CRD à 8 % : 493 606"},{t:"Dette +34 847 → ANCC −34 847"}]},
+  {t:"Provisions R&C", c:[{t:"Injustifiée = réserve latente"},{t:"Litige 42 000 : passif −42 000"},{t:"IDP 14 000 → CP +28 000"}]},
+  {t:"Hors bilan", c:[{t:"Cautions = dette probable"},F("0,1 × 30 000 × [1 − 1,08⁻⁷]/0,08 = 15 619")]}
+ ]}},
+{id:"synthese", tab:"Synthèse Warrior", title:"Synthèse du cas Warrior", sub:"De l'ANC 1 140 000 à l'ANCC 2 183 909",
+ root:{t:"ANCC Warrior", c:[
+  {t:"Principes", c:[{t:"Utilité (exploitation) ou vénale (hors exploitation)"},{t:"IDA = créance fiscale → +"},{t:"IDP = dette fiscale → −"}]},
+  {t:"Actifs", c:[{t:"Écarts +1 037 670"},{t:"IDA +13 372"},{t:"Total +1 051 042"}]},
+  {t:"Passif", c:[{t:"Écarts +8 466"},{t:"IDP 14 000"},{t:"Total −22 466"}]},
+  {t:"Postes de l'ANC", c:[{t:"IDA primes +1 333"},{t:"IDA frais d'établissement +14 000"},{t:"IDA charges à répartir +3 000"},{t:"IDP subvention −3 000"}]},
+  {t:"Résultat", c:[F("ANCC = 2 183 909"),{t:"36,40 € par action (ANC : 19 €)"}]},
+  {t:"Bilan de la méthode", c:[{t:"Simple, additive, poste par poste"},{t:"Idéale pour entreprises matures"},{t:"Mais : passé, ignore la rentabilité"}]}
  ]}},
 {id:"pieges", tab:"Pièges", title:"Pièges fréquents à l'examen", sub:"Le bon réflexe pour chaque erreur classique",
  root:{t:"Pièges d'examen", c:[

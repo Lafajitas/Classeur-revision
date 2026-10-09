@@ -1,0 +1,487 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-eco_fiches">← Économétrie</a><span>· Classeur de révision</span></nav>
+
+<title>Fiche Économétrie Jour 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+<style>
+/* Layout : même gabarit que les fiches J1 à J3 — colonne unique, parties du cours puis exercices corrigés, encadrés formule / à retenir / exemple */
+:root{
+  --bg:#f7f8fb; --paper:#ffffff; --fg:#1b2130; --muted:#5b6478; --line:#dfe3ec;
+  --accent:#2f5bd3; --accent-soft:#e8eefc; --key:#b4540f; --key-soft:#fdf1e6; --ok:#1f7a4d; --bad:#b42318;
+  --display:"Fraunces", Georgia, serif; --body:"Source Sans 3", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#12151d; --paper:#1a1f2a; --fg:#e6e9f0; --muted:#9aa3b6; --line:#2c3342;
+  --accent:#86a5ff; --accent-soft:#1f2a45; --key:#f0a868; --key-soft:#35261a; --ok:#6fcf9b; --bad:#ff8a80; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#12151d; --paper:#1a1f2a; --fg:#e6e9f0; --muted:#9aa3b6; --line:#2c3342;
+  --accent:#86a5ff; --accent-soft:#1f2a45; --key:#f0a868; --key-soft:#35261a; --ok:#6fcf9b; --bad:#ff8a80; color-scheme:dark }
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:32px 64px}
+header{display:grid;gap:6px;padding-bottom:20px;border-bottom:2px solid var(--fg);margin-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-size:24px;margin:44px 0 14px;text-wrap:balance;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:600}
+h3{font-size:17px;margin:26px 0 8px;color:var(--accent)}
+p,li{max-width:70ch}
+ul,ol{padding-left:20px;margin:6px 0}
+li{margin:3px 0}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+nav a{font-size:14px;color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:4px 10px;border-radius:999px;background:var(--paper)}
+nav a:hover,nav a:focus-visible{border-color:var(--accent);outline:none}
+.f{background:var(--accent-soft);border-radius:8px;padding:10px 14px;margin:10px 0;overflow-x:auto}
+.key{background:var(--key-soft);border-left:3px solid var(--key);padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.key b:first-child{color:var(--key)}
+.ex{border:1px dashed var(--line);background:var(--paper);border-radius:8px;padding:12px 14px;margin:12px 0}
+.ex .t{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
+.q{border-top:1px solid var(--line);padding-top:6px;margin-top:10px}
+.q>b:first-child{font-family:var(--mono);color:var(--accent);margin-right:6px}
+.tbl{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;background:var(--paper);font-variant-numeric:tabular-nums;font-size:15px}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--accent-soft);font-weight:600}
+td.num{text-align:right;font-family:var(--mono);font-size:13.5px}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:6px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:8px}
+.steps li::before{content:counter(s);font-family:var(--mono);font-weight:600;color:var(--paper);background:var(--accent);border-radius:50%;width:24px;height:24px;display:grid;place-items:center;font-size:13px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.two>div{min-width:0}
+.mono{font-family:var(--mono);font-size:14px}
+.ok{color:var(--ok);font-weight:700}
+.no{color:var(--bad);font-weight:700}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+figure.chart{margin:12px 0;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px;overflow-x:auto}
+figure.chart svg{width:100%;min-width:420px;height:auto;display:block}
+.chart .g{stroke:var(--line);stroke-width:1}
+.chart .ax{stroke:var(--muted);stroke-width:1}
+.chart .tk{fill:var(--muted);font:12px var(--mono)}
+.chart .al{fill:var(--muted);font:13px var(--body)}
+.chart .pt{fill:var(--accent);stroke:var(--paper);stroke-width:1.5;fill-opacity:.85}
+.chart .pt:hover{fill:var(--key);fill-opacity:1}
+.chart .fit{stroke:var(--key);stroke-width:2}
+.det{border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--paper);border-radius:0 8px 8px 0;padding:10px 14px;margin:14px 0}
+.det>.t{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2px}
+.st{font-weight:700;margin:14px 0 4px;color:var(--fg)}
+.xl{font-size:14.5px}
+.cap{font-size:13px;color:var(--muted);margin-top:-4px}
+footer{margin-top:48px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+
+.chart .pt2{fill:var(--key);stroke:var(--paper);stroke-width:1.5;fill-opacity:.85}
+.chart .fit2{stroke:var(--accent);stroke-width:2}
+.chart .lg{font:13px var(--body);fill:var(--fg)}
+.sig{display:inline-block;font-family:var(--mono);font-size:12px;padding:1px 7px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+.sig.no{background:color-mix(in srgb,var(--bad) 12%,var(--paper));color:var(--bad)}
+.sig.ok{background:color-mix(in srgb,var(--ok) 14%,var(--paper));color:var(--ok)}
+.trap{background:color-mix(in srgb,var(--bad) 7%,var(--paper));border-left:3px solid var(--bad);padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.trap b:first-child{color:var(--bad)}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Econometrics · Day 4 · Regression with a binary dependent variable — Giang Vu</span>
+  <h1>Variable dépendante binaire : LPM, probit et logit</h1>
+</header>
+
+<nav aria-label="Sections">
+  <a href="#p1">1. Y binaire</a><a href="#p2">2. LPM</a><a href="#p3">3. Probit</a><a href="#p4">4. Logit</a><a href="#p5">5. Effets marginaux</a><a href="#p6">6. Ajustement</a><a href="#p7">7. Comparer</a><a href="#exo">Exercices corrigés</a><a href="#recap">Récap</a>
+</nav>
+
+<h3>Objectifs de la séance</h3>
+<ul>
+  <li>Modéliser un Y qui ne prend que deux valeurs (0 / 1) : acheter ou non, prêt accordé ou refusé, fumer ou non.</li>
+  <li>Estimer et lire le <b>modèle de probabilité linéaire</b> (LPM), le <b>probit</b> et le <b>logit</b>.</li>
+  <li>Calculer une <b>probabilité prédite</b> et un <b>effet marginal</b> avec chacun des trois modèles.</li>
+  <li>Juger l'ajustement : <b>r²</b> pour le LPM, <b>pseudo-R² de McFadden</b> pour probit et logit.</li>
+</ul>
+<p>Lien avec J3 : on garde la régression multiple, mais Y vaut 0 ou 1. Ce qu'on prédit n'est plus « une valeur de Y » mais <b>la probabilité que Y = 1</b>.</p>
+
+<!-- PARTIE 1 -->
+<h2 id="p1"><span class="n">PARTIE 1</span>Qu'est-ce qui change quand Y est binaire ?</h2>
+<p>Jusqu'ici Y était continu (prix d'une maison, ventes de tartes, score). Exemples de Y binaires vus en cours :</p>
+<div class="tbl"><table>
+<tr><th>Y = 1 si…</th><th>X possibles</th></tr>
+<tr><td>la personne fume</td><td>taxe sur le tabac, revenu, variables démographiques</td></tr>
+<tr><td>le prêt immobilier est accepté (ou refusé)</td><td>origine, revenu, caractéristiques du logement, statut marital</td></tr>
+<tr><td>l'entreprise demande un prêt</td><td>caractéristiques de l'entrepreneur et de l'entreprise</td></tr>
+<tr><td>le client achète (sinon 0)</td><td>âge, sexe, revenu…</td></tr>
+</table></div>
+<div class="key"><b>Idée clé</b> : comme Y vaut 0 ou 1, sa moyenne conditionnelle est une probabilité :
+\[ E(Y\mid X) = 1\times \Pr(Y=1\mid X) + 0\times \Pr(Y=0\mid X) = \Pr(Y=1\mid X) \]
+La « droite » ou la « courbe » de régression donne donc la <b>probabilité que Y = 1</b> pour chaque valeur des X. Une prédiction \(\hat Y = 0{,}26\) se lit : 26 % de chances que Y = 1.</div>
+<p>Trois méthodes : le <b>LPM</b> (régression linéaire classique), le <b>probit</b> (loi normale) et le <b>logit</b> (loi logistique).</p>
+
+<!-- PARTIE 2 -->
+<h2 id="p2"><span class="n">PARTIE 2</span>Le modèle de probabilité linéaire (LPM)</h2>
+<h3>2.1 Le modèle</h3>
+<div class="f">\[ \Pr(Y_i=1\mid X) = \beta_0 + \beta_1X_{1i} + \dots + \beta_kX_{ki} \quad\text{estimé par MCO, comme en J3} \]</div>
+<p>Lecture de \(\beta_1\) : quand X₁ augmente d'une unité, la probabilité que Y = 1 varie de β₁ <b>en points de pourcentage</b> (×100), les autres X constants.</p>
+
+<div class="ex"><span class="t">Exemple du cours — achat d'un produit</span>
+<p>Y = 1 si achat, income en centaines d'euros par mois, female = 1 pour une femme. Résultat : \(\hat Y = 0{,}03 + 0{,}01\,income + 0{,}2\,female\).</p>
+<ul>
+<li><b>0,01</b> : +1 unité de revenu (100 €) → probabilité d'achat <b>+1 point de %</b>, à sexe donné.</li>
+<li><b>0,2</b> : à revenu égal, une femme a une probabilité d'achat supérieure de <b>20 points de %</b>.</li>
+</ul>
+<p class="st">Probabilité d'achat d'une femme gagnant 3 000 € par mois</p>
+<ol class="steps">
+<li><span>Convertir dans l'unité : 3 000 € = <b>30</b> centaines d'euros ; female = 1.</span></li>
+<li><span>\(\hat Y = 0{,}03 + 0{,}01\times30 + 0{,}2\times1 = 0{,}03 + 0{,}30 + 0{,}20 = \mathbf{0{,}53}\)</span></li>
+<li><span>Lecture : <b>53 %</b> de probabilité d'acheter le produit.</span></li>
+</ol></div>
+
+<h3>2.2 Application : refus de prêt immobilier (Boston HMDA, 1990)</h3>
+<p>2 380 demandes de crédit immobilier. Y = <i>deny</i> (1 si refus). X principal : <b>P/I ratio</b> = mensualités de dettes / revenu.</p>
+<div class="ex"><span class="t">Exemple — une seule variable</span>
+<p>\(\widehat{deny} = -0{,}080 + 0{,}605\;P/I\) (n = 2 380)</p>
+<ol class="steps">
+<li><span>P/I = 0,3 : \(\Pr(deny=1) = -0{,}080 + 0{,}605\times0{,}3 = -0{,}080 + 0{,}1815 = \mathbf{0{,}1015}\) → 10,15 %.</span></li>
+<li><span>P/I = 0,4 : \(\Pr(deny=1) = -0{,}080 + 0{,}605\times0{,}4 = -0{,}080 + 0{,}242 = \mathbf{0{,}162}\) → 16,2 %.</span></li>
+<li><span>Effet du passage de 0,3 à 0,4 : 0,162 − 0,1015 = <b>0,0605</b>, soit <b>+6,05 points de %</b> (= 0,605 × 0,1 : avec un LPM, l'effet est toujours β × ΔX).</span></li>
+</ol></div>
+<div class="ex"><span class="t">Exemple — on ajoute black (1 si demandeur noir)</span>
+<p>\(\widehat{deny} = -0{,}093 + 0{,}566\;P/I + 0{,}176\;black\)</p>
+<ol class="steps">
+<li><span>Demandeur noir, P/I = 0,3 : \(-0{,}093 + 0{,}566\times0{,}3 + 0{,}176\times1 = -0{,}093 + 0{,}1698 + 0{,}176 = \mathbf{0{,}253}\)</span></li>
+<li><span>Demandeur blanc, P/I = 0,3 : \(-0{,}093 + 0{,}1698 + 0 = \mathbf{0{,}077}\)</span></li>
+<li><span>Écart = 0,253 − 0,077 = <b>0,176</b> = <b>17,6 points de %</b>, exactement le coefficient de <i>black</i>.</span></li>
+</ol></div>
+
+<h3>2.3 Bilan du LPM</h3>
+<div class="two">
+<div class="key"><b>Avantages</b><ul><li>Simple à estimer (MCO) et à interpréter.</li><li>Inférence identique à la régression multiple (tests t, test F, r²).</li></ul></div>
+<div class="trap"><b>Inconvénients</b><ul><li>L'effet d'une variation de X est <b>le même quel que soit le niveau de X</b>, ce qui n'a pas de sens (passer de P/I 0,1 à 0,2 ou de 0,6 à 0,7 ne change pas le risque de la même façon).</li><li>Les probabilités prédites peuvent être <b>&lt; 0 ou &gt; 1</b> !</li></ul></div>
+</div>
+<figure class="chart"><svg viewBox="0 0 600 340" role="img" aria-label="Droite du LPM qui sort de [0;1] et courbes en S du probit et du logit"><line class="g" x1="60" x2="560" y1="300.0" y2="300.0"/><text class="tk" x="52" y="304.0" text-anchor="end">-0,2</text><line class="g" x1="60" x2="560" y1="260.0" y2="260.0"/><text class="tk" x="52" y="264.0" text-anchor="end">0</text><line class="g" x1="60" x2="560" y1="220.0" y2="220.0"/><text class="tk" x="52" y="224.0" text-anchor="end">0,2</text><line class="g" x1="60" x2="560" y1="180.0" y2="180.0"/><text class="tk" x="52" y="184.0" text-anchor="end">0,4</text><line class="g" x1="60" x2="560" y1="140.0" y2="140.0"/><text class="tk" x="52" y="144.0" text-anchor="end">0,6</text><line class="g" x1="60" x2="560" y1="100.0" y2="100.0"/><text class="tk" x="52" y="104.0" text-anchor="end">0,8</text><line class="g" x1="60" x2="560" y1="60.0" y2="60.0"/><text class="tk" x="52" y="64.0" text-anchor="end">1,0</text><line class="g" x1="60" x2="560" y1="20.0" y2="20.0"/><text class="tk" x="52" y="24.0" text-anchor="end">1,2</text><text class="tk" x="60.0" y="318" text-anchor="middle">0</text><text class="tk" x="122.5" y="318" text-anchor="middle">0,1</text><text class="tk" x="185.0" y="318" text-anchor="middle">0,2</text><text class="tk" x="247.5" y="318" text-anchor="middle">0,3</text><text class="tk" x="310.0" y="318" text-anchor="middle">0,4</text><text class="tk" x="372.5" y="318" text-anchor="middle">0,5</text><text class="tk" x="435.0" y="318" text-anchor="middle">0,6</text><text class="tk" x="497.5" y="318" text-anchor="middle">0,7</text><text class="tk" x="560.0" y="318" text-anchor="middle">0,8</text>
+<rect x="60" y="60.0" width="500" height="200.0" fill="var(--ok)" opacity=".06"/>
+<line class="ax" x1="60" x2="560" y1="260.0" y2="260.0"/><line class="ax" x1="60" x2="560" y1="60.0" y2="60.0" stroke-dasharray="4 4"/>
+<path d="M153.8,300.1 L497.5,20.1" fill="none" class="fit"/><path d="M91.2,260.0 L97.5,260.0 L103.8,260.0 L110.0,260.0 L116.2,260.0 L122.5,260.0 L128.8,260.0 L135.0,260.0 L141.2,259.9 L147.5,259.9 L153.8,259.9 L160.0,259.8 L166.2,259.7 L172.5,259.5 L178.8,259.3 L185.0,259.0 L191.2,258.7 L197.5,258.1 L203.8,257.5 L210.0,256.6 L216.2,255.4 L222.5,254.0 L228.8,252.2 L235.0,250.0 L241.2,247.4 L247.5,244.2 L253.7,240.4 L260.0,236.1 L266.2,231.0 L272.5,225.3 L278.8,219.0 L285.0,212.0 L291.2,204.4 L297.5,196.2 L303.8,187.6 L310.0,178.6 L316.2,169.4 L322.5,160.0 L328.8,150.6 L335.0,141.4 L341.2,132.4 L347.5,123.8 L353.7,115.6 L360.0,108.0 L366.2,101.0 L372.5,94.7 L378.8,89.0 L385.0,83.9 L391.2,79.6 L397.5,75.8 L403.8,72.6 L410.0,70.0 L416.2,67.8 L422.5,66.0 L428.7,64.6 L435.0,63.4 L441.2,62.5 L447.5,61.9 L453.8,61.3 L460.0,61.0 L466.2,60.7 L472.5,60.5 L478.8,60.3 L485.0,60.2 L491.2,60.1 L497.5,60.1 L503.8,60.1 L510.0,60.0 L516.2,60.0 L522.5,60.0 L528.8,60.0 L535.0,60.0 L541.2,60.0 L547.5,60.0" fill="none" class="fit2"/><path d="M91.2,259.8 L97.5,259.8 L103.8,259.8 L110.0,259.7 L116.2,259.6 L122.5,259.6 L128.8,259.5 L135.0,259.4 L141.2,259.2 L147.5,259.1 L153.8,258.9 L160.0,258.7 L166.2,258.4 L172.5,258.0 L178.8,257.6 L185.0,257.1 L191.2,256.5 L197.5,255.8 L203.8,255.0 L210.0,253.9 L216.2,252.7 L222.5,251.2 L228.8,249.4 L235.0,247.3 L241.2,244.8 L247.5,241.9 L253.7,238.5 L260.0,234.5 L266.2,229.9 L272.5,224.6 L278.8,218.7 L285.0,212.0 L291.2,204.7 L297.5,196.7 L303.8,188.1 L310.0,179.0 L316.2,169.6 L322.5,160.0 L328.8,150.4 L335.0,141.0 L341.2,131.9 L347.5,123.3 L353.7,115.3 L360.0,108.0 L366.2,101.3 L372.5,95.4 L378.8,90.1 L385.0,85.5 L391.2,81.5 L397.5,78.1 L403.8,75.2 L410.0,72.7 L416.2,70.6 L422.5,68.8 L428.7,67.3 L435.0,66.1 L441.2,65.0 L447.5,64.2 L453.8,63.5 L460.0,62.9 L466.2,62.4 L472.5,62.0 L478.8,61.6 L485.0,61.3 L491.2,61.1 L497.5,60.9 L503.8,60.8 L510.0,60.6 L516.2,60.5 L522.5,60.4 L528.8,60.4 L535.0,60.3 L541.2,60.2 L547.5,60.2" fill="none" stroke="var(--ok)" stroke-width="2" stroke-dasharray="6 4"/>
+<text class="lg" x="435.0" y="140.0" style="fill:var(--key)">LPM (droite)</text>
+<text class="lg" x="353.7" y="44.0" style="fill:var(--accent)">Probit</text>
+<text class="lg" x="141.2" y="236.0" style="fill:var(--ok)">Logit (tirets)</text>
+<text class="al" x="310.0" y="336" text-anchor="middle">Ratio paiements / revenu (P/I)</text>
+<text class="al" x="14" y="10.0">Pr(deny = 1)</text></svg>
+<figcaption class="cap">Allure des trois modèles (illustration inspirée du sous-échantillon HMDA, n = 127) : la droite du LPM passe sous 0 et au-dessus de 1, les courbes en S du probit et du logit restent dans la bande verte [0 ; 1] et se superposent presque.</figcaption></figure>
+<p>Solution : un modèle <b>non linéaire</b> qui garantit (I) une probabilité croissante en X si β₁ &gt; 0 et (II) \(0 \le \Pr(Y=1\mid X) \le 1\) pour tout X : une <b>courbe en S</b>.</p>
+
+<!-- PARTIE 3 -->
+<h2 id="p3"><span class="n">PARTIE 3</span>La régression probit</h2>
+<div class="f">\[ \Pr(Y=1\mid X) = \Phi(z) \qquad z = \beta_0 + \beta_1X_1 + \dots + \beta_kX_k \]</div>
+<ul>
+<li>\(\Phi\) = <b>fonction de répartition de la loi normale centrée réduite</b> : \(\Phi(z) = \Pr(Z \le z)\), l'aire sous la cloche à gauche de z.</li>
+<li>\(z\) = le « z-value » ou « z-index » : la partie linéaire.</li>
+<li>Φ est toujours entre 0 et 1 et croissante : les deux conditions sont respectées.</li>
+</ul>
+<div class="ex"><span class="t">Exemple du cours — calcul d'une probabilité probit</span>
+<p>β₀ = −2, β₁ = 3, X = 0,4.</p>
+<ol class="steps">
+<li><span>Calculer z : \(z = -2 + 3\times0{,}4 = -2 + 1{,}2 = -0{,}8\)</span></li>
+<li><span>Lire Φ(−0,8) dans la table de la loi normale : ligne −0,8, colonne 0 → <b>0,2119</b>. Dans Excel : <span class="mono">=LOI.NORMALE.STANDARD.N(-0,8;VRAI)</span>.</span></li>
+<li><span>\(\Pr(Y=1\mid X=0{,}4) = \mathbf{0{,}2119}\) → 21,19 %.</span></li>
+</ol></div>
+<div class="ex"><span class="t">HMDA — probit (XLSTAT)</span>
+<div class="tbl"><table><tr><th>Source</th><th>Valeur</th><th>Erreur-type</th><th>Khi² de Wald</th><th>Pr &gt; Khi²</th></tr>
+<tr><td>Intercept</td><td class="num">−2,260</td><td class="num">0,129</td><td class="num">305,756</td><td class="num">&lt; 0,0001</td></tr>
+<tr><td>PI</td><td class="num">2,747</td><td class="num">0,358</td><td class="num">58,993</td><td class="num">&lt; 0,0001</td></tr>
+<tr><td>black</td><td class="num">0,706</td><td class="num">0,083</td><td class="num">71,656</td><td class="num">&lt; 0,0001</td></tr></table></div>
+<p>−2 Log(vraisemblance) : 1 748,67 (modèle sans X) → 1 594,89 (modèle complet) ; <b>R² de McFadden = 0,0879</b>.</p>
+<p class="st">Probabilité de refus avec P/I = 0,3</p>
+<ol class="steps">
+<li><span>Demandeur noir : \(z = -2{,}260 + 2{,}747\times0{,}3 + 0{,}706 = -2{,}260 + 0{,}8241 + 0{,}706 = -0{,}730\) → \(\Phi(-0{,}730) = \mathbf{0{,}233}\).</span></li>
+<li><span>Demandeur blanc : \(z = -2{,}260 + 0{,}8241 = -1{,}436\) → \(\Phi(-1{,}436) = \mathbf{0{,}075}\).</span></li>
+<li><span>Écart ≈ 0,233 − 0,075 = <b>15,8 points de %</b>. Les coefficients probit (2,747 ; 0,706) ne se lisent <b>pas</b> directement comme des points de % : il faut passer par Φ ou par les effets marginaux.</span></li>
+</ol>
+<p class="cap">Seuls le <b>signe</b> et la <b>significativité</b> d'un coefficient probit se lisent directement : PI et black augmentent la probabilité de refus (p &lt; 0,0001).</p></div>
+
+<!-- PARTIE 4 -->
+<h2 id="p4"><span class="n">PARTIE 4</span>La régression logit</h2>
+<div class="f">\[ \Pr(Y=1\mid X) = F(z) = \frac{1}{1+e^{-z}} \qquad z = \beta_0 + \beta_1X_1 + \dots + \beta_kX_k \]</div>
+<p>F = <b>fonction de répartition logistique</b>. Comme probit et logit utilisent des fonctions différentes, <b>leurs coefficients sont différents</b> (les β logit valent environ 1,6 à 2 fois les β probit), mais les probabilités prédites sont très proches.</p>
+<div class="ex"><span class="t">Exemple du cours — calcul d'une probabilité logit</span>
+<p>β₀ = −3, β₁ = 2, X = 0,4.</p>
+<ol class="steps">
+<li><span>\(z = -3 + 2\times0{,}4 = -2{,}2\)</span></li>
+<li><span>\(e^{-z} = e^{2{,}2} = 9{,}025\)</span></li>
+<li><span>\(\Pr(Y=1) = \dfrac{1}{1+9{,}025} = \mathbf{0{,}0998}\) → ≈ 10 %. Excel : <span class="mono">=1/(1+EXP(2,2))</span>.</span></li>
+</ol></div>
+<div class="ex"><span class="t">HMDA — logit (XLSTAT)</span>
+<div class="tbl"><table><tr><th>Source</th><th>Valeur</th><th>Erreur-type</th><th>Khi² de Wald</th><th>Pr &gt; Khi²</th></tr>
+<tr><td>Intercept</td><td class="num">−4,129</td><td class="num">0,268</td><td class="num">237,521</td><td class="num">&lt; 0,0001</td></tr>
+<tr><td>PI</td><td class="num">5,379</td><td class="num">0,727</td><td class="num">54,807</td><td class="num">&lt; 0,0001</td></tr>
+<tr><td>black</td><td class="num">1,269</td><td class="num">0,146</td><td class="num">75,386</td><td class="num">&lt; 0,0001</td></tr></table></div>
+<p>−2 Log(vraisemblance) : 1 748,67 → 1 591,99 ; <b>R² de McFadden = 0,0896</b>.</p>
+<ol class="steps">
+<li><span>Noir, P/I = 0,3 : \(z = -4{,}129 + 5{,}379\times0{,}3 + 1{,}269 = -1{,}246\) → \(\dfrac{1}{1+e^{1{,}246}} = \mathbf{0{,}223}\).</span></li>
+<li><span>Blanc, P/I = 0,3 : \(z = -2{,}515\) → \(\dfrac{1}{1+e^{2{,}515}} = \mathbf{0{,}075}\).</span></li>
+<li><span>Écart ≈ <b>14,9 points de %</b>, très proche du probit (15,8).</span></li>
+</ol></div>
+<div class="key"><b>Pourquoi le logit si on a le probit ?</b> Raison surtout historique : le logit était plus rapide à calculer, ce qui ne compte plus aujourd'hui. En pratique les deux donnent des résultats très proches et les deux sont utilisés.</div>
+
+<!-- PARTIE 5 -->
+<h2 id="p5"><span class="n">PARTIE 5</span>Effets marginaux : lire probit et logit en points de %</h2>
+<p>Dans un modèle en S, l'effet de X dépend de l'endroit où l'on se trouve sur la courbe (fort au milieu, faible aux extrémités). On le résume par l'<b>effet marginal aux moyennes</b> : on place toutes les X à leur moyenne, puis on mesure la pente de la courbe.</p>
+<div class="two">
+<div class="f">Probit : \[ \frac{\partial \Pr(Y=1)}{\partial X_j} = \varphi(\bar z)\,\beta_j \]
+où φ = densité normale, \(\varphi(z)=\frac{1}{\sqrt{2\pi}}e^{-z^2/2}\) (Excel : <span class="mono">=LOI.NORMALE.STANDARD.N(z;FAUX)</span>)</div>
+<div class="f">Logit : \[ \frac{\partial \Pr(Y=1)}{\partial X_j} = F(\bar z)\,[1-F(\bar z)]\,\beta_j \]
+avec \(\bar z = b_0 + b_1\bar X_1 + \dots + b_k\bar X_k\)</div>
+</div>
+<div class="ex"><span class="t">HMDA — effets marginaux aux moyennes (XLSTAT)</span>
+<div class="tbl"><table><tr><th>Variable</th><th>LPM (coef.)</th><th>Probit : effet marginal</th><th>Logit : effet marginal</th></tr>
+<tr><td>PI</td><td class="num">0,566</td><td class="num">0,502 (z = 5,48)</td><td class="num">0,497 (z = 7,48)</td></tr>
+<tr><td>black</td><td class="num">0,176</td><td class="num">0,129 (z = 7,78)</td><td class="num">0,117 (z = 8,84)</td></tr></table></div>
+<p><b>Lecture</b> : pour un demandeur « moyen », +0,1 de ratio P/I augmente la probabilité de refus d'environ 0,1 × 0,50 = <b>5 points de %</b> ; être noir l'augmente d'environ <b>12 à 13 points de %</b> (probit / logit), à P/I égal. Les trois modèles concluent à une discrimination significative.</p></div>
+<div class="trap"><b>Piège</b> : ne jamais dire « +1 de PI → +2,747 points de probabilité » avec un probit. Seuls le LPM et les <b>effets marginaux</b> se lisent en points de %. Pour une variable muette (black), l'effet le plus parlant est la différence de deux probabilités (0 → 1), comme au §3.</div>
+
+<!-- PARTIE 6 -->
+<h2 id="p6"><span class="n">PARTIE 6</span>Estimation et qualité d'ajustement</h2>
+<ul>
+<li>LPM : MCO, ajustement par le <b>r²</b> (peu parlant car Y ne vaut que 0 ou 1).</li>
+<li>Probit et logit : estimés par <b>maximum de vraisemblance</b> (on choisit les β qui rendent les données observées les plus probables). Le r² et le r² ajusté n'ont pas de sens.</li>
+<li>Mesure utilisée : le <b>pseudo-R² de McFadden</b>, l'amélioration de la log-vraisemblance par rapport au modèle sans X.</li>
+</ul>
+<div class="f">\[ R^2_{McFadden} = 1 - \frac{\ln L_{\text{modèle}}}{\ln L_{\text{sans X}}} = 1 - \frac{-2\ln L_{\text{modèle}}}{-2\ln L_{\text{sans X}}} \]</div>
+<div class="ex"><span class="t">Vérification sur HMDA</span>
+<p>Probit : \(1 - \dfrac{1\,594{,}89}{1\,748{,}67} = 1 - 0{,}9121 = \mathbf{0{,}0879}\) ✓ &nbsp;·&nbsp; Logit : \(1 - \dfrac{1\,591{,}99}{1\,748{,}67} = \mathbf{0{,}0896}\) ✓</p>
+<p class="cap">Dans XLSTAT, la colonne « Independent » = modèle avec la seule constante ; « Full » = modèle complet. Plus −2 Log(L) baisse, mieux c'est.</p></div>
+<p class="st">Compléments utiles pour comparer les modèles (exercice 2.d)</p>
+<ul>
+<li><b>Test du rapport de vraisemblance</b> (global, équivalent du test F) : \(LR = (-2\ln L_0) - (-2\ln L)\), à comparer à un χ² à k degrés de liberté. HMDA probit : 1 748,67 − 1 594,89 = 153,78 ≫ χ²(2) = 5,99 → modèle significatif.</li>
+<li><b>Pourcentage de bonnes prédictions</b> : on prédit Y = 1 si \(\hat p &gt; 0{,}5\), puis on compte les observations bien classées.</li>
+<li>Pour le LPM : nombre de probabilités prédites hors de [0 ; 1].</li>
+</ul>
+
+<!-- PARTIE 7 -->
+<h2 id="p7"><span class="n">PARTIE 7</span>Les trois modèles côte à côte</h2>
+<div class="tbl"><table>
+<tr><th></th><th>LPM</th><th>Probit</th><th>Logit</th></tr>
+<tr><td>Formule de Pr(Y = 1)</td><td>β₀ + β₁X</td><td>Φ(β₀ + β₁X)</td><td>1 / (1 + e<sup>−(β₀+β₁X)</sup>)</td></tr>
+<tr><td>Fonction</td><td>linéaire</td><td>répartition normale</td><td>répartition logistique</td></tr>
+<tr><td>Estimation</td><td>MCO</td><td>maximum de vraisemblance</td><td>maximum de vraisemblance</td></tr>
+<tr><td>Lecture d'un coefficient</td><td>points de % directement</td><td>signe + significativité</td><td>signe + significativité</td></tr>
+<tr><td>Effet d'une variation de X</td><td>β (constant)</td><td>φ(z)·β, dépend de X</td><td>F(1−F)·β, dépend de X</td></tr>
+<tr><td>Probabilités dans [0 ; 1]</td><td><span class="no">pas garanti</span></td><td><span class="ok">oui</span></td><td><span class="ok">oui</span></td></tr>
+<tr><td>Ajustement</td><td>r²</td><td>pseudo-R² (McFadden)</td><td>pseudo-R² (McFadden)</td></tr>
+<tr><td>Test d'un coefficient</td><td>t de Student</td><td>Wald (χ²) ou z</td><td>Wald (χ²) ou z</td></tr>
+</table></div>
+<div class="det"><span class="t">Faire tourner les trois modèles (pas à pas)</span>
+<ol class="steps">
+<li><span><b>LPM</b> : Excel, <i>Données → Utilitaire d'analyse → Régression</i>, Y = colonne 0/1, X = colonnes côte à côte (comme en J3). Ou XLSTAT → Modélisation → Régression linéaire.</span></li>
+<li><span><b>Probit / logit</b> : XLSTAT → <i>Modélisation des données → Régression logistique</i>. Onglet Général : <b>Variable dépendante</b> = la colonne 0/1 (réponse binaire), <b>X quantitatives</b> = les explicatives, cocher « Libellés des variables ».</span></li>
+<li><span>Choisir le <b>modèle</b> : <i>Logit</i> ou <i>Probit</i>.</span></li>
+<li><span>Onglet Sorties : cocher les statistiques d'ajustement, les paramètres du modèle et les <b>effets marginaux</b> (calculés aux moyennes).</span></li>
+<li><span>Lire dans l'ordre : −2 Log(L) et <b>R² (McFadden)</b> → tableau des paramètres (signe, Pr &gt; Khi²) → tableau des effets marginaux (en points de %).</span></li>
+</ol>
+<p class="cap">Les corrigés ci-dessous ont été recalculés sur tes fichiers ; XLSTAT donne les mêmes coefficients à l'arrondi près.</p></div>
+
+<!-- EXERCICES -->
+<h2 id="exo"><span class="n">EXERCICES</span>Assignment Day 4 corrigé</h2>
+<div class="key"><b>Méthode pour chaque exercice</b> : (1) vérifier que Y est bien codé 0/1 et compter les observations utilisables ; (2) LPM par MCO : lire chaque coefficient en points de % ; (3) probit et logit : lire le <b>signe</b> et la <b>p-value</b> ; (4) traduire en points de % avec les <b>effets marginaux</b> ; (5) comparer : r² / pseudo-R², bonnes prédictions, probabilités hors [0 ; 1]. Seuil α = 5 %.</div>
+
+<!-- EX 1 -->
+<h3>Exercice 1 — Tabac pendant la grossesse (BWGHT)</h3>
+<p>1 388 naissances (Wooldridge). Variables utilisées : <i>cigs</i> (cigarettes par jour pendant la grossesse), <i>motheduc</i> (années d'études de la mère), <i>white</i> (1 si mère blanche), <i>faminc</i> (revenu familial 1988, en milliers de $).</p>
+<div class="q"><b>a.</b> Créer <i>smokes</i>.
+<ol class="steps">
+<li><span>Règle : la mère fume si elle a fumé au moins une cigarette par jour : smokes = 1 si cigs &gt; 0, sinon 0.</span></li>
+<li><span>Excel : nouvelle colonne, en O2 : <span class="mono">=SI(J2&gt;0;1;0)</span> (J = cigs), puis recopier vers le bas.</span></li>
+<li><span>Résultat : <b>212 fumeuses sur 1 388</b>, soit 15,3 % de l'échantillon (moyenne de smokes = 0,153).</span></li>
+<li><span>Attention : une mère a <i>motheduc</i> manquant (« . ») → <b>n = 1 387</b> pour les régressions. Supprimer la ligne ou laisser XLSTAT ignorer la valeur manquante.</span></li>
+</ol></div>
+
+<div class="q"><b>b.</b> LPM, probit et logit de smokes sur motheduc, white, faminc.
+<div class="det"><span class="t">Étape 1 — Les trois estimations (n = 1 387)</span>
+<div class="tbl"><table>
+<tr><th>Variable</th><th>LPM : b (p)</th><th>Probit : b (p)</th><th>Logit : b (p)</th></tr>
+<tr><td>Constante</td><td class="num">0,5462 (0,000)</td><td class="num">0,8166 (0,001)</td><td class="num">1,4574 (0,001)</td></tr>
+<tr><td>motheduc</td><td class="num">−0,0281 (0,000)</td><td class="num">−0,1356 (0,000)</td><td class="num">−0,2315 (0,000)</td></tr>
+<tr><td>white</td><td class="num">0,0444 (0,064)</td><td class="num">0,1994 (0,064)</td><td class="num">0,3613 (0,063)</td></tr>
+<tr><td>faminc</td><td class="num">−0,00221 (0,000)</td><td class="num">−0,01196 (0,000)</td><td class="num">−0,02306 (0,000)</td></tr>
+<tr><td>Ajustement</td><td class="num">r² = 0,064</td><td class="num">McFadden = 0,084</td><td class="num">McFadden = 0,081</td></tr>
+</table></div>
+<p class="cap">LPM : F = 31,53 (p &lt; 0,0001). Probit : −2 Log(L) passe de 1 186,21 à 1 087,06. Logit : de 1 186,21 à 1 090,03.</p>
+
+<p class="st">Étape 2 — Lire le LPM (points de % directement)</p>
+<ul>
+<li><b>motheduc = −0,0281</b> : chaque année d'études en plus réduit la probabilité de fumer de <b>2,8 points de %</b>, à origine et revenu donnés (t = −6,35 ; p &lt; 0,001 : significatif).</li>
+<li><b>white = 0,0444</b> : à études et revenu égaux, une mère blanche a une probabilité de fumer supérieure de 4,4 points de %, mais <b>p = 0,064 &gt; 0,05</b> : non significatif à 5 % (seulement à 10 %).</li>
+<li><b>faminc = −0,00221</b> : +1 000 $ de revenu → −0,22 point de % ; +10 000 $ → −2,2 points de % (p &lt; 0,001).</li>
+</ul>
+
+<p class="st">Étape 3 — Lire probit et logit (signe + significativité)</p>
+<p>Mêmes signes et mêmes conclusions : motheduc et faminc ont un effet <b>négatif et significatif</b> (p &lt; 0,001), white un effet positif <b>non significatif à 5 %</b> (p ≈ 0,064). Les valeurs des coefficients (−0,136 en probit, −0,231 en logit) ne se lisent pas en points de %.</p>
+
+<p class="st">Étape 4 — Effet marginal de motheduc aux moyennes (calcul détaillé)</p>
+<p>Moyennes : motheduc = 12,936 ; white = 0,784 ; faminc = 29,042.</p>
+<ol class="steps">
+<li><span>Probit, z̄ : \(0{,}8166 - 0{,}1356\times12{,}936 + 0{,}1994\times0{,}784 - 0{,}01196\times29{,}042 = 0{,}8166 - 1{,}7540 + 0{,}1564 - 0{,}3473 = -1{,}128\)</span></li>
+<li><span>Densité : \(\varphi(-1{,}128) = 0{,}2111\) (Excel <span class="mono">=LOI.NORMALE.STANDARD.N(-1,128;FAUX)</span>). Probabilité au point moyen : Φ(−1,128) = 0,130.</span></li>
+<li><span>Effet marginal probit : \(0{,}2111\times(-0{,}1356) = \mathbf{-0{,}0286}\) → −2,9 points de % par année d'études.</span></li>
+<li><span>Logit, z̄ : \(1{,}4574 - 0{,}2315\times12{,}936 + 0{,}3613\times0{,}784 - 0{,}02306\times29{,}042 = -1{,}923\) ; \(F = \frac{1}{1+e^{1{,}923}} = 0{,}1275\) ; \(F(1-F) = 0{,}1275\times0{,}8725 = 0{,}1113\).</span></li>
+<li><span>Effet marginal logit : \(0{,}1113\times(-0{,}2315) = \mathbf{-0{,}0258}\) → −2,6 points de %.</span></li>
+</ol>
+<div class="tbl"><table><tr><th>Effet en points de %</th><th>LPM</th><th>Probit (aux moyennes)</th><th>Logit (aux moyennes)</th></tr>
+<tr><td>+1 an d'études de la mère</td><td class="num">−2,81</td><td class="num">−2,86</td><td class="num">−2,58</td></tr>
+<tr><td>Mère blanche (vs non)</td><td class="num">+4,44</td><td class="num">+4,21</td><td class="num">+4,02</td></tr>
+<tr><td>+1 000 $ de revenu</td><td class="num">−0,22</td><td class="num">−0,25</td><td class="num">−0,26</td></tr></table></div>
+
+<p class="st">Étape 5 — Exemple de prédiction : mère blanche, revenu 30 000 $</p>
+<div class="tbl"><table><tr><th>Années d'études</th><th>LPM</th><th>Probit</th><th>Logit</th></tr>
+<tr><td>12 (fin du lycée)</td><td class="num">0,5462 − 0,0281×12 + 0,0444 − 0,00221×30 = 0,187</td><td class="num">Φ(−0,970) = 0,166</td><td class="num">1/(1+e<sup>1,651</sup>) = 0,161</td></tr>
+<tr><td>16 (diplôme universitaire)</td><td class="num">0,074</td><td class="num">Φ(−1,512) = 0,065</td><td class="num">0,071</td></tr></table></div>
+<p class="cap">Limite du LPM visible ici : <b>112 mères</b> ont une probabilité prédite négative (jusqu'à −0,10), ce qui est impossible ; probit et logit restent dans [0 ; 1].</p>
+</div>
+<p><b>Conclusion</b> : les mères plus diplômées et plus aisées fument nettement moins pendant la grossesse ; l'origine n'a pas d'effet significatif à 5 %. Les trois modèles donnent des effets très proches (≈ −2,6 à −2,9 points par année d'études). Ajustement faible (r² = 0,064 ; McFadden ≈ 0,08), normal avec des données individuelles : beaucoup d'autres facteurs expliquent le tabagisme.</p>
+</div>
+
+<!-- EX 2 -->
+<h3>Exercice 2 — Taux variable ou taux fixe ? (Table 8.8)</h3>
+<p>78 emprunteurs. Y = <i>adjust</i> (1 si prêt à taux variable choisi, 32 cas sur 78, soit 41 %). X : <i>fixrate</i> (taux fixe, %), <i>margin</i> (taux variable − taux fixe, points), <i>yield</i> (taux 10 ans − taux 1 an), <i>points</i> (ratio des frais du variable sur ceux du fixe), <i>networth</i> (patrimoine de l'emprunteur). La colonne <i>maturity</i> du fichier n'est pas demandée par l'énoncé : on ne l'utilise pas (si on l'ajoute, elle est non significative, p = 0,86, et ne change rien).</p>
+
+<div class="q"><b>a.</b> LPM.
+<div class="det"><span class="t">Calcul détaillé</span>
+<div class="tbl"><table><tr><th>Variable</th><th>b</th><th>Erreur-type</th><th>t</th><th>p-value</th><th>Décision (5 %)</th></tr>
+<tr><td>Constante</td><td class="num">−0,0829</td><td class="num">1,2772</td><td class="num">−0,06</td><td class="num">0,948</td><td></td></tr>
+<tr><td>fixrate</td><td class="num">0,1573</td><td class="num">0,0799</td><td class="num">1,97</td><td class="num">0,053</td><td><span class="sig no">n.s. (limite)</span></td></tr>
+<tr><td>margin</td><td class="num">−0,1295</td><td class="num">0,0479</td><td class="num">−2,71</td><td class="num">0,009</td><td><span class="sig ok">significative</span></td></tr>
+<tr><td>yield</td><td class="num">−0,7862</td><td class="num">0,3189</td><td class="num">−2,47</td><td class="num">0,016</td><td><span class="sig ok">significative</span></td></tr>
+<tr><td>points</td><td class="num">−0,0891</td><td class="num">0,0706</td><td class="num">−1,26</td><td class="num">0,211</td><td><span class="sig no">n.s.</span></td></tr>
+<tr><td>networth</td><td class="num">0,0291</td><td class="num">0,0117</td><td class="num">2,49</td><td class="num">0,015</td><td><span class="sig ok">significative</span></td></tr></table></div>
+<p>r² = 0,315 ; r² ajusté = 0,267 ; F(5 ; 72) = 6,62, p &lt; 0,0001 → le modèle est globalement significatif (F critique à 5 % = 2,34). Tests t : df = 78 − 5 − 1 = 72, t critique = ± 1,993.</p>
+<p class="st">Variable choisie : margin</p>
+<ol class="steps">
+<li><span>Test : H₀ : β<sub>margin</sub> = 0. \(t = \dfrac{-0{,}1295}{0{,}0479} = -2{,}71\) ; |−2,71| &gt; 1,993 et p = 0,009 &lt; 0,05 → <b>rejet de H₀</b>.</span></li>
+<li><span>Lecture : quand l'écart entre taux variable et taux fixe augmente de <b>1 point</b>, la probabilité de choisir le taux variable <b>baisse de 12,95 points de %</b>, les autres variables constantes.</span></li>
+<li><span>Sens économique : plus le variable est cher par rapport au fixe, moins il attire. Exemple : margin de 2 % → 3 % : la probabilité passe, par exemple, de 41 % à ≈ 28 %.</span></li>
+</ol>
+<p class="cap">Autres lectures possibles : <b>networth</b> : +1 unité de patrimoine → +2,9 points de % (les emprunteurs plus riches supportent mieux le risque de taux) ; <b>yield</b> : +1 point de pente de la courbe des taux → −78,6 points de % (un écart de yield de 0,1 point, plus réaliste, → −7,9 points).</p></div></div>
+
+<div class="q"><b>b. et c.</b> Logit et probit.
+<div class="det"><span class="t">Résultats (maximum de vraisemblance)</span>
+<div class="tbl"><table><tr><th>Variable</th><th>Logit : b</th><th>p</th><th>Probit : b</th><th>p</th></tr>
+<tr><td>Constante</td><td class="num">−3,7710</td><td class="num">0,602</td><td class="num">−1,9206</td><td class="num">0,639</td></tr>
+<tr><td>fixrate</td><td class="num">0,8712</td><td class="num">0,066</td><td class="num">0,4942</td><td class="num">0,056</td></tr>
+<tr><td>margin</td><td class="num">−0,6867</td><td class="num">0,017</td><td class="num">−0,4265</td><td class="num">0,011</td></tr>
+<tr><td>yield</td><td class="num">−4,0172</td><td class="num">0,030</td><td class="num">−2,3667</td><td class="num">0,026</td></tr>
+<tr><td>points</td><td class="num">−0,5213</td><td class="num">0,221</td><td class="num">−0,2997</td><td class="num">0,214</td></tr>
+<tr><td>networth</td><td class="num">0,1525</td><td class="num">0,052</td><td class="num">0,0842</td><td class="num">0,025</td></tr>
+<tr><td>−2 Log(L) : sans X → modèle</td><td colspan="2" class="num">105,60 → 78,12</td><td colspan="2" class="num">105,60 → 78,42</td></tr>
+<tr><td>R² de McFadden</td><td colspan="2" class="num">0,260</td><td colspan="2" class="num">0,257</td></tr></table></div>
+<ul>
+<li><b>Signes identiques au LPM</b> : margin et yield réduisent la probabilité de choisir le variable, networth et fixrate l'augmentent.</li>
+<li><b>Logit</b> : margin (p = 0,017) et yield (p = 0,030) significatifs à 5 % ; networth (p = 0,052) et fixrate (p = 0,066) seulement à 10 %.</li>
+<li><b>Probit</b> : margin (0,011), yield (0,026) et networth (0,025) significatifs à 5 % ; fixrate à 10 %.</li>
+<li>Rapport logit / probit des coefficients ≈ 1,6 à 1,8 (0,6867 / 0,4265 = 1,61) : normal, les deux échelles diffèrent.</li>
+<li>Test global (rapport de vraisemblance) : LR = 105,60 − 78,42 = 27,18 (probit) &gt; χ²(5) = 11,07 → modèle significatif (p &lt; 0,001).</li>
+</ul>
+<p class="cap">Bonus logit : \(e^{-0{,}6867} = 0{,}50\) : +1 point de margin divise par deux la cote (odds) de choisir le variable.</p></div></div>
+
+<div class="q"><b>d.</b> Comparer les trois modèles.
+<div class="tbl"><table><tr><th>Critère</th><th>LPM</th><th>Probit</th><th>Logit</th></tr>
+<tr><td>Mesure d'ajustement</td><td class="num">r² = 0,315 (ajusté 0,267)</td><td class="num">McFadden = 0,257</td><td class="num">McFadden = 0,260</td></tr>
+<tr><td>−2 Log(L)</td><td>—</td><td class="num">78,42</td><td class="num"><b>78,12</b> (le plus bas)</td></tr>
+<tr><td>Bien classés (seuil 0,5)</td><td class="num">59 / 78 = 75,6 %</td><td class="num">59 / 78 = 75,6 %</td><td class="num"><b>61 / 78 = 78,2 %</b></td></tr>
+<tr><td>Probabilités hors [0 ; 1]</td><td class="num">2 (min −0,012)</td><td class="num">0</td><td class="num">0</td></tr>
+<tr><td>Variables significatives à 5 %</td><td>margin, yield, networth</td><td>margin, yield, networth</td><td>margin, yield</td></tr></table></div>
+<ol class="steps">
+<li><span>On ne compare pas directement le r² du LPM et le pseudo-R² : ce ne sont pas les mêmes mesures. On compare probit et logit entre eux : pseudo-R² quasi identiques (0,257 vs 0,260).</span></li>
+<li><span>Le <b>logit</b> a la vraisemblance la plus élevée (−2 Log(L) le plus faible) et le meilleur taux de bonne classification : il est très légèrement meilleur.</span></li>
+<li><span>Le LPM donne 2 probabilités négatives : défaut attendu du modèle linéaire.</span></li>
+<li><span><b>Conclusion</b> : les trois modèles racontent la même histoire (mêmes signes, mêmes variables clés, effets marginaux proches) ; probit et logit sont préférables car ils respectent 0 ≤ p ≤ 1, avec un léger avantage au logit ici.</span></li>
+</ol></div>
+
+<div class="q"><b>e.</b> Effet marginal de margin dans les trois modèles.
+<div class="det"><span class="t">Calcul détaillé aux moyennes</span>
+<p>Moyennes : fixrate = 13,249 ; margin = 2,292 ; yield = 1,606 ; points = 1,498 ; networth = 3,504.</p>
+<p class="st">LPM</p>
+<p>L'effet marginal est le coefficient lui-même, identique partout : <b>−0,1295</b>.</p>
+<p class="st">Probit</p>
+<ol class="steps">
+<li><span>z̄ terme par terme : constante −1,9206 ; fixrate 0,4942 × 13,249 = 6,548 ; margin −0,4265 × 2,292 = −0,977 ; yield −2,3667 × 1,606 = −3,802 ; points −0,2997 × 1,498 = −0,449 ; networth 0,0842 × 3,504 = 0,295.</span></li>
+<li><span>Somme : z̄ = −1,921 + 6,548 − 0,977 − 3,802 − 0,449 + 0,295 = <b>−0,3055</b> → probabilité au point moyen Φ(−0,3055) = 0,380.</span></li>
+<li><span>Densité : \(\varphi(-0{,}3055) = \frac{1}{\sqrt{2\pi}}e^{-0{,}3055^2/2} = 0{,}3989\times0{,}9544 = 0{,}3807\)</span></li>
+<li><span>Effet marginal : \(0{,}3807\times(-0{,}4265) = \mathbf{-0{,}1624}\)</span></li>
+</ol>
+<p class="st">Logit</p>
+<ol class="steps">
+<li><span>z̄ : −3,771 + 0,8712 × 13,249 − 0,6867 × 2,292 − 4,0172 × 1,606 − 0,5213 × 1,498 + 0,1525 × 3,504 = −3,771 + 11,543 − 1,574 − 6,453 − 0,781 + 0,535 = <b>−0,5018</b></span></li>
+<li><span>\(F(\bar z) = \dfrac{1}{1+e^{0{,}5018}} = \dfrac{1}{1+1{,}6517} = 0{,}3771\)</span></li>
+<li><span>\(F(1-F) = 0{,}3771\times0{,}6229 = 0{,}2349\)</span></li>
+<li><span>Effet marginal : \(0{,}2349\times(-0{,}6867) = \mathbf{-0{,}1613}\)</span></li>
+</ol>
+<div class="tbl"><table><tr><th></th><th>LPM</th><th>Probit</th><th>Logit</th></tr>
+<tr><td>Effet marginal de margin</td><td class="num">−0,1295</td><td class="num">−0,1624 (p = 0,011)</td><td class="num">−0,1613 (p = 0,017)</td></tr></table></div>
+<p><b>Lecture</b> : pour un emprunteur moyen, +1 point d'écart entre taux variable et taux fixe réduit la probabilité de choisir le variable d'environ <b>13 points de %</b> (LPM) à <b>16 points de %</b> (probit, logit). Probit et logit concordent presque parfaitement.</p></div></div>
+
+<!-- EX 3 -->
+<h3>Exercice 3 — Acceptation d'une demande de prêt (loan)</h3>
+<p>2 699 entreprises. Y = <i>LoanAccept</i> (1 si prêt accordé, 86,6 % des cas). Modèle : LoanAccept = b0 + b1 gender + b2 experience + b3 overdraft + b4 profit + b5 sales + b6 size + b7 exteraudit + b8 creditline + b9 access + u.</p>
+<div class="q"><b>a.</b> Estimer LPM, probit et logit.
+<div class="det"><span class="t">Calcul détaillé</span>
+<p class="st">Étape 1 — Préparer les données</p>
+<p>Plusieurs variables ont des cases vides (overdraft, sales, size, ExterAudit, creditline, access). On garde les entreprises renseignées sur toutes les variables : <b>n = 2 517</b>. Dans XLSTAT, onglet <i>Données manquantes</i> → « Supprimer les observations ».</p>
+<p class="st">Étape 2 — Résultats</p>
+<div class="tbl"><table><tr><th>Variable</th><th>LPM : b (p)</th><th>Probit : b (p)</th><th>Logit : b (p)</th><th>Effet marginal probit</th><th>Effet marginal logit</th></tr>
+<tr><td>Constante</td><td class="num">0,5157 (0,000)</td><td class="num">−0,0795 (0,574)</td><td class="num">−0,1974 (0,449)</td><td></td><td></td></tr>
+<tr><td>gender</td><td class="num">−0,0483 (0,010)</td><td class="num">−0,2438 (0,016)</td><td class="num">−0,4813 (0,010)</td><td class="num">−0,0420</td><td class="num">−0,0396</td></tr>
+<tr><td>experience</td><td class="num">0,00125 (0,018)</td><td class="num">0,00820 (0,009)</td><td class="num">0,01401 (0,019)</td><td class="num">0,0014</td><td class="num">0,0012</td></tr>
+<tr><td>overdraft</td><td class="num">0,0477 (0,000)</td><td class="num">0,2663 (0,000)</td><td class="num">0,5213 (0,000)</td><td class="num">0,0459</td><td class="num">0,0429</td></tr>
+<tr><td>profit</td><td class="num">−0,00004 (0,785)</td><td class="num">−0,00036 (0,698)</td><td class="num">−0,00064 (0,715)</td><td class="num">−0,0001</td><td class="num">−0,0000</td></tr>
+<tr><td>sales</td><td class="num">−0,0004 (0,977)</td><td class="num">0,0037 (0,959)</td><td class="num">0,0213 (0,875)</td><td class="num">0,0006</td><td class="num">0,0018</td></tr>
+<tr><td>size</td><td class="num">0,0127 (0,125)</td><td class="num">0,0664 (0,164)</td><td class="num">0,1424 (0,112)</td><td class="num">0,0114</td><td class="num">0,0117</td></tr>
+<tr><td>ExterAudit</td><td class="num">0,0354 (0,007)</td><td class="num">0,1786 (0,017)</td><td class="num">0,3458 (0,014)</td><td class="num">0,0308</td><td class="num">0,0285</td></tr>
+<tr><td>creditline</td><td class="num">0,3500 (0,000)</td><td class="num">1,2339 (0,000)</td><td class="num">2,2005 (0,000)</td><td class="num">0,2126</td><td class="num">0,1813</td></tr>
+<tr><td>access</td><td class="num">−0,1262 (0,000)</td><td class="num">−0,6120 (0,000)</td><td class="num">−1,1706 (0,000)</td><td class="num">−0,1054</td><td class="num">−0,0964</td></tr>
+<tr><th>Ajustement</th><td class="num">r² = 0,197 (aj. 0,194)</td><td class="num">McFadden = 0,206</td><td class="num">McFadden = 0,210</td><td colspan="2" class="num">Bien classés : 89,1 % / 89,2 % / 89,3 %</td></tr></table></div>
+<p class="cap">LPM : F(9 ; 2 507) = 68,37, p &lt; 0,0001. Probit : −2 Log(L) 1 985,69 → 1 577,61. Logit : 1 985,69 → 1 569,60. LPM : <b>300 probabilités prédites &gt; 1</b> (max 1,06).</p>
+
+<p class="st">Étape 3 — Exemple de calcul d'effet marginal : creditline (probit)</p>
+<ol class="steps">
+<li><span>Moyennes : gender 0,124 ; experience 22,62 ; overdraft 0,549 ; profit 58,22 ; sales 0,548 ; size 1,978 ; ExterAudit 0,502 ; creditline 0,855 ; access 0,300.</span></li>
+<li><span>z̄ = −0,0795 − 0,2438×0,124 + 0,0082×22,62 + 0,2663×0,549 − 0,00036×58,22 + 0,0037×0,548 + 0,0664×1,978 + 0,1786×0,502 + 1,2339×0,855 − 0,6120×0,300 = <b>1,296</b> → Φ(1,296) = 0,903 (probabilité d'acceptation de l'entreprise moyenne).</span></li>
+<li><span>φ(1,296) = 0,1723 → effet marginal = 0,1723 × 1,2339 = <b>0,2126</b>.</span></li>
+<li><span>Logit : z̄ = 2,307 ; F = 0,909 ; F(1 − F) = 0,0824 → 0,0824 × 2,2005 = <b>0,1813</b>.</span></li>
+</ol></div></div>
+
+<div class="q"><b>b.</b> Interprétation (les trois modèles concordent : mêmes signes, mêmes variables significatives).
+<ul>
+<li><b>creditline</b> (+, p &lt; 0,001) : le facteur le plus fort. Avoir déjà une ligne de crédit augmente la probabilité d'acceptation de <b>35 points</b> (LPM) ou d'environ <b>18 à 21 points</b> (effets marginaux logit / probit). Une relation bancaire existante rassure le prêteur. En logit, la cote est multipliée par \(e^{2{,}2005} = 9{,}0\).</li>
+<li><b>access</b> (−, p &lt; 0,001) : quand l'accès au financement est un obstacle majeur, la probabilité d'acceptation baisse de <b>10 à 13 points</b>.</li>
+<li><b>overdraft</b> (+, p &lt; 0,001) : une autorisation de découvert → <b>+4,3 à +4,8 points</b>.</li>
+<li><b>ExterAudit</b> (+, p ≈ 0,01) : comptes certifiés par un auditeur externe → <b>+2,8 à +3,5 points</b> (moins d'asymétrie d'information).</li>
+<li><b>experience</b> (+, p ≈ 0,01–0,02) : +1 an d'expérience du dirigeant → +0,12 à +0,14 point ; +10 ans → ≈ +1,3 point.</li>
+<li><b>gender</b> (−, p ≈ 0,01) : à caractéristiques égales, une entreprise dirigée par une femme a une probabilité d'acceptation inférieure de <b>4 à 5 points</b>, signe possible d'un biais dans l'octroi de crédit.</li>
+<li><b>profit, sales, size</b> : non significatifs (p &gt; 0,10) : rentabilité, perspectives de ventes et taille n'ont pas d'effet propre une fois les autres variables prises en compte.</li>
+</ul>
+<p><b>Comparaison</b> : pseudo-R² ≈ 0,21 pour probit et logit, environ 89 % d'entreprises bien classées dans les trois modèles. Mais le LPM prédit 300 probabilités supérieures à 1 (12 % de l'échantillon) car le taux d'acceptation est très élevé : ici, <b>probit et logit sont nettement préférables</b>.</p></div>
+
+<!-- RECAP -->
+<h2 id="recap"><span class="n">RÉCAP</span>À savoir faire</h2>
+<ul>
+  <li>Expliquer pourquoi \(E(Y\mid X) = \Pr(Y=1\mid X)\) quand Y est binaire.</li>
+  <li><b>LPM</b> : MCO, coefficient = variation de probabilité en points de % ; défauts : effet constant, probabilités &lt; 0 ou &gt; 1.</li>
+  <li><b>Probit</b> : \(\Pr = \Phi(z)\), lire Φ dans la table (Φ(−0,8) = 0,2119).</li>
+  <li><b>Logit</b> : \(\Pr = 1/(1+e^{-z})\) (z = −2,2 → 0,0998).</li>
+  <li>Probit / logit : on lit d'abord le <b>signe</b> et la <b>p-value</b>, puis les <b>effets marginaux</b> pour des points de % : φ(z̄)·β et F(1−F)·β.</li>
+  <li>Variable muette : calculer les deux probabilités (0 et 1) et faire la différence.</li>
+  <li>Ajustement : r² pour le LPM ; <b>pseudo-R² de McFadden</b> = 1 − ln L / ln L₀ pour probit et logit ; estimation par <b>maximum de vraisemblance</b>.</li>
+</ul>
+<div class="tbl"><table>
+<tr><th>Exercice</th><th>Résultat clé</th><th>Ajustement</th><th>À retenir</th></tr>
+<tr><td>Cours · achat</td><td class="mono">0,03 + 0,01×30 + 0,2 = 0,53</td><td></td><td>Convertir le revenu en centaines d'€</td></tr>
+<tr><td>Cours · HMDA</td><td>black : +17,6 pts (LPM), +12,9 / +11,7 pts (probit / logit)</td><td class="num">McFadden 0,088 / 0,090</td><td>Discrimination significative</td></tr>
+<tr><td>1 · BWGHT</td><td>+1 an d'études → −2,8 pts de proba de fumer</td><td class="num">r² 0,064 · McF 0,08</td><td>white n.s. (p = 0,064)</td></tr>
+<tr><td>2 · Table 8.8</td><td>margin : −0,130 (LPM), −0,162 (probit), −0,161 (logit)</td><td class="num">r² 0,315 · McF 0,26</td><td>Logit un peu meilleur (78 % bien classés)</td></tr>
+<tr><td>3 · Loan</td><td>creditline : +18 à +35 pts ; access : −10 à −13 pts</td><td class="num">r² 0,197 · McF 0,21</td><td>LPM : 300 probas &gt; 1</td></tr>
+</table></div>
+
+<footer>Fiche construite à partir du support « Regression with a binary dependent variable » (G. Vu, d'après Stock &amp; Watson, <i>Introduction to Econometrics</i>, 3e éd.) et de l'assignment Day 4 (Gujarati ; Wooldridge). Corrigés recalculés sur les fichiers BWGHT, Table 8.8 et loan ; les effets marginaux sont calculés aux moyennes, comme dans XLSTAT.</footer>
+</div>
+
+</body></html>

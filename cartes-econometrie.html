@@ -62,9 +62,9 @@ svg text{fill:var(--fg)}
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Économétrie · G. Vu · Cours du 30 sept., du 2 oct. et du 7 oct.</div>
+    <div class="eyebrow">Économétrie · G. Vu · Cours du 30 sept., du 2, du 7 et du 9 oct.</div>
     <h1>Cartes mentales Économétrie</h1>
-    <p class="lede">Six cartes pour les trois premiers jours : statistiques de base, tests et intervalles, régression simple, validation du modèle, puis régression multiple et variables muettes / interactions avec les résultats des exercices.</p>
+    <p class="lede">Neuf cartes pour les jours 1 à 5 : statistiques de base, tests et intervalles, régression simple, validation du modèle, régression multiple, variables muettes et interactions, variable dépendante binaire (probit, logit), multicolinéarité et hétéroscédasticité, avec les résultats des exercices.</p>
   </header>
   <nav id="tabs" role="tablist" aria-label="Cartes"></nav>
   <section class="sheet">
@@ -145,7 +145,36 @@ const MAPS = [
   {t:"Interaction", c:[F("Y = β₀ + β₁X₁ + β₂X₂ + β₃X₁X₂"),F("Effet de X₁ = β₁ + β₃X₂"),{t:"Tester β₃ par un t"},{t:"Pub × Fête : p = 0,230 → non"}]},
   {t:"Logiciels", c:[{t:"Excel : =SI(C2=\"Web-based\";1;0)"},{t:"Interaction : colonne =D2*B2"},{t:"XLSTAT ANCOVA, contrainte a1 = 0"}]},
   {t:"Exercices 4 à 6", c:[{t:"Underwriting : réf. Traditional", c:[{t:"CD +30,4 ; Web +22,3 ; +1,13 par point"},{t:"Prof 100, Web → 48,60"}]},{t:"Neighbor : 243,74 + 9,22 Rooms + 12,70 West", c:[{t:"9 pièces, est → 326,71 k$"}]},{t:"Earning : exper, educ, male significatifs", c:[{t:"black −2 153 $, p = 0,16 : n.s."},{t:"male × exper = +108,5 (p = 0,045)"},{t:"Pente : femmes 60,6 ; hommes 169,1 $/an"}]}]}
+ ]}},
+{id:"binaire", tab:"J4 · Probit et logit", title:"Jour 4 · Variable dépendante binaire", sub:"Modéliser une probabilité : LPM, probit, logit",
+ root:{t:"Y binaire (0 / 1)", c:[
+  {t:"Idée", c:[F("E(Y|X) = Pr(Y = 1|X)"),{t:"On prédit une probabilité"},{t:"Ŷ = 0,26 → 26 % de chances"}]},
+  {t:"LPM", c:[F("Pr = β₀ + β₁X (MCO)"),{t:"β = points de % directement"},{t:"Achat : 0,03 + 0,01×30 + 0,2 = 0,53"},{t:"HMDA : black +17,6 pts"},{t:"Défauts : effet constant, Pr < 0 ou > 1"}]},
+  {t:"Probit", c:[F("Pr = Φ(z), z = β₀ + β₁X"),{t:"Φ = répartition normale"},F("Φ(−2 + 3×0,4) = Φ(−0,8) = 0,2119"),{t:"Lire signe + p-value"}]},
+  {t:"Logit", c:[F("Pr = 1 / (1 + e^(−z))"),{t:"Répartition logistique"},F("z = −2,2 → 0,0998"),{t:"β logit ≈ 1,6 à 2 × β probit"}]},
+  {t:"Effets marginaux", c:[F("Probit : φ(z̄) × β"),F("Logit : F(1 − F) × β"),{t:"Aux moyennes des X"},{t:"HMDA black : 0,129 / 0,117"}]},
+  {t:"Ajustement", c:[{t:"Maximum de vraisemblance"},F("McFadden = 1 − lnL / lnL₀"),{t:"HMDA : 0,0879 / 0,0896"},{t:"% bien classés (seuil 0,5)"}]},
+  {t:"Exercices", c:[{t:"BWGHT : +1 an d'études → −2,8 pts", c:[{t:"white n.s. (p = 0,064)"}]},{t:"Table 8.8 : margin −0,13 / −0,16 / −0,16", c:[{t:"Logit : 78 % bien classés"}]},{t:"Loan : creditline +18 à +35 pts", c:[{t:"access −10 à −13 pts"},{t:"LPM : 300 probas > 1"}]}]}
+ ]}},
+{id:"colin", tab:"J5 · Multicolinéarité", title:"Jour 5 · Hypothèses BLUE et multicolinéarité", sub:"Des X trop liés entre eux",
+ root:{t:"Multicolinéarité", c:[
+  {t:"Hypothèses BLUE", c:[{t:"Linéaire dans les β"},{t:"Pas de colinéarité parfaite"},F("var(ε|X) = σ²"),F("E(ε|X) = 0"),{t:"Pas d'autocorrélation"},F("ε ~ N(0, σ²)")]},
+  {t:"Définition", c:[{t:"Parfaite : X₁ = 1 − X₂ → pas d'estimation"},{t:"Imparfaite : forte corrélation"}]},
+  {t:"Conséquences", c:[{t:"Toujours BLUE"},{t:"Grandes variances, t faibles"},{t:"Effets difficiles à séparer"}]},
+  {t:"Détection", c:[{t:"Corrélations entre X"},F("VIF = 1 / (1 − r²)"),{t:"r = 0,9 → 5,26 ; r = 0,95 → 10,26"},{t:"> 5 à surveiller, > 10 fort"}]},
+  {t:"Remèdes", c:[{t:"Ne rien faire si modérée ou hors variable d'intérêt"},{t:"age et age² : voulu"},{t:"Retirer une variable"}]},
+  {t:"Exemple heures", c:[{t:"corr(age, husage) = 0,888"},{t:"VIF 5,05 et 4,86"},{t:"Sans husage : t(age) −3,57 → −7,37"},{t:"R² aj. 0,3375 → 0,3382"}]}
+ ]}},
+{id:"hetero", tab:"J5 · Hétéroscédasticité", title:"Jour 5 · Hétéroscédasticité", sub:"Une variance d'erreur qui change avec X",
+ root:{t:"Hétéroscédasticité", c:[
+  {t:"Définition", c:[{t:"Variance inégale de l'erreur"},{t:"Résidus en entonnoir"}]},
+  {t:"Conséquences", c:[{t:"Plus BLUE, seulement LUE"},{t:"Tests t et F peu fiables"}]},
+  {t:"Breusch-Pagan", c:[{t:"1. MCO → e²"},F("2. e² = α₀ + α₁X₁ + … + αₖXₖ"),{t:"3. H₀ : tous les α = 0"},{t:"F significatif → hétéro"}]},
+  {t:"White (abrégé)", c:[F("e² = α₁ + α₂Ŷ + α₃Ŷ²"),{t:"H₀ : α₂ = α₃ = 0"},{t:"Même règle sur F"}]},
+  {t:"Remède", c:[{t:"Erreurs-types robustes de White"},{t:"XLSTAT : Covariances, HC1"},{t:"Coefficients inchangés"}]},
+  {t:"Exemples", c:[{t:"Avortement BP : F = 2,82, p = 0,017"},{t:"White : F = 5,62, p = 0,006"},{t:"Price : p 0,064 → 0,110"},{t:"LPM Table 8.8 : BP p = 0,0005", c:[{t:"LPM toujours hétéro : var = p(1 − p)"},{t:"networth devient n.s."}]}]}
  ]}}
+
 ];
 
 const SVGNS="http://www.w3.org/2000/svg";

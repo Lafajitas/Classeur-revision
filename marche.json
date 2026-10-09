@@ -1,34 +1,34 @@
 {
- "maj": "2026-10-07T07:56:00+02:00",
- "seance": "Clôture du mardi 6 octobre 2026",
- "source": {"nom": "Boursorama", "url": "https://www.boursorama.com/bourse/"},
+ "maj": "2026-10-09T07:55:00+02:00",
+ "seance": "Clôture du jeudi 8 octobre 2026",
+ "source": {"nom": "Boursorama, Investing.com", "url": "https://www.boursorama.com/bourse/"},
  "groupes": [
   {"titre": "Actions Europe", "lignes": [
-   {"nom": "CAC 40", "valeur": "7 865,07", "var": 0.40},
-   {"nom": "Euro Stoxx 50", "valeur": "6 272,23", "var": 0.48},
-   {"nom": "DAX", "valeur": "25 461,96", "var": 0.82}]},
+   {"nom": "CAC 40", "valeur": "7 729,69", "var": -0.51},
+   {"nom": "Euro Stoxx 50", "valeur": "6 126,73", "var": -0.87},
+   {"nom": "DAX", "valeur": "24 806,97", "var": -1.18}]},
   {"titre": "Actions monde", "lignes": [
-   {"nom": "S&P 500", "valeur": "7 818,93", "var": 0.58},
-   {"nom": "Nasdaq", "valeur": "27 599,79", "var": 0.45},
-   {"nom": "Dow Jones", "valeur": "51 521,28", "var": 0.49},
-   {"nom": "Nikkei 225", "valeur": "70 683,98", "var": 1.05}]},
+   {"nom": "S&P 500", "valeur": "7 765,36", "var": -0.47},
+   {"nom": "Nasdaq", "valeur": "27 193,34", "var": -1.25},
+   {"nom": "Dow Jones", "valeur": "51 231,64", "var": 0.10},
+   {"nom": "Nikkei 225", "valeur": "69 042,11", "var": -1.42}]},
   {"titre": "Change, matières premières, crypto", "lignes": [
-   {"nom": "EUR/USD", "valeur": "1,1231", "var": -0.28},
-   {"nom": "Pétrole Brent ($)", "valeur": "101,41", "var": 0.33},
-   {"nom": "Or ($/once)", "valeur": "4 146,53", "var": -0.43},
-   {"nom": "Bitcoin ($)", "valeur": "84 066,00", "var": -1.76}]}
+   {"nom": "EUR/USD", "valeur": "1,1213", "var": 0.14},
+   {"nom": "Pétrole Brent ($)", "valeur": "104,28", "var": 4.07},
+   {"nom": "Or ($/once)", "valeur": "4 135,50", "var": -0.13},
+   {"nom": "Bitcoin ($)", "valeur": "82 441,90", "var": -1.06}]}
  ],
  "actu": {
-  "titre": "Détente du pétrole et des taux longs : la Bourse de Paris reprend des couleurs",
-  "date": "2026-10-06",
-  "resume": "Le CAC 40 a gagné 0,40 % mardi pour finir à 7 865,07 points, porté par le repli du pétrole (Brent de décembre en baisse d'environ 1 % vers 99 dollars) et par une baisse des rendements des emprunts d'État. Le taux de l'OAT française à 10 ans est revenu vers 4,75 %, contre 3,47 % pour le Bund allemand, malgré les tensions politiques en France et en Espagne. Les banques ont profité de cette accalmie (BNP Paribas +2,5 %, Société Générale +2 %), tout comme Legrand (+3,7 %), tandis que Schneider Electric a encore reculé de 4,5 % après l'annonce du rachat de PTC. À New York, le S&P 500 et le Nasdaq ont terminé à des niveaux records.",
-  "cours": "Lien avec tes cours : quand les taux longs baissent, le taux sans risque utilisé dans le MEDAF et donc le coût des fonds propres et le CMPC reculent, ce qui augmente la valeur actuelle des flux futurs dans un DCF et soutient les cours. L'écart d'environ 1,3 point entre l'OAT et le Bund est une prime de risque souverain : il renchérit le financement de l'État français et se répercute sur le coût de la dette des entreprises et des banques. Enfin, une hausse des taux fait baisser le prix des obligations déjà émises (notion de duration), d'où le soulagement des banques qui en détiennent beaucoup au bilan.",
-  "source": "BFM Bourse",
-  "url": "https://www.tradingsat.com/cac-40-FR0003500008/actualites/cac-40-relance-par-l-accalmie-sur-le-petrole-et-les-taux-le-cac-40-tente-de-recoller-aux-7900-points-1171352.html"
+  "titre": "Starbucks aurait étudié le rachat de Chipotle, une cible valorisée près de 39 milliards de dollars",
+  "date": "2026-10-08",
+  "resume": "D'après le Financial Times, Starbucks a travaillé ces derniers mois avec des conseillers sur un projet d'offre de rachat de la chaîne de restauration mexicaine Chipotle, dont la capitalisation avoisine 39 milliards de dollars, contre environ 107 milliards pour Starbucks. L'opération réunirait Brian Niccol, patron de Starbucks depuis 2024, avec l'enseigne qu'il a dirigée pendant six ans. À Wall Street, l'action Chipotle a bondi (jusqu'à plus de 8 % en séance) tandis que celle de Starbucks a reculé d'environ 3 %. Aucune des deux sociétés n'a commenté, et plusieurs analystes jugent le moment mal choisi alors que Starbucks est en pleine restructuration, avec des marges en baisse.",
+  "cours": "Lien avec tes cours : c'est un cas d'école de fusions-acquisitions (Ch. 1). La hausse de la cible et la baisse de l'acquéreur montrent que le marché anticipe une prime de contrôle payée aux actionnaires de Chipotle et doute que les synergies (expansion via les licences européennes de Starbucks, savoir-faire de Niccol) suffisent à la justifier. Pour fixer le prix de l'offre, on évaluerait Chipotle par DCF, multiples de comparables et de transactions (Ch. 2), et le mode de financement (dette ou émission d'actions) modifierait le CMPC et la dilution pour les actionnaires de Starbucks.",
+  "source": "Reuters",
+  "url": "https://www.spokesman.com/stories/2026/oct/08/starbucks-has-explored-chipotle-takeover-ft-report/"
  },
  "titres": [
-  {"t": "Wall Street termine en hausse, le S&P 500 et le Nasdaq à des sommets", "url": "https://www.boursorama.com/bourse/actualites/wall-street-cloture-en-hausse-le-s-p-500-et-le-nasdaq-au-sommet-f99d00ddb146f970e2ccec9ac524469b"},
-  {"t": "SpaceX chercherait à lever 40 milliards de dollars, avec Apollo, pour acheter des puces Nvidia", "url": "https://www.boursorama.com/bourse/actualites/spacex-cherche-a-lever-40-milliards-de-dollars-dans-le-cadre-d-un-tour-de-table-mene-par-apollo-pour-acheter-des-puces-nvidia-selon-le-financial-times-ad37c4306e31fa14a5a8a22afc62b929"},
-  {"t": "La dette liée à l'IA explose et pousse les taux d'intérêt à la hausse", "url": "https://www.boursorama.com/bourse/actualites/la-dette-de-l-ia-explose-et-accelere-la-hausse-des-taux-d-interet-36dbfac6238c28b25c2890944499dfe8"}
+  {"t": "Pétrole au-dessus de 105 $ et taux en hausse : la Bourse de Paris recule de 0,5 %", "url": "https://www.zonebourse.com/actualite-bourse/cac-40-la-bourse-de-paris-finit-dans-le-rouge-penalisee-par-le-bond-de-l-or-noir-ce785ddfda8af522"},
+  {"t": "Devon Energy cède ses actifs d'Eagle Ford à Crescent Energy pour 4,2 milliards de dollars", "url": "https://www.boursorama.com/bourse/actualites/devon-energy-va-ceder-ses-actifs-d-eagle-ford-a-crescent-energy-pour-4-2-milliards-de-dollars-c0700a2d1bd7b9250812bce4bfa67d85"},
+  {"t": "PepsiCo abaisse ses prévisions et annonce de nouvelles réductions de coûts", "url": "https://www.boursorama.com/bourse/actualites/pepsico-revoit-a-la-baisse-de-ses-previsions-annonce-de-nouvelles-reductions-des-couts-a5f4520e28ab7caba80986bf794e413e"}
  ]
 }

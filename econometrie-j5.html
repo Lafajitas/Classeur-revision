@@ -1,0 +1,394 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-eco_fiches">← Économétrie</a><span>· Classeur de révision</span></nav>
+
+<title>Fiche Économétrie Jour 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+<style>
+/* Layout : même gabarit que les fiches J1 à J4 — colonne unique, parties du cours puis exercices corrigés, encadrés formule / à retenir / exemple */
+:root{
+  --bg:#f7f8fb; --paper:#ffffff; --fg:#1b2130; --muted:#5b6478; --line:#dfe3ec;
+  --accent:#2f5bd3; --accent-soft:#e8eefc; --key:#b4540f; --key-soft:#fdf1e6; --ok:#1f7a4d; --bad:#b42318;
+  --display:"Fraunces", Georgia, serif; --body:"Source Sans 3", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#12151d; --paper:#1a1f2a; --fg:#e6e9f0; --muted:#9aa3b6; --line:#2c3342;
+  --accent:#86a5ff; --accent-soft:#1f2a45; --key:#f0a868; --key-soft:#35261a; --ok:#6fcf9b; --bad:#ff8a80; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#12151d; --paper:#1a1f2a; --fg:#e6e9f0; --muted:#9aa3b6; --line:#2c3342;
+  --accent:#86a5ff; --accent-soft:#1f2a45; --key:#f0a868; --key-soft:#35261a; --ok:#6fcf9b; --bad:#ff8a80; color-scheme:dark }
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:32px 64px}
+header{display:grid;gap:6px;padding-bottom:20px;border-bottom:2px solid var(--fg);margin-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-size:24px;margin:44px 0 14px;text-wrap:balance;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:600}
+h3{font-size:17px;margin:26px 0 8px;color:var(--accent)}
+p,li{max-width:70ch}
+ul,ol{padding-left:20px;margin:6px 0}
+li{margin:3px 0}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+nav a{font-size:14px;color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:4px 10px;border-radius:999px;background:var(--paper)}
+nav a:hover,nav a:focus-visible{border-color:var(--accent);outline:none}
+.f{background:var(--accent-soft);border-radius:8px;padding:10px 14px;margin:10px 0;overflow-x:auto}
+.key{background:var(--key-soft);border-left:3px solid var(--key);padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.key b:first-child{color:var(--key)}
+.ex{border:1px dashed var(--line);background:var(--paper);border-radius:8px;padding:12px 14px;margin:12px 0}
+.ex .t{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
+.q{border-top:1px solid var(--line);padding-top:6px;margin-top:10px}
+.q>b:first-child{font-family:var(--mono);color:var(--accent);margin-right:6px}
+.tbl{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;background:var(--paper);font-variant-numeric:tabular-nums;font-size:15px}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--accent-soft);font-weight:600}
+td.num{text-align:right;font-family:var(--mono);font-size:13.5px}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:6px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:8px}
+.steps li::before{content:counter(s);font-family:var(--mono);font-weight:600;color:var(--paper);background:var(--accent);border-radius:50%;width:24px;height:24px;display:grid;place-items:center;font-size:13px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.two>div{min-width:0}
+.mono{font-family:var(--mono);font-size:14px}
+.ok{color:var(--ok);font-weight:700}
+.no{color:var(--bad);font-weight:700}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+figure.chart{margin:12px 0;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px;overflow-x:auto}
+figure.chart svg{width:100%;min-width:420px;height:auto;display:block}
+.chart .g{stroke:var(--line);stroke-width:1}
+.chart .ax{stroke:var(--muted);stroke-width:1}
+.chart .tk{fill:var(--muted);font:12px var(--mono)}
+.chart .al{fill:var(--muted);font:13px var(--body)}
+.chart .pt{fill:var(--accent);stroke:var(--paper);stroke-width:1.5;fill-opacity:.85}
+.chart .pt:hover{fill:var(--key);fill-opacity:1}
+.chart .fit{stroke:var(--key);stroke-width:2}
+.det{border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--paper);border-radius:0 8px 8px 0;padding:10px 14px;margin:14px 0}
+.det>.t{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2px}
+.st{font-weight:700;margin:14px 0 4px;color:var(--fg)}
+.xl{font-size:14.5px}
+.cap{font-size:13px;color:var(--muted);margin-top:-4px}
+footer{margin-top:48px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+
+.chart .pt2{fill:var(--key);stroke:var(--paper);stroke-width:1.5;fill-opacity:.85}
+.chart .fit2{stroke:var(--accent);stroke-width:2}
+.chart .lg{font:13px var(--body);fill:var(--fg)}
+.sig{display:inline-block;font-family:var(--mono);font-size:12px;padding:1px 7px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+.sig.no{background:color-mix(in srgb,var(--bad) 12%,var(--paper));color:var(--bad)}
+.sig.ok{background:color-mix(in srgb,var(--ok) 14%,var(--paper));color:var(--ok)}
+.trap{background:color-mix(in srgb,var(--bad) 7%,var(--paper));border-left:3px solid var(--bad);padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.trap b:first-child{color:var(--bad)}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Econometrics · Day 5 · OLS assumptions — Giang Vu</span>
+  <h1>Hypothèses des MCO : multicolinéarité et hétéroscédasticité</h1>
+</header>
+
+<nav aria-label="Sections">
+  <a href="#p1">1. Hypothèses (BLUE)</a><a href="#p2">2. Multicolinéarité</a><a href="#p3">3. Exemple heures de travail</a><a href="#p4">4. Hétéroscédasticité</a><a href="#p5">5. Breusch-Pagan et White</a><a href="#p6">6. Erreurs-types robustes</a><a href="#exo">Exercices corrigés</a><a href="#recap">Récap</a>
+</nav>
+
+<h3>Objectifs de la séance</h3>
+<ul>
+  <li>Lister les <b>hypothèses du modèle de régression linéaire classique</b> qui rendent les MCO « BLUE ».</li>
+  <li><b>Multicolinéarité</b> : conséquences, détection (corrélations, VIF), remèdes.</li>
+  <li><b>Hétéroscédasticité</b> : conséquences, détection (tests de Breusch-Pagan et de White), remède (erreurs-types robustes).</li>
+</ul>
+<p>Lien avec J2 : c'est le « LINE » des résidus (Linéarité, Indépendance, Normalité, Égalité des variances), complété et testé formellement.</p>
+
+<!-- PARTIE 1 -->
+<h2 id="p1"><span class="n">PARTIE 1</span>Les hypothèses du modèle linéaire classique</h2>
+<p>Si elles sont vérifiées, les estimateurs MCO sont <b>BLUE</b> : <i>Best Linear Unbiased Estimators</i>, c'est-à-dire sans biais et de variance minimale parmi les estimateurs linéaires.</p>
+<div class="tbl"><table>
+<tr><th>#</th><th>Hypothèse</th><th>En formule</th><th>Si elle est violée</th></tr>
+<tr><td>1</td><td>Modèle <b>linéaire dans les paramètres</b> (les X peuvent être au carré)</td><td>\(Y_i=\beta_0+\beta_1X_{1i}+\beta_2X_{2i}^2+\dots+\varepsilon_i\)</td><td>MCO inadaptés</td></tr>
+<tr><td>2</td><td><b>Pas de multicolinéarité parfaite</b> : aucune relation linéaire exacte entre les X</td><td>pas de \(X_1 = a + bX_2\)</td><td>Multicolinéarité</td></tr>
+<tr><td>3</td><td><b>Homoscédasticité</b> : variance de l'erreur constante</td><td>\(\text{var}(\varepsilon_i\mid X)=\sigma^2\)</td><td>Hétéroscédasticité</td></tr>
+<tr><td>4</td><td>Erreur <b>non corrélée aux X</b> (exogénéité)</td><td>\(E(\varepsilon_i\mid X)=0\)</td><td>Endogénéité</td></tr>
+<tr><td>5</td><td><b>Pas d'autocorrélation</b> entre les erreurs</td><td>\(\text{cov}(\varepsilon_i,\varepsilon_j\mid X)=0,\ i\ne j\)</td><td>Autocorrélation</td></tr>
+<tr><td>6</td><td>Erreur <b>normale</b></td><td>\(\varepsilon_i\sim N(0,\sigma^2)\)</td><td>Tests t et F moins fiables en petit échantillon</td></tr>
+</table></div>
+<div class="key"><b>Lire un graphe de résidus</b> : nuage en bande horizontale régulière → OK ; <b>entonnoir</b> (l'écart grandit avec X) → hétéroscédasticité ; résidus qui <b>montent avec X</b> ou forment des <b>vagues</b> → erreurs non indépendantes (endogénéité, autocorrélation).</div>
+<p>Le cours détaille trois problèmes : <b>multicolinéarité</b>, <b>hétéroscédasticité</b> et endogénéité (cette dernière est seulement citée dans ce support).</p>
+
+<!-- PARTIE 2 -->
+<h2 id="p2"><span class="n">PARTIE 2</span>La multicolinéarité</h2>
+<h3>2.1 Définition</h3>
+<p>Il y a multicolinéarité quand des variables explicatives sont <b>liées linéairement</b> entre elles.</p>
+<ul>
+<li><b>Parfaite</b> : relation exacte. Ex. \(X_{1i} + X_{2i} = 1 \Leftrightarrow X_{1i} = 1 - X_{2i}\) (comme mettre « homme » et « femme » avec la constante). Les coefficients <b>ne peuvent pas être estimés</b>.</li>
+<li><b>Imparfaite</b> : forte corrélation sans être exacte (âge de la femme et âge du mari). Les coefficients s'estiment, mais mal.</li>
+</ul>
+<h3>2.2 Conséquences</h3>
+<ul>
+<li>Les MCO restent <b>BLUE</b> (sans biais), mais leurs <b>variances sont grandes</b> → erreurs-types élevées → t faibles → coefficients <b>souvent non significatifs</b> alors que les variables comptent.</li>
+<li>Il devient <b>difficile d'isoler l'effet propre</b> de chaque variable sur Y : les deux X bougent ensemble.</li>
+</ul>
+<div class="f">\[ t_{STAT} = \frac{b_1-\beta_1}{S_{b_1}} \quad\Rightarrow\quad S_{b_1}\ \text{gonflé} \;\Rightarrow\; t\ \text{petit} \;\Rightarrow\; \text{non-rejet de } H_0 \]</div>
+<h3>2.3 Détection</h3>
+<p>Il n'existe <b>pas de test unique</b>. Deux outils :</p>
+<ol>
+<li><b>Corrélations deux à deux</b> entre X élevées (en valeur absolue, proche de 1 ; repère courant : au-delà de 0,8).</li>
+<li>Le <b>VIF</b> (<i>variance inflation factor</i>) : de combien la variance de l'estimateur est gonflée par la colinéarité.</li>
+</ol>
+<div class="two">
+<div class="f">\[ VIF = \frac{1}{1-r_{23}^2} \]
+r₂₃ = corrélation entre X₂ et X₃ (cas de 2 X). Avec plusieurs X : \(VIF_j = \frac{1}{1-R_j^2}\), R²ⱼ = r² de la régression de Xⱼ sur les autres X.</div>
+<div class="f">\[ \text{var}(b_2) = \frac{\sigma^2}{\sum x_{2i}^2}\times VIF \]
+Tolérance = 1 / VIF (colonne « 1/VIF »).</div>
+</div>
+<div class="tbl"><table><tr><th>r₂₃</th><th>0</th><th>0,50</th><th>0,70</th><th>0,80</th><th>0,90</th><th>0,95</th><th>0,99</th><th>0,995</th><th>1</th></tr>
+<tr><th>VIF</th><td class="num">1</td><td class="num">1,33</td><td class="num">1,96</td><td class="num">2,78</td><td class="num">5,26</td><td class="num">10,26</td><td class="num">50,25</td><td class="num">100</td><td>non défini</td></tr></table></div>
+<p class="cap">Exemple de calcul : r = 0,90 → \(1/(1-0{,}81) = 1/0{,}19 = 5{,}26\) : la variance de b₂ est 5,26 fois plus grande que sans colinéarité. Repères usuels : VIF &gt; 5 → à surveiller ; VIF &gt; 10 → forte multicolinéarité.</p>
+<h3>2.4 Remèdes</h3>
+<ul>
+<li><b>Ne rien faire</b>, souvent la bonne réponse : si la colinéarité est modérée, ou si elle ne touche <b>pas la variable qui nous intéresse</b> (ex. on étudie l'effet de <i>corruption</i>, peu importe que deux variables de contrôle soient corrélées). Cas d'un <b>modèle quadratique ou à interaction</b> : age et age² sont forcément corrélés, c'est voulu (sleep = β₀ + β₁ totwrk + β₂ educ + β₃ age + β₄ age² + β₅ male + ε).</li>
+<li><b>Retirer une des variables colinéaires</b> du modèle.</li>
+</ul>
+
+<!-- PARTIE 3 -->
+<h2 id="p3"><span class="n">PARTIE 3</span>Exemple du cours : heures de travail des femmes mariées</h2>
+<p>753 femmes mariées, États-Unis, 1975. Y = <b>hours</b> (heures travaillées dans l'année). X : kids6 (enfants de moins de 6 ans), age, husage (âge du mari), educ (années d'études), faminc (revenu familial), exper (expérience), wage (salaire estimé).</p>
+<div class="two">
+<div class="ex"><span class="t">Modèle 1 : avec husage</span>
+<div class="tbl"><table><tr><th>Variable</th><th>b</th><th>S<sub>b</sub></th><th>t</th><th>p</th></tr>
+<tr><td>kids6</td><td class="num">−360,38</td><td class="num">56,38</td><td class="num">−6,39</td><td class="num">0,000</td></tr>
+<tr><td>age</td><td class="num">−25,71</td><td class="num">7,198</td><td class="num">−3,57</td><td class="num">0,000</td></tr>
+<tr><td>husage</td><td class="num">−2,66</td><td class="num">7,074</td><td class="num">−0,38</td><td class="num">0,707</td></tr>
+<tr><td>educ</td><td class="num">−23,59</td><td class="num">12,85</td><td class="num">−1,84</td><td class="num">0,067</td></tr>
+<tr><td>faminc</td><td class="num">0,0087</td><td class="num">0,0023</td><td class="num">3,73</td><td class="num">0,000</td></tr>
+<tr><td>exper</td><td class="num">41,67</td><td class="num">3,583</td><td class="num">11,63</td><td class="num">0,000</td></tr>
+<tr><td>wage</td><td class="num">75,83</td><td class="num">8,955</td><td class="num">8,47</td><td class="num">0,000</td></tr>
+<tr><td>_cons</td><td class="num">1 506,38</td><td class="num">233,39</td><td class="num">6,45</td><td class="num">0,000</td></tr></table></div>
+<p class="cap">R² = 0,3436 ; R² ajusté = 0,3375 ; F(7 ; 745) = 55,72.</p></div>
+<div class="ex"><span class="t">Modèle 2 : sans husage</span>
+<div class="tbl"><table><tr><th>Variable</th><th>b</th><th>S<sub>b</sub></th><th>t</th><th>p</th></tr>
+<tr><td>kids6</td><td class="num">−357,48</td><td class="num">55,82</td><td class="num">−6,40</td><td class="num">0,000</td></tr>
+<tr><td>age</td><td class="num">−28,01</td><td class="num">3,803</td><td class="num">−7,37</td><td class="num">0,000</td></tr>
+<tr><td>educ</td><td class="num">−23,39</td><td class="num">12,83</td><td class="num">−1,82</td><td class="num">0,069</td></tr>
+<tr><td>faminc</td><td class="num">0,0087</td><td class="num">0,0023</td><td class="num">3,73</td><td class="num">0,000</td></tr>
+<tr><td>exper</td><td class="num">41,76</td><td class="num">3,574</td><td class="num">11,68</td><td class="num">0,000</td></tr>
+<tr><td>wage</td><td class="num">75,81</td><td class="num">8,949</td><td class="num">8,47</td><td class="num">0,000</td></tr>
+<tr><td>_cons</td><td class="num">1 480,17</td><td class="num">222,63</td><td class="num">6,65</td><td class="num">0,000</td></tr></table></div>
+<p class="cap">R² = 0,3435 ; R² ajusté = 0,3382 ; F(6 ; 746) = 65,06.</p></div>
+</div>
+<ul>
+<li><b>Corrélations</b> : age et husage ont r = <b>0,8881</b>, toutes les autres paires sont sous 0,45 en valeur absolue.</li>
+<li><b>VIF modèle 1</b> : age 5,05 ; husage 4,86 ; les autres entre 1,21 et 1,30 ; VIF moyen 2,32 → l'âge de la femme et celui du mari sont très corrélés.</li>
+<li><b>VIF modèle 2</b> : age 1,41 ; tous ≤ 1,41 ; VIF moyen 1,28 → problème réglé.</li>
+<li>Effet du remède : l'erreur-type de age est presque divisée par deux (7,198 → 3,803), son t passe de −3,57 à −7,37. Le R² ne bouge presque pas (0,3436 → 0,3435) et le R² ajusté <b>monte</b> (0,3375 → 0,3382) : husage n'apportait rien en propre.</li>
+</ul>
+<div class="det"><span class="t">Dans XLSTAT</span>
+<p>Modélisation → Régression linéaire → onglet <i>Sorties</i> → cocher <b>Corrélations</b> et <b>Statistiques de multicolinéarité</b> (tableau Tolérance / VIF).</p></div>
+
+<!-- PARTIE 4 -->
+<h2 id="p4"><span class="n">PARTIE 4</span>L'hétéroscédasticité</h2>
+<p><i>Hétéro-scédasticité</i> = variance <b>inégale</b> du terme d'erreur : la dispersion des points autour de la droite change avec X (graphe en entonnoir). L'inverse, variance constante, est l'<b>homoscédasticité</b>.</p>
+<h3>Conséquences</h3>
+<ul>
+<li>Les MCO restent <b>sans biais</b> mais ne sont plus de variance minimale : ils ne sont plus <b>BLUE</b>, seulement <b>LUE</b> (<i>linear unbiased estimators</i>).</li>
+<li>Les erreurs-types calculées sont fausses → les <b>tests t et F ne sont plus fiables</b> → risque de conclusions erronées sur la significativité des coefficients.</li>
+</ul>
+<div class="trap"><b>Ne pas confondre</b> : multicolinéarité → les coefficients restent BLUE mais avec de grandes variances ; hétéroscédasticité → les coefficients ne sont plus BLUE et les erreurs-types usuelles sont fausses.</div>
+
+<!-- PARTIE 5 -->
+<h2 id="p5"><span class="n">PARTIE 5</span>Détection : tests de Breusch-Pagan et de White</h2>
+<div class="two">
+<div class="det"><span class="t">Test de Breusch-Pagan</span>
+<ol class="steps">
+<li><span>Estimer le modèle par MCO, récupérer les <b>résidus au carré</b> \(e_i^2\).</span></li>
+<li><span>Régresser \(e_i^2\) sur <b>les k variables X</b> du modèle : \(e_i^2 = \alpha_0 + \alpha_1X_{1i} + \dots + \alpha_kX_{ki} + v_i\)</span></li>
+<li><span>H₀ : α₁ = α₂ = … = αₖ = 0 (homoscédasticité) ; H₁ : au moins un αᵢ ≠ 0.</span></li>
+<li><span>Regarder le <b>F</b> de cette régression : p-value ≤ α → rejet de H₀ → <b>hétéroscédasticité</b> ; p-value &gt; α → on ne rejette pas → homoscédasticité.</span></li>
+</ol></div>
+<div class="det"><span class="t">Test de White (version abrégée du cours)</span>
+<ol class="steps">
+<li><span>Estimer le modèle par MCO, récupérer \(e_i^2\) et les valeurs prédites \(\hat Y_i\).</span></li>
+<li><span>Régresser \(e_i^2\) sur <b>\(\hat Y\) et \(\hat Y^2\)</b> : \(e_i^2 = \alpha_1 + \alpha_2\hat Y_i + \alpha_3\hat Y_i^2 + v_i\)</span></li>
+<li><span>H₀ : α₂ = α₃ = 0 (homoscédasticité) ; H₁ : au moins un ≠ 0.</span></li>
+<li><span>Même règle sur le <b>F</b> : significatif → hétéroscédasticité.</span></li>
+</ol></div>
+</div>
+<div class="f">F de la régression auxiliaire, à partir de son R² : \[ F = \frac{R^2_{aux}/k}{(1-R^2_{aux})/(n-k-1)} \qquad df = (k\ ;\ n-k-1) \]</div>
+<div class="ex"><span class="t">Exemple du cours — taux d'avortement dans les 50 États américains (1992)</span>
+<p>ABR = B₁ + B₂ Religion + B₃ Price + B₄ Laws + B₅ Funds + B₆ Educ + B₇ Income + B₈ Picket + u (n = 50, k = 7).</p>
+<ul>
+<li>MCO : R² = 0,577 ; seules <b>Income</b> (p = 0,0000) et <b>Picket</b> (p = 0,0083) sont significatives à 5 % ; Price p = 0,0635.</li>
+<li><b>Breusch-Pagan</b> : régression de RESID² sur les 7 X : R² = 0,320, <b>F = 2,8238, p = 0,0167</b> &lt; 0,05 → rejet de H₀ → hétéroscédasticité.</li>
+<li><b>White</b> : régression de RES² sur ABORTIONF et ABORTIONF² : R² = 0,193, <b>F = 5,6232, p = 0,0065</b> &lt; 0,05 → hétéroscédasticité confirmée.</li>
+</ul></div>
+<div class="det"><span class="t">Dans XLSTAT</span>
+<ol class="steps">
+<li><span>Lancer d'abord la régression linéaire en cochant <i>Prédictions et résidus</i> pour obtenir la colonne des résidus.</span></li>
+<li><span><i>Analyse de séries temporelles → Tests d'hétéroscédasticité</i>.</span></li>
+<li><span><b>Résidus</b> : la colonne des résidus ; <b>X / variables explicatives</b> : les X du modèle ; cocher <b>Breusch-Pagan</b> et <b>White</b>.</span></li>
+<li><span>Lire les p-values : &lt; 0,05 → hétéroscédasticité.</span></li>
+</ol></div>
+
+<!-- PARTIE 6 -->
+<h2 id="p6"><span class="n">PARTIE 6</span>Remède : les erreurs-types robustes (White)</h2>
+<p>Si l'échantillon est grand, White propose de corriger les <b>erreurs-types</b> pour l'hétéroscédasticité : ce sont les <b>erreurs-types robustes</b> (<i>heteroscedasticity-consistent</i>). Les <b>coefficients ne changent pas</b>, seules les erreurs-types, les t et les p-values changent.</p>
+<div class="tbl"><table><tr><th>Variable</th><th>Coefficient (identique)</th><th>S<sub>b</sub> MCO</th><th>p MCO</th><th>S<sub>b</sub> robuste</th><th>p robuste</th></tr>
+<tr><td>Religion</td><td class="num">0,0201</td><td class="num">0,0864</td><td class="num">0,8174</td><td class="num">0,0839</td><td class="num">0,8120</td></tr>
+<tr><td>Price</td><td class="num">−0,0424</td><td class="num">0,0222</td><td class="num"><b>0,0635</b></td><td class="num">0,0259</td><td class="num"><b>0,1100</b></td></tr>
+<tr><td>Laws</td><td class="num">−0,8731</td><td class="num">2,3766</td><td class="num">0,7152</td><td class="num">1,7958</td><td class="num">0,6294</td></tr>
+<tr><td>Funds</td><td class="num">2,8200</td><td class="num">2,7835</td><td class="num">0,3168</td><td class="num">3,0886</td><td class="num">0,3664</td></tr>
+<tr><td>Educ</td><td class="num">−0,2873</td><td class="num">0,1996</td><td class="num">0,1574</td><td class="num">0,1766</td><td class="num">0,1114</td></tr>
+<tr><td>Income</td><td class="num">0,0024</td><td class="num">0,000455</td><td class="num">0,0000</td><td class="num">0,000510</td><td class="num">0,0000</td></tr>
+<tr><td>Picket</td><td class="num">−0,1169</td><td class="num">0,0422</td><td class="num">0,0083</td><td class="num">0,0404</td><td class="num">0,0060</td></tr></table></div>
+<p class="cap">R², coefficients et F global inchangés. Price, significatif à 10 % avec les MCO (p = 0,064), ne l'est plus avec les erreurs robustes (p = 0,110). Income et Picket restent significatifs.</p>
+<div class="det"><span class="t">Dans XLSTAT</span>
+<p>Modélisation des données → Régression linéaire → onglet <i>Options</i> → sous-onglet <i>Covariances</i> → cocher <b>Hétéroscédasticité</b>, méthode <b>HC1</b>.</p></div>
+
+<!-- EXERCICES -->
+<h2 id="exo"><span class="n">EXERCICES</span>Exercices corrigés</h2>
+<div class="key"><b>Pas d'assignment distinct pour le Day 5</b> : les exercices 1 à 4 reprennent les sorties du cours (heures de travail, avortement) sous forme de questions d'examen ; l'exercice 5 applique le diagnostic complet à ton fichier <b>Table 8.8</b> du Day 4. Méthode : (1) corrélations et VIF ; (2) régression auxiliaire sur e² ; (3) H₀, F, df, valeur critique, p-value ; (4) décision ; (5) remède.</div>
+
+<!-- EX 1 -->
+<h3>Exercice 1 — Calculer et lire un VIF</h3>
+<div class="q"><b>a.</b> Dans l'exemple heures de travail, corr(age, husage) = 0,8881. Calculer le VIF « à deux variables ».
+<ol class="steps">
+<li><span>\(r^2 = 0{,}8881^2 = 0{,}7887\)</span></li>
+<li><span>\(VIF = \dfrac{1}{1-0{,}7887} = \dfrac{1}{0{,}2113} = \mathbf{4{,}73}\)</span></li>
+<li><span>Lecture : la variance de b(age) est environ 4,7 fois plus grande que si age et husage n'étaient pas corrélés.</span></li>
+</ol></div>
+<div class="q"><b>b.</b> Stata affiche VIF(age) = 5,05. Pourquoi pas 4,73 ? Que vaut le R² de la régression auxiliaire ?
+<ol class="steps">
+<li><span>Avec plusieurs X, le VIF utilise le R² de la régression de age sur <b>toutes</b> les autres X (kids6, husage, educ…), pas seulement sur husage : il est donc un peu plus élevé.</span></li>
+<li><span>\(VIF = \dfrac{1}{1-R^2_{age}} \Rightarrow R^2_{age} = 1 - \dfrac{1}{5{,}05} = 1 - 0{,}198 = \mathbf{0{,}802}\) : 80 % de la variation de l'âge de la femme est expliquée par les autres X. La tolérance (1/VIF) vaut 0,198, comme dans la sortie.</span></li>
+</ol></div>
+<div class="q"><b>c.</b> Avec r = 0,95, de combien l'erreur-type est-elle gonflée ?
+<ol class="steps">
+<li><span>VIF = 1 / (1 − 0,9025) = <b>10,26</b> → la <b>variance</b> est multipliée par 10,26.</span></li>
+<li><span>L'erreur-type est la racine de la variance : multipliée par \(\sqrt{10{,}26} = \mathbf{3{,}2}\). Le t est donc divisé par environ 3,2 : un coefficient avec t = 4 sans colinéarité tomberait à t ≈ 1,25 (non significatif).</span></li>
+</ol></div>
+
+<!-- EX 2 -->
+<h3>Exercice 2 — Diagnostiquer et corriger la multicolinéarité (heures de travail)</h3>
+<div class="q"><b>a.</b> Dans le modèle 1, quel coefficient paraît suspect ?
+<p>husage : b = −2,66, t = −0,38, <b>p = 0,707</b> → non significatif. Tests t : df = 753 − 7 − 1 = 745, t critique ≈ ± 1,963 ; |−0,38| &lt; 1,963. Pourtant le modèle est globalement très significatif (F = 55,72) : un X non significatif dans un bon modèle doit faire penser à la colinéarité.</p></div>
+<div class="q"><b>b.</b> Confirmer avec les corrélations et les VIF.
+<ol class="steps">
+<li><span>Matrice de corrélation : corr(age, husage) = <b>0,8881</b>, très au-dessus de toutes les autres paires de X (max 0,44 en valeur absolue).</span></li>
+<li><span>VIF : age = 5,05 et husage = 4,86, les deux plus élevés, nettement au-dessus des autres (≈ 1,2–1,3) → <b>multicolinéarité entre age et husage</b>.</span></li>
+</ol></div>
+<div class="q"><b>c.</b> Remède et comparaison.
+<ol class="steps">
+<li><span>Remède : retirer <b>husage</b> (variable de contrôle, pas la variable d'intérêt ; l'âge de la femme est plus pertinent pour ses propres heures de travail).</span></li>
+<li><span>VIF du modèle 2 : tous ≤ 1,41 → problème réglé.</span></li>
+<li><span>Erreur-type de age : 7,198 → 3,803. Rapport des variances : \((7{,}198/3{,}803)^2 = 1{,}893^2 = 3{,}58\) : la variance de b(age) a été divisée par 3,6.</span></li>
+<li><span>t de age : \(-25{,}71/7{,}198 = -3{,}57\) → \(-28{,}01/3{,}803 = -7{,}37\) : effet bien plus précis.</span></li>
+<li><span>R² : 0,3436 → 0,3435 (quasi identique) ; R² ajusté : 0,3375 → <b>0,3382</b> (meilleur) : le modèle sans husage est préférable.</span></li>
+</ol></div>
+<div class="q"><b>d.</b> Interpréter le modèle 2 (unités : heures par an).
+<ul>
+<li><b>kids6</b> : chaque enfant de moins de 6 ans réduit les heures travaillées de <b>357 h/an</b> en moyenne, les autres X constants.</li>
+<li><b>age</b> : chaque année d'âge en plus → <b>−28 h/an</b>.</li>
+<li><b>exper</b> : chaque année d'expérience → <b>+41,8 h/an</b> ; <b>wage</b> : +1 $ de salaire horaire → <b>+75,8 h/an</b>.</li>
+<li><b>faminc</b> : +1 000 $ de revenu familial → +8,7 h/an.</li>
+<li><b>educ</b> : −23,4 h par année d'études, mais p = 0,069 → non significatif à 5 %.</li>
+</ul></div>
+
+<!-- EX 3 -->
+<h3>Exercice 3 — Test de Breusch-Pagan (avortement)</h3>
+<p>Régression auxiliaire de RESID² sur les 7 X : R² = 0,320022, n = 50.</p>
+<ol class="steps">
+<li><span><b>Hypothèses</b> : H₀ : α₁ = … = α₇ = 0 (homoscédasticité) ; H₁ : au moins un αᵢ ≠ 0.</span></li>
+<li><span><b>Statistique</b> : \(F = \dfrac{0{,}320022/7}{(1-0{,}320022)/(50-7-1)} = \dfrac{0{,}045717}{0{,}016190} = \mathbf{2{,}824}\) (= la sortie EViews).</span></li>
+<li><span><b>Degrés de liberté</b> : (7 ; 42). Valeur critique à 5 % : F = 2,237 (Excel <span class="mono">=INVERSE.LOI.F.N(0,95;7;42)</span>).</span></li>
+<li><span><b>Décision</b> : 2,824 &gt; 2,237 et p = 0,0167 &lt; 0,05 → <b>rejet de H₀</b>.</span></li>
+<li><span><b>Conclusion</b> : les erreurs sont <b>hétéroscédastiques</b> ; les tests t de la régression MCO ne sont pas fiables.</span></li>
+</ol>
+<p class="cap">Variante « Obs*R-squared » : n × R² = 50 × 0,320022 = 16,00, comparé à χ²(7) = 14,07 → même conclusion (p = 0,0251).</p>
+
+<!-- EX 4 -->
+<h3>Exercice 4 — Test de White et erreurs-types robustes (avortement)</h3>
+<div class="q"><b>a.</b> Régression de RES² sur ABORTIONF et ABORTIONF² : R² = 0,193083. Conclure.
+<ol class="steps">
+<li><span>H₀ : α₂ = α₃ = 0 ; H₁ : au moins un ≠ 0.</span></li>
+<li><span>\(F = \dfrac{0{,}193083/2}{(1-0{,}193083)/(50-2-1)} = \dfrac{0{,}096542}{0{,}017169} = \mathbf{5{,}623}\)</span></li>
+<li><span>df = (2 ; 47) ; F critique 5 % = 3,195. 5,623 &gt; 3,195 et p = 0,0065 &lt; 0,05 → <b>rejet de H₀</b> : hétéroscédasticité, même conclusion que Breusch-Pagan.</span></li>
+</ol></div>
+<div class="q"><b>b.</b> Que change le passage aux erreurs-types robustes pour Price ?
+<ol class="steps">
+<li><span>Le coefficient reste −0,042363 (les coefficients ne changent jamais).</span></li>
+<li><span>MCO : \(t = -0{,}042363/0{,}022223 = -1{,}906\) ; p = 0,0635.</span></li>
+<li><span>Robuste : \(t = -0{,}042363/0{,}025944 = -1{,}633\) ; p = 0,110.</span></li>
+<li><span>Conclusion : avec les MCO on aurait dit « le prix réduit le taux d'avortement, significatif à 10 % » ; une fois l'hétéroscédasticité corrigée, <b>Price n'est significatif à aucun seuil usuel</b>. Income (p = 0,0000) et Picket (p = 0,0060) restent significatifs : ces conclusions sont solides.</span></li>
+</ol></div>
+
+<!-- EX 5 -->
+<h3>Exercice 5 — Diagnostic complet du LPM « taux variable » (Table 8.8, Day 4)</h3>
+<p>Modèle : adjust = b0 + b1 fixrate + b2 margin + b3 yield + b4 points + b5 networth + u, estimé par MCO (LPM de l'exercice 2 du Day 4), n = 78, k = 5.</p>
+<div class="q"><b>a.</b> Y a-t-il de la multicolinéarité ?
+<div class="det"><span class="t">Calcul détaillé</span>
+<div class="tbl"><table><tr><th></th><th>fixrate</th><th>margin</th><th>yield</th><th>points</th><th>networth</th></tr>
+<tr><td>fixrate</td><td class="num">1</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>margin</td><td class="num">−0,213</td><td class="num">1</td><td></td><td></td><td></td></tr>
+<tr><td>yield</td><td class="num">−0,069</td><td class="num">−0,468</td><td class="num">1</td><td></td><td></td></tr>
+<tr><td>points</td><td class="num">0,076</td><td class="num">0,277</td><td class="num">−0,405</td><td class="num">1</td><td></td></tr>
+<tr><td>networth</td><td class="num">0,381</td><td class="num">0,094</td><td class="num">−0,254</td><td class="num">0,285</td><td class="num">1</td></tr>
+<tr><th>VIF</th><td class="num">1,28</td><td class="num">1,42</td><td class="num">1,49</td><td class="num">1,27</td><td class="num">1,30</td></tr></table></div>
+<ol class="steps">
+<li><span>Plus forte corrélation : margin / yield = −0,468, loin de 0,8.</span></li>
+<li><span>Tous les VIF ≤ 1,49, très en dessous de 5. Exemple : VIF(yield) = 1,49 ⇒ R² auxiliaire = 1 − 1/1,49 = 0,33.</span></li>
+<li><span>Conclusion : <b>pas de multicolinéarité gênante</b>. La non-significativité de points (p = 0,21) ne vient pas de la colinéarité : cette variable n'a simplement pas d'effet net mesurable.</span></li>
+</ol></div></div>
+<div class="q"><b>b.</b> Test de Breusch-Pagan.
+<ol class="steps">
+<li><span>Récupérer les résidus du LPM, les mettre au carré, régresser e² sur les 5 X : R² auxiliaire = 0,258.</span></li>
+<li><span>\(F = \dfrac{0{,}258/5}{(1-0{,}258)/(78-5-1)} = \dfrac{0{,}0516}{0{,}01031} = \mathbf{5{,}01}\) ; df = (5 ; 72) ; F critique = 2,34.</span></li>
+<li><span>5,01 &gt; 2,34 ; p = 0,0005 → <b>rejet de H₀ : hétéroscédasticité</b>.</span></li>
+</ol>
+<div class="key"><b>À retenir</b> : un LPM est <b>toujours hétéroscédastique par construction</b>. Comme Y vaut 0 ou 1, \(\text{var}(u\mid X) = p(X)\,[1-p(X)]\), qui change avec X. C'est une raison de plus pour utiliser des erreurs-types robustes avec un LPM, ou de passer au probit / logit.</div></div>
+<div class="q"><b>c.</b> Test de White (abrégé).
+<ol class="steps">
+<li><span>Régresser e² sur \(\hat Y\) et \(\hat Y^2\) : F = 1,80 ; df = (2 ; 75) ; F critique = 3,12 ; p = 0,172.</span></li>
+<li><span>1,80 &lt; 3,12 → on <b>ne rejette pas</b> H₀ avec ce test.</span></li>
+<li><span>Les deux tests ne regardent pas la même chose (BP : les X un par un ; White abrégé : une forme en \(\hat Y\)). Breusch-Pagan détecte le problème, et on sait qu'il existe en théorie pour un LPM : on corrige.</span></li>
+</ol></div>
+<div class="q"><b>d.</b> Erreurs-types robustes (HC1) : quelles conclusions changent ?
+<div class="tbl"><table><tr><th>Variable</th><th>b (identique)</th><th>S<sub>b</sub> MCO</th><th>p MCO</th><th>S<sub>b</sub> robuste</th><th>p robuste</th><th>Conclusion à 5 %</th></tr>
+<tr><td>fixrate</td><td class="num">0,1573</td><td class="num">0,0799</td><td class="num">0,053</td><td class="num">0,0992</td><td class="num">0,113</td><td>n.s. dans les deux cas</td></tr>
+<tr><td>margin</td><td class="num">−0,1295</td><td class="num">0,0479</td><td class="num">0,009</td><td class="num">0,0460</td><td class="num">0,005</td><td><span class="sig ok">reste significative</span></td></tr>
+<tr><td>yield</td><td class="num">−0,7862</td><td class="num">0,3189</td><td class="num">0,016</td><td class="num">0,3360</td><td class="num">0,019</td><td><span class="sig ok">reste significative</span></td></tr>
+<tr><td>points</td><td class="num">−0,0891</td><td class="num">0,0706</td><td class="num">0,211</td><td class="num">0,0736</td><td class="num">0,226</td><td>n.s.</td></tr>
+<tr><td>networth</td><td class="num">0,0291</td><td class="num">0,0117</td><td class="num">0,015</td><td class="num">0,0161</td><td class="num">0,072</td><td><span class="sig no">devient n.s.</span></td></tr></table></div>
+<ol class="steps">
+<li><span>networth : t MCO = 0,0291 / 0,0117 = 2,49 → t robuste = 0,0291 / 0,0161 = 1,80 &lt; 1,993 → plus significatif à 5 % (seulement à 10 %).</span></li>
+<li><span>margin : t robuste = −0,1295 / 0,0460 = −2,82 → toujours significative : la conclusion de l'exercice 2.a du Day 4 tient.</span></li>
+</ol></div>
+
+<!-- RECAP -->
+<h2 id="recap"><span class="n">RÉCAP</span>À savoir faire</h2>
+<div class="tbl"><table>
+<tr><th></th><th>Multicolinéarité</th><th>Hétéroscédasticité</th></tr>
+<tr><td><b>Quoi ?</b></td><td>Relation linéaire parfaite ou forte entre des X</td><td>Variance de l'erreur non constante</td></tr>
+<tr><td><b>Conséquence ?</b></td><td>MCO toujours BLUE mais grandes variances → coefficients souvent non significatifs, effets difficiles à séparer</td><td>MCO plus BLUE (seulement LUE) → tests t et F peu fiables</td></tr>
+<tr><td><b>Détecter ?</b></td><td>Corrélations entre X ; VIF = 1/(1 − r²), à surveiller au-delà de 5, fort au-delà de 10</td><td>Breusch-Pagan (e² sur les X) ; White (e² sur Ŷ et Ŷ²) ; F significatif → hétéroscédasticité</td></tr>
+<tr><td><b>Corriger ?</b></td><td>Ne rien faire (si modérée ou hors variable d'intérêt, ou terme au carré voulu) ou retirer une variable</td><td>Erreurs-types robustes de White (XLSTAT : HC1)</td></tr>
+</table></div>
+<ul>
+<li>Réciter les hypothèses BLUE : linéarité en β, pas de multicolinéarité parfaite, homoscédasticité, E(ε|X) = 0, pas d'autocorrélation, normalité.</li>
+<li>Calculer un VIF depuis r, retrouver le R² auxiliaire depuis un VIF, dire de combien l'erreur-type est gonflée (√VIF).</li>
+<li>Recalculer le F d'une régression auxiliaire depuis son R² et conclure avec la p-value.</li>
+<li>Savoir que les erreurs robustes changent S<sub>b</sub>, t et p, <b>jamais</b> les coefficients ni le R².</li>
+</ul>
+<div class="tbl"><table>
+<tr><th>Exercice</th><th>Résultat clé</th><th>Conclusion</th></tr>
+<tr><td>1 · VIF</td><td class="mono">r = 0,8881 → VIF 4,73 ; VIF 5,05 → R²aux 0,802</td><td>r = 0,95 : erreur-type × 3,2</td></tr>
+<tr><td>2 · Heures</td><td>age et husage : VIF 5,05 / 4,86</td><td>Retirer husage : t(age) −3,57 → −7,37</td></tr>
+<tr><td>3 · BP avortement</td><td class="mono">F(7 ; 42) = 2,824, p = 0,017</td><td>Hétéroscédasticité</td></tr>
+<tr><td>4 · White + robuste</td><td class="mono">F(2 ; 47) = 5,623, p = 0,006</td><td>Price : p 0,064 → 0,110</td></tr>
+<tr><td>5 · LPM Table 8.8</td><td>VIF ≤ 1,49 ; BP F = 5,01 (p = 0,0005)</td><td>networth n.s. en robuste ; margin tient</td></tr>
+</table></div>
+
+<footer>Fiche construite à partir du support « Multicollinearity · Heteroscedasticity » (G. Vu, d'après Gujarati, <i>Econometrics by Example</i>). Exercices 1 à 4 tirés des sorties du cours ; exercice 5 recalculé sur le fichier Table 8.8 (VIF, Breusch-Pagan, White abrégé, erreurs-types HC1).</footer>
+</div>
+
+</body></html>
