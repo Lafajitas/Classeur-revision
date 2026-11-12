@@ -1,7 +1,7 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style></head><body>
 <style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
 <nav class="cl-back" aria-label="Retour"><a href="index.html#m-eval_cartes">← Évaluation d'entreprises</a><span>· Classeur de révision</span></nav>
-<title>Cartes mentales ANC · ANCC</title>
+<title>Cartes mentales Évaluation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
@@ -62,9 +62,9 @@ svg text{fill:var(--fg)}
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Évaluation d'entreprises · F. Romon · Cours du 1er et du 8 oct.</div>
-    <h1>Cartes mentales ANC · ANCC</h1>
-    <p class="lede">Neuf cartes : le cours, les retraitements, les éléments financiers, circulants et le passif, la synthèse complète de Warrior, les cas Mangala, Pastouche et Lumen, puis les pièges d'examen. IS retenu : 33⅓ %.</p>
+    <div class="eyebrow">Évaluation d'entreprises · F. Romon · Cours du 1er oct., du 8 oct. et du 12 nov.</div>
+    <h1>Cartes mentales ANC · ANCC · Goodwill</h1>
+    <p class="lede">Douze cartes : le cours, les retraitements, les éléments financiers, circulants et le passif, la synthèse complète de Warrior, les cas Mangala, Pastouche et Lumen, les pièges d'examen, puis l'ajustement par le goodwill (rente, trois bases, cas Warrior, Duchemole et Potiron). IS retenu : 33⅓ %.</p>
   </header>
   <nav id="tabs" role="tablist" aria-label="Cartes"></nav>
   <section class="sheet">
@@ -308,6 +308,72 @@ const MAPS = [
   {t:"Présentation", c:[
     F("Valeur en € = ANCC k€ × 1 000 / nb d'actions"),
     {t:"Jamais de moyenne : une fourchette argumentée"}]}
+ ]}},
+{id:"gw", tab:"Goodwill", title:"Ajustement par le goodwill", sub:"Cours du 12 nov. · la rente B − rA et son actualisation",
+ root:{t:"Goodwill", c:[
+  {t:"Pourquoi ?", c:[
+    {t:"L'ANCC ignore le capital immatériel"},
+    {t:"Goodwill = valeur résiduelle en plus des incorporels évalués directement"}]},
+  {t:"Sources de sur-rentabilité", c:[
+    {t:"Capacité distinctive"},{t:"Rente de situation"},{t:"Sous-évaluation de certains actifs"},
+    {t:"Erreurs et défaillances → badwill"}]},
+  {t:"Rente de goodwill", c:[
+    F("Rente = B − r × A"),
+    {t:"B : bénéfice associé à A, net d'IS"},
+    {t:"r : rémunération normale de A"},
+    {t:"A : actifs nécessaires à l'exploitation"}]},
+  {t:"Actualisation au CMP (i)", c:[
+    F("Rente × [1 − (1 + i)⁻ⁿ] / i"),
+    {t:"n ≤ 5 ans ; 3 ans max pour une jeune société"},
+    F("Anglo-saxons : rente / i"),
+    {t:"Coef. 5 ans : 3,9927 à 8 % ; 3,8897 à 9 %"}]},
+  {t:"Valeur ajustée", c:[
+    F("Ve = ANCC* + goodwill"),
+    {t:"ANCC* = ANCC − fonds commercial et incorporels mal évalués"},
+    {t:"Sinon : clientèle comptée deux fois"}]}
+ ]}},
+{id:"gwbases", tab:"ANCC expl. · VSB · CPNE", title:"Les trois bases de la rente", sub:"À chaque A son B et son r",
+ root:{t:"Choisir A, B, r", c:[
+  {t:"ANCC d'exploitation", c:[
+    F("A = ANCC* − actifs HE + dettes HE"),
+    {t:"B = RCAI retraité (HE, amort. VU) × ⅔"},
+    {t:"r = coût des capitaux propres"}]},
+  {t:"VSB", c:[
+    {t:"Outil de travail, quel que soit le propriétaire ou le financement"},
+    {t:"VU immos expl. + crédit-bail + EENE + actif circulant + CCA"},
+    {t:"Ni actifs fictifs ni fonds commercial"},
+    {t:"r = CMP"}]},
+  {t:"CPNE", c:[
+    {t:"VU immos expl. + crédit-bail + BFRE normatif"},
+    F("Statique : CPNE = VSB − dettes non financières"),
+    {t:"Dynamique : prévisions annuelles sur le CA"},
+    {t:"r = CMP"}]},
+  {t:"Bénéfice associé", c:[
+    {t:"Départ : résultat courant avant impôt"},
+    {t:"± éléments hors exploitation"},
+    {t:"+ amort. compta − amort. sur VU ; + amort. actifs fictifs"},
+    {t:"VSB/CPNE : + redevances CB − amort. CB"},
+    {t:"VSB/CPNE : + charges financières (dont escompte, change)"},
+    F("× ⅔ (IS)")]},
+  {t:"Taux i", c:[{t:"Toujours le CMP"}]}
+ ]}},
+{id:"gwcas", tab:"Cas goodwill", title:"Warrior, Duchemole, Potiron", sub:"Les chiffres clés à retrouver seul",
+ root:{t:"Cas goodwill", c:[
+  {t:"Warrior (VSB)", c:[
+    F("VSB 3 665 742 ; B net 379 065"),
+    F("Rente 85 806 (r = 8 %)"),
+    F("Ve 5 ans 2 416 506 ; ∞ 3 146 480")]},
+  {t:"Duchemole (k€)", c:[
+    F("ANCC 53 873 ; ANCC expl. 48 273"),
+    F("B 5 653 ; r 11 % → rente +343 → Ve 55 206"),
+    F("VSB 79 189 ; B 6 086 ; r 9 % → rente −1 041 → Ve 49 824"),
+    {t:"Charges fin. réintégrées : 490 (pas 500)"}]},
+  {t:"Potiron", c:[
+    F("ANC 4 529 000 ; ANCC 5 577 938 ; ANCC* 4 577 938"),
+    F("ANCC expl. 3 021 604 ; B 475 067 → Ve 5 ans 5 388 946"),
+    F("VSB 6 510 000 ; B 731 733 → Ve 5 ans 5 420 134"),
+    {t:"Anglo-saxons : 7,12 et 7,21 M€"},
+    {t:"Bases convergentes, sur-rentable"}]}
  ]}}
 ];
 

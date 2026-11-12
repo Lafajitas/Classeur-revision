@@ -1,0 +1,899 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-eval_fiches">← Évaluation d'entreprises</a><span>· Classeur de révision</span></nav>
+
+<title>Fiche Goodwill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+/* Layout : gabarit des fiches du Classeur — colonne unique, parties du cours puis exercices corrigés, encadrés formule / à retenir / exemple */
+:root{
+  --bg:#f7f8fb; --paper:#ffffff; --fg:#1b2130; --muted:#5b6478; --line:#dfe3ec;
+  --accent:#0f6b5c; --accent-soft:#e3f1ed; --key:#b4540f; --key-soft:#fdf1e6; --ok:#1f7a4d; --bad:#b42318;
+  --display:"Fraunces", Georgia, serif; --body:"Source Sans 3", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#12151d; --paper:#1a1f2a; --fg:#e6e9f0; --muted:#9aa3b6; --line:#2c3342;
+  --accent:#4cc3ad; --accent-soft:#16302b; --key:#f0a868; --key-soft:#35261a; --ok:#6fcf9b; --bad:#ff8a80; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#12151d; --paper:#1a1f2a; --fg:#e6e9f0; --muted:#9aa3b6; --line:#2c3342;
+  --accent:#4cc3ad; --accent-soft:#16302b; --key:#f0a868; --key-soft:#35261a; --ok:#6fcf9b; --bad:#ff8a80; color-scheme:dark }
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:32px 64px}
+header{display:grid;gap:6px;padding-bottom:20px;border-bottom:2px solid var(--fg);margin-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-size:24px;margin:44px 0 14px;text-wrap:balance;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+h2 .n{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:600}
+h3{font-size:17px;margin:26px 0 8px;color:var(--accent)}
+p,li{max-width:70ch}
+ul,ol{padding-left:20px;margin:6px 0}
+li{margin:3px 0}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+nav a{font-size:14px;color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:4px 10px;border-radius:999px;background:var(--paper)}
+nav a:hover,nav a:focus-visible{border-color:var(--accent);outline:none}
+.f{background:var(--accent-soft);border-radius:8px;padding:10px 14px;margin:10px 0;overflow-x:auto}
+.key{background:var(--key-soft);border-left:3px solid var(--key);padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.key b:first-child{color:var(--key)}
+.ex{border:1px dashed var(--line);background:var(--paper);border-radius:8px;padding:12px 14px;margin:12px 0}
+.ex .t{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
+.q{border-top:1px solid var(--line);padding-top:6px;margin-top:10px}
+.q>b:first-child{font-family:var(--mono);color:var(--accent);margin-right:6px}
+.tbl{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;background:var(--paper);font-variant-numeric:tabular-nums;font-size:15px}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--accent-soft);font-weight:600}
+td.num{text-align:right;font-family:var(--mono);font-size:13.5px}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:6px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:8px}
+.steps li::before{content:counter(s);font-family:var(--mono);font-weight:600;color:var(--paper);background:var(--accent);border-radius:50%;width:24px;height:24px;display:grid;place-items:center;font-size:13px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.two>div{min-width:0}
+.mono{font-family:var(--mono);font-size:14px}
+.ok{color:var(--ok);font-weight:700}
+.no{color:var(--bad);font-weight:700}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+figure.chart{margin:12px 0;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px;overflow-x:auto}
+figure.chart svg{width:100%;min-width:420px;height:auto;display:block}
+.chart .g{stroke:var(--line);stroke-width:1}
+.chart .ax{stroke:var(--muted);stroke-width:1}
+.chart .tk{fill:var(--muted);font:12px var(--mono)}
+.chart .al{fill:var(--muted);font:13px var(--body)}
+.chart .pt{fill:var(--accent);stroke:var(--paper);stroke-width:1.5;fill-opacity:.85}
+.chart .pt:hover{fill:var(--key);fill-opacity:1}
+.chart .fit{stroke:var(--key);stroke-width:2}
+.det{border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--paper);border-radius:0 8px 8px 0;padding:10px 14px;margin:14px 0}
+.det>.t{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2px}
+.st{font-weight:700;margin:14px 0 4px;color:var(--fg)}
+.xl{font-size:14.5px}
+.cap{font-size:13px;color:var(--muted);margin-top:-4px}
+footer{margin-top:48px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+
+.chart .pt2{fill:var(--key);stroke:var(--paper);stroke-width:1.5;fill-opacity:.85}
+.chart .fit2{stroke:var(--accent);stroke-width:2}
+.chart .lg{font:13px var(--body);fill:var(--fg)}
+.sig{display:inline-block;font-family:var(--mono);font-size:12px;padding:1px 7px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+.sig.no{background:color-mix(in srgb,var(--bad) 12%,var(--paper));color:var(--bad)}
+.sig.ok{background:color-mix(in srgb,var(--ok) 14%,var(--paper));color:var(--ok)}
+.trap{background:color-mix(in srgb,var(--bad) 7%,var(--paper));border-left:3px solid var(--bad);padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.trap b:first-child{color:var(--bad)}
+</style>
+
+<style>.f{font-family:var(--mono);font-size:14px;white-space:pre-wrap;line-height:1.6} td.neg{color:var(--bad)} td.pos{color:var(--ok)} tr.tot td,tr.tot th{font-weight:700;border-top:2px solid var(--fg)} .tbl table{min-width:480px}</style>
+<style>details{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;background:var(--paper);padding:8px 14px;margin:10px 0}details summary{cursor:pointer;font-weight:600;color:var(--accent)}details[open] summary{margin-bottom:8px}@media print{details{break-inside:auto}}</style>
+<div class="wrap">
+<style>
+.sv text{font-family:var(--body);fill:var(--fg);font-size:13px}
+.sv .m{fill:var(--muted);font-size:12px}
+.sv .mono{font-family:var(--mono);font-size:12px}
+.sv .b{font-weight:700}
+.sv .ac{fill:var(--accent)} .sv .acs{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.2}
+.sv .ky{fill:var(--key)} .sv .kys{fill:var(--key-soft);stroke:var(--key);stroke-width:1.2}
+.sv .bd{fill:var(--bad)} .sv .bds{fill:color-mix(in srgb,var(--bad) 12%,var(--paper));stroke:var(--bad);stroke-width:1.2}
+.sv .gr{fill:color-mix(in srgb,var(--muted) 18%,var(--paper));stroke:var(--muted);stroke-width:1}
+.sv .ln{stroke:var(--line);stroke-width:1;fill:none}
+.sv .ax{stroke:var(--muted);stroke-width:1;fill:none}
+.sv .arw{stroke:var(--fg);stroke-width:1.4;fill:none}
+.sv .arwk{stroke:var(--key);stroke-width:1.6;fill:none}
+.sv .arwa{stroke:var(--accent);stroke-width:1.6;fill:none}
+.sv .dash{stroke-dasharray:4 4}
+.sv .fade{opacity:.45}
+.sv text.w{fill:var(--paper);font-weight:600}
+</style>
+<header>
+  <span class="eyebrow">Évaluation d'entreprises · Méthode patrimoniale · F. Romon · Cours du 12 novembre</span>
+  <h1>Ajuster la valeur patrimoniale par le goodwill</h1>
+  <p class="cap" style="margin-top:6px">Le cours complet : pourquoi l'ANCC ne suffit pas, la rente de goodwill B − rA, son actualisation (rente sur n ans ou anglo-saxonne), les trois bases de calcul (ANCC d'exploitation, VSB, CPNE) et le bénéfice économique associé à chacune. Puis le cas Warrior du cours, les cas Duchemole et Potiron corrigés pas à pas, et 6 exercices d'entraînement. IS retenu : 33⅓ %.</p>
+</header>
+
+<nav aria-label="Sections">
+  <a href="#p1">1. Pourquoi le goodwill</a><a href="#p2">2. La rente B − rA</a><a href="#p3">3. Actualiser la rente</a><a href="#p4">4. Valeur ajustée</a><a href="#p5">5. Les trois bases</a><a href="#p6">6. Le bénéfice associé</a><a href="#p7">7. Méthode en 8 étapes</a><a href="#warrior">Cas Warrior (VSB)</a><a href="#duchemole">Cas Duchemole</a><a href="#potiron">Cas Potiron</a><a href="#exo">Entraînement</a><a href="#recap">Récap et pièges</a>
+</nav>
+
+<h3>Ce qu'il faut savoir faire à la fin du cours</h3>
+<ul>
+  <li>Expliquer pourquoi l'ANCC <b>sous-estime</b> (ou surestime) une entreprise rentable (ou non), et ce que mesure le goodwill.</li>
+  <li>Calculer une <b>rente de goodwill</b> B − rA en choisissant <b>le bon A, le bon B et le bon r</b> selon la base retenue.</li>
+  <li>Actualiser cette rente au <b>CMP</b>, sur 5 ans (rente actualisée) ou à l'infini (méthode anglo-saxonne).</li>
+  <li>Passer de l'ANCC à l'<b>ANCC*</b> (hors incorporels mal évalués), puis à l'<b>ANCC d'exploitation</b> ; construire une <b>VSB</b> et des <b>CPNE</b>.</li>
+  <li>Construire le <b>bénéfice économique</b> à partir du résultat courant avant impôt, retraitement par retraitement, sans oublier l'IS.</li>
+</ul>
+
+<div class="key"><b>Le fil rouge en une phrase.</b> L'ANCC mesure ce que l'entreprise <i>possède</i> ; le goodwill mesure ce qu'elle <i>sait en faire</i>. On compare le bénéfice B que dégage l'outil de travail A avec le bénéfice « normal » r × A qu'un investisseur exigerait ; l'écart (la rente) est actualisé et ajouté à l'ANCC*.</div>
+
+<!-- ===================== PARTIE 1 ===================== -->
+<h2 id="p1"><span class="n">01</span>Pourquoi ajuster l'ANCC par le goodwill ?</h2>
+
+<h3>Le problème de départ</h3>
+<p>Le professeur ouvre le chapitre par une question : <b>« L'actif net comptable corrigé intègre-t-il toute la richesse, la performance… de l'entreprise ? »</b> La réponse est non. L'ANCC additionne des actifs <b>un par un</b>, chacun à sa valeur (utilité, vénale), puis retire les dettes. Il ignore tout ce qui naît de la <b>combinaison</b> de ces actifs : une équipe soudée, un savoir-faire, une clientèle fidèle, une organisation efficace, une réputation. C'est le <b>capital immatériel</b>.</p>
+<p>Pour un ingénieur, l'image est simple : deux usines avec exactement les mêmes machines au même prix n'ont pas la même valeur si l'une tourne à 95 % de rendement et l'autre à 60 %. L'ANCC donne la même valeur aux deux ; le goodwill fait la différence.</p>
+<p>D'où la méthode : <b>ajuster la valeur patrimoniale par la méthode du goodwill afin d'intégrer l'ensemble du capital immatériel de l'entreprise.</b></p>
+
+<h3>Définition du cours</h3>
+<div class="key"><b>Goodwill (ou badwill).</b> Valeur résiduelle qui <b>s'ajoute</b> (goodwill) ou <b>se déduit</b> (badwill) de la valeur des éléments incorporels évalués directement. Il matérialise la <b>sur-rentabilité</b> de l'entreprise.</div>
+<p>Le mot « résiduelle » est important : on n'évalue pas le goodwill directement (on ne peut pas « voir » une culture d'entreprise), on l'obtient <b>par différence</b> entre ce que l'entreprise rapporte et ce que son patrimoine devrait rapporter.</p>
+
+<h3>Les trois sources de sur-rentabilité (schéma du cours)</h3>
+<div class="tbl"><table>
+<tr><th>Source</th><th>Ce que ça veut dire</th><th>Exemples</th></tr>
+<tr><td><b>Capacité distinctive</b></td><td>Un avantage concurrentiel construit par l'entreprise elle-même, difficile à copier.</td><td>Savoir-faire technique, R&amp;D, qualité du management, image de marque, organisation industrielle.</td></tr>
+<tr><td><b>Rente de situation</b></td><td>Un avantage tenant à la position de l'entreprise plus qu'à ses mérites.</td><td>Monopole ou quasi-monopole, emplacement exceptionnel, licence ou autorisation rare, barrières à l'entrée.</td></tr>
+<tr><td><b>Sous-évaluation de certains actifs</b></td><td>Des actifs qui rapportent mais que l'ANCC valorise mal ou pas du tout.</td><td>Fonds commercial non évalué, clientèle, actifs entièrement amortis encore productifs.</td></tr>
+</table></div>
+<p>À l'inverse, <b>lorsque l'entreprise n'est pas suffisamment performante et qu'elle accumule les erreurs et les défaillances</b>, elle rapporte moins que ce que son patrimoine devrait rapporter : c'est le <b>badwill</b> (goodwill négatif). Dans ce cas, la valeur de l'entreprise est <b>inférieure</b> à son ANCC : un acheteur rationnel ne paiera pas le prix des actifs pris un par un pour une machine qui fonctionne mal.</p>
+
+<figure class="chart"><svg class="sv" viewBox="0 0 680 330" style="min-width:520px" role="img" aria-label="Le goodwill s'ajoute à l'ANCC* quand l'entreprise rapporte plus que la normale (B > rA) ; le badwill s'en retranche dans le cas contraire."><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--fg)"/></marker><marker id="ahk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--key)"/></marker></defs><text x="150" y="22" text-anchor="middle" class="b">Entreprise sur-rentable</text><rect x="40" y="130" width="110" height="170" rx="4" class="acs"/><text x="95" y="219.0" text-anchor="middle" class="b">ANCC*</text><text x="95" y="320" text-anchor="middle" class="m">valeur du patrimoine</text><rect x="190" y="130" width="110" height="170" rx="4" class="acs"/><rect x="190" y="50" width="110" height="80" rx="4" class="kys"/><text x="245" y="95" text-anchor="middle" class="b" style="fill:var(--key)">+ goodwill</text><text x="245" y="112" text-anchor="middle" class="m">rente actualisée</text><text x="245" y="220" text-anchor="middle" class="b">ANCC*</text><text x="245" y="320" text-anchor="middle" class="m">valeur ajustée Ve</text><text x="150" y="90" text-anchor="middle" class="m">B &gt; r·A</text><text x="490" y="22" text-anchor="middle" class="b">Entreprise sous-rentable</text><rect x="380" y="130" width="110" height="170" rx="4" class="acs"/><text x="435" y="219" text-anchor="middle" class="b">ANCC*</text><text x="435" y="320" text-anchor="middle" class="m">valeur du patrimoine</text><rect x="530" y="190" width="110" height="110" rx="4" class="acs"/><rect x="530" y="130" width="110" height="60" rx="4" class="bds" style="stroke-dasharray:4 4"/><text x="585" y="158" text-anchor="middle" class="b" style="fill:var(--bad)">− badwill</text><text x="585" y="174" text-anchor="middle" class="m">rente négative</text><text x="585" y="250" text-anchor="middle" class="b">Ve</text><text x="585" y="320" text-anchor="middle" class="m">valeur ajustée Ve</text><text x="510" y="110" text-anchor="middle" class="m">B &lt; r·A</text><line x1="20" y1="300" x2="660" y2="300" class="ax"/></svg><figcaption class="cap" style="margin-top:6px">Le goodwill s'ajoute à l'ANCC* quand l'entreprise rapporte plus que la normale (B > rA) ; le badwill s'en retranche dans le cas contraire.</figcaption></figure>
+
+<div class="det"><span class="t">Lien avec le cours du 1er octobre</span>Vous aviez déjà vu l'intuition sur l'exemple d'introduction : actifs 2 000, dettes 500, rentabilité exigée 10 %. Avec un résultat de 195, la valeur de rendement (195 / 10 % = 1 950) dépasse le patrimoine (1 545) : goodwill = 405. Ce chapitre formalise exactement ce raisonnement.</div>
+
+<!-- ===================== PARTIE 2 ===================== -->
+<h2 id="p2"><span class="n">02</span>La rente de goodwill : B − rA</h2>
+
+<p>Le fondement de la méthode, c'est la <b>rentabilité des actifs d'exploitation investis</b> dans l'entreprise. La différence entre le bénéfice prévu et la rentabilité normale de ces actifs s'appelle le <b>surprofit</b> ou <b>rente de goodwill</b>.</p>
+<div class="f">Rente de goodwill = B − r × A
+
+B = bénéfice prévu associé à A (bénéfice économique, net d'IS)
+r = taux de rémunération de l'actif considéré comme « normal »
+A = actifs nécessaires à l'exploitation (l'outil de travail)</div>
+
+<h3>Comprendre chaque terme</h3>
+<ul>
+  <li><b>A, l'outil de travail.</b> Uniquement ce qui sert à l'exploitation. Un immeuble loué à des tiers, des titres de placement, une créance sur cession d'immobilisation n'en font pas partie : ils ne contribuent pas à l'activité. Selon la méthode, A sera l'ANCC d'exploitation, la VSB ou les CPNE (partie 5).</li>
+  <li><b>r × A, le bénéfice « normal ».</b> C'est ce que les apporteurs de capitaux exigent pour immobiliser A dans cette entreprise. Si l'entreprise gagne juste r × A, elle ne crée aucune valeur au-delà de son patrimoine : goodwill nul.</li>
+  <li><b>B, le bénéfice réellement associé à A.</b> Il doit être <b>cohérent avec A</b> : si A exclut un immeuble hors exploitation, B doit exclure ses loyers ; si A inclut un bien en crédit-bail, B ne doit plus contenir la redevance mais l'amortissement du bien. C'est le cœur technique du chapitre (partie 6).</li>
+</ul>
+
+<figure class="chart"><svg class="sv" viewBox="0 0 680 180" style="min-width:520px" role="img" aria-label="La rente de goodwill est l'écart entre le bénéfice associé à l'outil de travail et sa rémunération normale (Warrior, base VSB)."><text x="130" y="59" text-anchor="end">B (bénéfice net IS)</text><rect x="140" y="40" width="379.1" height="28" rx="3" class="acs"/><text x="527.1" y="59" class="mono">379 065</text><text x="130" y="103" text-anchor="end">r × A (8 % × VSB)</text><rect x="140" y="84" width="293.3" height="28" rx="3" class="gr"/><text x="441.3" y="103" class="mono">293 259</text><rect x="433.3" y="132" width="85.8" height="28" rx="3" class="kys"/><text x="130" y="151" text-anchor="end" class="b" style="fill:var(--key)">Rente B − rA</text><text x="527.1" y="151" class="mono b" style="fill:var(--key)">85 806</text><line x1="433.3" y1="70" x2="433.3" y2="160" class="ax dash"/><line x1="519.1" y1="40" x2="519.1" y2="160" class="ax dash"/><text x="10" y="22" class="m">Cas Warrior (approche VSB) : ce que l'outil de travail rapporte, contre ce qu'il devrait rapporter « normalement »</text></svg><figcaption class="cap" style="margin-top:6px">La rente de goodwill est l'écart entre le bénéfice associé à l'outil de travail et sa rémunération normale (Warrior, base VSB).</figcaption></figure>
+
+<div class="key"><b>Lecture.</b> Rente &gt; 0 : l'entreprise rapporte plus que le minimum exigé → <b>goodwill</b>. Rente &lt; 0 : elle rapporte moins → <b>badwill</b>. On peut aussi le lire en taux : goodwill si <b>B / A &gt; r</b>.</div>
+
+<!-- ===================== PARTIE 3 ===================== -->
+<h2 id="p3"><span class="n">03</span>Actualiser la rente de goodwill</h2>
+
+<p>La rente calculée correspond à la sur-rentabilité (ou sous-rentabilité) du <b>dernier exercice comptable</b>. En supposant qu'elle puisse <b>se reproduire au cours des exercices suivants</b>, elle constitue une suite de flux futurs, qu'il faut <b>actualiser</b> pour obtenir une valeur aujourd'hui.</p>
+
+<h3>Quel taux d'actualisation ?</h3>
+<p>Le taux doit refléter le <b>risque</b> de la rente : c'est le taux de rendement exigé par les investisseurs sur le marché financier pour accepter de détenir des titres présentant un risque équivalent à celui de l'entreprise évaluée.</p>
+<div class="key"><b>À retenir.</b> Le taux d'actualisation i de la rente est <b>toujours le coût moyen pondéré du capital (CMP)</b>, quelle que soit la base (ANCC d'exploitation, VSB ou CPNE). Seul r change d'une base à l'autre.</div>
+
+<h3>Méthode 1 : la rente actualisée du goodwill (horizon fini)</h3>
+<div class="f">Goodwill = (B − r × A) × [1 − (1 + i)⁻ⁿ] / i
+
+i = CMP ; n = durée de la rente</div>
+<p>Le facteur [1 − (1 + i)⁻ⁿ] / i est le coefficient d'une <b>annuité constante de fin de période</b> : la rente est supposée tomber à la fin de chacune des n années. Il faut déterminer la durée pendant laquelle l'entreprise conservera un <b>avantage compétitif</b> suffisant pour dégager un surprofit :</p>
+<ul>
+  <li>en pratique, <b>n ne dépasse pas 5 ans</b> : au-delà, la prévision de la rente est trop incertaine (la concurrence finit par rattraper l'avance) ;</li>
+  <li>pour une <b>société nouvelle en développement</b>, la durée est plus courte : <b>3 ans maximum</b>.</li>
+</ul>
+
+<h3>Méthode 2 : la méthode des Anglo-saxons (horizon infini)</h3>
+<div class="f">Goodwill = (B − r × A) / i</div>
+<p>C'est la limite de la formule précédente quand n → ∞ (car (1 + i)⁻ⁿ → 0) : une <b>rente perpétuelle</b>. Elle suppose que l'avantage compétitif ne s'érode jamais, ce qui est optimiste : elle donne donc toujours une valeur plus forte (en valeur absolue) que la rente sur 5 ans.</p>
+
+<figure class="chart"><svg class="sv" viewBox="0 0 700 245" style="min-width:520px" role="img" aria-label="La rente sur 5 ans ne garde que les cinq premières barres ; la méthode anglo-saxonne les additionne toutes jusqu'à l'infini."><rect x="50" y="76.4" width="36" height="123.6" rx="2" class="acs" /><text x="68.0" y="216" text-anchor="middle" class="m">1</text><text x="68.0" y="70.4" text-anchor="middle" class="mono" style="font-size:10.5px">79,5k</text><rect x="94" y="85.6" width="36" height="114.4" rx="2" class="acs" /><text x="112.0" y="216" text-anchor="middle" class="m">2</text><rect x="138" y="94.0" width="36" height="106.0" rx="2" class="acs" /><text x="156.0" y="216" text-anchor="middle" class="m">3</text><rect x="182" y="101.9" width="36" height="98.1" rx="2" class="acs" /><text x="200.0" y="216" text-anchor="middle" class="m">4</text><rect x="226" y="109.2" width="36" height="90.8" rx="2" class="acs" /><text x="244.0" y="216" text-anchor="middle" class="m">5</text><text x="244.0" y="103.2" text-anchor="middle" class="mono" style="font-size:10.5px">58,4k</text><rect x="270" y="115.9" width="36" height="84.1" rx="2" class="kys" opacity=".55"/><text x="288.0" y="216" text-anchor="middle" class="m">6</text><rect x="314" y="122.1" width="36" height="77.9" rx="2" class="kys" opacity=".55"/><text x="332.0" y="216" text-anchor="middle" class="m">7</text><rect x="358" y="127.9" width="36" height="72.1" rx="2" class="kys" opacity=".55"/><text x="376.0" y="216" text-anchor="middle" class="m">8</text><rect x="402" y="133.2" width="36" height="66.8" rx="2" class="kys" opacity=".55"/><text x="420.0" y="216" text-anchor="middle" class="m">9</text><rect x="446" y="138.2" width="36" height="61.8" rx="2" class="kys" opacity=".55"/><text x="464.0" y="216" text-anchor="middle" class="m">10</text><text x="464.0" y="132.2" text-anchor="middle" class="mono" style="font-size:10.5px">39,7k</text><rect x="490" y="142.8" width="36" height="57.2" rx="2" class="kys" opacity=".55"/><text x="508.0" y="216" text-anchor="middle" class="m">11</text><rect x="534" y="147.0" width="36" height="53.0" rx="2" class="kys" opacity=".55"/><text x="552.0" y="216" text-anchor="middle" class="m">12</text><rect x="578" y="150.9" width="36" height="49.1" rx="2" class="kys" opacity=".55"/><text x="596.0" y="216" text-anchor="middle" class="m">13</text><rect x="622" y="154.6" width="36" height="45.4" rx="2" class="kys" opacity=".55"/><text x="640.0" y="216" text-anchor="middle" class="m">14</text><text x="640.0" y="148.6" text-anchor="middle" class="mono" style="font-size:10.5px">29,2k</text><line x1="40" y1="200" x2="666" y2="200" class="ax"/><text x="670" y="216" class="m">… ∞</text><line x1="266" y1="30" x2="266" y2="200" class="arwk dash"/><text x="260" y="44" text-anchor="end" class="b" style="fill:var(--accent)">Rente actualisée sur 5 ans</text><text x="260" y="60" text-anchor="end" class="mono">85 806 × 3,9927 = 342 597</text><text x="274" y="44" class="b" style="fill:var(--key)">Anglo-saxons : on continue à l'infini</text><text x="274" y="60" class="mono">85 806 / 8 % = 1 072 571</text><text x="50" y="236" class="m">Années →  chaque barre = rente de l'année t actualisée : 85 806 / 1,08^t (cas Warrior)</text></svg><figcaption class="cap" style="margin-top:6px">La rente sur 5 ans ne garde que les cinq premières barres ; la méthode anglo-saxonne les additionne toutes jusqu'à l'infini.</figcaption></figure>
+
+<h3>Les coefficients à connaître (utilisés dans les cas)</h3>
+<div class="tbl"><table>
+<tr><th>Taux i</th><th>Rente sur 3 ans</th><th>Rente sur 5 ans</th><th>Infini (1 / i)</th></tr>
+<tr><td>8 %</td><td class="num">2,5771</td><td class="num">3,9927</td><td class="num">12,5</td></tr>
+<tr><td>9 %</td><td class="num">2,5313</td><td class="num">3,8897</td><td class="num">11,11</td></tr>
+</table></div>
+<div class="det"><span class="t">Calcul détaillé du coefficient à 8 % sur 5 ans</span>1,08⁵ = 1,469328 → 1,08⁻⁵ = 0,680583 → 1 − 0,680583 = 0,319417 → 0,319417 / 0,08 = <b>3,99271</b>. Autrement dit, recevoir 1 € par an pendant 5 ans vaut 3,99 € aujourd'hui à 8 %.</div>
+
+<!-- ===================== PARTIE 4 ===================== -->
+<h2 id="p4"><span class="n">04</span>La valeur de l'entreprise ajustée par le goodwill</h2>
+<div class="f">Rente sur n ans :   Ve = ANCC* + (B − r × A) × [1 − (1 + i)⁻ⁿ] / i
+
+Anglo-saxons :      Ve = ANCC* + (B − r × A) / i
+
+ANCC* = ANCC hors éléments incorporels mal évalués</div>
+
+<h3>Pourquoi ANCC* et pas ANCC ?</h3>
+<p>Pour éviter de <b>compter deux fois</b> la même richesse. Le <b>fonds commercial</b> inscrit au bilan (clientèle, achalandage) est justement la trace comptable de la sur-rentabilité. Si on le garde dans l'ANCC <i>et</i> qu'on ajoute le goodwill calculé par la rente, on paie deux fois la clientèle. On retire donc de l'ANCC les incorporels <b>que l'on ne sait pas évaluer directement</b> et on laisse le goodwill les remplacer.</p>
+<ul>
+  <li><b>On retire</b> : fonds commercial, éléments incorporels « mal évalués » (valeur comptable sans fondement économique).</li>
+  <li><b>On garde</b> : les incorporels évalués directement par une méthode solide (brevet évalué par l'actualisation de ses redevances, droit au bail par l'économie de loyer, marque évaluée…). C'est le sens de « valeur résiduelle s'ajoutant aux éléments incorporels évalués directement ».</li>
+</ul>
+<div class="ex"><span class="t">Exemples des cas</span>Warrior : ANCC 2 183 909 − fonds commercial 110 000 = <b>ANCC* 2 073 909</b>. Potiron : ANCC 5 577 938 − fonds commercial 1 000 000 = <b>ANCC* 4 577 938</b>. Duchemole : le seul incorporel restant est un brevet bien évalué (redevances actualisées) → ANCC* = ANCC = <b>53 873</b>.</div>
+
+<!-- ===================== PARTIE 5 ===================== -->
+<h2 id="p5"><span class="n">05</span>Les trois bases de calcul : A, B et r</h2>
+
+<p>La rente B − rA peut être estimée de <b>trois façons</b>, selon ce qu'on appelle « outil de travail ». À chaque A correspond <b>son</b> bénéfice B et <b>son</b> taux r :</p>
+<div class="tbl"><table>
+<tr><th>Base</th><th>A</th><th>B (bénéfice économique associé)</th><th>r (rémunération normale)</th><th>i (actualisation)</th></tr>
+<tr><td><b>ANCC d'exploitation</b></td><td>ANCC* − actifs hors exploitation (nets)</td><td>Bénéfice éco associé à l'ANCC d'exploitation</td><td><b>Coût des capitaux propres</b></td><td>CMP</td></tr>
+<tr><td><b>VSB</b></td><td>Valeur substantielle brute</td><td>Bénéfice éco associé à la VSB</td><td><b>CMP</b></td><td>CMP</td></tr>
+<tr><td><b>CPNE</b></td><td>Capitaux permanents nécessaires à l'exploitation</td><td>Bénéfice éco associé aux CPNE</td><td><b>CMP</b></td><td>CMP</td></tr>
+</table></div>
+
+<h3>Pourquoi r change-t-il ?</h3>
+<p>r doit correspondre à <b>ceux qui financent A</b> :</p>
+<ul>
+  <li>L'<b>ANCC d'exploitation</b> est une mesure de <b>capitaux propres</b> (actif − dettes). Ce sont les actionnaires qui le financent, donc on exige le <b>coût des capitaux propres</b>. Et B est un bénéfice <b>après</b> charges financières (le résultat qui revient aux actionnaires).</li>
+  <li>La <b>VSB</b> et les <b>CPNE</b> sont des actifs <b>bruts</b>, financés par les actionnaires <i>et</i> les prêteurs. On exige donc le <b>CMP</b>. Et B est un bénéfice <b>avant</b> charges financières (le résultat qui revient à tous les financeurs).</li>
+</ul>
+<p>C'est la même logique qu'en finance d'entreprise : on actualise les flux aux actionnaires au coût des fonds propres, les flux à tous les financeurs au CMPC.</p>
+
+<figure class="chart"><svg class="sv" viewBox="0 0 740 430" style="min-width:520px" role="img" aria-label="Les trois bases de calcul vues sur le bilan réévalué."><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--fg)"/></marker><marker id="ahk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--key)"/></marker></defs><text x="185.0" y="28" text-anchor="middle" class="b">Actif (réévalué)</text><text x="445.0" y="28" text-anchor="middle" class="b">Passif (réévalué)</text><rect x="60" y="40" width="250" height="110" class="acs"/><text x="185.0" y="91.5" text-anchor="middle" style="font-size:12px">Immobilisations d'exploitation</text><text x="185.0" y="106.5" text-anchor="middle" style="font-size:12px">(valeur d'utilité)</text><rect x="60" y="150" width="250" height="50" class="acs"/><text x="185.0" y="171.5" text-anchor="middle" style="font-size:12px">Biens en crédit-bail,</text><text x="185.0" y="186.5" text-anchor="middle" style="font-size:12px">loués, prêtés (VU)</text><rect x="60" y="200" width="250" height="100" class="acs"/><text x="185.0" y="246.5" text-anchor="middle" style="font-size:12px">Actif circulant d'exploitation</text><text x="185.0" y="261.5" text-anchor="middle" style="font-size:12px">+ disponibilités + CCA</text><rect x="60" y="300" width="250" height="30" class="acs"/><text x="185.0" y="319.0" text-anchor="middle" style="font-size:12px">EENE</text><rect x="60" y="330" width="250" height="50" class="gr"/><text x="185.0" y="359.0" text-anchor="middle" style="font-size:12px">Actifs hors exploitation</text><rect x="320" y="40" width="250" height="150" class="kys"/><text x="445.0" y="119.0" text-anchor="middle" style="font-size:12px">Capitaux propres = ANCC</text><rect x="320" y="190" width="250" height="60" class="gr"/><text x="445.0" y="216.5" text-anchor="middle" style="font-size:12px">Dettes financières</text><text x="445.0" y="231.5" text-anchor="middle" style="font-size:12px">(+ dette crédit-bail)</text><rect x="320" y="250" width="250" height="100" class="gr"/><text x="445.0" y="289.0" text-anchor="middle" style="font-size:12px">Dettes d'exploitation</text><text x="445.0" y="304.0" text-anchor="middle" style="font-size:12px">(fournisseurs, fiscales…)</text><text x="445.0" y="319.0" text-anchor="middle" style="font-size:12px">+ contrepartie des EENE</text><rect x="320" y="350" width="250" height="30" class="gr"/><text x="445.0" y="369.0" text-anchor="middle" style="font-size:12px">Dettes hors exploitation</text><path d="M50 40 H40 V330 H50" class="arwa"/><text x="28" y="185" text-anchor="middle" class="b" transform="rotate(-90 28 185)" style="fill:var(--accent)">VSB : tout l'outil de travail, brut</text><path d="M580 40 H594 V250 H580" class="arwk"/><path d="M580 44 H586 V186 H580" class="arw"/><text x="602" y="62" class="b">ANCC d'exploitation</text><text x="602" y="78" class="m">= capitaux propres</text><text x="602" y="92" class="m">qui financent</text><text x="602" y="106" class="m">l'exploitation</text><text x="602" y="150" class="b" style="fill:var(--key)">CPNE</text><text x="602" y="166" class="m">= VSB − dettes</text><text x="602" y="180" class="m">non financières</text><text x="602" y="200" class="m">(CP + dettes</text><text x="602" y="214" class="m">financières)</text><text x="40" y="404" class="m">De la VSB aux CPNE puis à l'ANCC d'exploitation, A est de plus en plus « net » de financements :</text><text x="40" y="420" class="m">r passe du CMP (VSB, CPNE) au coût des capitaux propres (ANCC d'exploitation).</text></svg><figcaption class="cap" style="margin-top:6px">Les trois bases de calcul vues sur le bilan réévalué.</figcaption></figure>
+
+<h3>5.1 L'ANCC d'exploitation</h3>
+<div class="f">ANCC d'exploitation = ANCC* − actifs hors exploitation (à leur valeur retenue dans l'ANCC)
+                                + dettes hors exploitation</div>
+<p>On retire de l'ANCC* tout ce qui ne sert pas à l'activité, <b>à la valeur à laquelle on l'a compté</b> dans l'ANCC : valeur nette comptable + plus-value nette d'impôt pour un immeuble hors exploitation, créances hors exploitation, et on rajoute les dettes hors exploitation (qui avaient été déduites). Dans Potiron : immeubles HE (650 000 + 366 667) + titres immobilisés (250 000 + 46 667) + créances HE 380 000 − dettes HE 137 000 = <b>1 556 334</b>.</p>
+
+<h3>5.2 La valeur substantielle brute (VSB)</h3>
+<p>Elle représente <b>l'outil de travail de l'entreprise, indépendamment de son appartenance juridique et de son mode de financement</b>. Elle ne fait <b>aucune référence au passif</b>, n'intègre que les actifs nécessaires à l'exploitation, et intègre des biens <b>non inscrits à l'actif</b> (crédit-bail, biens loués).</p>
+<div class="f">  Valeur d'utilité des immobilisations nécessaires à l'exploitation
+  (sans actifs fictifs ni fonds commercial)
++ Valeur d'utilité du crédit-bail, des biens loués et prêtés
++ EENE (effets escomptés non échus)
++ Actifs circulants (y compris disponibilités)
++ Charges constatées d'avance
+= VSB</div>
+<ul>
+  <li><b>« Indépendamment de l'appartenance juridique »</b> : un bien en crédit-bail n'appartient pas à l'entreprise mais il travaille pour elle → on l'intègre à sa valeur d'utilité.</li>
+  <li><b>EENE</b> : les effets escomptés ont quitté le bilan, mais ce sont des créances clients que l'entreprise a « vendues » à la banque avant l'échéance. Économiquement, c'est toujours du crédit client financé : on les réintègre.</li>
+  <li><b>Pas d'actifs fictifs</b> (frais d'établissement, frais d'émission d'emprunt) ni de <b>fonds commercial</b> : le premier ne vaut rien, le second sera mesuré par le goodwill.</li>
+  <li>Les stocks et créances sont pris <b>après correction</b> (écarts de l'ANCC : dépréciations, créances douteuses).</li>
+</ul>
+
+<h3>5.3 Les capitaux permanents nécessaires à l'exploitation (CPNE)</h3>
+<p>Ils représentent l'ensemble des biens utilisés par l'entreprise (<b>outil économique</b>) <b>financés par des capitaux permanents</b> :</p>
+<div class="f">  Valeur d'utilité des immobilisations nécessaires à l'exploitation
+  (sans actifs fictifs ni fonds commercial)
++ Valeur d'utilité du crédit-bail, des biens loués et prêtés
++ Besoin en fonds de roulement d'exploitation (BFRE) normatif
+= CPNE</div>
+<ul>
+  <li><b>Sur le plan statique</b> : CPNE = VSB − dettes non financières. La différence avec la VSB : le crédit fournisseur (et les autres dettes d'exploitation) finance une partie de l'actif circulant gratuitement ; on ne garde que ce qui doit être financé par des capitaux permanents.</li>
+  <li><b>Mais le concept est essentiellement dynamique</b> : les deux composantes (immobilisations et BFRE) font l'objet de <b>prévisions annuelles basées sur le chiffre d'affaires</b>. Pour chaque année à venir, on détermine le <b>besoin net en investissement</b> (investissement − annuité d'amortissement calculée sur la valeur d'utilité) et le <b>BFRE normatif</b> (souvent exprimé en jours de CA HT).</li>
+</ul>
+<div class="trap"><b>Piège.</b> Le BFRE « normatif » n'est pas celui du bilan : c'est un niveau normal, lissé, typiquement « 60 jours de CA HT ». Le bilan de clôture peut être gonflé ou dégonflé par un effet de saisonnalité.</div>
+
+<!-- ===================== PARTIE 6 ===================== -->
+<h2 id="p6"><span class="n">06</span>Le bénéfice économique associé</h2>
+<p>Le bénéfice se calcule <b>à partir du résultat courant</b> avant impôt (on exclut l'exceptionnel, par nature non reproductible). Ensuite, chaque retraitement vise à rendre B <b>cohérent avec A</b>. Il ne faut <b>pas oublier l'incidence fiscale</b> : on termine en appliquant l'IS (× ⅔).</p>
+
+<div class="f">  Résultat courant avant impôt (RCAI)
+± Retraitements des éléments hors exploitation
++ Amortissements comptables − amortissements sur valeur d'utilité
++ Élimination des amortissements sur actifs fictifs
+= Bénéfice économique associé à l'ANCC d'exploitation (brut)
+
++ Redevances de crédit-bail, loyers (biens loués ou prêtés)
+− Amortissement de ces biens sur la base de leur valeur d'utilité
++ Réintégration des charges liées aux dettes financières
++ Réintégration des charges liées aux dettes d'exploitation
+  (intérêts sur escompte accordé, pertes de change, dotations pour perte de change…)
+= Bénéfice économique associé à la VSB (ou aux CPNE) brut
+− Impôt sur les sociétés
+= Bénéfice économique associé à la VSB (ou aux CPNE) net d'IS</div>
+
+<h3>La justification de chaque ligne</h3>
+<div class="tbl"><table>
+<tr><th>Retraitement</th><th>Sens</th><th>Pourquoi</th></tr>
+<tr><td>Produits hors exploitation (loyers d'immeubles HE, revenus de titres immobilisés, dividendes de VMP)</td><td class="num">−</td><td>L'actif qui les génère est sorti de A : son revenu doit sortir de B.</td></tr>
+<tr><td>Charges hors exploitation (entretien d'immeubles HE…)</td><td class="num">+</td><td>Même logique, dans l'autre sens.</td></tr>
+<tr><td>Amortissements comptables</td><td class="num">+</td><td>On annule la dotation calculée sur la VNC…</td></tr>
+<tr><td>Amortissements sur valeur d'utilité</td><td class="num">−</td><td>… et on la remplace par celle calculée sur la valeur d'utilité, cohérente avec la valeur de A. Comme la VU dépasse souvent la VNC, B baisse.</td></tr>
+<tr><td>Amortissements sur actifs fictifs</td><td class="num">+</td><td>Les actifs fictifs ont été retirés : leur amortissement n'a plus lieu d'être.</td></tr>
+<tr><td>Redevances de crédit-bail, loyers</td><td class="num">+</td><td>(VSB, CPNE) Le bien est dans A comme si on l'avait acheté : la redevance (loyer + intérêts) disparaît…</td></tr>
+<tr><td>Amortissement du bien en crédit-bail sur VU</td><td class="num">−</td><td>… et on constate à la place une dotation, comme pour un bien acheté : VU / durée d'utilité restante.</td></tr>
+<tr><td>Charges financières (dettes financières et d'exploitation)</td><td class="num">+</td><td>(VSB, CPNE) A est un actif brut, indépendant du financement : B doit être <b>avant</b> rémunération des prêteurs (sinon on les compterait deux fois : dans B et dans le CMP). On réintègre aussi les intérêts sur escompte (les EENE sont dans A) et les pertes ou dotations de change liées aux dettes d'exploitation.</td></tr>
+<tr><td>IS × ⅓</td><td class="num">−</td><td>r et i sont des taux exigés <b>après impôt</b> : B doit être net d'IS.</td></tr>
+</table></div>
+<div class="trap"><b>Piège.</b> Pour la base <b>ANCC d'exploitation</b>, on s'arrête à la première partie (puis IS) : <b>on ne réintègre pas</b> les charges financières ni le crédit-bail. Les dettes ont été déduites de l'ANCC : leur coût doit rester dans B. C'est cohérent avec r = coût des capitaux propres.</div>
+
+<!-- ===================== PARTIE 7 ===================== -->
+<h2 id="p7"><span class="n">07</span>La méthode d'examen en 8 étapes</h2>
+<ol class="steps">
+  <li><span><b>ANC</b> : capitaux propres − actifs fictifs − dividendes à verser + écart de conversion passif.</span></li>
+  <li><span><b>ANCC</b> : plus et moins-values (exploitation à la valeur d'utilité sans impôt, hors exploitation à la valeur vénale nette d'impôt), crédit-bail, IDP, IDA.</span></li>
+  <li><span><b>ANCC*</b> = ANCC − fonds commercial et incorporels mal évalués.</span></li>
+  <li><span><b>Choisir la base</b> et donc A : ANCC d'exploitation (ANCC* − HE), VSB ou CPNE.</span></li>
+  <li><span><b>Construire B</b> à partir du RCAI, retraitement par retraitement, puis × ⅔.</span></li>
+  <li><span><b>Choisir r</b> : coût des capitaux propres pour l'ANCC d'exploitation, CMP pour VSB et CPNE.</span></li>
+  <li><span><b>Rente</b> = B − rA, puis actualisation au <b>CMP</b> : × [1 − (1 + i)⁻⁵] / i, ou / i.</span></li>
+  <li><span><b>Ve = ANCC* + goodwill</b> ; présenter toutes les valeurs dans un tableau de synthèse et commenter (fourchette, jamais de moyenne).</span></li>
+</ol>
+
+<!-- ===================== WARRIOR ===================== -->
+<h2 id="warrior"><span class="n">Cas</span>Warrior : l'approche VSB (exemple du cours)</h2>
+<p>On reprend Warrior, dont vous avez calculé l'ANCC le 8 octobre (<b>2 183 909</b>). Le cours l'utilise pour illustrer la VSB.</p>
+
+<div class="enonce"><span class="t">Énoncé (données du cours)</span>
+<div class="tbl"><table>
+<tr><th colspan="2">Compte de résultat Warrior</th><th colspan="2"></th></tr>
+<tr><td>Ventes</td><td class="num">3 250 456</td><td>Produits financiers (4)</td><td class="num">12 800</td></tr>
+<tr><td>Production stockée</td><td class="num">23 000</td><td>Charges financières (5)</td><td class="num">62 100</td></tr>
+<tr><td>Autres produits d'exploitation (1)</td><td class="num">240 000</td><td><b>Résultat courant</b></td><td class="num"><b>537 369</b></td></tr>
+<tr><td>Achats</td><td class="num">658 000</td><td>Produits exceptionnels</td><td class="num">5 200</td></tr>
+<tr><td>Autres charges externes (2)</td><td class="num">1 000 000</td><td>Charges exceptionnelles</td><td class="num">82 221</td></tr>
+<tr><td>Impôts et taxes</td><td class="num">14 000</td><td>Impôts sur les bénéfices</td><td class="num">179 348</td></tr>
+<tr><td>Charges de personnel</td><td class="num">1 058 987</td><td><b>Résultat net</b></td><td class="num"><b>281 000</b></td></tr>
+<tr><td>Dotations aux amortissements (3)</td><td class="num">170 000</td><td></td><td></td></tr>
+<tr><td>Dotations aux provisions</td><td class="num">20 000</td><td></td><td></td></tr>
+<tr><td>Autres charges d'exploitation</td><td class="num">5 800</td><td></td><td></td></tr>
+<tr><td><b>Résultat d'exploitation</b></td><td class="num"><b>586 669</b></td><td></td><td></td></tr>
+</table></div>
+<ol style="list-style:none;padding-left:0">
+<li>(1) dont 7 000 de revenus des immeubles hors exploitation.</li>
+<li>(2) dont 2 500 relatifs aux immeubles hors exploitation et 60 000 de redevances de crédit-bail pour un bien loué pour 6 ans depuis le 2/1/N-1. Durée d'utilité restante 7 ans, valeur d'utilité au 31/12/N : 270 000.</li>
+<li>(3) Dotations sur la valeur d'utilité des immobilisations estimées à 205 000.</li>
+<li>(4) Dividendes perçus sur les VMP, vendues en décembre.</li>
+<li>(5) dont 12 000 de dotations aux provisions pour perte de change.</li>
+<li>Fonds commercial 110 000 ; EENE 93 000 ; coût des capitaux propres 9 % ; coût de la dette 5 % ; CMP 8 %.</li>
+</ol>
+<p>Travail : calculer la VSB, le bénéfice associé, la rente de goodwill et la valeur de Warrior (rente sur 5 ans et Anglo-saxons).</p>
+</div>
+
+<span class="qq"><b>Étape 1.</b> Calculer la VSB de Warrior.</span>
+<div class="tbl"><table>
+<tr><th>Élément</th><th>Montant</th><th>Commentaire</th></tr>
+<tr><td>Droit au bail</td><td class="num">12 481</td><td>incorporel évalué directement (cours du 8 oct.)</td></tr>
+<tr><td>Brevet</td><td class="num">60 226</td><td>idem</td></tr>
+<tr><td>Marque</td><td class="num">741 635</td><td>idem</td></tr>
+<tr><td>Ensembles immobiliers</td><td class="num">1 650 000</td><td>valeur d'utilité</td></tr>
+<tr><td>Véhicules</td><td class="num">76 000</td><td>valeur d'utilité</td></tr>
+<tr><td>Crédit-bail</td><td class="num">270 000</td><td>VU du bien loué : il travaille pour l'entreprise</td></tr>
+<tr class="tot"><td>VU des immobilisations nécessaires à l'exploitation</td><td class="num">2 810 342</td><td>pas de fonds commercial</td></tr>
+<tr><td>EENE</td><td class="num">93 000</td><td>créances cédées à la banque, réintégrées</td></tr>
+<tr><td>Stocks</td><td class="num">355 000</td><td></td></tr>
+<tr><td>Écart sur stocks</td><td class="num neg">−7 200</td><td>stock abîmé (perte 30 % sur 24 000)</td></tr>
+<tr><td>Créances d'exploitation</td><td class="num">386 000</td><td></td></tr>
+<tr><td>Écart sur créances</td><td class="num neg">−18 400</td><td>créance Fondu provisionnée à 40 %</td></tr>
+<tr><td>Disponibilités</td><td class="num">40 000</td><td></td></tr>
+<tr><td>Charges constatées d'avance</td><td class="num">7 000</td><td></td></tr>
+<tr class="tot"><td>VSB</td><td class="num">3 665 742</td><td></td></tr>
+</table></div>
+
+<span class="qq"><b>Étape 2.</b> Calculer le bénéfice économique associé à la VSB.</span>
+<div class="tbl"><table>
+<tr><th>Ligne</th><th>Montant</th><th>Explication</th></tr>
+<tr><td>Résultat courant avant impôt</td><td class="num">537 369</td><td>point de départ (pas d'exceptionnel)</td></tr>
+<tr><td>+ Amortissements base comptable</td><td class="num">170 000</td><td>on annule la dotation comptable</td></tr>
+<tr><td>− Amortissements base utilité</td><td class="num neg">−205 000</td><td>on la remplace par celle sur VU</td></tr>
+<tr><td>− Produits hors exploitation</td><td class="num neg">−7 000</td><td>revenus des immeubles HE (note 1)</td></tr>
+<tr><td>+ Charges hors exploitation</td><td class="num">2 500</td><td>charges des immeubles HE (note 2)</td></tr>
+<tr><td>− Produits financiers hors exploitation</td><td class="num neg">−12 800</td><td>dividendes de VMP déjà vendues : non reproductibles et hors outil</td></tr>
+<tr class="tot"><td>Bénéfice éco associé à l'ANCC d'exploitation brut</td><td class="num">485 069</td><td></td></tr>
+<tr><td>+ Redevances de crédit-bail</td><td class="num">60 000</td><td>le bien est dans A comme s'il était acheté</td></tr>
+<tr><td>− Amortissement du crédit-bail</td><td class="num neg">−38 571</td><td>270 000 / 7 ans d'utilité restante</td></tr>
+<tr><td>+ Charges financières</td><td class="num">62 100</td><td>toutes : intérêts et dotation pour perte de change (12 000)</td></tr>
+<tr class="tot"><td>Bénéfice éco associé à la VSB brut</td><td class="num">568 598</td><td></td></tr>
+<tr class="tot"><td>Bénéfice éco associé à la VSB net d'IS (× ⅔)</td><td class="num">379 065</td><td>568 598 × 2/3</td></tr>
+</table></div>
+
+<span class="qq"><b>Étape 3.</b> Rente, goodwill et valeur de Warrior.</span>
+<div class="tbl"><table>
+<tr><th>Élément</th><th>Calcul</th><th>Montant</th></tr>
+<tr><td>ANCC*</td><td>2 183 909 − 110 000 (fonds commercial)</td><td class="num">2 073 909</td></tr>
+<tr><td>A = VSB</td><td></td><td class="num">3 665 742</td></tr>
+<tr><td>r</td><td>CMP (base VSB)</td><td class="num">8 %</td></tr>
+<tr><td>B</td><td></td><td class="num">379 065</td></tr>
+<tr><td>r × A</td><td>8 % × 3 665 742</td><td class="num">293 259</td></tr>
+<tr class="tot"><td>Rente de goodwill B − rA</td><td>379 065 − 293 259</td><td class="num">85 806</td></tr>
+<tr><td>Coefficient 5 ans à 8 %</td><td>[1 − 1,08⁻⁵] / 0,08</td><td class="num">3,992710</td></tr>
+<tr><td>Rente actualisée sur 5 ans</td><td>85 806 × 3,99271</td><td class="num">342 597</td></tr>
+<tr class="tot"><td>Valeur des capitaux propres (rente actualisée)</td><td>2 073 909 + 342 597</td><td class="num">2 416 506</td></tr>
+<tr><td>Rente à l'infini</td><td>85 806 / 0,08</td><td class="num">1 072 571</td></tr>
+<tr class="tot"><td>Valeur des capitaux propres (Anglo-saxons)</td><td>2 073 909 + 1 072 571</td><td class="num">3 146 480</td></tr>
+</table></div>
+<p class="rep"><b>Lecture.</b> Warrior est sur-rentable : son outil de travail rapporte 379 065 / 3 665 742 = 10,3 % après impôt, contre 8 % exigés. La fourchette va de 2,42 M€ (rente sur 5 ans, prudente) à 3,15 M€ (perpétuité, optimiste). Le fonds commercial de 110 000 inscrit au bilan sous-estimait largement la valeur de la clientèle et du savoir-faire.</p>
+
+<!-- ===================== DUCHEMOLE ===================== -->
+<h2 id="duchemole"><span class="n">Cas</span>Duchemole : ANCC d'exploitation et VSB (en k€)</h2>
+
+<div class="enonce"><span class="t">Énoncé</span>
+<p>La société Doudou, SA au capital de 10 000 000 € (nominal 100 €), envisage d'acquérir la société Duchemole dont le bilan et quelques informations complémentaires sont donnés ci-dessous.</p>
+<div class="two"><div class="tbl"><table>
+<tr><th colspan="2">Bilan Duchemole — Actif</th></tr>
+<tr><td>Éléments incorporels</td><td class="num">6 000</td></tr>
+<tr><td>Terrains</td><td class="num">3 000</td></tr>
+<tr><td>Constructions</td><td class="num">12 000</td></tr>
+<tr><td>Matériels</td><td class="num">21 000</td></tr>
+<tr><td>Stocks</td><td class="num">14 000</td></tr>
+<tr><td>Créances clients</td><td class="num">10 000</td></tr>
+<tr><td>Disponibilités</td><td class="num">900</td></tr>
+<tr class="tot"><td>Total</td><td class="num">66 900</td></tr>
+</table></div><div class="tbl"><table>
+<tr><th colspan="2">Bilan Duchemole — Passif</th></tr>
+<tr><td>Capital</td><td class="num">26 000</td></tr>
+<tr><td>Réserve légale</td><td class="num">2 000</td></tr>
+<tr><td>Autres réserves</td><td class="num">15 900</td></tr>
+<tr class="tot"><td>Capitaux propres</td><td class="num">43 900</td></tr>
+<tr><td>Dettes financières</td><td class="num">10 000</td></tr>
+<tr><td>Dettes fournisseurs</td><td class="num">13 000</td></tr>
+<tr class="tot"><td>Total</td><td class="num">66 900</td></tr>
+</table></div></div>
+<div class="tbl"><table>
+<tr><th colspan="4">Compte de résultat Duchemole</th></tr>
+<tr><td>Ventes</td><td class="num">26 252</td><td>Produits financiers</td><td class="num">0</td></tr>
+<tr><td>Production stockée</td><td class="num">230</td><td>Charges financières (4)</td><td class="num">490</td></tr>
+<tr><td>Autres produits d'exploitation (1)</td><td class="num">240</td><td>Résultat financier</td><td class="num">−490</td></tr>
+<tr><td>Achats</td><td class="num">3 838</td><td>Produits exceptionnels</td><td class="num">323</td></tr>
+<tr><td>Autres charges externes (3)</td><td class="num">7 875</td><td>Charges exceptionnelles</td><td class="num">170</td></tr>
+<tr><td>Impôts et taxes</td><td class="num">140</td><td>Résultat exceptionnel</td><td class="num">153</td></tr>
+<tr><td>Charges de personnel</td><td class="num">5 000</td><td>Impôts sur les bénéfices</td><td class="num">2 942</td></tr>
+<tr><td>Dotations aux amortissements</td><td class="num">600</td><td><b>Résultat net</b></td><td class="num"><b>5 885</b></td></tr>
+<tr><td>Dotations aux provisions</td><td class="num">50</td><td></td><td></td></tr>
+<tr><td>Autres charges d'exploitation (2)</td><td class="num">55</td><td></td><td></td></tr>
+<tr><td><b>Résultat d'exploitation</b></td><td class="num"><b>9 164</b></td><td></td><td></td></tr>
+</table></div>
+<ol style="list-style:none;padding-left:0">
+<li>(1) dont 60 liés aux actifs hors exploitation (produit) ; (2) dont 15 liés aux actifs hors exploitation (charge) ; (3) dont redevance de crédit-bail 1 500 ; (4) dont intérêts sur dettes financières 441.</li>
+<li>Les éléments incorporels correspondent à un <b>brevet</b> et à des <b>frais d'établissement (3 100)</b>. Les redevances futures de fin de période du brevet sont estimées à 1 000 par an pendant 4 ans.</li>
+<li>Crédit-bail conclu il y a 3 ans : redevances de début de période (1 500) payables le 1/01, durée 8 ans, il reste 5 redevances et une option d'achat de 486. Au 31/12/N, valeur d'utilité du bien : 6 700. Durée restante d'amortissement : 5 ans.</li>
+<li>Effets escomptés non échus : 1 750.</li>
+</ol>
+<div class="tbl"><table>
+<tr><th></th><th>VNC</th><th>Valeur d'utilité</th><th>Valeur vénale</th></tr>
+<tr><td>Terrains exploitation</td><td class="num">2 100</td><td class="num">2 600</td><td class="num">2 500</td></tr>
+<tr><td>Terrains hors exploitation</td><td class="num">900</td><td class="num">700</td><td class="num">900</td></tr>
+<tr><td>Constructions exploitation</td><td class="num">7 500</td><td class="num">15 400</td><td class="num">16 200</td></tr>
+<tr><td>Constructions hors exploitation</td><td class="num">4 500</td><td class="num">4 600</td><td class="num">4 800</td></tr>
+<tr><td>Matériels</td><td class="num">21 000</td><td class="num">24 600</td><td class="num">21 000</td></tr>
+</table></div>
+<p>Autres éléments à la VNC. Impôts différés à 33,33 %. CMP 9 % ; coût de la dette 5 % ; coût des capitaux propres 11 %. Dotations aux amortissements sur la valeur d'utilité : 750.</p>
+<p><b>Travail à faire :</b> a) Évaluer l'ANCC. b) Calculer le bénéfice associé à l'ANCC d'exploitation et la rente du goodwill associée, puis la valeur ajustée. c) Calculer le bénéfice associé à la VSB et la rente du goodwill associée, puis la valeur ajustée.</p>
+</div>
+
+<span class="qq"><b>a)</b> Évaluer l'actif net comptable corrigé de la société.</span>
+<p class="st">Étape 1 : l'ANC</p>
+<p>Seul actif fictif : les frais d'établissement (3 100). ANC = 43 900 − 3 100 = <b>40 800</b>.</p>
+
+<p class="st">Étape 2 : le brevet</p>
+<p>On l'évalue par ses revenus futurs : 1 000 par an pendant 4 ans, fin de période, actualisés au CMP 9 % (c'est un actif d'exploitation risqué comme l'entreprise).</p>
+<div class="f">1 000/1,09 + 1 000/1,09² + 1 000/1,09³ + 1 000/1,09⁴
+= 917,4 + 841,7 + 772,2 + 708,4 = 3 239,7
+ou : 1 000 × [1 − 1,09⁻⁴] / 0,09 = 3 239,7</div>
+<p>Valeur au bilan du brevet = 6 000 − 3 100 = 2 900. Plus-value = 3 239,7 − 2 900 = <b>+339,7 ≈ +340</b>. Le corrigé ne calcule pas d'impôt différé dessus : c'est un actif d'exploitation, valorisé à sa valeur d'utilité, qu'on n'a pas l'intention de céder.</p>
+
+<p class="st">Étape 3 : le crédit-bail</p>
+<p>Le bien n'est pas au bilan, mais l'entreprise s'est engagée à payer des redevances : c'est une <b>dette cachée</b>, en face d'un <b>actif caché</b> (le bien, valeur d'utilité 6 700). On compare les deux.</p>
+<figure class="chart"><svg class="sv" viewBox="0 0 720 168" style="min-width:520px" role="img" aria-label="Duchemole : échéancier du crédit-bail au 31/12/N."><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--fg)"/></marker><marker id="ahk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--key)"/></marker></defs><line x1="40" y1="70" x2="680" y2="70" class="arw" marker-end="url(#ah)"/><circle cx="60" cy="70" r="5" class="ky"/><text x="60" y="42" text-anchor="middle" class="mono b">1 500</text><text x="60" y="58" text-anchor="middle" class="m">× 1</text><text x="60" y="92" text-anchor="middle" class="m" style="font-size:11px">31/12/N = 1/1/N+1</text><text x="60" y="112" text-anchor="middle" class="mono" style="fill:var(--accent)">1 500</text><circle cx="178" cy="70" r="5" class="ac"/><text x="178" y="42" text-anchor="middle" class="mono b">1 500</text><text x="178" y="58" text-anchor="middle" class="m">/1,05</text><text x="178" y="92" text-anchor="middle" class="m" style="font-size:11px">1/1/N+2</text><text x="178" y="112" text-anchor="middle" class="mono" style="fill:var(--accent)">1 429</text><circle cx="296" cy="70" r="5" class="ac"/><text x="296" y="42" text-anchor="middle" class="mono b">1 500</text><text x="296" y="58" text-anchor="middle" class="m">/1,05²</text><text x="296" y="92" text-anchor="middle" class="m" style="font-size:11px">1/1/N+3</text><text x="296" y="112" text-anchor="middle" class="mono" style="fill:var(--accent)">1 361</text><circle cx="414" cy="70" r="5" class="ac"/><text x="414" y="42" text-anchor="middle" class="mono b">1 500</text><text x="414" y="58" text-anchor="middle" class="m">/1,05³</text><text x="414" y="92" text-anchor="middle" class="m" style="font-size:11px">1/1/N+4</text><text x="414" y="112" text-anchor="middle" class="mono" style="fill:var(--accent)">1 296</text><circle cx="532" cy="70" r="5" class="ac"/><text x="532" y="42" text-anchor="middle" class="mono b">1 500</text><text x="532" y="58" text-anchor="middle" class="m">/1,05⁴</text><text x="532" y="92" text-anchor="middle" class="m" style="font-size:11px">1/1/N+5</text><text x="532" y="112" text-anchor="middle" class="mono" style="fill:var(--accent)">1 234</text><circle cx="650" cy="70" r="5" class="ac"/><text x="650" y="42" text-anchor="middle" class="mono b">486 (option)</text><text x="650" y="58" text-anchor="middle" class="m">/1,05⁵</text><text x="650" y="92" text-anchor="middle" class="m" style="font-size:11px">1/1/N+6</text><text x="650" y="112" text-anchor="middle" class="mono" style="fill:var(--accent)">381</text><text x="40" y="140" class="m">Redevances de début de période : celle du 1/1/N+1 tombe « aujourd'hui » (31/12/N) → pas actualisée.</text><text x="40" y="158" class="m">Taux = coût de la dette 5 %. Somme = 7 200 (la dette cachée), à comparer à la VU du bien : 6 700.</text></svg><figcaption class="cap" style="margin-top:6px">Duchemole : échéancier du crédit-bail au 31/12/N.</figcaption></figure>
+<div class="f">Dette = 1 500 + 1 500/1,05 + 1 500/1,05² + 1 500/1,05³ + 1 500/1,05⁴ + 486/1,05⁵
+     = 1 500 + 1 428,6 + 1 360,5 + 1 295,8 + 1 234,1 + 380,8 = 7 199,7 ≈ 7 200
+Plus ou moins-value = VU − dette = 6 700 − 7 200 = −500</div>
+<p>Le bien vaut moins que ce qu'il reste à payer : <b>moins-value de 500</b>, sans impôt (actif d'exploitation). On actualise au <b>coût de la dette</b> (5 %) car c'est un financement.</p>
+
+<p class="st">Étape 4 : terrains, constructions, matériels</p>
+<div class="tbl"><table>
+<tr><th>Poste</th><th>Valeur retenue</th><th>Calcul</th><th>Écart</th></tr>
+<tr><td>Terrain exploitation</td><td>utilité 2 600</td><td>2 600 − 2 100, pas d'impôt</td><td class="num pos">+500</td></tr>
+<tr><td>Terrain hors exploitation</td><td>vénale 900</td><td>(900 − 900) × ⅔</td><td class="num">0</td></tr>
+<tr><td>Construction exploitation</td><td>utilité 15 400</td><td>15 400 − 7 500</td><td class="num pos">+7 900</td></tr>
+<tr><td>Construction hors exploitation</td><td>vénale 4 800</td><td>(4 800 − 4 500) × ⅔</td><td class="num pos">+200</td></tr>
+<tr><td>Matériels (exploitation)</td><td>utilité 24 600</td><td>24 600 − 21 000</td><td class="num pos">+3 600</td></tr>
+</table></div>
+<div class="trap"><b>Piège.</b> Le terrain hors exploitation a une valeur d'utilité (700) inférieure à sa VNC, mais c'est la <b>valeur vénale</b> qui compte pour un bien hors exploitation (on va le revendre). Ne mélangez pas les colonnes.</div>
+
+<p class="st">Étape 5 : impôt différé actif</p>
+<p>Les frais d'établissement retirés (3 100) restent déductibles fiscalement : économie d'impôt future = 3 100 × ⅓ = <b>+1 033</b>.</p>
+
+<div class="tbl"><table>
+<tr><th>Synthèse ANCC</th><th>Montant</th></tr>
+<tr><td>Actif net comptable</td><td class="num">40 800</td></tr>
+<tr><td>Brevet</td><td class="num">+340</td></tr>
+<tr><td>Crédit-bail</td><td class="num neg">−500</td></tr>
+<tr><td>Terrain exploitation / hors exploitation</td><td class="num">+500 / 0</td></tr>
+<tr><td>Construction exploitation / hors exploitation</td><td class="num">+7 900 / +200</td></tr>
+<tr><td>Matériels</td><td class="num">+3 600</td></tr>
+<tr><td>IDA</td><td class="num">+1 033</td></tr>
+<tr class="tot"><td>ANCC</td><td class="num">53 873</td></tr>
+</table></div>
+<p class="rep"><b>Réponse a)</b> ANCC = 53 873 k€, soit environ 207 € par action (260 000 actions de 100 €).</p>
+
+<span class="qq"><b>b)</b> Calculer le bénéfice associé à l'ANCC d'exploitation, la rente de goodwill associée et la valeur ajustée.</span>
+<p class="st">Étape 1 : de l'ANCC à l'ANCC d'exploitation</p>
+<div class="f">ANCC* = ANCC − incorporels mal évalués = 53 873 − 0 = 53 873
+(le brevet est évalué directement, il n'y a pas de fonds commercial)
+
+Actifs hors exploitation = terrain HE (900 + 0) + construction HE (4 500 + 200) = 5 600
+ANCC d'exploitation = 53 873 − 5 600 = 48 273</div>
+
+<p class="st">Étape 2 : le bénéfice associé</p>
+<div class="tbl"><table>
+<tr><th>Ligne</th><th>Montant</th><th>Explication</th></tr>
+<tr><td>RCAI</td><td class="num">8 674</td><td>résultat d'exploitation 9 164 + résultat financier −490</td></tr>
+<tr><td>+ Amortissement base comptable</td><td class="num">600</td><td></td></tr>
+<tr><td>− Amortissement base utilité</td><td class="num neg">−750</td><td></td></tr>
+<tr><td>Retraitements hors exploitation</td><td class="num neg">−45</td><td>−60 (produits HE) + 15 (charges HE)</td></tr>
+<tr class="tot"><td>Bénéfice éco associé à l'ANCC d'exploitation brut</td><td class="num">8 479</td><td></td></tr>
+<tr class="tot"><td>Net d'IS (× ⅔)</td><td class="num">5 653</td><td>8 479 × 2/3 = 5 652,7</td></tr>
+</table></div>
+
+<p class="st">Étape 3 : rente et valeur</p>
+<div class="f">r = coût des capitaux propres = 11 %   ;   i = CMP = 9 %
+r × A = 11 % × 48 273 = 5 310
+Rente = 5 653 − 5 310 = 342,6 ≈ 343
+Goodwill (5 ans) = 342,6 × [1 − 1,09⁻⁵] / 0,09 = 342,6 × 3,8897 = 1 333
+Ve = ANCC* + goodwill = 53 873 + 1 333 = 55 206</div>
+<p class="rep"><b>Réponse b)</b> B = 5 653 ; rente = 343 ; valeur ajustée = <b>55 206 k€</b> (≈ 212 € par action). En complément, avec la méthode anglo-saxonne : 342,6 / 0,09 = 3 807 → 57 680 k€.</p>
+
+<span class="qq"><b>c)</b> Calculer le bénéfice associé à la VSB, la rente de goodwill associée et la valeur ajustée.</span>
+<p class="st">Étape 1 : la VSB</p>
+<div class="tbl"><table>
+<tr><th>Élément</th><th>Montant</th><th>Commentaire</th></tr>
+<tr><td>Brevet (VU)</td><td class="num">3 239</td><td>incorporel évalué directement</td></tr>
+<tr><td>Terrains exploitation</td><td class="num">2 600</td><td>VU ; le terrain HE est exclu</td></tr>
+<tr><td>Constructions exploitation</td><td class="num">15 400</td><td>VU ; la construction HE est exclue</td></tr>
+<tr><td>Matériels</td><td class="num">24 600</td><td>VU</td></tr>
+<tr><td>Crédit-bail</td><td class="num">6 700</td><td>VU du bien loué</td></tr>
+<tr><td>Stocks</td><td class="num">14 000</td><td></td></tr>
+<tr><td>Clients</td><td class="num">10 000</td><td></td></tr>
+<tr><td>Disponibilités</td><td class="num">900</td><td></td></tr>
+<tr><td>EENE</td><td class="num">1 750</td><td>effets escomptés réintégrés</td></tr>
+<tr class="tot"><td>VSB</td><td class="num">79 189</td><td>pas de frais d'établissement</td></tr>
+</table></div>
+
+<p class="st">Étape 2 : le bénéfice associé à la VSB</p>
+<div class="tbl"><table>
+<tr><th>Ligne</th><th>Montant</th><th>Explication</th></tr>
+<tr><td>Bénéfice éco associé à l'ANCC d'exploitation brut</td><td class="num">8 479</td><td>repris du b)</td></tr>
+<tr><td>+ Redevance de crédit-bail</td><td class="num">1 500</td><td></td></tr>
+<tr><td>− Amortissement du crédit-bail sur VU</td><td class="num neg">−1 340</td><td>6 700 / 5 ans</td></tr>
+<tr><td>+ Charges financières</td><td class="num">490</td><td>toutes (intérêts 441 + autres 49)</td></tr>
+<tr class="tot"><td>Bénéfice associé à la VSB brut</td><td class="num">9 129</td><td></td></tr>
+<tr class="tot"><td>Net d'IS (× ⅔)</td><td class="num">6 086</td><td></td></tr>
+</table></div>
+<div class="det"><span class="t">Remarque du professeur</span>Dans la vidéo, la réintégration des charges financières a été faite pour 500 par erreur : le bon montant est <b>490</b> (le total des charges financières).</div>
+
+<p class="st">Étape 3 : rente et valeur</p>
+<div class="f">r = i = CMP = 9 %
+r × A = 9 % × 79 189 = 7 127
+Rente = 6 086 − 7 127 = −1 041   → badwill
+Goodwill (5 ans) = −1 041 × 3,8897 = −4 049
+Ve = 53 873 − 4 049 = 49 824</div>
+<p class="rep"><b>Réponse c)</b> B = 6 086 ; rente = −1 041 ; valeur ajustée = <b>49 824 k€</b> (≈ 192 € par action). Anglo-saxons : −1 041 / 0,09 = −11 567 → 42 306 k€.</p>
+
+<h3>Conclusion du cas</h3>
+<div class="tbl"><table>
+<tr><th>Mesure</th><th>k€</th></tr>
+<tr><td>Capitaux propres</td><td class="num">43 900</td></tr>
+<tr><td>Actif net comptable</td><td class="num">40 800</td></tr>
+<tr><td>ANCC</td><td class="num">53 873</td></tr>
+<tr><td>ANCC d'exploitation</td><td class="num">48 273</td></tr>
+<tr><td>ANCC ajusté par le goodwill (ANCC d'exploitation)</td><td class="num">55 206</td></tr>
+<tr><td>ANCC ajusté par le goodwill (VSB)</td><td class="num">49 824</td></tr>
+</table></div>
+<figure class="chart"><svg class="sv" viewBox="0 0 720 210" style="min-width:520px" role="img" aria-label="Goodwill si la rentabilité observée dépasse la rentabilité exigée, badwill sinon."><text x="10" y="20" class="b">Duchemole : rentabilité observée B/A contre rentabilité exigée r</text><text x="10" y="56" class="b">ANCC d'exploitation</text><rect x="170" y="44" width="351.3" height="20" rx="3" class="ac"/><text x="527.3" y="59" class="mono">B/A = 11,71 %</text><rect x="170" y="70" width="330.0" height="20" rx="3" class="gr"/><text x="506.0" y="85" class="mono">r = 11 %</text><text x="10" y="78" style="fill:var(--ok);font-size:12px;font-weight:600">rente +343 → goodwill</text><text x="10" y="136" class="b">VSB</text><rect x="170" y="124" width="230.70000000000002" height="20" rx="3" class="ac"/><text x="406.70000000000005" y="139" class="mono">B/A = 7,69 %</text><rect x="170" y="150" width="270.0" height="20" rx="3" class="gr"/><text x="446.0" y="165" class="mono">r = 9 %</text><text x="10" y="158" style="fill:var(--bad);font-size:12px;font-weight:600">rente −1 041 → badwill</text></svg><figcaption class="cap" style="margin-top:6px">Goodwill si la rentabilité observée dépasse la rentabilité exigée, badwill sinon.</figcaption></figure>
+<p>Les deux bases ne donnent pas le même signe. Côté actionnaires (ANCC d'exploitation), les fonds propres rapportent 11,7 % pour 11 % exigés : léger goodwill. Côté outil de travail global (VSB), l'actif brut rapporte 7,7 % après impôt pour un CMP de 9 % : badwill. L'écart vient de l'<b>effet de levier</b> (une partie de l'actif est financée par de la dette à 5 % et par du crédit fournisseur gratuit) et du CMP retenu. Pour Doudou, la conclusion est une <b>fourchette</b> d'environ 49,8 à 55,2 M€, à négocier, et l'alerte que l'outil de travail est tout juste rentable.</p>
+
+<!-- ===================== POTIRON ===================== -->
+<h2 id="potiron"><span class="n">Cas</span>Potiron : ANCC, ANCC d'exploitation et VSB</h2>
+
+<div class="enonce"><span class="t">Énoncé</span>
+<p>Potiron envisage de céder son entreprise. Il souhaiterait avoir une estimation de sa valeur sur la base de son patrimoine et de sa rentabilité.</p>
+<ol>
+<li>Calculez la valeur de l'ANCC au 31/12/N après affectation du résultat.</li>
+<li>Dans le calcul de la rente de goodwill avec l'ANCC : a. quel est le taux d'actualisation à retenir (CMP, coût des capitaux propres…) ? b. quel est le taux de rémunération des actifs retenu ?</li>
+<li>Estimez l'ANCC d'exploitation et le bénéfice associé. Déterminez la valeur de l'entreprise avec la rente du goodwill actualisée sur 5 ans.</li>
+<li>Estimez la VSB et le bénéfice associé. Déterminez la valeur de l'entreprise avec la rente du goodwill actualisée sur 5 ans.</li>
+<li>Qu'en concluez-vous ?</li>
+</ol>
+<div class="two"><div class="tbl"><table>
+<tr><th colspan="2">Bilan Potiron — Actif</th></tr>
+<tr><td>Frais d'établissement</td><td class="num">210 000</td></tr>
+<tr><td>Fonds commercial</td><td class="num">1 000 000</td></tr>
+<tr><td>Immobilisations corporelles</td><td class="num">1 800 000</td></tr>
+<tr><td>Immobilisations financières</td><td class="num">880 000</td></tr>
+<tr><td>Stocks</td><td class="num">1 350 000</td></tr>
+<tr><td>Créances d'exploitation</td><td class="num">2 130 000</td></tr>
+<tr><td>Créances hors exploitation</td><td class="num">380 000</td></tr>
+<tr><td>Disponibilités</td><td class="num">80 000</td></tr>
+<tr><td>Frais d'émission d'emprunts</td><td class="num">30 000</td></tr>
+<tr><td>Écart de conversion actif</td><td class="num">80 000</td></tr>
+<tr class="tot"><td>Total</td><td class="num">7 940 000</td></tr>
+</table></div><div class="tbl"><table>
+<tr><th colspan="2">Bilan Potiron — Passif</th></tr>
+<tr><td>Capital</td><td class="num">1 400 000</td></tr>
+<tr><td>Réserve légale</td><td class="num">140 000</td></tr>
+<tr><td>Réserves des PV nettes à LT</td><td class="num">210 000</td></tr>
+<tr><td>Autres réserves</td><td class="num">2 063 000</td></tr>
+<tr><td>Résultat</td><td class="num">790 000</td></tr>
+<tr><td>Provisions réglementées (1)</td><td class="num">120 000</td></tr>
+<tr class="tot"><td>Capitaux propres</td><td class="num">4 723 000</td></tr>
+<tr><td>Provisions pour risques et charges (2)</td><td class="num">250 000</td></tr>
+<tr><td>Dettes financières (3)</td><td class="num">1 300 000</td></tr>
+<tr><td>Dettes d'exploitation</td><td class="num">1 400 000</td></tr>
+<tr><td>Dettes hors exploitation</td><td class="num">137 000</td></tr>
+<tr><td>Écart de conversion passif</td><td class="num">130 000</td></tr>
+<tr class="tot"><td>Total</td><td class="num">7 940 000</td></tr>
+</table></div></div>
+<p>(1) Amortissements dérogatoires. (2) Dont provisions pour perte de change de 80 000. (3) Dont concours bancaires courants de 250 000.</p>
+<div class="tbl"><table>
+<tr><th></th><th>VNC</th><th>Valeur d'utilité</th><th>Valeur vénale</th></tr>
+<tr><td>Éléments nécessaires à l'exploitation</td><td class="num">1 150 000</td><td class="num">1 500 000</td><td class="num">1 400 000</td></tr>
+<tr><td>Immeubles donnés en location</td><td class="num">650 000</td><td class="num">800 000</td><td class="num">1 200 000</td></tr>
+<tr><td>Titres de participation</td><td class="num">530 000</td><td class="num">700 000</td><td class="num">600 000</td></tr>
+<tr><td>Titres immobilisés</td><td class="num">250 000</td><td class="num">260 000</td><td class="num">320 000</td></tr>
+<tr><td>Prêt à une filiale</td><td class="num">100 000</td><td class="num">100 000</td><td class="num">100 000</td></tr>
+</table></div>
+<div class="tbl"><table>
+<tr><th colspan="4">Compte de résultat Potiron</th></tr>
+<tr><td>Ventes</td><td class="num">23 650 000</td><td>Produits financiers (3)</td><td class="num">80 000</td></tr>
+<tr><td>Production stockée</td><td class="num">230 000</td><td>Charges financières (4)</td><td class="num">335 000</td></tr>
+<tr><td>Autres produits d'exploitation (2)</td><td class="num">240 000</td><td><b>Résultat courant</b></td><td class="num"><b>956 600</b></td></tr>
+<tr><td>Achats</td><td class="num">3 838 400</td><td>Produits exceptionnels</td><td class="num">323 400</td></tr>
+<tr><td>Autres charges externes (1)</td><td class="num">7 875 000</td><td>Charges exceptionnelles</td><td class="num">170 000</td></tr>
+<tr><td>Impôts et taxes</td><td class="num">140 000</td><td>Impôts sur les bénéfices</td><td class="num">320 000</td></tr>
+<tr><td>Charges de personnel</td><td class="num">10 350 000</td><td><b>Résultat net</b></td><td class="num"><b>790 000</b></td></tr>
+<tr><td>Dotations aux amortissements</td><td class="num">600 000</td><td></td><td></td></tr>
+<tr><td>Dotations aux provisions</td><td class="num">50 000</td><td></td><td></td></tr>
+<tr><td>Autres charges d'exploitation</td><td class="num">55 000</td><td></td><td></td></tr>
+<tr><td><b>Résultat d'exploitation</b></td><td class="num"><b>1 211 600</b></td><td></td><td></td></tr>
+</table></div>
+<ol style="list-style:none;padding-left:0">
+<li>(1) dont 5 000 relatifs aux immeubles hors exploitation, et 110 000 de redevances de crédit-bail pour un bien d'une valeur de 600 000 loué pour 6 ans depuis le 1/7/N-2. Durée d'utilité 10 ans ; valeur d'utilité assimilée à la VNC d'une dépréciation linéaire. Option 80 000 ; redevances de début de période au 01/07.</li>
+<li>(2) dont 160 000 de revenus des immeubles hors exploitation. (3) dont 40 000 de revenus des titres immobilisés. (4) dont 80 000 de dotations aux provisions pour perte de change.</li>
+<li>Dotations aux amortissements sur valeur d'utilité 649 000 ; EENE 200 000 ; dividende à distribuer 84 000 ; BFR normatif 60 jours de CA HT ; RCAI N-2 : 1 266 400, N-1 : 1 260 000, N : 956 600 ; IS 33,33 % ; coût des capitaux propres 9 % ; coût de la dette 5 % ; CMP retenu dans la suite du cas 8 %.</li>
+</ol>
+</div>
+
+<span class="qq"><b>1)</b> Calculez la valeur de l'ANCC au 31/12/N après affectation du résultat.</span>
+<p class="st">Étape 1 : l'ANC</p>
+<div class="tbl"><table>
+<tr><th>Ligne</th><th>Montant</th><th>Pourquoi</th></tr>
+<tr><td>Capitaux propres</td><td class="num">4 723 000</td><td>provisions réglementées incluses</td></tr>
+<tr><td>− Dividendes</td><td class="num neg">−84 000</td><td>« après affectation du résultat » : c'est une dette envers les actionnaires</td></tr>
+<tr><td>− Frais d'établissement</td><td class="num neg">−210 000</td><td>actif fictif</td></tr>
+<tr><td>− Frais d'émission d'emprunts</td><td class="num neg">−30 000</td><td>actif fictif</td></tr>
+<tr><td>+ Écart de conversion passif</td><td class="num">130 000</td><td>gain latent de change</td></tr>
+<tr class="tot"><td>ANC</td><td class="num">4 529 000</td><td></td></tr>
+</table></div>
+<p>L'écart de conversion actif (80 000) est entièrement couvert par la provision pour perte de change (80 000) déjà déduite des capitaux propres : rien à retirer.</p>
+
+<p class="st">Étape 2 : les plus-values</p>
+<ul>
+<li><b>Immobilisations corporelles d'exploitation</b> : utilité 1 500 000 − VNC 1 150 000 = <b>+350 000</b> (pas d'impôt). Les 1 800 000 d'immobilisations corporelles = 1 150 000 (exploitation) + 650 000 (immeubles loués).</li>
+<li><b>Titres de participation</b> (outil stratégique, donc exploitation) : 700 000 − 530 000 = <b>+170 000</b>. Les 880 000 d'immobilisations financières = 530 000 + 250 000 + 100 000.</li>
+<li><b>Immeubles donnés en location</b> (hors exploitation, valeur vénale) : (1 200 000 − 650 000) × ⅔ = <b>+366 667</b>.</li>
+<li><b>Titres immobilisés</b> (hors exploitation, valeur vénale) : (320 000 − 250 000) × ⅔ = <b>+46 667</b>.</li>
+<li><b>Prêt à la filiale</b> : 100 000 partout, pas d'écart.</li>
+</ul>
+
+<p class="st">Étape 3 : le crédit-bail</p>
+<figure class="chart"><svg class="sv" viewBox="0 0 720 180" style="min-width:520px" role="img" aria-label="Potiron : échéancier du crédit-bail au 31/12/N (flux au 1/7)."><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--fg)"/></marker><marker id="ahk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--key)"/></marker></defs><line x1="20" y1="80" x2="712" y2="80" class="arw" marker-end="url(#ah)"/><circle cx="40" cy="80" r="5" class="gr"/><text x="40" y="66" text-anchor="middle" class="mono m">110 000</text><text x="40" y="102" text-anchor="middle" class="m" style="font-size:11px">1/7/N-2</text><circle cx="130" cy="80" r="5" class="gr"/><text x="130" y="66" text-anchor="middle" class="mono m">110 000</text><text x="130" y="102" text-anchor="middle" class="m" style="font-size:11px">1/7/N-1</text><circle cx="220" cy="80" r="5" class="gr"/><text x="220" y="66" text-anchor="middle" class="mono m">110 000</text><text x="220" y="102" text-anchor="middle" class="m" style="font-size:11px">1/7/N</text><line x1="300" y1="30" x2="300" y2="130" class="arwk"/><text x="300" y="24" text-anchor="middle" class="b" style="fill:var(--key)">31/12/N</text><circle cx="370" cy="80" r="5" class="ac"/><text x="370" y="52" text-anchor="middle" class="mono b" style="font-size:11.5px">110 000</text><text x="370" y="68" text-anchor="middle" class="m">0,5 an</text><text x="370" y="102" text-anchor="middle" class="m" style="font-size:11px">1/7/N+1</text><text x="370" y="122" text-anchor="middle" class="mono" style="fill:var(--accent)">107 349</text><circle cx="465" cy="80" r="5" class="ac"/><text x="465" y="52" text-anchor="middle" class="mono b" style="font-size:11.5px">110 000</text><text x="465" y="68" text-anchor="middle" class="m">1,5 an</text><text x="465" y="102" text-anchor="middle" class="m" style="font-size:11px">1/7/N+2</text><text x="465" y="122" text-anchor="middle" class="mono" style="fill:var(--accent)">102 237</text><circle cx="560" cy="80" r="5" class="ac"/><text x="560" y="52" text-anchor="middle" class="mono b" style="font-size:11.5px">110 000</text><text x="560" y="68" text-anchor="middle" class="m">2,5 ans</text><text x="560" y="102" text-anchor="middle" class="m" style="font-size:11px">1/7/N+3</text><text x="560" y="122" text-anchor="middle" class="mono" style="fill:var(--accent)">97 369</text><circle cx="655" cy="80" r="5" class="ac"/><text x="655" y="52" text-anchor="middle" class="mono b" style="font-size:11.5px">80 000 opt.</text><text x="655" y="68" text-anchor="middle" class="m">3,5 ans</text><text x="655" y="102" text-anchor="middle" class="m" style="font-size:11px">1/7/N+4</text><text x="655" y="122" text-anchor="middle" class="mono" style="fill:var(--accent)">67 442</text><text x="20" y="150" class="m">Gris : redevances déjà payées (ignorées). Vert : flux restants actualisés à 5 % au 31/12/N → 374 396 (= dette « cachée »).</text><text x="20" y="168" class="m">Valeur d'utilité = 600 000 − 60 000 × 2,5 ans écoulés = 450 000 → plus-value 75 604.</text></svg><figcaption class="cap" style="margin-top:6px">Potiron : échéancier du crédit-bail au 31/12/N (flux au 1/7).</figcaption></figure>
+<div class="f">Flux restants au 31/12/N (actualisés à 5 %, redevances au 1/7) :
+110 000/1,05^0,5 + 110 000/1,05^1,5 + 110 000/1,05^2,5 + 80 000/1,05^3,5
+= 107 349 + 102 237 + 97 369 + 67 442 = 374 396   (dette)
+
+Valeur d'utilité = 600 000 − 600 000/10 × 2,5 = 450 000   (du 1/7/N-2 au 31/12/N : 2,5 ans)
+Plus-value = 450 000 − 374 396 = +75 604</div>
+<div class="det"><span class="t">Astuce de calcul</span>Les flux tombent au 1/7 et on évalue au 31/12 : les exposants sont décalés d'une demi-année (0,5 ; 1,5 ; 2,5 ; 3,5). On peut aussi tout actualiser au 1/7/N puis capitaliser de 6 mois (× 1,05^0,5).</div>
+
+<p class="st">Étape 4 : la fiscalité latente</p>
+<ul>
+<li><b>IDP sur amortissements dérogatoires</b> : 120 000 × ⅓ = <b>−40 000</b> (ils sont dans les capitaux propres mais seront taxés à leur reprise).</li>
+<li><b>IDA sur frais d'établissement</b> : 210 000 × ⅓ = <b>+70 000</b>.</li>
+<li><b>IDA sur frais d'émission d'emprunts</b> : 30 000 × ⅓ = <b>+10 000</b>.</li>
+</ul>
+<div class="tbl"><table>
+<tr><th>Synthèse</th><th>Montant</th></tr>
+<tr><td>ANC</td><td class="num">4 529 000</td></tr>
+<tr><td>PV exploitation : immobilisations corporelles / titres de participation</td><td class="num">350 000 / 170 000</td></tr>
+<tr><td>PV hors exploitation : immeubles / titres immobilisés</td><td class="num">366 667 / 46 667</td></tr>
+<tr><td>Crédit-bail</td><td class="num">75 604</td></tr>
+<tr><td>IDP amortissements dérogatoires</td><td class="num neg">−40 000</td></tr>
+<tr><td>IDA frais d'établissement / frais d'emprunt</td><td class="num">70 000 / 10 000</td></tr>
+<tr class="tot"><td>ANCC</td><td class="num">5 577 938</td></tr>
+</table></div>
+
+<span class="qq"><b>2)</b> a. Quel est le taux d'actualisation à retenir ? b. Quel est le taux de rémunération des actifs retenu ?</span>
+<p class="rep"><b>Réponse.</b> a. Le taux d'actualisation de la rente est le <b>CMP = 8 %</b> : il reflète le risque global de l'entreprise, exigé par l'ensemble des investisseurs. b. Avec la base ANCC (d'exploitation), A est une mesure de <b>capitaux propres</b> : le taux de rémunération normal est le <b>coût des capitaux propres = 9 %</b>. (Avec la VSB, ce serait le CMP, 8 %.)</p>
+
+<span class="qq"><b>3)</b> Estimez l'ANCC d'exploitation et le bénéfice associé. Déterminez la valeur de l'entreprise avec la rente actualisée sur 5 ans.</span>
+<p class="st">Étape 1 : ANCC* puis ANCC d'exploitation</p>
+<div class="f">ANCC* = 5 577 938 − fonds commercial 1 000 000 = 4 577 938
+
+Actifs hors exploitation (à leur valeur dans l'ANCC) :
+  immeubles loués 650 000 + 366 667     = 1 016 667
+  titres immobilisés 250 000 + 46 667   =   296 667
+  créances hors exploitation            =   380 000
+  − dettes hors exploitation            =  −137 000
+                                         = 1 556 334
+ANCC d'exploitation = 4 577 938 − 1 556 334 = 3 021 604</div>
+
+<p class="st">Étape 2 : le bénéfice associé</p>
+<div class="tbl"><table>
+<tr><th>Ligne</th><th>Montant</th><th>Explication</th></tr>
+<tr><td>RCAI</td><td class="num">956 600</td><td>celui de N</td></tr>
+<tr><td>+ Amortissements base comptable</td><td class="num">600 000</td><td></td></tr>
+<tr><td>− Amortissements base utilité</td><td class="num neg">−649 000</td><td></td></tr>
+<tr><td>− Revenus des immeubles HE</td><td class="num neg">−160 000</td><td>note (2)</td></tr>
+<tr><td>− Revenus des titres immobilisés</td><td class="num neg">−40 000</td><td>note (3) ; les 40 000 restants de produits financiers (participations, prêt filiale) sont liés à l'exploitation et restent</td></tr>
+<tr><td>+ Charges des immeubles HE</td><td class="num">5 000</td><td>note (1)</td></tr>
+<tr class="tot"><td>Bénéfice éco associé à l'ANCC d'exploitation brut</td><td class="num">712 600</td><td></td></tr>
+<tr class="tot"><td>Net d'IS (× ⅔)</td><td class="num">475 067</td><td></td></tr>
+</table></div>
+
+<p class="st">Étape 3 : rente et valeur</p>
+<div class="f">r × A = 9 % × 3 021 604 = 271 944
+Rente = 475 067 − 271 944 = 203 122
+Rente actualisée 5 ans = 203 122 × 3,99271 = 811 009
+Ve = 4 577 938 + 811 009 = 5 388 946
+(Anglo-saxons : 203 122 / 0,08 = 2 539 029 → Ve = 7 116 967)</div>
+<p class="rep"><b>Réponse 3)</b> ANCC d'exploitation 3 021 604 ; B = 475 067 ; valeur = <b>5 388 946 €</b> (rente sur 5 ans).</p>
+
+<span class="qq"><b>4)</b> Estimez la VSB et le bénéfice associé. Déterminez la valeur avec la rente actualisée sur 5 ans.</span>
+<p class="st">Étape 1 : la VSB</p>
+<div class="tbl"><table>
+<tr><th>Élément</th><th>Montant</th></tr>
+<tr><td>VU des immobilisations corporelles d'exploitation</td><td class="num">1 500 000</td></tr>
+<tr><td>Titres de participation (VU)</td><td class="num">700 000</td></tr>
+<tr><td>Prêts aux filiales</td><td class="num">100 000</td></tr>
+<tr><td>Crédit-bail (VU)</td><td class="num">450 000</td></tr>
+<tr class="tot"><td>VU des immobilisations nécessaires à l'exploitation</td><td class="num">2 750 000</td></tr>
+<tr><td>EENE</td><td class="num">200 000</td></tr>
+<tr><td>Stocks</td><td class="num">1 350 000</td></tr>
+<tr><td>Créances d'exploitation</td><td class="num">2 130 000</td></tr>
+<tr><td>Disponibilités</td><td class="num">80 000</td></tr>
+<tr class="tot"><td>VSB</td><td class="num">6 510 000</td></tr>
+</table></div>
+<p>Exclus : fonds commercial, actifs fictifs, immeubles loués, titres immobilisés, créances hors exploitation, ECA.</p>
+
+<p class="st">Étape 2 : le bénéfice associé à la VSB</p>
+<div class="tbl"><table>
+<tr><th>Ligne</th><th>Montant</th><th>Explication</th></tr>
+<tr><td>Bénéfice éco associé à l'ANCC d'exploitation brut</td><td class="num">712 600</td><td>question 3</td></tr>
+<tr><td>+ Redevances de crédit-bail</td><td class="num">110 000</td><td></td></tr>
+<tr><td>− Amortissement du crédit-bail</td><td class="num neg">−60 000</td><td>600 000 / 10 ans</td></tr>
+<tr><td>+ Charges financières</td><td class="num">335 000</td><td>toutes, y compris la dotation pour perte de change de 80 000</td></tr>
+<tr class="tot"><td>Bénéfice associé à la VSB brut</td><td class="num">1 097 600</td><td></td></tr>
+<tr class="tot"><td>Net d'IS (× ⅔)</td><td class="num">731 733</td><td></td></tr>
+</table></div>
+<figure class="chart"><svg class="sv" viewBox="0 0 720 400" style="min-width:520px" role="img" aria-label="Potiron : du résultat courant avant impôt au bénéfice associé à la VSB net d'IS (en milliers d'euros)."><rect x="40" y="143.7" width="40" height="146.3" rx="2" class="ac"/><text x="60.0" y="137.7" text-anchor="middle" class="mono" style="font-size:10.5px">957k</text><text x="60.0" y="302" text-anchor="end" class="m" style="font-size:11px" transform="rotate(-40 60.0 302)">RCAI</text><rect x="92" y="51.9" width="40" height="91.8" rx="2" class="acs"/><text x="112.0" y="45.9" text-anchor="middle" class="mono" style="font-size:10px">+600k</text><text x="112.0" y="302" text-anchor="end" class="m" style="font-size:11px" transform="rotate(-40 112.0 302)">+ amort. compta</text><rect x="144" y="51.9" width="40" height="99.3" rx="2" class="bds"/><text x="164.0" y="45.9" text-anchor="middle" class="mono" style="font-size:10px">−649k</text><text x="164.0" y="302" text-anchor="end" class="m" style="font-size:11px" transform="rotate(-40 164.0 302)">− amort. VU</text><rect x="196" y="151.2" width="40" height="24.5" rx="2" class="bds"/><text x="216.0" y="145.2" text-anchor="middle" class="mono" style="font-size:10px">−160k</text><text x="216.0" y="302" text-anchor="end" class="m" style="font-size:11px" transform="rotate(-40 216.0 302)">− loyers HE</text><rect x="248" y="175.7" width="40" height="6.1" rx="2" class="bds"/><text x="268.0" y="169.7" text-anchor="middle" class="mono" style="font-size:10px">−40k</text><text x="268.0" y="302" text-anchor="end" class="m" style="font-size:11px" transform="rotate(-40 268.0 302)">− rev. titres immo.</text><rect x="300" y="181.0" width="40" height="1.5" rx="2" class="acs"/><text x="320.0" y="175.0" text-anchor="middle" class="mono" style="font-size:10px">+5k</text><text x="320.0" y="302" text-anchor="end" class="m" style="font-size:11px" transform="rotate(-40 320.0 302)">+ charges HE</text><rect x="352" y="181.0" width="40" height="109.0" rx="2" class="ac"/><text x="372.0" y="175.0" text-anchor="middle" class="mono" style="font-size:10.5px">713k</text><text x="372.0" y="302" text-anchor="end" class="m" style="font-size:11px" transform="rotate(-40 372.0 302)">B ANCC expl. brut</text><rect x="404" y="164.2" width="40" height="16.8" rx="2" class="acs"/><text x="424.0" y="158.2" text-anchor="middle" class="mono" style="font-size:10px">+110k</text><text x="424.0" y="302" text-anchor="end" class="m" style="font-size:11px" transform="rotate(-40 424.0 302)">+ redevances CB</text><rect x="456" y="164.2" width="40" height="9.2" rx="2" class="bds"/><text x="476.0" y="158.2" text-anchor="middle" class="mono" style="font-size:10px">−60k</text><text x="476.0" y="302" text-anchor="end" class="m" style="font-size:11px" transform="rotate(-40 476.0 302)">− amort. CB</text><rect x="508" y="122.1" width="40" height="51.2" rx="2" class="acs"/><text x="528.0" y="116.1" text-anchor="middle" class="mono" style="font-size:10px">+335k</text><text x="528.0" y="302" text-anchor="end" class="m" style="font-size:11px" transform="rotate(-40 528.0 302)">+ charges fin.</text><rect x="560" y="122.1" width="40" height="167.9" rx="2" class="ac"/><text x="580.0" y="116.1" text-anchor="middle" class="mono" style="font-size:10.5px">1 098k</text><text x="580.0" y="302" text-anchor="end" class="m" style="font-size:11px" transform="rotate(-40 580.0 302)">B VSB brut</text><rect x="612" y="122.1" width="40" height="56.0" rx="2" class="bds"/><text x="632.0" y="116.1" text-anchor="middle" class="mono" style="font-size:10px">−366k</text><text x="632.0" y="302" text-anchor="end" class="m" style="font-size:11px" transform="rotate(-40 632.0 302)">− IS ⅓</text><rect x="664" y="178.1" width="40" height="111.9" rx="2" class="ky"/><text x="684.0" y="172.1" text-anchor="middle" class="mono" style="font-size:10.5px">732k</text><text x="684.0" y="302" text-anchor="end" class="m" style="font-size:11px" transform="rotate(-40 684.0 302)">B VSB net</text><line x1="34" y1="290" x2="716" y2="290" class="ax"/></svg><figcaption class="cap" style="margin-top:6px">Potiron : du résultat courant avant impôt au bénéfice associé à la VSB net d'IS (en milliers d'euros).</figcaption></figure>
+
+<p class="st">Étape 3 : rente et valeur</p>
+<div class="f">r = CMP = 8 %   ;   r × A = 8 % × 6 510 000 = 520 800
+Rente = 731 733 − 520 800 = 210 933
+Rente actualisée 5 ans = 210 933 × 3,99271 = 842 196
+Ve = 4 577 938 + 842 196 = 5 420 134
+(Anglo-saxons : 210 933 / 0,08 = 2 636 667 → Ve = 7 214 605)</div>
+<p class="rep"><b>Réponse 4)</b> VSB 6 510 000 ; B = 731 733 ; valeur = <b>5 420 134 €</b> (rente sur 5 ans).</p>
+
+<span class="qq"><b>5)</b> Qu'en concluez-vous ?</span>
+<figure class="chart"><svg class="sv" viewBox="0 0 720 286" style="min-width:520px" role="img" aria-label="Potiron : les valeurs par le goodwill sur 5 ans convergent ; la perpétuité donne le haut de la fourchette."><text x="10" y="20" class="b">Potiron : synthèse des valeurs (en €)</text><text x="240" y="52" text-anchor="end" style="font-size:12.5px">Capitaux propres</text><rect x="250" y="36" width="232.9" height="22" rx="3" class="gr"/><text x="488.9" y="52" class="mono">4 723 000</text><text x="240" y="82" text-anchor="end" style="font-size:12.5px">ANCC</text><rect x="250" y="66" width="275.1" height="22" rx="3" class="acs"/><text x="531.1" y="82" class="mono">5 577 938</text><text x="240" y="112" text-anchor="end" style="font-size:12.5px">ANCC*</text><rect x="250" y="96" width="225.8" height="22" rx="3" class="acs"/><text x="481.8" y="112" class="mono">4 577 938</text><text x="240" y="142" text-anchor="end" style="font-size:12.5px">ANCC d'exploitation</text><rect x="250" y="126" width="149.0" height="22" rx="3" class="acs"/><text x="405.0" y="142" class="mono">3 021 604</text><text x="240" y="172" text-anchor="end" style="font-size:12.5px">Ve ANCC expl., 5 ans</text><rect x="250" y="156" width="265.8" height="22" rx="3" class="ac"/><text x="521.8" y="172" class="mono">5 388 946</text><text x="240" y="202" text-anchor="end" style="font-size:12.5px">Ve VSB, 5 ans</text><rect x="250" y="186" width="267.3" height="22" rx="3" class="ac"/><text x="523.3" y="202" class="mono">5 420 134</text><text x="240" y="232" text-anchor="end" style="font-size:12.5px">Ve ANCC expl., Anglo-saxons</text><rect x="250" y="216" width="351.0" height="22" rx="3" class="ky"/><text x="607.0" y="232" class="mono">7 116 967</text><text x="240" y="262" text-anchor="end" style="font-size:12.5px">Ve VSB, Anglo-saxons</text><rect x="250" y="246" width="355.8" height="22" rx="3" class="ky"/><text x="611.8" y="262" class="mono">7 214 605</text></svg><figcaption class="cap" style="margin-top:6px">Potiron : les valeurs par le goodwill sur 5 ans convergent ; la perpétuité donne le haut de la fourchette.</figcaption></figure>
+<ul>
+<li>Les deux bases donnent des <b>valeurs très proches</b> (5,39 M€ et 5,42 M€ sur 5 ans) : quand B, A et r sont construits de façon cohérente, l'approche par les fonds propres et celle par l'outil de travail convergent.</li>
+<li>Potiron est <b>sur-rentable</b> sur les deux bases : 475 067 / 3 021 604 = 15,7 % contre 9 % exigés ; 731 733 / 6 510 000 = 11,2 % contre 8 %. Le goodwill est positif.</li>
+<li>Le goodwill actualisé sur 5 ans (≈ 0,81 à 0,84 M€) est <b>inférieur</b> au fonds commercial inscrit (1 M€) : c'est pourquoi Ve sur 5 ans (≈ 5,4 M€) reste sous l'ANCC (5,58 M€) qui, lui, gardait le fonds commercial.</li>
+<li>La méthode anglo-saxonne monte à 7,1–7,2 M€ : elle suppose une sur-rentabilité éternelle, hypothèse peu réaliste. La méthode sur 5 ans est plus prudente.</li>
+<li>Potiron dispose donc d'une <b>fourchette</b> de 5,4 à 7,2 M€ pour négocier sa cession. Jamais de moyenne.</li>
+</ul>
+<div class="det"><span class="t">Données de l'énoncé non utilisées par le corrigé</span>Le BFR normatif (60 jours de CA HT) sert à la base CPNE (voir l'exercice 5 d'entraînement). Les RCAI des trois derniers exercices permettent de discuter un bénéfice <b>normatif</b> : la moyenne (1 161 000) est supérieure au RCAI de N (956 600) ; le corrigé retient N, ce qui est prudent.</div>
+
+<!-- ===================== ENTRAÎNEMENT ===================== -->
+<h2 id="exo"><span class="n">Exos</span>Entraînement</h2>
+<p class="cap">Exercices inventés sur le modèle du cours, sauf le 5 qui prolonge Potiron. Cherchez d'abord seul, puis ouvrez la correction.</p>
+
+<div class="ex"><span class="t">Exercice 1 · Les deux méthodes d'actualisation</span>
+<p>Une société a un ANCC* de 2 600 000 €, un ANCC d'exploitation de 2 000 000 € et un bénéfice économique associé net d'IS de 230 000 €. Coût des capitaux propres 10 %, CMP 8 %. Calculez la rente de goodwill, puis la valeur ajustée par la rente sur 5 ans et par la méthode anglo-saxonne.</p>
+<details><summary>Correction détaillée</summary>
+<ol class="steps">
+<li><span>Base ANCC d'exploitation → r = coût des capitaux propres = 10 % ; i = CMP = 8 %.</span></li>
+<li><span>r × A = 10 % × 2 000 000 = 200 000.</span></li>
+<li><span>Rente = 230 000 − 200 000 = <b>30 000</b> (goodwill).</span></li>
+<li><span>Rente sur 5 ans : 30 000 × 3,99271 = 119 781 → Ve = 2 600 000 + 119 781 = <b>2 719 781 €</b>.</span></li>
+<li><span>Anglo-saxons : 30 000 / 0,08 = 375 000 → Ve = <b>2 975 000 €</b>.</span></li>
+</ol>
+<p>Piège : actualiser à 10 % (r) au lieu de 8 % (i). r sert à calculer la rente, i à l'actualiser.</p>
+</details></div>
+
+<div class="ex"><span class="t">Exercice 2 · Le bon A, le bon r</span>
+<p>Pour chaque situation, donnez A et r. a) On travaille sur l'ANCC d'exploitation. b) On travaille sur la VSB. c) On travaille sur les CPNE. d) Un camarade calcule la rente VSB avec B = bénéfice après charges financières. Que lui dites-vous ?</p>
+<details><summary>Correction détaillée</summary>
+<ul>
+<li>a) A = ANCC* − actifs hors exploitation ; r = coût des capitaux propres.</li>
+<li>b) A = VSB ; r = CMP.</li>
+<li>c) A = CPNE ; r = CMP.</li>
+<li>d) Erreur : la VSB est un actif brut indépendant du financement. Les prêteurs sont rémunérés via le CMP (dans r × A) ; si B est déjà diminué des intérêts, on les compte deux fois et la rente est sous-estimée. Il faut réintégrer toutes les charges financières (y compris escompte et pertes de change sur dettes d'exploitation).</li>
+</ul>
+</details></div>
+
+<div class="ex"><span class="t">Exercice 3 · Construire le bénéfice associé à la VSB</span>
+<p>RCAI : 400 000. Dotations comptables 120 000 ; dotations sur valeur d'utilité 150 000. Loyers perçus d'un immeuble hors exploitation : 20 000 (dans les autres produits). Redevances de crédit-bail 45 000 ; amortissement du bien sur VU 30 000. Charges financières 25 000, dont 5 000 d'intérêts sur escompte. IS ⅓. Calculez le bénéfice associé à l'ANCC d'exploitation et à la VSB, nets d'IS.</p>
+<details><summary>Correction détaillée</summary>
+<div class="tbl"><table>
+<tr><th>Ligne</th><th>Montant</th></tr>
+<tr><td>RCAI</td><td class="num">400 000</td></tr>
+<tr><td>+ amortissements comptables</td><td class="num">120 000</td></tr>
+<tr><td>− amortissements sur VU</td><td class="num neg">−150 000</td></tr>
+<tr><td>− loyers hors exploitation</td><td class="num neg">−20 000</td></tr>
+<tr class="tot"><td>B ANCC d'exploitation brut</td><td class="num">350 000</td></tr>
+<tr class="tot"><td>B ANCC d'exploitation net (× ⅔)</td><td class="num">233 333</td></tr>
+<tr><td>+ redevances de crédit-bail</td><td class="num">45 000</td></tr>
+<tr><td>− amortissement crédit-bail</td><td class="num neg">−30 000</td></tr>
+<tr><td>+ charges financières (y compris escompte)</td><td class="num">25 000</td></tr>
+<tr class="tot"><td>B VSB brut</td><td class="num">390 000</td></tr>
+<tr class="tot"><td>B VSB net (× ⅔)</td><td class="num">260 000</td></tr>
+</table></div>
+<p>Les 5 000 d'intérêts sur escompte sont bien réintégrés : les EENE font partie de la VSB.</p>
+</details></div>
+
+<div class="ex"><span class="t">Exercice 4 · Un badwill</span>
+<p>VSB 5 000 000 € ; bénéfice associé à la VSB net d'IS 300 000 € ; CMP 8 % ; ANCC* 3 200 000 €. Calculez la valeur ajustée (rente sur 5 ans) et interprétez.</p>
+<details><summary>Correction détaillée</summary>
+<ol class="steps">
+<li><span>r × A = 8 % × 5 000 000 = 400 000.</span></li>
+<li><span>Rente = 300 000 − 400 000 = <b>−100 000</b> : badwill.</span></li>
+<li><span>Badwill actualisé = −100 000 × 3,99271 = −399 271.</span></li>
+<li><span>Ve = 3 200 000 − 399 271 = <b>2 800 729 €</b>.</span></li>
+</ol>
+<p>L'outil rapporte 6 % après impôt pour 8 % exigés : un acheteur ne paiera pas l'ANCC*, car il pourrait obtenir mieux ailleurs à risque égal. Le badwill traduit les erreurs et défaillances de gestion.</p>
+</details></div>
+
+<div class="ex"><span class="t">Exercice 5 · Potiron avec les CPNE</span>
+<p>Reprenez Potiron. On prend la définition dynamique simplifiée des CPNE : VU des immobilisations nécessaires à l'exploitation (crédit-bail compris) + BFRE normatif de 60 jours de CA HT (année de 360 jours). Le bénéfice associé aux CPNE se construit comme celui de la VSB. Calculez la valeur ajustée (rente sur 5 ans).</p>
+<details><summary>Correction détaillée</summary>
+<ol class="steps">
+<li><span>BFRE normatif = 23 650 000 × 60 / 360 = 3 941 667.</span></li>
+<li><span>CPNE = 2 750 000 + 3 941 667 = <b>6 691 667</b>.</span></li>
+<li><span>B = 731 733 (même construction que la VSB) ; r = CMP 8 % → r × A = 535 333.</span></li>
+<li><span>Rente = 731 733 − 535 333 = 196 400 → × 3,99271 = 784 168.</span></li>
+<li><span>Ve = 4 577 938 + 784 168 = <b>5 362 106 €</b>.</span></li>
+</ol>
+<p>On retombe dans la même zone (5,36 M€ contre 5,39 et 5,42) : les trois bases encadrent la valeur. Hypothèse de 360 jours à préciser à l'examen.</p>
+</details></div>
+
+<div class="ex"><span class="t">Exercice 6 · Jeune entreprise</span>
+<p>Une start-up dégage une rente de goodwill de 50 000 €, CMP 9 %. Sur quelle durée l'actualiser et combien vaut le goodwill ?</p>
+<details><summary>Correction détaillée</summary>
+<p>Société nouvelle en développement : <b>3 ans maximum</b>. Coefficient = [1 − 1,09⁻³] / 0,09 = (1 − 0,77218) / 0,09 = 2,53129. Goodwill = 50 000 × 2,53129 = <b>126 565 €</b>. La sur-rentabilité d'une jeune entreprise est trop fragile pour être projetée sur 5 ans.</p>
+</details></div>
+
+<!-- ===================== RECAP ===================== -->
+<h2 id="recap"><span class="n">Récap</span>Ce qu'il faut retenir et les pièges</h2>
+<div class="tbl"><table>
+<tr><th></th><th>ANCC d'exploitation</th><th>VSB</th><th>CPNE</th></tr>
+<tr><td>A</td><td>ANCC* − HE</td><td>tout l'outil brut + CB + EENE</td><td>immos d'exploitation + CB + BFRE normatif</td></tr>
+<tr><td>B</td><td>RCAI retraité (HE, amort. VU) × ⅔</td><td>idem + CB + charges financières, × ⅔</td><td>comme la VSB</td></tr>
+<tr><td>r</td><td>coût des capitaux propres</td><td>CMP</td><td>CMP</td></tr>
+<tr><td>i</td><td>CMP</td><td>CMP</td><td>CMP</td></tr>
+<tr><td>Ve</td><td colspan="3">ANCC* + rente × [1 − (1 + i)⁻ⁿ] / i (n ≤ 5, 3 pour une jeune société) ou ANCC* + rente / i</td></tr>
+</table></div>
+<div class="trap"><b>Pièges classiques.</b>
+<ul>
+<li>Ajouter le goodwill à l'ANCC au lieu de l'ANCC* : le fonds commercial est compté deux fois.</li>
+<li>Actualiser au coût des capitaux propres : i est toujours le CMP.</li>
+<li>Partir du résultat net : on part du <b>résultat courant avant impôt</b>, et on applique l'IS à la fin.</li>
+<li>Oublier de sortir les revenus des actifs hors exploitation (loyers, revenus de titres immobilisés, dividendes de VMP).</li>
+<li>Pour la VSB : oublier les EENE, le crédit-bail, ou les charges financières liées aux dettes d'exploitation (escompte, perte de change).</li>
+<li>Prendre la valeur d'utilité pour un bien hors exploitation (c'est la valeur vénale, nette d'impôt).</li>
+<li>Faire la moyenne des valeurs : on présente une fourchette.</li>
+</ul></div>
+
+<footer>Fiche construite à partir des supports de F. Romon (FFBC, Université de Lille) du cours « Ajustement par le goodwill » : introduction, approche par la VSB (cas Warrior), approche par les CPNE, et des corrections des cas Duchemole (V5, ANCC d'exploitation et VSB) et Potiron. Les exercices 1 à 6 sont des exercices d'entraînement inventés sur le modèle du cours (le 5 prolonge Potiron avec une hypothèse de BFRE sur 360 jours). Pour l'ANC et l'ANCC, voir les fiches du 1<sup>er</sup> et du 8 octobre.</footer>
+</div>
+<style id="qp-css">.enonce{border:1px solid rgba(128,128,128,.35);border-radius:10px;padding:10px 14px;margin:10px 0 14px;background:rgba(128,128,128,.07)}
+.enonce>.t{display:block;font:600 11.5px/1.3 ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;opacity:.75;margin-bottom:6px}
+.enonce ol,.enonce ul{margin:4px 0 0;padding-left:22px}.enonce li{margin:3px 0}
+.qq{display:block;margin:12px 0 6px;padding:7px 11px;border-left:4px solid #c2571f;background:rgba(194,87,31,.09);border-radius:0 7px 7px 0;font-weight:600;line-height:1.45}
+.qq>b:first-child{color:#c2571f;margin-right:4px}
+.why{display:block;margin:6px 0;padding:6px 10px;border-left:3px solid rgba(128,128,128,.5);font-size:.95em;opacity:.95}
+.why>b:first-child{opacity:.8}
+.rep{display:block;margin:4px 0 0}.rep>b:first-child{color:#1f7a4d}
+@media print{.enonce,.qq{break-inside:avoid}}</style></body></html>
