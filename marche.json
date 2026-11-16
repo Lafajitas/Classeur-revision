@@ -1,8 +1,8 @@
 {
- "maj": "2026-11-14T07:55:16+01:00",
- "seance": "Clôture du vendredi 13 novembre 2026 (Bitcoin : relevé du 13 novembre à 7 h, non actualisé faute de cours fiable)",
+ "maj": "2026-11-16T07:55:43+01:00",
+ "seance": "Clôture du vendredi 13 novembre 2026 (Nikkei : clôture du lundi 16 novembre ; Bitcoin : relevé du lundi 16 novembre vers 7 h 30)",
  "source": {
-  "nom": "Zonebourse, ARIVA.DE, Xinhua, Yahoo Finance, JIJI Press (ad-hoc-news), BCE",
+  "nom": "Zonebourse, ARIVA.DE, Xinhua, Yahoo Finance, BCE (clôtures du 13/11), Business Upturn (Nikkei), Sunday Guardian et Newsquawk (Bitcoin)",
   "url": "https://www.zonebourse.com/actualite-bourse/cinq-sur-cinq-pour-le-cac-40-sur-la-semaine-ce785ed9d08df327"
  },
  "groupes": [
@@ -20,7 +20,7 @@
     {"nom": "S&P 500", "valeur": "7 561,67", "var": -0.4},
     {"nom": "Nasdaq", "valeur": "25 136,27", "var": -0.91},
     {"nom": "Dow Jones", "valeur": "52 347,55", "var": 0.1},
-    {"nom": "Nikkei 225", "valeur": "61 142,35", "var": 0.53}
+    {"nom": "Nikkei 225", "valeur": "59 675,46", "var": -2.4}
    ]
   },
   {
@@ -29,21 +29,21 @@
     {"nom": "EUR/USD", "valeur": "1,1033", "var": -0.21},
     {"nom": "Pétrole Brent ($)", "valeur": "95,84", "var": 0.02},
     {"nom": "Or ($/once)", "valeur": "3 883", "var": 0.18},
-    {"nom": "Bitcoin ($)", "valeur": "68 214", "var": -7.31}
+    {"nom": "Bitcoin ($)", "valeur": "64 342", "var": -1.6}
    ]
   }
  ],
  "actu": {
-  "titre": "Inflation américaine : les prix à la production bondissent de 6,5 % sur un an, le taux à 10 ans grimpe à 5,17 %",
-  "date": "2026-11-13",
-  "resume": "Aux États-Unis, l'indice des prix à la production (PPI) a progressé de 0,3 % en octobre, un peu moins que les 0,4 % attendus, mais sa hausse sur douze mois atteint 6,5 %, du jamais vu depuis novembre 2022. Les marchés considèrent désormais une hausse des taux de la Fed lors de sa réunion des 8 et 9 décembre comme quasi acquise, et le rendement de l'obligation d'État à 10 ans est monté jusqu'à 5,17 % en séance, son plus haut depuis octobre. Wall Street a fini en ordre dispersé : le Dow Jones a gagné 0,1 % tandis que le Nasdaq a cédé 0,9 %, plombé par les valeurs technologiques et une nouvelle baisse de Nvidia. En Europe, le CAC 40 a terminé quasi stable (+0,09 %) mais signe sa meilleure semaine depuis avril.",
-  "cours": "Lien avec tes cours : quand les taux sans risque montent, le rf du MEDAF augmente, donc le coût des capitaux propres et le CMPC aussi ; dans un DCF ou un modèle de Gordon, des flux actualisés à un taux plus élevé donnent une valeur plus faible. L'effet est d'autant plus fort que les flux sont lointains : c'est pour cela que les valeurs de croissance du Nasdaq (forte « duration ») baissent davantage que les valeurs plus mûres du Dow Jones. Côté obligataire, la hausse des rendements signifie mécaniquement une baisse du prix des obligations déjà émises.",
-  "source": "Yahoo Finance",
-  "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-13-dow-sp-500-nasdaq-nvidia-ppi-141451558.html"
+  "titre": "Surprise au Japon : le PIB recule au 3e trimestre et le Nikkei décroche de 2,4 %",
+  "date": "2026-11-16",
+  "resume": "Selon la première estimation du Cabinet Office publiée lundi, le PIB japonais a reculé de 0,1 % en rythme annualisé entre juillet et septembre, alors que les économistes attendaient une hausse de 0,3 % ; c'est la première baisse depuis fin 2025. La consommation des ménages, qui pèse plus de la moitié de l'économie, a baissé de 0,3 %, freinée par la vie chère et les intempéries, et le commerce extérieur a retiré 0,6 point à la croissance à cause de la flambée des importations d'énergie. Seul l'investissement des entreprises a tenu (+1,6 %), porté par l'automatisation et les infrastructures d'IA. À Tokyo, le Nikkei 225 a clôturé en baisse de 2,4 %, à 59 675 points, repassant sous la barre des 60 000.",
+  "cours": "Lien avec tes cours : la Banque du Japon, qui a déjà relevé ses taux en juin et en septembre, est coincée entre une inflation importée par l'énergie et une croissance qui cale — un vrai dilemme de politique monétaire. En évaluation, c'est le pire des deux mondes pour un modèle de Gordon ou un DCF : P = D / (k − g), avec un g (croissance attendue) qui baisse et un k qui monte si les taux sans risque augmentent, d'où la chute des actions. Et en gestion de portefeuille, la baisse plus marquée des valeurs liées à l'IA illustre le risque des titres à bêta élevé dont la valeur repose sur des flux lointains, très sensibles au taux d'actualisation.",
+  "source": "Globe TV, d'après le Cabinet Office japonais",
+  "url": "https://globetv.app/news/japan-economy-contracts-01-in-q3-as-consumer-spending-falters-6afa4e1644678"
  },
  "titres": [
-  {"t": "Paris : le CAC 40 finit quasi stable (+0,09 %) et signe sa meilleure semaine depuis avril", "url": "https://www.zonebourse.com/actualite-bourse/cinq-sur-cinq-pour-le-cac-40-sur-la-semaine-ce785ed9d08df327"},
-  {"t": "Francfort : le DAX marque une pause après son record, mais gagne 3,6 % sur la semaine", "url": "https://www.ariva.de/news/roundup-aktien-frankfurt-schluss-dax-trotzt-nasdaq-schwaeche-12207030"},
-  {"t": "Cryptos : le Bitcoin repasse sous les 70 000 dollars, au plus bas depuis août", "url": "https://www.forbes.com/sites/digital-assets/2026/11/13/bitcoin-falls-below-70000-to-reach-lowest-since-august/"}
+  {"t": "Le Nikkei 225 chute de 2,4 % et repasse sous les 60 000 points, plombé par les valeurs de l'IA", "url": "https://businessupturn.com/asia/east-asia/japan/nikkei-225-declines-sharply-as-ai-stocks-face-broad-selling-pressure/"},
+  {"t": "Fed : plusieurs responsables tiennent un discours restrictif, l'inflation jugée « trop élevée » ; le Bitcoin passe brièvement sous 63 000 dollars", "url": "https://www.newsquawk.com/headlines/newsquawk-daily-european-opening-news---16th-november-2026"},
+  {"t": "Fed, résultats de Nvidia, introduction en Bourse d'Anthropic : les rendez-vous de la semaine qui peuvent faire bouger les marchés", "url": "https://crypto.news/bitcoin-fed-nvidia-anthropic-ipo-crypto-week-ahead/"}
  ]
 }
