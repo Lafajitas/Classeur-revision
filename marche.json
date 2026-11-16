@@ -1,49 +1,49 @@
 {
- "maj": "2026-11-12T07:54:52+01:00",
- "seance": "Clôture du mercredi 11 novembre 2026 (Nikkei : jeudi 12 novembre ; Bitcoin : relevé du 12 novembre à 7 h ; EUR/USD : relevé précédent, pas de clôture fiable trouvée)",
+ "maj": "2026-11-14T07:55:16+01:00",
+ "seance": "Clôture du vendredi 13 novembre 2026 (Bitcoin : relevé du 13 novembre à 7 h, non actualisé faute de cours fiable)",
  "source": {
-  "nom": "Moneyvox, ARIVA.DE, TheStreet, Business Upturn, USAGOLD, CoinCodex",
-  "url": "https://www.moneyvox.fr/bourse/actualites/111198/le-cac-40-nage-dans-le-vert-totalenergies-carbure-les-infos-bourse-du-11-novembre"
+  "nom": "Zonebourse, ARIVA.DE, Xinhua, Yahoo Finance, JIJI Press (ad-hoc-news), BCE",
+  "url": "https://www.zonebourse.com/actualite-bourse/cinq-sur-cinq-pour-le-cac-40-sur-la-semaine-ce785ed9d08df327"
  },
  "groupes": [
   {
    "titre": "Actions Europe",
    "lignes": [
-    {"nom": "CAC 40", "valeur": "8 332,87", "var": 0.66},
-    {"nom": "Euro Stoxx 50", "valeur": "6 393,39", "var": 1.04},
-    {"nom": "DAX", "valeur": "26 662,77", "var": 1.2}
+    {"nom": "CAC 40", "valeur": "8 368,91", "var": 0.09},
+    {"nom": "Euro Stoxx 50", "valeur": "6 386,86", "var": -0.19},
+    {"nom": "DAX", "valeur": "26 749,95", "var": -0.08}
    ]
   },
   {
    "titre": "Actions monde",
    "lignes": [
-    {"nom": "S&P 500", "valeur": "7 619,38", "var": 1.31},
-    {"nom": "Nasdaq", "valeur": "25 466,19", "var": 1.6},
-    {"nom": "Dow Jones", "valeur": "52 486,49", "var": 0.49},
-    {"nom": "Nikkei 225", "valeur": "60 758,34", "var": -0.8}
+    {"nom": "S&P 500", "valeur": "7 561,67", "var": -0.4},
+    {"nom": "Nasdaq", "valeur": "25 136,27", "var": -0.91},
+    {"nom": "Dow Jones", "valeur": "52 347,55", "var": 0.1},
+    {"nom": "Nikkei 225", "valeur": "61 142,35", "var": 0.53}
    ]
   },
   {
    "titre": "Change, matières premières, crypto",
    "lignes": [
-    {"nom": "EUR/USD", "valeur": "1,1204", "var": 0.55},
-    {"nom": "Pétrole Brent ($)", "valeur": "94,00", "var": 2.74},
-    {"nom": "Or ($/once)", "valeur": "3 986", "var": -1.16},
-    {"nom": "Bitcoin ($)", "valeur": "73 583", "var": -0.46}
+    {"nom": "EUR/USD", "valeur": "1,1033", "var": -0.21},
+    {"nom": "Pétrole Brent ($)", "valeur": "95,84", "var": 0.02},
+    {"nom": "Or ($/once)", "valeur": "3 883", "var": 0.18},
+    {"nom": "Bitcoin ($)", "valeur": "68 214", "var": -7.31}
    ]
   }
  ],
  "actu": {
-  "titre": "Les résultats de CoreWeave relancent les valeurs de l'IA : le Nasdaq gagne 1,6 %",
-  "date": "2026-11-11",
-  "resume": "CoreWeave, qui loue de la puissance de calcul pour l'intelligence artificielle, a annoncé un chiffre d'affaires trimestriel de 3,7 milliards de dollars, en hausse de 168 % sur un an, et a relevé ses prévisions annuelles, tout en restant en perte nette (709 millions de dollars). Son action a bondi d'environ 21 %, entraînant les semi-conducteurs et Nvidia, qui rebondit après deux séances de forte baisse. Le Nasdaq a terminé en hausse de 1,6 % et le S&P 500 de 1,31 %, effaçant le recul de la veille lié à l'inflation américaine. En Europe, ASML, Infineon et Soitec ont suivi, et le DAX a fini tout près de son record.",
-  "cours": "Lien avec tes cours : une société en forte croissance mais déficitaire comme CoreWeave ne peut pas s'évaluer par un PER ; on passe par un DCF où l'essentiel de la valeur vient de la valeur terminale, ou par des multiples de chiffre d'affaires (EV/CA). Le relèvement des prévisions augmente les flux futurs attendus, d'où le saut du cours, et rassure sur la capacité à rembourser une dette élevée (effet de levier sur le risque des actionnaires, donc sur le bêta). L'entraînement de tout le secteur illustre aussi le risque systématique d'un facteur commun « IA » dans un portefeuille concentré.",
-  "source": "TheStreet",
-  "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-11-2026"
+  "titre": "Inflation américaine : les prix à la production bondissent de 6,5 % sur un an, le taux à 10 ans grimpe à 5,17 %",
+  "date": "2026-11-13",
+  "resume": "Aux États-Unis, l'indice des prix à la production (PPI) a progressé de 0,3 % en octobre, un peu moins que les 0,4 % attendus, mais sa hausse sur douze mois atteint 6,5 %, du jamais vu depuis novembre 2022. Les marchés considèrent désormais une hausse des taux de la Fed lors de sa réunion des 8 et 9 décembre comme quasi acquise, et le rendement de l'obligation d'État à 10 ans est monté jusqu'à 5,17 % en séance, son plus haut depuis octobre. Wall Street a fini en ordre dispersé : le Dow Jones a gagné 0,1 % tandis que le Nasdaq a cédé 0,9 %, plombé par les valeurs technologiques et une nouvelle baisse de Nvidia. En Europe, le CAC 40 a terminé quasi stable (+0,09 %) mais signe sa meilleure semaine depuis avril.",
+  "cours": "Lien avec tes cours : quand les taux sans risque montent, le rf du MEDAF augmente, donc le coût des capitaux propres et le CMPC aussi ; dans un DCF ou un modèle de Gordon, des flux actualisés à un taux plus élevé donnent une valeur plus faible. L'effet est d'autant plus fort que les flux sont lointains : c'est pour cela que les valeurs de croissance du Nasdaq (forte « duration ») baissent davantage que les valeurs plus mûres du Dow Jones. Côté obligataire, la hausse des rendements signifie mécaniquement une baisse du prix des obligations déjà émises.",
+  "source": "Yahoo Finance",
+  "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-november-13-dow-sp-500-nasdaq-nvidia-ppi-141451558.html"
  },
  "titres": [
-  {"t": "Paris : le CAC 40 gagne 0,66 % dans un marché très calme un jour férié, porté par les semi-conducteurs", "url": "https://www.moneyvox.fr/bourse/actualites/111198/le-cac-40-nage-dans-le-vert-totalenergies-carbure-les-infos-bourse-du-11-novembre"},
-  {"t": "Francfort : le DAX finit juste sous son record, Siemens Energy s'envole de près de 11 % après une année record", "url": "https://www.ariva.de/news/roundup-aktien-frankfurt-schluss-dax-weiter-erholt-und-12203752"},
-  {"t": "Tokyo : le Nikkei recule de 0,8 % jeudi et repasse sous les 61 000 points", "url": "https://businessupturn.com/asia/east-asia/japan/nikkei-225-falls-on-thursday-as-tokyo-shares-retreat-from-session-highs/"}
+  {"t": "Paris : le CAC 40 finit quasi stable (+0,09 %) et signe sa meilleure semaine depuis avril", "url": "https://www.zonebourse.com/actualite-bourse/cinq-sur-cinq-pour-le-cac-40-sur-la-semaine-ce785ed9d08df327"},
+  {"t": "Francfort : le DAX marque une pause après son record, mais gagne 3,6 % sur la semaine", "url": "https://www.ariva.de/news/roundup-aktien-frankfurt-schluss-dax-trotzt-nasdaq-schwaeche-12207030"},
+  {"t": "Cryptos : le Bitcoin repasse sous les 70 000 dollars, au plus bas depuis août", "url": "https://www.forbes.com/sites/digital-assets/2026/11/13/bitcoin-falls-below-70000-to-reach-lowest-since-august/"}
  ]
 }

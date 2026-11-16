@@ -1,0 +1,279 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fiche — Ch. 3 Les gains des fusions-acquisitions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: same binder as the Ch. 1 fiche — plum accent, one reading column, formula strips in mono, corrigés folded */
+:root{
+  --paper:#FBFAFD; --surface:#ffffff; --ink:#22223A; --muted:#5E5B70; --plum:#4B2E6F; --plum-soft:#EEE9F6;
+  --rule:#D9D5E2; --amber:#9A5418; --amber-soft:#FBF1E6; --green:#2F6B4F; --green-soft:#EAF4EE;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#16151F; --surface:#1d1b28; --ink:#E7E4F0; --muted:#A7A2BA; --plum:#C7B2EC; --plum-soft:#2A2340;
+  --rule:#37334A; --amber:#E8A66A; --amber-soft:#33261A; --green:#8FD1AE; --green-soft:#1C2E25; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#16151F; --surface:#1d1b28; --ink:#E7E4F0; --muted:#A7A2BA; --plum:#C7B2EC; --plum-soft:#2A2340;
+  --rule:#37334A; --amber:#E8A66A; --amber-soft:#33261A; --green:#8FD1AE; --green-soft:#1C2E25; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:1.05rem/1.62 var(--serif)}
+h1,h2,h3,h4,nav,th,.tag,.kicker,summary{font-family:var(--sans)}
+.wrap{max-width:54rem;margin:0 auto;padding-inline:16px;padding-block:0 4rem}
+header.hero{padding-block:2.6rem 1.6rem;display:grid;gap:.8rem}
+.kicker{color:var(--plum);font-weight:600;font-size:.92rem;margin:0}
+h1{font-size:clamp(2rem,5vw,3rem);line-height:1.05;margin:0;letter-spacing:-.02em;text-wrap:balance}
+.hero p{color:var(--muted);margin:0;max-width:62ch}
+.strip{display:flex;flex-wrap:wrap;gap:8px;margin-top:.4rem}
+.strip span{background:var(--plum-soft);color:var(--plum);border-radius:999px;padding:5px 12px;font:600 .85rem var(--mono)}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-block:1px solid var(--rule);display:flex;gap:.2rem;overflow-x:auto;padding-block:.45rem}
+nav.toc a{font:500 .9rem var(--sans);color:var(--ink);text-decoration:none;padding:.35rem .7rem;border-radius:6px;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--plum-soft);color:var(--plum);outline:none}
+section{padding-top:1.8rem;display:grid;gap:.9rem}
+h2{font-size:1.65rem;margin:0;padding-top:.8rem;border-top:3px solid var(--plum);text-wrap:balance}
+h2 .n{color:var(--plum);margin-right:.4em}
+h3{font-size:1.18rem;margin:.6rem 0 0;color:var(--plum)}
+p{margin:0;max-width:74ch}
+ul,ol{margin:0;padding-left:1.25em;display:grid;gap:.25rem;max-width:74ch}
+.eq{font-family:var(--mono);font-size:.95rem;background:var(--plum-soft);color:var(--ink);padding:.75rem 1rem;border-radius:8px;overflow-x:auto;white-space:pre}
+.tw{overflow-x:auto;border:1px solid var(--rule);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th{text-align:left;font-weight:600;font-size:.8rem;color:var(--muted);border-bottom:2px solid var(--ink);padding:8px 10px;text-transform:uppercase;letter-spacing:.04em}
+td{border-bottom:1px solid var(--rule);padding:8px 10px;vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-family:var(--mono);font-size:.88rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:12px}
+.box{border-radius:8px;padding:14px 16px;display:grid;gap:6px;min-width:0}
+.box .tag{font-size:.82rem;font-weight:700}
+.key{background:var(--plum-soft)} .key .tag{color:var(--plum)}
+.warn{background:var(--amber-soft)} .warn .tag{color:var(--amber)}
+.ex{background:var(--green-soft)} .ex .tag{color:var(--green)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;display:grid;gap:6px}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:8px}
+.steps li::before{content:counter(s);font:600 .8rem var(--mono);color:var(--paper);background:var(--plum);border-radius:50%;width:22px;height:22px;display:grid;place-items:center;margin-top:3px}
+details{background:var(--surface);border:1px solid var(--rule);border-radius:8px}
+summary{cursor:pointer;padding:.7rem 1rem;font-weight:600;color:var(--green);list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸ "} details[open] summary::before{content:"▾ "}
+details>.body{padding:0 1rem 1rem;display:grid;gap:.5rem}
+.exo{display:grid;gap:.6rem}
+.res{font-family:var(--sans);font-weight:600}
+.muted{color:var(--muted);font-size:.95rem}
+:focus-visible{outline:2px solid var(--plum);outline-offset:2px}
+a{color:var(--plum)}
+.given{display:flex;flex-wrap:wrap;gap:6px}
+.given span{font:500 .85rem var(--sans);background:var(--plum-soft);border-radius:6px;padding:4px 9px}
+.given b{color:var(--plum);margin-right:4px}
+.st{font-family:var(--sans);font-weight:700;color:var(--plum);margin-top:.5rem;padding-top:.5rem;border-top:1px dashed var(--rule)}
+details .box ul{padding-left:1.1em}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:var(--muted);font:.85rem var(--sans)}
+</style></head><body>
+<style>.cl-back{display:flex;align-items:center;gap:8px;padding:10px 16px;font:500 14px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef1ee;border-bottom:1px solid #d5dbd6}.cl-back a{color:#1f4d3f;text-decoration:none;font-weight:600}.cl-back a:hover{text-decoration:underline}.cl-back span{color:#5f6b66}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cl-back{background:#1a201e;border-color:#2e3834}:root:not([data-theme="light"]) .cl-back a{color:#8fd3b8}:root:not([data-theme="light"]) .cl-back span{color:#97a39e}}:root[data-theme="dark"] .cl-back{background:#1a201e;border-color:#2e3834}:root[data-theme="dark"] .cl-back a{color:#8fd3b8}:root[data-theme="dark"] .cl-back span{color:#97a39e}</style>
+<nav class="cl-back" aria-label="Retour"><a href="index.html#m-ingf_fiches">← Ingénierie financière</a><span>· Classeur de révision</span></nav>
+
+
+<div class="wrap">
+<style>
+.fig{margin:14px 0;padding:10px;border:1px solid var(--rule);border-radius:10px;background:var(--paper)}.fig svg{width:100%;height:auto;display:block}.fig figcaption{font-size:.9rem;color:var(--muted);margin-top:4px}
+.bars{margin:14px 0;padding:10px 12px;border:1px solid var(--rule);border-radius:10px}.bar{display:flex;align-items:center;gap:10px;margin:6px 0;font-family:"Instrument Sans",system-ui,sans-serif;font-size:.9rem}.bl{flex:0 0 38%}.bt{flex:1;display:flex;height:24px;border-radius:6px;overflow:hidden;background:var(--plum-soft)}.bt i{display:block;color:#fff;font-style:normal;font-weight:600;font-size:.8rem;text-align:center;line-height:24px;overflow:hidden}
+</style><header class="hero">
+  <p class="kicker">Ingénierie financière · J.-Y. Filbien · Chapitre 3</p>
+  <h1>Chapitre 3. Les gains</h1>
+  <p>Qui s'enrichit dans une fusion-acquisition ? Les théories et leurs prédictions, la méthode des études d'événements (AR, CAR), puis la réaction du marché : prime, répartition des gains, free rider et toehold. Cinq exercices corrigés.</p>
+  <div class="strip"><span>ARₜ = Rₜ − rendement normal</span><span>CAR(K,L) = Σ ARₜ</span><span>ΔV = CAR × capitalisation</span><span>p = (P_après − P_avant)/(P_offre − P_avant)</span></div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <a href="#theories">1 · Théories</a><a href="#event">2 · Études d'événements</a><a href="#marche">3 · Réaction du marché</a><a href="#freerider">4 · Free rider</a><a href="#exos">5 · Exercices</a><a href="#retenir">6 · À retenir</a>
+</nav>
+
+<section id="theories">
+  <h2><span class="n">1</span>Les théories et leurs prédictions</h2>
+  <p>Les théories se classent selon leur effet sur la richesse des actionnaires : <strong>création de valeur</strong>, <strong>destruction de valeur</strong>, ou <strong>neutralité</strong> (transferts de richesse sans variation globale).</p>
+  <div class="tw"><table>
+    <thead><tr><th>Effet</th><th>Théorie</th><th>Idée</th></tr></thead>
+    <tbody>
+      <tr><td>Positif</td><td><strong>Synergies</strong> (Bradley, Desai, Kim)</td><td>Économies d'échelle et de gamme, baisse du coût du capital</td></tr>
+      <tr><td>Positif</td><td><strong>Coûts de transaction</strong> (Coase)</td><td>La fusion remplace le marché et réduit les coûts de transaction</td></tr>
+      <tr><td>Positif</td><td><strong>Discipline</strong> (Manne)</td><td>Les prises de contrôle remplacent une mauvaise direction (<em>market for corporate control</em>)</td></tr>
+      <tr><td>Négatif</td><td><strong>Coûts d'agence des FCF</strong> (Jensen)</td><td>Les dirigeants réinvestissent mal les flux disponibles</td></tr>
+      <tr><td>Négatif</td><td><strong>Enracinement</strong> (Shleifer, Vishny)</td><td>La firme investit pour accroître la valeur du dirigeant</td></tr>
+      <tr><td>Neutre</td><td><strong>Hubris</strong> (Roll)</td><td>Le vainqueur d'une compétition est celui qui surestime le plus la cible : il paie trop (<strong>malédiction du vainqueur</strong>)</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>Prédictions empiriques</strong> : ce tableau sert à tester les théories avec les données.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Théorie</th><th>Gains combinés</th><th>Cible</th><th>Offreur</th></tr></thead>
+    <tbody>
+      <tr><td>Efficacité / synergie</td><td>Positifs</td><td>Positifs</td><td>Positifs</td></tr>
+      <tr><td>Agence / enracinement</td><td>Négatifs</td><td>Positifs</td><td>Davantage négatifs</td></tr>
+      <tr><td>Hubris</td><td>Nuls</td><td>Positifs</td><td>Négatifs</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box key"><span class="tag">Comment lire ce tableau</span><p>La cible gagne toujours (elle reçoit une prime). Ce sont les <strong>gains combinés</strong> et ceux de <strong>l'offreur</strong> qui discriminent : offreur gagnant → synergie ; offreur perdant et total nul → hubris (transfert de l'offreur vers la cible) ; total négatif → agence ou enracinement.</p></div>
+</section>
+
+<section id="event">
+  <h2><span class="n">2</span>La méthodologie des études d'événements</h2>
+  <h3>Pourquoi une méthode spécifique ?</h3>
+  <ol class="steps"><li><span><strong>Pas de contrefactuel observable</strong> : on ne sait pas ce qu'auraient été les performances sans l'opération.</span></li><li><span><strong>Événements contaminants</strong> : les effets s'étalent sur plusieurs années, pendant lesquelles d'autres événements jouent.</span></li><li><span><strong>Programme d'acquisitions</strong> : difficile d'isoler une transaction des autres et de la stratégie globale.</span></li></ol>
+  <p>L'étude d'événements compare le rendement observé à un <strong>rendement normal</strong>, sur une <strong>fenêtre courte</strong> (peu de contamination). Elle mesure la révision des anticipations des investisseurs. <strong>Limite</strong> : une réaction positive ne garantit pas le succès à long terme.</p>
+  <p>Hypothèses implicites : marchés d'<strong>anticipations</strong> rationnelles et <strong>efficients</strong> (prix = valeur en moyenne).</p>
+  <div class="eq">V₀ = Σₜ CFₜ / (1 + R)ᵗ   ⇒ si l'annonce change les CFₜ, le prix s'ajuste : ΔP mesure ΔV</div>
+  <h3>Rendement anormal et CAR</h3>
+  <div class="eq">Rₜ = (Pₜ − Pₜ₋₁) / Pₜ₋₁
+ARₜ = Rₜ − rendement normal
+CAR(K,L) = Σₜ₌K..L ARₜ</div>
+  <ol class="steps"><li><span>Identifier l'événement (nature, date d'annonce).</span></li><li><span>Fixer la période d'estimation et la période d'événement.</span></li><li><span>Estimer les paramètres du modèle de rendement normal.</span></li><li><span>Calculer les AR jour par jour, puis le CAR.</span></li></ol>
+  <div class="box ex"><span class="tag">Schéma des fenêtres (slide 13)</span><p>Fenêtre d'estimation de t−235 à t−36 · <strong>zone tampon</strong> de t−36 à t−5 (évite que les fuites avant annonce contaminent l'estimation) · fenêtre d'événement de t−5 (K) à t+5 (L), annonce en t₀.</p></div>
+  <h3>Les trois modèles de rendement normal</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Modèle</th><th>Rendement normal</th><th>Paramètres</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Rendement moyen constant</strong></td><td>moyenne R̄ᵢ de la période d'estimation</td><td>une moyenne</td></tr>
+      <tr><td><strong>Ajusté du marché</strong></td><td>R_m,t (rendement de l'indice)</td><td>aucun</td></tr>
+      <tr><td><strong>Ajusté au risque (modèle de marché)</strong></td><td>α + β · R_m,t</td><td>α, β par MCO (Excel : ORDONNEE.ORIGINE, PENTE)</td></tr>
+    </tbody>
+  </table></div>
+  <div class="eq">AR_i,t = R_i,t − (α̂ + β̂ · R_m,t)      β̂ = Cov(Rᵢ, R_m) / Var(R_m)</div>
+  <p><strong>Indice</strong> : il représente le marché pour isoler la réaction propre au titre. Choisir un indice du marché de cotation, plutôt <em>large</em>.</p>
+  <div class="box warn"><span class="tag">Significativité (complément hors slides)</span><p>t = CAR / (σ_AR · √N), où σ_AR est l'écart-type des résidus de la période d'estimation et N le nombre de jours de la fenêtre. On rejette « pas de réaction » si |t| dépasse environ 1,96 (seuil de 5 %).</p></div>
+  <h3>Cours ajusté</h3>
+  <ul><li><strong>Split n pour 1</strong> : cours avant multipliés par 1/n (2 pour 1 → 0,5).</li><li><strong>Dividende D</strong> : cours avant multipliés par (1 − D / P_veille). Exemple : 0,08 $ de dividende, clôture à 24,96 $ → facteur 0,9968.</li></ul>
+  <h3>Étude de cas : Boeing – McDonnell Douglas</h3>
+  <p>Annonce de l'accord le 15 décembre 1996 (jour 0 : séance du 16). Capitalisations au 6 décembre : <strong>35 Md USD</strong> (BA), <strong>14 Md USD</strong> (MD). Estimation du 1ᵉʳ nov. 1995 au 31 oct. 1996, indice S&amp;P 500, 11 jours d'événement.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Jour</th><th class="num">-5</th><th class="num">-4</th><th class="num">-3</th><th class="num">-2</th><th class="num">-1</th><th class="num">0</th><th class="num">+1</th><th class="num">+2</th><th class="num">+3</th><th class="num">+4</th><th class="num">+5</th></tr></thead>
+    <tbody>
+      <tr><td>AR BA</td><td class="num">−0,75</td><td class="num">−0,67</td><td class="num">0,77</td><td class="num">2,48</td><td class="num">0,52</td><td class="num">5,18</td><td class="num">−0,56</td><td class="num">−0,39</td><td class="num">−0,55</td><td class="num">1,67</td><td class="num">−1,11</td></tr>
+      <tr><td>CAR BA</td><td class="num">−0,75</td><td class="num">−1,42</td><td class="num">−0,65</td><td class="num">1,83</td><td class="num">2,35</td><td class="num">7,53</td><td class="num">6,96</td><td class="num">6,58</td><td class="num">6,03</td><td class="num">7,70</td><td class="num">6,59</td></tr>
+      <tr><td>AR MD</td><td class="num">−0,70</td><td class="num">−2,15</td><td class="num">−0,12</td><td class="num">−0,49</td><td class="num">4,84</td><td class="num">19,50</td><td class="num">−0,33</td><td class="num">−0,42</td><td class="num">0,23</td><td class="num">1,11</td><td class="num">−1,16</td></tr>
+      <tr><td>CAR MD</td><td class="num">−0,70</td><td class="num">−2,85</td><td class="num">−2,97</td><td class="num">−3,46</td><td class="num">1,38</td><td class="num">20,87</td><td class="num">20,54</td><td class="num">20,13</td><td class="num">20,36</td><td class="num">21,47</td><td class="num">20,31</td></tr>
+    </tbody>
+  </table></div>
+  <figure class="fig"><svg viewBox="0 0 640 270" role="img" aria-label="CAR de Boeing et McDonnell Douglas autour de l'annonce"><style>.a{stroke:var(--plum)}.a2{fill:var(--plum)}.b{stroke:var(--amber)}.b2{fill:var(--amber)}</style><line x1="48" x2="624" y1="190.4" y2="190.4" stroke="var(--rule)"/><text x="42" y="194.4" text-anchor="end" font-size="11" fill="var(--muted)">0 %</text><line x1="48" x2="624" y1="154.1" y2="154.1" stroke="var(--rule)"/><text x="42" y="158.1" text-anchor="end" font-size="11" fill="var(--muted)">5 %</text><line x1="48" x2="624" y1="117.7" y2="117.7" stroke="var(--rule)"/><text x="42" y="121.7" text-anchor="end" font-size="11" fill="var(--muted)">10 %</text><line x1="48" x2="624" y1="81.4" y2="81.4" stroke="var(--rule)"/><text x="42" y="85.4" text-anchor="end" font-size="11" fill="var(--muted)">15 %</text><line x1="48" x2="624" y1="45.1" y2="45.1" stroke="var(--rule)"/><text x="42" y="49.1" text-anchor="end" font-size="11" fill="var(--muted)">20 %</text><line x1="336.0" x2="336.0" y1="16" y2="234" stroke="var(--muted)" stroke-dasharray="3 4"/><polyline class="a" fill="none" stroke-width="2.4" points="48.0,195.8 105.6,200.7 163.2,195.1 220.8,177.1 278.4,173.3 336.0,135.7 393.6,139.8 451.2,142.6 508.8,146.6 566.4,134.4 624.0,142.5"/><circle cx="48.0" cy="195.8" r="3.2" class="a2"/><circle cx="105.6" cy="200.7" r="3.2" class="a2"/><circle cx="163.2" cy="195.1" r="3.2" class="a2"/><circle cx="220.8" cy="177.1" r="3.2" class="a2"/><circle cx="278.4" cy="173.3" r="3.2" class="a2"/><circle cx="336.0" cy="135.7" r="3.2" class="a2"/><circle cx="393.6" cy="139.8" r="3.2" class="a2"/><circle cx="451.2" cy="142.6" r="3.2" class="a2"/><circle cx="508.8" cy="146.6" r="3.2" class="a2"/><circle cx="566.4" cy="134.4" r="3.2" class="a2"/><circle cx="624.0" cy="142.5" r="3.2" class="a2"/><polyline class="b" fill="none" stroke-width="2.4" points="48.0,195.5 105.6,211.1 163.2,212.0 220.8,215.5 278.4,180.4 336.0,38.7 393.6,41.1 451.2,44.1 508.8,42.5 566.4,34.4 624.0,42.8"/><circle cx="48.0" cy="195.5" r="3.2" class="b2"/><circle cx="105.6" cy="211.1" r="3.2" class="b2"/><circle cx="163.2" cy="212.0" r="3.2" class="b2"/><circle cx="220.8" cy="215.5" r="3.2" class="b2"/><circle cx="278.4" cy="180.4" r="3.2" class="b2"/><circle cx="336.0" cy="38.7" r="3.2" class="b2"/><circle cx="393.6" cy="41.1" r="3.2" class="b2"/><circle cx="451.2" cy="44.1" r="3.2" class="b2"/><circle cx="508.8" cy="42.5" r="3.2" class="b2"/><circle cx="566.4" cy="34.4" r="3.2" class="b2"/><circle cx="624.0" cy="42.8" r="3.2" class="b2"/><text x="48.0" y="256" text-anchor="middle" font-size="11" fill="var(--muted)">-5</text><text x="105.6" y="256" text-anchor="middle" font-size="11" fill="var(--muted)">-4</text><text x="163.2" y="256" text-anchor="middle" font-size="11" fill="var(--muted)">-3</text><text x="220.8" y="256" text-anchor="middle" font-size="11" fill="var(--muted)">-2</text><text x="278.4" y="256" text-anchor="middle" font-size="11" fill="var(--muted)">-1</text><text x="336.0" y="256" text-anchor="middle" font-size="11" fill="var(--muted)">0</text><text x="393.6" y="256" text-anchor="middle" font-size="11" fill="var(--muted)">+1</text><text x="451.2" y="256" text-anchor="middle" font-size="11" fill="var(--muted)">+2</text><text x="508.8" y="256" text-anchor="middle" font-size="11" fill="var(--muted)">+3</text><text x="566.4" y="256" text-anchor="middle" font-size="11" fill="var(--muted)">+4</text><text x="624.0" y="256" text-anchor="middle" font-size="11" fill="var(--muted)">+5</text><text x="620.0" y="26.4" text-anchor="end" font-size="12" font-weight="600" fill="var(--amber)">McDonnell Douglas (cible) : +20,31 %</text><text x="620.0" y="168.5" text-anchor="end" font-size="12" font-weight="600" fill="var(--plum)">Boeing (acquéreur) : +6,59 %</text><text x="336" y="269" text-anchor="middle" font-size="11" fill="var(--muted)">jours autour de l'annonce</text></svg><figcaption>CAR (%) de chaque firme sur la fenêtre −5 / +5. Presque tout le saut se produit le jour 0.</figcaption></figure>
+  <h3>Microsoft – Yahoo! et le programme de Disney</h3>
+  <div class="grid2">
+    <div class="card"><strong>Microsoft – Yahoo! (1ᵉʳ fév. 2008)</strong><p>Modèle de marché, 3 jours. CAR de Microsoft <strong>−13,35 %</strong>, CAR de Yahoo! <strong>+38,38 %</strong> : l'offreur perd, la cible gagne (offre à 62 % de prime).</p></div>
+    <div class="card"><strong>Programme d'acquisitions</strong><p><strong>Anticipation</strong> : le marché cerne la stratégie, la réaction diminue. <strong>Apprentissage</strong> : l'expérience améliore la sélection et l'intégration.</p></div>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Date</th><th>Cible</th><th class="num">CAR cible</th><th class="num">CAR Disney</th></tr></thead>
+    <tbody>
+      <tr><td>24 janv. 2006</td><td>Pixar (7,4 Md USD)</td><td class="num">+2,01 %</td><td class="num">−0,14 %</td></tr>
+      <tr><td>31 août 2009</td><td>Marvel (≈ 4 Md USD)*</td><td class="num">+10,49 %</td><td class="num">−1,94 %</td></tr>
+      <tr><td>14 déc. 2017</td><td>21st Century Fox (52,4 Md USD, en actions)</td><td class="num">+4,93 %</td><td class="num">+4,33 %</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">* La slide écrit « Marvell Technology Group (MRVL) » mais l'article affiché porte sur Marvel. Avec trois points, la lecture (cible toujours gagnante, Disney de ≈ 0 à positif : apprentissage) reste une illustration, pas un test.</p>
+</section>
+
+<section id="marche">
+  <h2><span class="n">3</span>La réaction du marché aux annonces</h2>
+  <div class="tw"><table>
+    <thead><tr><th></th><th class="num">Prime</th><th class="num">Cours de la cible</th><th class="num">Cours de l'acquéreur</th></tr></thead>
+    <tbody><tr><td>États-Unis</td><td class="num">43 %</td><td class="num">+15 %</td><td class="num">+1 %</td></tr><tr><td>France</td><td class="num">27 %</td><td class="num">+16 %</td><td class="num">0 %</td></tr></tbody>
+  </table></div>
+  <div class="grid2">
+    <div class="box key"><span class="tag">Faits stylisés (1980-2005)</span><p>CAR moyen de la <strong>cible ≈ +15 %</strong> (saut le jour 0) ; celui de l'<strong>acquéreur ≈ 0</strong>, réactions positives et négatives en proportions comparables. CAR <strong>combiné</strong> pondéré par les capitalisations : <strong>≈ +2 %</strong>, significatif : création de valeur globale, captée surtout par la cible.</p></div>
+    <div class="box warn"><span class="tag">Effet de taille</span><p><strong>1999-2000</strong> : perte cumulée d'environ <strong>267 Md USD</strong> pour les acquéreurs, concentrée sur quelques géants (un CAR de −2 % sur 500 Md = −10 Md). <strong>Après 2009</strong> : réaction nettement plus favorable (Alexandridis et al., 2017), signe d'une meilleure discipline des dirigeants.</p></div>
+  </div>
+  <p><strong>L'écoute des dirigeants</strong> : une réaction favorable est associée à une plus forte probabilité de finaliser l'opération (Luo, 2005). Tenir compte d'un cours défavorable <strong>discipline</strong> les dirigeants tentés de poursuivre une acquisition pour leur pouvoir (agence).</p>
+  <h3>Qui capte les synergies ?</h3>
+  <ul><li><strong>En théorie</strong> : cela dépend du caractère <em>unique ou substituable</em> de la contribution de l'acquéreur. Facilement remplaçable : tout va à la cible. Unique : partage plus équitable.</li><li><strong>En pratique</strong> : la cible concentre l'essentiel des gains, avec des variations (taille, mode de paiement, statut de la cible, nombre d'enchérisseurs).</li></ul>
+  <div class="box ex"><span class="tag">Meilleurs rendements pour l'acquéreur si…</span><p>cible <strong>non cotée</strong> ou filiale · <strong>petit</strong> acquéreur · paiement en <strong>numéraire</strong> · bonne <strong>gouvernance</strong> · dirigeant <strong>expérimenté</strong> dans le secteur · <strong>première</strong> opération d'une série · conseil d'administration bien <strong>relié</strong>.</p></div>
+  <p><strong>Pourquoi la prime est-elle si élevée ?</strong> Principalement la <strong>concurrence</strong> : une cible riche en synergies attire d'autres acquéreurs, qui surenchérissent jusqu'au prix d'équilibre. La prime absorbe la valeur créée.</p>
+  <h3>Arbitrage de fusion et probabilité implicite</h3>
+  <p>Le succès d'une offre est incertain : les <strong>arbitragistes de fusion</strong> prennent position selon leurs anticipations ; une offre concurrente plus avantageuse (<em>superior proposal</em>) les avantage. Si le cours revient à P_avant en cas d'échec :</p>
+  <div class="eq">P_après = p · P_offre + (1 − p) · P_avant   ⇒   p = (P_après − P_avant) / (P_offre − P_avant)</div>
+  <h3>Les concurrents de la cible</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Effet</th><th>Mécanisme</th><th class="num">CAR rivaux</th></tr></thead>
+    <tbody>
+      <tr><td>Efficacité productive</td><td>concurrence plus intense (entité combinée)</td><td class="num">−</td></tr>
+      <tr><td>Collusion</td><td>rentes de monopole accrues pour les rivaux</td><td class="num">+</td></tr>
+      <tr><td>Pouvoir de marché (amont)</td><td>fournisseurs plus concurrencés, coûts en baisse</td><td class="num">+</td></tr>
+      <tr><td>Probabilité d'acquisition</td><td>les rivaux deviennent eux-mêmes des cibles</td><td class="num">+</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="freerider">
+  <h2><span class="n">4</span>Le problème du passager clandestin</h2>
+  <p>La prime offerte est à peu près égale à la valeur créée : les actionnaires de la cible captent la valeur. Une cible mal gérée a un prix bas ; si l'offreur peut la contrôler et remplacer la direction, la valeur monte. Mais :</p>
+  <ul><li>L'offre porte sur tous les titres avec une <strong>condition suspensive</strong> : annulée si moins de 50 % des actions sont apportées.</li><li>Des actionnaires rationnels <strong>gardent leurs titres</strong> (ils profiteront de la hausse grâce aux autres) : <strong>dilemme du prisonnier</strong>, l'offre peut échouer.</li><li>Il faut une prime plus grande pour les convaincre, ce qui supprime le profit de l'acquéreur.</li></ul>
+  <div class="box key"><span class="tag">Remèdes</span><p><strong>Toehold</strong> : participation initiale achetée au prix pré-offre, qui garde pour l'acquéreur une part des synergies (gain = α × S). <strong>LBO</strong> ou toute stratégie qui augmente le risque de la cible ex post. Limite du toehold : il est perçu comme hostile et peut dissuader des rivaux mais aussi déclencher une défense.</p></div>
+</section>
+
+<section id="exos">
+<h2><span class="n">5</span>Exercices, corrigés pas à pas</h2>
+<p class="muted">Les exemples numériques viennent des slides (Boeing, Microsoft, Zertro, free rider) ; les corrigés sont recalculés avec les formules du chapitre.</p>
+<div class="exo"><h3>Exercice 1 · Lire un cours brut (split et dividende)</h3>
+<p>Deutsche Börse : le 8 juin 2007, le cours chute de 166 à 84 USD en une journée ; l'entreprise a doublé le nombre de ses actions (2 pour 1). Microsoft : clôture à 29,97 USD le vendredi 12 novembre 2004 ; le lundi 15, le cours baisse de 2,63 USD (près de 9 %), jour de détachement d'un dividende de 3,08 USD par action.</p>
+<span class="qq"><b>Question </b>Quel est le vrai rendement de chaque journée ? Quel facteur d'ajustement faut-il appliquer au cours de Microsoft ?</span><details><summary>Voir le corrigé détaillé</summary><div class="body">
+<div class="given"><span><b>Deutsche Börse</b> 166 → 84 USD, split 2 pour 1</span><span><b>Microsoft</b> 29,97 → 27,34 USD, dividende 3,08 USD</span></div><p class="st">Étape 1 · Deutsche Börse : ajuster le cours d'avant</p><p>Pour un split 2 pour 1, les cours <em>avant</em> le split sont multipliés par 0,5.</p><div class="eq">166 × 0,5 = 83 USD</div><p class="st">Étape 2 · Rendement réel</p><div class="eq">R = 84 / 83 − 1 = +1,2 %   (et non 84/166 − 1 = −49 %)</div><p>Sans ajustement, une étude d'événements verrait un faux rendement anormal massif.</p><p class="st">Étape 3 · Microsoft : cours après détachement</p><div class="eq">29,97 − 2,63 = 27,34 USD</div><p class="st">Étape 4 · Rendement total (cours + dividende reçu)</p><div class="eq">R = (27,34 + 3,08) / 29,97 − 1 = 30,42 / 29,97 − 1 = +1,5 %</div><p class="st">Étape 5 · Facteur d'ajustement du dividende</p><div class="eq">1 − D / P_veille = 1 − 3,08 / 29,97 = 0,8972</div><p class="res">Conclusion : Deutsche Börse +1,2 % ; Microsoft +1,5 % en rendement total, facteur 0,8972. Le dividende (10 % du cours) explique la baisse apparente de près de 9 %.</p>
+</div></details></div>
+<div class="exo"><h3>Exercice 2 · Boeing – McDonnell Douglas : valeur créée</h3>
+<p>Boeing (BA) acquiert McDonnell Douglas (MD), accord annoncé le 15 décembre 1996. Capitalisations au 6 décembre 1996 : 35 Md USD pour BA, 14 Md USD pour MD. Modèle de marché, indice S&amp;P 500, estimation du 1ᵉʳ novembre 1995 au 31 octobre 1996, fenêtre −5 / +5. Tableau des AR et CAR : voir plus haut.</p>
+<span class="qq"><b>Question </b>(a) CAR(−5,+5) de chaque firme ; (b) création de valeur en Md USD pour BA, MD et la transaction ; (c) CAR de la transaction équipondéré et pondéré par la taille ; (d) commenter.</span><details><summary>Voir le corrigé détaillé</summary><div class="body">
+<div class="given"><span><b>Cap. BA</b> 35 Md</span><span><b>Cap. MD</b> 14 Md</span><span><b>CAR BA</b> 6,59 %</span><span><b>CAR MD</b> 20,31 %</span></div><p class="st">Étape 1 · Les CAR sur la fenêtre</p><p>Ce sont les CAR du jour +5 du tableau (somme des 11 rendements anormaux journaliers).</p><div class="eq">CAR_BA(−5,+5) = 6,59 %      CAR_MD(−5,+5) = 20,31 %</div><p class="st">Étape 2 · Passer du pourcentage à la monnaie</p><div class="eq">ΔV = CAR × capitalisation avant annonce
+Boeing     : 35 × 6,59 %  = 2,31 Md USD
+McDonnell  : 14 × 20,31 % = 2,84 Md USD
+Transaction : 2,31 + 2,84 = 5,15 Md USD</div><p class="st">Étape 3 · CAR de la transaction</p><div class="eq">Équipondéré : (6,59 + 20,31) / 2 = 13,45 %
+Pondéré     : (35 × 6,59 + 14 × 20,31) / 49 = 515 / 49 ≈ 10,51 %   (= 5,15 / 49)</div><p class="st">Étape 4 · Interpréter</p><ul><li>Les deux firmes gagnent et la transaction crée de la valeur : profil compatible avec la <strong>synergie</strong>.</li><li>L'équipondération surestime le gain : la petite cible (+20 %) pèse autant que le grand acquéreur.</li><li>La cible capte 55 % de la valeur créée (2,84 / 5,15) alors qu'elle pèse 29 % des capitalisations.</li><li>Le saut a lieu le <strong>jour 0</strong> : l'information est incorporée d'un coup (efficience).</li></ul><p class="res">Conclusion : 5,15 Md USD créés ; CAR de la transaction 10,51 % pondéré (13,45 % équipondéré).</p>
+</div></details></div>
+<div class="exo"><h3>Exercice 3 · Microsoft – Yahoo! : lire une réaction</h3>
+<p>Le 1ᵉʳ février 2008, Microsoft offre 31 USD par action Yahoo! (numéraire et actions), soit 62 % de prime. Modèle de marché, fenêtre de 3 jours : CAR de Microsoft = −13,35 %, CAR de Yahoo! = +38,38 %.</p>
+<span class="qq"><b>Question </b>(a) Cours de Yahoo! avant l'annonce ? (b) Quelle théorie cette réaction soutient-elle ? (c) Quelle probabilité de succès le marché attribue-t-il à l'offre ? (Cours après ≈ (1 + CAR) × cours avant ; en cas d'échec le cours revient à son niveau initial.)</span><details><summary>Voir le corrigé détaillé</summary><div class="body">
+<div class="given"><span><b>Offre</b> 31 USD</span><span><b>Prime</b> 62 %</span><span><b>CAR MSFT</b> −13,35 %</span><span><b>CAR YHOO</b> +38,38 %</span></div><p class="st">Étape 1 · Cours avant annonce</p><div class="eq">P_avant = 31 / 1,62 = 19,14 USD</div><p class="st">Étape 2 · Quelle théorie ?</p><p>L'offreur perd, la cible gagne : c'est le profil <strong>hubris / coûts d'agence</strong> du tableau des prédictions. Le marché pense que Microsoft paie trop cher ou détruit de la valeur pour ses propres actionnaires.</p><p class="st">Étape 3 · Probabilité implicite</p><div class="eq">P_après = 19,14 × 1,3838 = 26,48 USD   (< 31 : l'offre n'est pas certaine)
+P_après = p · P_offre + (1 − p) · P_avant
+p = (26,48 − 19,14) / (31 − 19,14) = 7,34 / 11,86 ≈ 62 %   (soit 38,38 / 62)</div><p class="res">Conclusion : environ 6 chances sur 10 que l'offre aboutisse (ou anticipation d'une surenchère, autre lecture de l'écart).</p>
+</div></details></div>
+<div class="exo"><h3>Exercice 4 · ABX et Zertro Inc. : probabilité implicite</h3>
+<p>ABX offre une prime de 30 € par action de Zertro Inc. Le cours ex ante de la cible est de 100 €. Après l'annonce de l'accord, le cours de Zertro est de 125 €.</p>
+<span class="qq"><b>Question </b>Quelle est la probabilité de réalisation implicite ? Que gagne un arbitragiste de fusion ?</span><details><summary>Voir le corrigé détaillé</summary><div class="body">
+<div class="given"><span><b>P_avant</b> 100 €</span><span><b>Prime</b> 30 €</span><span><b>P_après</b> 125 €</span></div><p class="st">Étape 1 · Prix d'offre</p><div class="eq">P_offre = 100 + 30 = 130 €</div><p class="st">Étape 2 · Probabilité</p><div class="eq">p = (125 − 100) / (130 − 100) = 25 / 30 = 83,3 %</div><p class="st">Étape 3 · L'arbitragiste</p><div class="eq">Écart d'arbitrage : 130 − 125 = 5 € (+4 % si succès)
+Si échec : retour à 100 €, soit −25 € (−20 %)
+Espérance : 0,833 × 5 − 0,167 × 25 ≈ 0</div><p>Le prix est « juste » pour une probabilité de 83,3 %. Celui qui croit à plus de 83,3 % achète ; une offre concurrente fait monter P_offre et réduit l'écart.</p><p class="res">Conclusion : p = 83,3 %. Le cours de la cible reste sous l'offre tant que l'échec est possible : c'est une raison pour laquelle il monte moins que la prime.</p>
+</div></details></div>
+<div class="exo"><h3>Exercice 5 · Free rider et toehold</h3>
+<p>Cible mal gérée : cours actuel 45 € ; cours potentiel 75 € après prise de contrôle ; 1 million d'actions ; synergies espérées 30 € par action.</p>
+<span class="qq"><b>Question </b>(a) L'offreur propose 60 € : qui gagne quoi si tous apportent ? (b) Que font des actionnaires rationnels, et quelle offre faut-il faire ? (c) L'offreur a d'abord acheté 5 % des actions à 45 € (toehold) puis offre 75 € pour le reste : prime moyenne et partage des synergies ?</span><details><summary>Voir le corrigé détaillé</summary><div class="body">
+<div class="given"><span><b>Cours</b> 45 €</span><span><b>Potentiel</b> 75 €</span><span><b>Actions</b> 1 M</span><span><b>Toehold</b> 5 %</span></div><p class="st">Étape 1 · (a) Offre à 60 €, tous apportent</p><div class="eq">Synergies totales = (75 − 45) × 1 M = 30 M€
+Cible : (60 − 45) × 1 M = 15 M€      Acquéreur : (75 − 60) × 1 M = 15 M€</div><p class="st">Étape 2 · (b) Le raisonnement du free rider</p><p>Un actionnaire qui n'apporte pas recevra 75 € une fois les synergies réalisées, mieux que 60 €. Si tous raisonnent ainsi, personne n'apporte et l'offre échoue (dilemme du prisonnier). Pour les convaincre, il faut offrir <strong>75 €</strong> : prime de 30 € par action (la slide écrit « dollars »), l'acquéreur ne garde <strong>rien</strong>.</p><p class="st">Étape 3 · (c) Coût avec toehold</p><div class="eq">Toehold : 5 % × 1 M × 45 = 2,25 M€
+Reste   : 95 % × 1 M × 75 = 71,25 M€
+Total   : 73,5 M€</div><p class="st">Étape 4 · Prime moyenne et partage</p><div class="eq">Prime moyenne = (0,05 × 45 + 0,95 × 75) − 45 = 73,5 − 45 = 28,5 € par action
+Cible : 28,5 M€      Acquéreur : 30 − 28,5 = 1,5 M€</div><p>Formule générale : si le toehold représente la fraction α des actions, le gain de l'acquéreur est α × S (ici 0,05 × 30 = 1,5).</p><div class="bars"><p class="muted" style="margin:0 0 6px">Partage des 30 M€ de synergies (M€) : <b style="color:var(--amber)">cible</b> · <b style="color:var(--plum)">acquéreur</b></p><div class="bar"><span class="bl">Offre à 60 € (si tous apportent)</span><span class="bt"><i style="width:50.0%;background:var(--amber)">15</i><i style="width:50.0%;background:var(--plum)">15</i></span></div><div class="bar"><span class="bl">Offre à 75 € (free rider)</span><span class="bt"><i style="width:100.0%;background:var(--amber)">30</i><i style="width:0.0%;background:var(--plum)">0</i></span></div><div class="bar"><span class="bl">Toehold 5 % + offre à 75 €</span><span class="bt"><i style="width:95.0%;background:var(--amber)">28.5</i><i style="width:5.0%;background:var(--plum)">1.5</i></span></div></div><div class="box warn"><span class="tag">Limites du toehold</span><p>Il peut dissuader des offres rivales mais est perçu comme une prise de contrôle hostile qui peut déclencher une défense de la cible. Autres remèdes au free rider : un LBO, ou toute stratégie qui augmente le risque de la cible ex post.</p></div><p class="res">Conclusion : sans toehold, l'acquéreur ne garde rien ; avec 5 % de toehold, il garde 1,5 M€ sur 30.</p>
+</div></details></div>
+</section>
+
+<section id="retenir">
+  <h2><span class="n">6</span>À retenir</h2>
+  <ul>
+    <li>La cible gagne presque toujours ; ce sont le signe du CAR de l'<strong>offreur</strong> et le <strong>total</strong> qui départagent synergie, agence et hubris.</li>
+    <li>Un CAR en % n'est pas un gain en dollars : <strong>multiplier par la capitalisation</strong> et pondérer par la taille.</li>
+    <li>Toujours travailler sur des cours <strong>ajustés</strong> (split, dividende).</li>
+    <li>Fenêtre <strong>courte</strong> ; estimation <strong>avant</strong> la zone tampon ; modèle de marché le plus complet.</li>
+    <li>Une réaction positive à l'annonce <strong>ne prouve pas</strong> le succès à long terme.</li>
+    <li>Le cours de la cible monte <strong>moins que la prime</strong> : probabilité d'échec et surenchère possible.</li>
+    <li>Probabilité implicite : <strong>p = (P_après − P_avant) / (P_offre − P_avant)</strong>.</li>
+    <li>Free rider : l'acquéreur ne garde presque rien ; <strong>toehold</strong> de fraction α : gain = α × synergies.</li>
+  </ul>
+</section>
+
+<footer>Fiche établie à partir du support « Ingénierie financière, Chapitre 3 : Les gains », J.-Y. Filbien, JUNIA ISA Lille 2026-2027. Corrigés recalculés pas à pas ; la statistique t et les applications Microsoft–Yahoo! sont des compléments.</footer>
+</div>
+<style id="qp-css">.enonce{border:1px solid rgba(128,128,128,.35);border-radius:10px;padding:10px 14px;margin:10px 0 14px;background:rgba(128,128,128,.07)}
+.enonce>.t{display:block;font:600 11.5px/1.3 ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;opacity:.75;margin-bottom:6px}
+.enonce ol,.enonce ul{margin:4px 0 0;padding-left:22px}.enonce li{margin:3px 0}
+.qq{display:block;margin:12px 0 6px;padding:7px 11px;border-left:4px solid #c2571f;background:rgba(194,87,31,.09);border-radius:0 7px 7px 0;font-weight:600;line-height:1.45}
+.qq>b:first-child{color:#c2571f;margin-right:4px}
+.why{display:block;margin:6px 0;padding:6px 10px;border-left:3px solid rgba(128,128,128,.5);font-size:.95em;opacity:.95}
+.why>b:first-child{opacity:.8}
+.rep{display:block;margin:4px 0 0}.rep>b:first-child{color:#1f7a4d}
+@media print{.enonce,.qq{break-inside:avoid}}</style></body></html>
