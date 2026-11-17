@@ -1,49 +1,49 @@
 {
- "maj": "2026-11-17T07:55:02+01:00",
- "seance": "Clôture du lundi 16 novembre 2026 (Nikkei : clôture du mardi 17 novembre ; Euro Stoxx 50 : clôture du vendredi 13 novembre, faute de source pour le 16)",
+ "maj": "2026-11-16T07:55:43+01:00",
+ "seance": "Clôture du vendredi 13 novembre 2026 (Nikkei : clôture du lundi 16 novembre ; Bitcoin : relevé du lundi 16 novembre vers 7 h 30)",
  "source": {
-  "nom": "Zonebourse via Bourse Direct (Paris, Francfort), Yahoo Finance et The Weekend Spread (Wall Street, or, Bitcoin, EUR/USD), Libnanews (Brent), Business Upturn (Nikkei)",
-  "url": "https://www.boursedirect.fr/fr/actualites/categorie/analyse-de-la-tendance-des-marches/fin-de-serie-pour-le-cac-40-les-marches-scrutent-nvidia-et-anthropic-zone-bourse-8efe95784326571e4e58777ac0a7d7e3dc99937c"
+  "nom": "Zonebourse, ARIVA.DE, Xinhua, Yahoo Finance, BCE (clôtures du 13/11), Business Upturn (Nikkei), Sunday Guardian et Newsquawk (Bitcoin)",
+  "url": "https://www.zonebourse.com/actualite-bourse/cinq-sur-cinq-pour-le-cac-40-sur-la-semaine-ce785ed9d08df327"
  },
  "groupes": [
   {
    "titre": "Actions Europe",
    "lignes": [
-    {"nom": "CAC 40", "valeur": "8 352,00", "var": -0.2},
+    {"nom": "CAC 40", "valeur": "8 368,91", "var": 0.09},
     {"nom": "Euro Stoxx 50", "valeur": "6 386,86", "var": -0.19},
-    {"nom": "DAX", "valeur": "26 630,05", "var": -0.45}
+    {"nom": "DAX", "valeur": "26 749,95", "var": -0.08}
    ]
   },
   {
    "titre": "Actions monde",
    "lignes": [
-    {"nom": "S&P 500", "valeur": "7 416,59", "var": -1.92},
-    {"nom": "Nasdaq", "valeur": "24 509,76", "var": -2.49},
-    {"nom": "Dow Jones", "valeur": "51 608,17", "var": -1.41},
-    {"nom": "Nikkei 225", "valeur": "58 981,99", "var": -1.14}
+    {"nom": "S&P 500", "valeur": "7 561,67", "var": -0.4},
+    {"nom": "Nasdaq", "valeur": "25 136,27", "var": -0.91},
+    {"nom": "Dow Jones", "valeur": "52 347,55", "var": 0.1},
+    {"nom": "Nikkei 225", "valeur": "59 675,46", "var": -2.4}
    ]
   },
   {
    "titre": "Change, matières premières, crypto",
    "lignes": [
-    {"nom": "EUR/USD", "valeur": "1,1009", "var": -0.1},
-    {"nom": "Pétrole Brent ($)", "valeur": "92,44", "var": -3.55},
-    {"nom": "Or ($/once)", "valeur": "3 852", "var": -0.89},
-    {"nom": "Bitcoin ($)", "valeur": "64 879", "var": -0.67}
+    {"nom": "EUR/USD", "valeur": "1,1033", "var": -0.21},
+    {"nom": "Pétrole Brent ($)", "valeur": "95,84", "var": 0.02},
+    {"nom": "Or ($/once)", "valeur": "3 883", "var": 0.18},
+    {"nom": "Bitcoin ($)", "valeur": "64 342", "var": -1.6}
    ]
   }
  ],
  "actu": {
-  "titre": "Wall Street décroche : le Nasdaq perd 2,5 % et entre en correction, à la veille des résultats de Nvidia",
+  "titre": "Surprise au Japon : le PIB recule au 3e trimestre et le Nikkei décroche de 2,4 %",
   "date": "2026-11-16",
-  "resume": "Lundi, le S&P 500 a reculé de 1,92 %, le Dow Jones de 1,41 % et le Nasdaq de 2,49 %, désormais à près de 11 % sous son sommet du 6 octobre, ce qui le fait entrer en zone de correction. Nvidia a chuté de plus de 4 % : le groupe publie mardi soir ses premiers résultats trimestriels sans son cofondateur Jensen Huang à sa tête, et le marché s'interroge sur sa direction. De nouvelles restrictions américaines sur l'export de puces d'IA vers l'Asie du Sud-Est ont aussi fait plonger AMD (−5,6 %) et Intel (−7 %). Enfin, le taux à 10 ans américain est resté au-dessus de 5 %, alors que les marchés anticipent une hausse des taux de la Fed en décembre et que l'introduction en Bourse d'Anthropic est attendue jeudi.",
-  "cours": "Lien avec tes cours : les valeurs de l'IA sont des actions « de croissance » dont l'essentiel de la valeur DCF vient de flux lointains ; quand le taux sans risque dépasse 5 %, le coût des capitaux propres du MEDAF (rf + β × prime de risque) monte et ces flux actualisés fondent plus vite que ceux des valeurs « value ». Leur bêta élevé explique aussi qu'elles baissent plus que le marché : c'est l'écart Nasdaq (−2,5 %) contre Dow Jones (−1,4 %). Enfin, le départ d'un dirigeant emblématique est un risque spécifique (diversifiable) qui s'ajoute ici au risque systématique de taux.",
-  "source": "Yahoo Finance",
-  "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-16-222502139.html"
+  "resume": "Selon la première estimation du Cabinet Office publiée lundi, le PIB japonais a reculé de 0,1 % en rythme annualisé entre juillet et septembre, alors que les économistes attendaient une hausse de 0,3 % ; c'est la première baisse depuis fin 2025. La consommation des ménages, qui pèse plus de la moitié de l'économie, a baissé de 0,3 %, freinée par la vie chère et les intempéries, et le commerce extérieur a retiré 0,6 point à la croissance à cause de la flambée des importations d'énergie. Seul l'investissement des entreprises a tenu (+1,6 %), porté par l'automatisation et les infrastructures d'IA. À Tokyo, le Nikkei 225 a clôturé en baisse de 2,4 %, à 59 675 points, repassant sous la barre des 60 000.",
+  "cours": "Lien avec tes cours : la Banque du Japon, qui a déjà relevé ses taux en juin et en septembre, est coincée entre une inflation importée par l'énergie et une croissance qui cale — un vrai dilemme de politique monétaire. En évaluation, c'est le pire des deux mondes pour un modèle de Gordon ou un DCF : P = D / (k − g), avec un g (croissance attendue) qui baisse et un k qui monte si les taux sans risque augmentent, d'où la chute des actions. Et en gestion de portefeuille, la baisse plus marquée des valeurs liées à l'IA illustre le risque des titres à bêta élevé dont la valeur repose sur des flux lointains, très sensibles au taux d'actualisation.",
+  "source": "Globe TV, d'après le Cabinet Office japonais",
+  "url": "https://globetv.app/news/japan-economy-contracts-01-in-q3-as-consumer-spending-falters-6afa4e1644678"
  },
  "titres": [
-  {"t": "Le CAC 40 met fin à cinq hausses d'affilée ; les marchés anticipent à plus de 90 % une hausse des taux de la Fed le 9 décembre", "url": "https://www.boursedirect.fr/fr/actualites/categorie/analyse-de-la-tendance-des-marches/fin-de-serie-pour-le-cac-40-les-marches-scrutent-nvidia-et-anthropic-zone-bourse-8efe95784326571e4e58777ac0a7d7e3dc99937c"},
-  {"t": "Le Nikkei 225 recule encore de 1,14 % ce mardi, plombé par les valeurs de l'IA et des semi-conducteurs", "url": "https://businessupturn.com/asia/east-asia/japan/nikkei-225-falls-1-14-as-ai-and-semiconductor-stocks-weigh-on-tokyo/"},
-  {"t": "Le point marchés du 16 novembre : Brent en chute de 3,6 %, PIB japonais en recul, industrie chinoise solide", "url": "https://libnanews.com/marches-du-16-novembre-lindustrie-resiste-la-confiance-se-fragmente/"}
+  {"t": "Le Nikkei 225 chute de 2,4 % et repasse sous les 60 000 points, plombé par les valeurs de l'IA", "url": "https://businessupturn.com/asia/east-asia/japan/nikkei-225-declines-sharply-as-ai-stocks-face-broad-selling-pressure/"},
+  {"t": "Fed : plusieurs responsables tiennent un discours restrictif, l'inflation jugée « trop élevée » ; le Bitcoin passe brièvement sous 63 000 dollars", "url": "https://www.newsquawk.com/headlines/newsquawk-daily-european-opening-news---16th-november-2026"},
+  {"t": "Fed, résultats de Nvidia, introduction en Bourse d'Anthropic : les rendez-vous de la semaine qui peuvent faire bouger les marchés", "url": "https://crypto.news/bitcoin-fed-nvidia-anthropic-ipo-crypto-week-ahead/"}
  ]
 }
