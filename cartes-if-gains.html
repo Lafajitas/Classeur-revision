@@ -62,9 +62,9 @@ svg text{fill:var(--fg)}
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Ingénierie financière · J.-Y. Filbien · Ch. 3 · Les gains</div>
+    <div class="eyebrow">Ingénierie financière · J.-Y. Filbien · Ch. 3</div>
     <h1>Cartes mentales Les gains</h1>
-    <p class="lede">Quatre cartes pour le chapitre 3 : les théories et leurs prédictions, les études d'événements, la réaction du marché et le free rider, puis les exercices en chiffres.</p>
+    <p class="lede">Quatre cartes pour le chapitre 3 : les théories et leurs prédictions, la méthode des études d'événements, la réaction du marché et le partage des gains, puis les exercices.</p>
   </header>
   <nav id="tabs" role="tablist" aria-label="Cartes"></nav>
   <section class="sheet">
@@ -86,43 +86,41 @@ svg text{fill:var(--fg)}
 <script>
 const F = s => ({t:s, f:true});
 const MAPS = [
-{id:"theories", tab:"Théories", title:"Les théories et leurs prédictions", sub:"Création, destruction, neutralité",
+{id:"theories", tab:"Théories", title:"Qui gagne ? Les théories", sub:"Création, destruction, neutralité",
  root:{t:"Théories des F&A", c:[
-  {t:"Création de valeur", c:[{t:"Synergies (Bradley, Desai, Kim)"},{t:"Coûts de transaction (Coase)"},{t:"Discipline (Manne)"}]},
-  {t:"Destruction de valeur", c:[{t:"Coûts d'agence des FCF (Jensen)"},{t:"Enracinement du dirigeant (Shleifer, Vishny)"}]},
-  {t:"Neutralité", c:[{t:"Hubris (Roll)"},{t:"Malédiction du vainqueur"},{t:"Transfert offreur → cible"}]},
-  {t:"Prédictions : cible", c:[{t:"Positifs dans toutes les théories"}]},
-  {t:"Prédictions : offreur", c:[{t:"Synergie : positifs"},{t:"Agence : davantage négatifs"},{t:"Hubris : négatifs, total nul"}]},
-  {t:"Gains combinés", c:[{t:"Synergie : positifs"},{t:"Agence : négatifs"},{t:"Hubris : nuls"}]}
+  {t:"Création de valeur", c:[{t:"Synergies (Bradley, Desai, Kim)"},{t:"Coûts de transaction (Coase)"},{t:"Discipline (Manne) : marché du contrôle"}]},
+  {t:"Destruction de valeur", c:[{t:"Coûts d'agence des FCF (Jensen)"},{t:"Enracinement (Shleifer, Vishny)"}]},
+  {t:"Neutralité", c:[{t:"Hubris (Roll)"},{t:"Malédiction du vainqueur : il paie trop cher"},{t:"Transfert offreur → cible"}]},
+  {t:"Prédictions", c:[{t:"Synergie : total +, cible +, offreur +"},{t:"Agence : total −, cible +, offreur −−"},{t:"Hubris : total 0, cible +, offreur −"}]},
+  {t:"Lecture", c:[{t:"La cible gagne toujours (prime)"},{t:"Le test : CAR de l'offreur et total"}]},
+  {t:"Concurrents de la cible", c:[{t:"Efficacité productive : CAR −"},{t:"Collusion : CAR +"},{t:"Pouvoir de marché amont : CAR +"},{t:"Futures cibles probables : CAR +"}]}
  ]}},
-{id:"event", tab:"Études d'événements", title:"La méthodologie des études d'événements", sub:"AR, CAR, modèles, cours ajusté",
- root:{t:"Event study", c:[
-  {t:"Pourquoi ?", c:[{t:"Pas de contrefactuel observable"},{t:"Événements contaminants"},{t:"Programme d'acquisitions"}]},
-  {t:"Principe", c:[{t:"Marchés d'anticipations et efficients"},{t:"Fenêtre courte"},{t:"Limite : pas de garantie à long terme"}]},
-  {t:"Formules", c:[F("Rₜ = (Pₜ − Pₜ₋₁) / Pₜ₋₁"),F("ARₜ = Rₜ − rendement normal"),F("CAR(K,L) = Σ ARₜ"),F("ΔV = CAR × capitalisation")]},
-  {t:"Fenêtres", c:[{t:"Estimation : t−235 à t−36"},{t:"Zone tampon : t−36 à t−5"},{t:"Événement : t−5 à t+5"}]},
-  {t:"Rendement normal", c:[{t:"Moyenne constante"},{t:"Ajusté du marché (indice)"},F("Modèle de marché : α + β·Rm")]},
-  {t:"Cours ajusté", c:[{t:"Split n pour 1 : × 1/n"},F("Dividende : × (1 − D/P veille)")]},
-  {t:"Cas", c:[{t:"Boeing : CAR 6,59 % ; MD : 20,31 %"},{t:"Microsoft −13,35 % ; Yahoo! +38,38 %"},{t:"Disney : Pixar, Marvel, Fox"}]}
+{id:"event", tab:"Étude d'événements", title:"La méthode des études d'événements", sub:"AR, CAR, modèles, cours ajustés",
+ root:{t:"Étude d'événements", c:[
+  {t:"Pourquoi ?", c:[{t:"Pas de contrefactuel"},{t:"Événements contaminants"},{t:"Programme d'acquisitions"},{t:"Hyp. : anticipations rationnelles, efficience"}]},
+  {t:"Mesures", c:[F("Rₜ = (Pₜ − Pₜ₋₁) / Pₜ₋₁"),F("ARₜ = Rₜ − rendement normal"),F("CAR(K,L) = Σ ARₜ"),F("t = CAR / (σ_AR·√N), seuil 1,96")]},
+  {t:"Fenêtres", c:[{t:"Estimation : t−235 à t−36"},{t:"Tampon : t−36 à t−5 (fuites)"},{t:"Événement : t−5 à t+5"}]},
+  {t:"Rendement normal", c:[{t:"Moyen constant : R̄ᵢ"},{t:"Ajusté du marché : Rₘ,ₜ"},F("Modèle de marché : α̂ + β̂·Rₘ,ₜ"),F("β̂ = Cov(Rᵢ,Rₘ) / Var(Rₘ)"),{t:"Indice large et représentatif"}]},
+  {t:"En monnaie", c:[F("ΔV = CAR × capi avant annonce"),F("(V_A·CAR_A + V_T·CAR_T)/(V_A + V_T)"),{t:"Ou équipondéré (surestime)"}]},
+  {t:"Cours ajustés (CRSP)", c:[F("Split n pour 1 : × 1/n"),F("Dividende : × (1 − D/P_veille)"),{t:"Exemple : 1 − 0,08/24,96 = 0,9968"}]}
  ]}},
-{id:"marche", tab:"Marché et free rider", title:"La réaction du marché", sub:"Prime, partage des gains, free rider, toehold",
+{id:"marche", tab:"Réaction du marché", title:"La réaction du marché et le partage", sub:"Prime, faits stylisés, free rider, arbitrage",
  root:{t:"Réaction du marché", c:[
-  {t:"Prime", c:[{t:"États-Unis : 43 %, cible +15 %, acquéreur +1 %"},{t:"France : 27 %, cible +16 %, acquéreur 0 %"}]},
-  {t:"Faits stylisés", c:[{t:"Cible ≈ +15 %"},{t:"Acquéreur ≈ 0"},{t:"Combiné ≈ +2 %"},{t:"1999-2000 : −267 Md USD pour les acquéreurs"},{t:"Après 2009 : réaction plus favorable"}]},
-  {t:"Qui capte les synergies ?", c:[{t:"Contribution unique : partage équitable"},{t:"Substituable : tout à la cible"},{t:"La concurrence fait monter la prime"}]},
-  {t:"Mieux pour l'acquéreur si", c:[{t:"Cible non cotée"},{t:"Petit acquéreur"},{t:"Numéraire"},{t:"Bonne gouvernance"},{t:"Première opération"}]},
-  {t:"Arbitrage", c:[F("p = (P après − P avant) / (P offre − P avant)"),{t:"Zertro : 83,3 %"}]},
-  {t:"Free rider", c:[{t:"Dilemme du prisonnier"},{t:"Offre à 60 € : échec"},{t:"Offre à 75 € : acquéreur à 0"}]},
-  {t:"Toehold", c:[F("Gain acquéreur = α × synergies"),{t:"5 % à 45 € : prime moyenne 28,5 €"},{t:"Risque : défense de la cible"}]},
-  {t:"Rivaux", c:[{t:"Efficacité : CAR −"},{t:"Collusion, pouvoir de marché, cible potentielle : CAR +"}]}
+  {t:"Prime", c:[{t:"US : prime 43 %, cible +15 %, acquéreur +1 %"},{t:"France : prime 27 %, cible +16 %, acquéreur 0 %"}]},
+  {t:"Faits stylisés", c:[{t:"Cible : CAR ≈ +15 %"},{t:"Acquéreur : ≈ 0"},{t:"Combiné pondéré : ≈ +2 %"}]},
+  {t:"Effet de taille", c:[{t:"1999-2000 : −267 Md USD"},{t:"Après 2009 : ≈ +3 % (Alexandridis)"},{t:"% ≠ dollars"}]},
+  {t:"Qui capte les synergies ?", c:[{t:"La cible, surtout"},{t:"Cause : la concurrence entre acquéreurs"},{t:"Mieux pour l'acquéreur : cible non cotée, numéraire, petit acquéreur…"},{t:"Écoute des dirigeants (Luo, 2005)"}]},
+  {t:"Arbitrage", c:[F("p = (P_après − P_avant)/(P_offre − P_avant)"),{t:"Cours cible < offre si risque d'échec"},{t:"Superior proposal"}]},
+  {t:"Free rider", c:[{t:"Condition : ≥ 50 % apportés"},{t:"Dilemme du prisonnier"},F("Toehold : gain = α × S"),{t:"Parades : toehold, LBO"}]}
  ]}},
 {id:"exos", tab:"Exercices", title:"Les exercices en chiffres", sub:"Résultats à retrouver seul",
  root:{t:"Exercices Ch. 3", c:[
   {t:"Cours ajustés", c:[{t:"Deutsche Börse : +1,2 % (pas −49 %)"},{t:"Microsoft : +1,5 %, facteur 0,8972"}]},
-  {t:"Boeing – McDonnell", c:[{t:"Valeur : 2,31 + 2,84 = 5,15 Md USD"},{t:"CAR combiné : 10,51 % pondéré, 13,45 % équipondéré"}]},
-  {t:"Microsoft – Yahoo!", c:[{t:"Cours avant : 19,14 USD"},{t:"Probabilité implicite ≈ 62 %"},{t:"Profil hubris"}]},
-  {t:"Zertro", c:[{t:"Offre 130 €, p = 83,3 %"}]},
-  {t:"Free rider", c:[{t:"Toehold 5 % : acquéreur 1,5 M€ sur 30 M€"},{t:"Prime moyenne : 28,5 €"}]}
+  {t:"Boeing – MD", c:[{t:"CAR : BA 6,59 %, MD 20,31 %"},{t:"2,31 + 2,84 = 5,15 Md USD"},{t:"Combiné : 13,45 % / 10,51 %"},{t:"Synergie ; cible 55 % du gain"}]},
+  {t:"Microsoft – Yahoo!", c:[{t:"CAR : −13,35 % / +38,38 %"},F("P_avant = 31 / 1,62 = 19,14"),{t:"Hubris ; p ≈ 62 %"}]},
+  {t:"Zertro", c:[{t:"Offre 130 € ; p = 25/30 = 83,3 %"},{t:"Écart d'arbitrage 5 €"}]},
+  {t:"Free rider", c:[{t:"Offre 60 : 15 / 15 M€, échec"},{t:"Offre 75 : acquéreur 0"},{t:"Toehold 5 % : prime 28,5 €, gain 1,5 M€"}]},
+  {t:"Disney", c:[{t:"Pixar −0,14 %, Marvel −1,94 %"},{t:"Fox +4,33 % : apprentissage"}]}
  ]}}
 ];
 

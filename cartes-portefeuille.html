@@ -64,7 +64,7 @@ svg text{fill:var(--fg)}
   <header>
     <div class="eyebrow">Gestion de portefeuille · P. Grandin · Cours du 21 sept.</div>
     <h1>Cartes mentales Portefeuille</h1>
-    <p class="lede">Une carte par chapitre : théorie du portefeuille, efficience, gestion active et passive, mesure de performance.</p>
+    <p class="lede">Une carte par chapitre (théorie du portefeuille, efficience, gestion active et passive, mesure de performance), puis trois cartes de compléments : prévision des cours, anomalies en chiffres, allocation et frais.</p>
   </header>
   <nav id="tabs" role="tablist" aria-label="Cartes"></nav>
   <section class="sheet">
@@ -125,6 +125,38 @@ const MAPS = [
   {t:"Alpha de Jensen", c:[F("α = r_p − [r_f + β (r_m − r_f)]"),{t:"Ex. : A et B ont α = 4 %"}]},
   {t:"Ratio d'information", c:[F("RI = moyenne(r_p − r_b) / σ(r_p − r_b)")]},
   {t:"Persistance", c:[{t:"Fonds ≈ marché en moyenne"},{t:"Persistance surtout à court terme"}]}
+ ]}},
+{id:"prevision", tab:"Ch. 2 · Prévision", title:"Prévoir les cours : tests et événements", sub:"Analyse technique, autocorrélation, études d'événements",
+ root:{t:"Peut-on prévoir les cours ?", c:[
+  {t:"Cadre", c:[{t:"Faible → tests de prévisibilité"},{t:"Semi-forte → études d'événements"},{t:"Forte → tests d'informations privées"},{t:"Test conjoint : efficience + modèle"}]},
+  {t:"Chartisme", c:[{t:"Supports et résistances"},{t:"Double sommet, tête-épaules, triangle"},{t:"Bar charts : ouverture, haut, bas, clôture"},{t:"Pas de consensus sur les figures"}]},
+  {t:"Indicateurs techniques", c:[{t:"Filtre de x % sur le dernier min / max"},F("MM_t(n) = (1/n) Σ P_{t−k}"),F("Momentum : M_t(n) = P_t − P_{t−n}"),F("RSI = 100 − 100 / (1 + H/B)"),{t:"RSI : achat au-dessus de 30, vente sous 70"}]},
+  {t:"Résultats des règles", c:[{t:"Fama-Blume : filtre 0,5 % = 11,5 % brut, −103,6 % net"},{t:"Détention 9,9 % jamais battue net"},{t:"Van Horne-Parker : max 1 943 $ < 2 487 $"}]},
+  {t:"Autocorrélation", c:[{t:"Fama 1965 : 11/30 significatifs, r² ≤ 1,5 %"},F("Seuil ≈ 2 / √T"),F("RV = t·σ²(r_t) / σ²(r_T) = 1"),{t:"Portefeuilles : 20 % hebdo, 35 % petites capi."},{t:"Autocorrélation croisée, asynchronisme"}]},
+  {t:"Retournements", c:[{t:"De Bondt-Thaler : perdants − gagnants = 8,2 %"},{t:"Momentum : +11,40 %/an sur ~12 mois"},{t:"Puis inversion (≈ −4 % à 35 mois)"}]},
+  {t:"Études d'événements", c:[F("AR = R − (α + β·R_m)"),F("CAR = Σ AR"),{t:"Immédiat / sur-réaction / sous-réaction"},{t:"Splits (FFJR 1969) : plat après"},{t:"Dividendes (Aharony-Swary) : réaction le jour J"},{t:"Bénéfices (Bernard 1992) : dérive 60 jours"}]},
+  {t:"Informations privées", c:[{t:"Initiés gagnent (Seyhun 1986)"},{t:"Analystes : contenu info mais en retard"}]}
+ ]}},
+{id:"anomalies", tab:"Ch. 2 · Anomalies", title:"Anomalies et puzzles en chiffres", sub:"Les régularités boursières et ce qu'il en reste",
+ root:{t:"Anomalies et puzzles", c:[
+  {t:"Calendaires", c:[{t:"Janvier : 3,48 % vs 0,42 % (≈ 43 % de l'année)"},{t:"Baromètre : janvier + → année + 86,4 %"},{t:"Lundi : −0,17 % (French 1980)"},{t:"Week-end −0,13 % (Rogalski 1984)"},{t:"Veille de férié : 0,340 % vs 0,024 %"},{t:"Halloween France : 9,6 % vs 2,3 %"}]},
+  {t:"PER et taille", c:[{t:"Basu : PER faible α +4,67 %, élevé −3,3 %"},{t:"Petites 19,8 % (β 1,17) vs grandes 11,9 % (β 0,95)"},{t:"Siegel : hors 1975-1983, 10,03 % vs 9,80 %"}]},
+  {t:"Book-to-market", c:[{t:"FF 1992 : value 19,6 % vs growth 7,7 %"},{t:"Bêta faible 16,1 % > bêta élevé 13,7 %"},{t:"Extrapolation de la croissance (La Porta)"},{t:"2006-2021 : grandes growth 14,19 % > value 8,37 %"}]},
+  {t:"Autres anomalies", c:[{t:"Négatif : accruals, scores Z/O, volatilité"},{t:"Positif : rendement, profitabilité (Novy-Marx)"},{t:"Croissance des actifs : signe à vérifier"}]},
+  {t:"Volatilité excessive", c:[{t:"Shiller 1981 : cours > fondamentaux"},{t:"Jours de news : 1,46 % vs 0,56 %"},{t:"Bulle : stealth, awareness, mania, blow-off"},{t:"Rose.com : +74 % en 10 jours"}]},
+  {t:"Autres puzzles", c:[{t:"Biais domestique"},{t:"Prime de risque trop élevée"},{t:"Allocation : Fidelity oblig./actions 1,5 → 0,46"}]},
+  {t:"Prix unique violé", c:[{t:"Fonds fermés : décote"},{t:"Royal Dutch / Shell : −10 % à +17 %"},F("3Com − 1,5 × Palm = 81,81 − 142,59 = −60,78 $")]}
+ ]}},
+{id:"allocation", tab:"Ch. 3 · Allocation", title:"Allocation, frais et produits", sub:"Les chiffres de la gestion active et passive",
+ root:{t:"Allocation et produits", c:[
+  {t:"Hiérarchie des actifs", c:[{t:"Réel US 1872-2008 : actions 6,0 %, oblig. 2,4 %"},F("g ≈ a − σ²/2"),{t:"1900-2022 : actions 9,5 % nominal, 6,4 % réel"},{t:"Dividendes : 1 626 370 $ vs 350 144 $"}]},
+  {t:"Horizon", c:[{t:"Volatilité actions 19 % (1 an) → 9 % (30 ans)"},{t:"Perte réelle : 31 % (1 an) → 0 % (20 ans)"},F("Risque cumulé : 9 % × √30 ≈ 49 %"),{t:"Sous l'eau : 16 ans US, 73 ans Italie"}]},
+  {t:"Poids des phases", c:[{t:"Allocation : 90 % de la variation (BHB)"},{t:"Aglietta : marché 90 %, sélection 2 %"},{t:"Piège : R² temporel"}]},
+  {t:"Frais", c:[{t:"1 % par an : richesse finale ÷ 2,8"},{t:"Fonds actions US : 2 % → 0,95 %"},{t:"France : 1,79 % ± 0,92 %"}]},
+  {t:"Mesurer l'activité", c:[F("AS = ½ Σ |w_p − w_b|"),F("TE = σ(R_p − R_b)"),{t:"AS et TE faibles : closet indexing"}]},
+  {t:"Hedge funds", c:[{t:"1-2 % + 15-20 %, hurdle rate, HWM"},{t:"15 % brut → 10,4 % net"},{t:"Bogle : 11,8 % vs 7,2 %, puis 5,3 % vs 13,5 %"},{t:"Mortalité ≈ 10 % par an"}]},
+  {t:"International", c:[{t:"Corrélations : 0,47 puis 0,88 (2001-2021)"},{t:"Risque plancher : 33 % France, 12 % monde"}]},
+  {t:"Passif et structurés", c:[{t:"Passif 53 % des fonds actions US (2025)"},{t:"Equity swap : 3 % + (8 + 2 − 3) = 10 %"},{t:"CPPI : gap si chute > 1/m"},{t:"Benefic : 23 % − baisse"}]}
  ]}}
 ];
 
