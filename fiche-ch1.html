@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gestion de portefeuille — fiches de révision (chapitre 1)</title>
+<style>
+:root{--bg:#fff;--fg:#1c2330;--mut:#5b6678;--acc:#1f4fd8;--acc2:#c2410c;--ok:#15803d;--card:#f3f5fa;--bd:#d6dce8;--warn:#fff4e5;--warnbd:#f0b45b}
+@media(prefers-color-scheme:dark){:root{--bg:#12161d;--fg:#e8ecf3;--mut:#9aa6ba;--acc:#7ea2ff;--acc2:#ff9a62;--ok:#58d38a;--card:#1b212c;--bd:#2c3546;--warn:#2b2316;--warnbd:#8a6a2c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{padding:20px 20px 8px;max-width:980px;margin:0 auto}
+header h1{font-size:1.5rem;margin:0 0 4px}
+header p{margin:0;color:var(--mut);font-size:.92rem}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--bd);display:flex;gap:6px;overflow-x:auto;padding:8px 20px;max-width:100%}
+nav button{border:1px solid var(--bd);background:var(--card);color:var(--fg);padding:8px 14px;border-radius:999px;font:inherit;font-size:.9rem;cursor:pointer;white-space:nowrap}
+nav button[aria-selected=true]{background:var(--acc);color:#fff;border-color:var(--acc)}
+main{max-width:980px;margin:0 auto;padding:12px 20px 80px}
+section.panel{display:none}section.panel.on{display:block}
+h2{font-size:1.35rem;margin:34px 0 8px;padding-bottom:6px;border-bottom:2px solid var(--acc)}
+h3{font-size:1.1rem;margin:24px 0 6px;color:var(--acc)}
+h4{font-size:1rem;margin:16px 0 4px}
+p,li{max-width:78ch}
+table{border-collapse:collapse;margin:10px 0;font-size:.92rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--bd);padding:5px 9px;text-align:center}
+th{background:var(--card)}
+td.l,th.l{text-align:left}
+.f{background:var(--card);border-left:4px solid var(--acc);padding:10px 14px;margin:10px 0;border-radius:0 8px 8px 0;overflow-x:auto}
+.f b.t{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);margin-bottom:2px}
+.f .m{font-family:Cambria,"Times New Roman",serif;font-size:1.08rem}
+.note,.piege{background:var(--warn);border:1px solid var(--warnbd);border-radius:8px;padding:8px 12px;margin:12px 0;font-size:.94rem}
+.retiens{background:var(--card);border:1px dashed var(--acc);border-radius:8px;padding:8px 12px;margin:12px 0}
+.exo{border:1px solid var(--bd);border-radius:10px;margin:16px 0;overflow:hidden}
+.exo .q{background:var(--card);padding:10px 14px;font-weight:600}
+.exo .q small{display:block;font-weight:400;color:var(--mut)}
+.exo .c{padding:6px 14px 12px}
+.exo .c .ans{color:var(--ok);font-weight:700}
+.tag{display:inline-block;font-size:.72rem;border-radius:4px;background:var(--acc);color:#fff;padding:1px 7px;margin-right:6px;vertical-align:middle}
+figure{margin:14px 0;text-align:center}
+figure svg{max-width:100%;height:auto;border:1px solid var(--bd);border-radius:8px;background:var(--bg)}
+figcaption{font-size:.84rem;color:var(--mut);margin-top:4px}
+svg text{fill:var(--fg);font:12px system-ui,sans-serif}
+svg .m{fill:var(--mut)}
+svg .ax{stroke:var(--fg);fill:none;stroke-width:1.3}
+svg .ca{stroke:var(--acc);fill:none;stroke-width:2.6}
+svg .cb{stroke:var(--acc2);fill:none;stroke-width:2.6}
+svg .cg{stroke:var(--mut);fill:none;stroke-width:1.4}
+svg .dash{stroke-dasharray:5 4}
+svg .pa{fill:var(--acc)}svg .pb{fill:var(--acc2)}svg .pg{fill:var(--mut)}
+svg .bx{fill:var(--card);stroke:var(--bd);stroke-width:1.2}
+svg .fa{fill:var(--acc);opacity:.85}svg .fb{fill:var(--acc2);opacity:.85}
+svg .arrow{stroke:var(--fg);fill:none;stroke-width:1.4;marker-end:url(#ah)}
+.toc{columns:2;font-size:.92rem;background:var(--card);border-radius:8px;padding:10px 20px}
+.toc a{color:var(--acc);text-decoration:none}
+@media(max-width:640px){.toc{columns:1}}
+</style><style>@media print{nav,.tabs,header{display:none!important}body{background:#fff!important;color:#000!important}.panel{display:block!important}svg{max-width:100%}.exo,figure,table{break-inside:avoid}}</style></head><body>
+<header><h1>Gestion de portefeuille — fiches de révision</h1>
+<p>Une fiche par chapitre (cours complet + schémas + exercices corrigés pas à pas, dont le partiel de l'an dernier).</p></header>
+<nav role="tablist" id="tabs"></nav>
+<main>
+<section class="panel" id="ch1" data-title="Chap. 1 — Théorie moderne du portefeuille">
+<svg width="0" height="0" style="position:absolute"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs></svg>
+<h2 style="margin-top:12px">Chapitre 1 — La théorie moderne du portefeuille</h2>
+<div class="toc"><b>Plan</b><br>
+1. Rentabilité et risque d'une action<br>
+2. Le principe de diversification (Markowitz)<br>
+3. Actif sans risque, CML, théorème de Tobin<br>
+4. Modèle de marché (Sharpe) et MEDAF<br>
+5. La prime de risque<br>
+6. La droite de marché empirique<br>
+7. Modèles multifacteurs (APT, Fama-French)<br>
+8. Exercices du cours + partiel (Ex. 1 et QCM 1-5, 8, 9, 11, 12)</div>
+
+<h3>1. La rentabilité et le risque d'une action</h3>
+<h4>1.1 Rentabilité</h4>
+<div class="f"><b class="t">Rentabilité simple (avec dividende)</b><div class="m">R<sub>t</sub> = (P<sub>t</sub> − P<sub>t−1</sub> + D<sub>t</sub>) / P<sub>t−1</sub></div>
+Sans dividende : R = (P<sub>t</sub> − P<sub>t−1</sub>)/P<sub>t−1</sub>. C'est le gain (ou la perte) réel(le) en %.</div>
+<div class="f"><b class="t">Rentabilité en continu (équivalente)</b><div class="m">r<sub>t</sub> = ln(P<sub>t</sub> / P<sub>t−1</sub>) = ln(1 + R<sub>t</sub>)</div>
+Limite, quand les périodes tendent vers zéro, d'une capitalisation périodique. C'est une <b>convention de calcul qui rend symétriques les hausses et les baisses</b>.</div>
+<p><b>Exemple (pour comprendre la symétrie).</b> Un titre passe de 100 à 150 puis revient à 100.<br>
+Rentabilités simples : +50 % puis 100/150 − 1 = −33,33 % (asymétrique).<br>
+Rentabilités continues : ln(1,5) = +40,55 % puis ln(100/150) = −40,55 % (symétrique, la somme fait bien 0).</p>
+
+<h4>1.2 Risque</h4>
+<div class="f"><b class="t">Variance et volatilité</b><div class="m">s<sub>i</sub>² = 1/(T−1) · Σ<sub>t=1..T</sub> (R<sub>it</sub> − R̄<sub>i</sub>)²  &nbsp;;&nbsp; s<sub>i</sub> = √(s<sub>i</sub>²)</div>
+La volatilité est mesurée par l'écart type des rentabilités.</div>
+<h4>1.3 Hypothèses de distribution</h4>
+<ul><li><b>Hypothèse classique : loi normale.</b> 68 % des rentabilités dans [M − σ ; M + σ] ; 95 % dans [M − 2σ ; M + 2σ].</li>
+<li>Bonne approximation, mais les <b>queues de distribution sont plus épaisses</b> que celles d'une loi normale (les événements extrêmes sont plus fréquents que prévu).</li></ul>
+<figure><svg viewBox="0 0 520 220" width="520" role="img" aria-label="Loi normale avec intervalles 68 % et 95 %">
+<path class="ca" d="M30 190 C100 190 130 185 160 150 C200 80 220 30 260 30 C300 30 320 80 360 150 C390 185 420 190 490 190"/>
+<line class="ax" x1="20" y1="190" x2="500" y2="190"/>
+<line class="cg dash" x1="260" y1="25" x2="260" y2="190"/><line class="cg dash" x1="190" y1="110" x2="190" y2="190"/><line class="cg dash" x1="330" y1="110" x2="330" y2="190"/>
+<line class="cg dash" x1="130" y1="170" x2="130" y2="190"/><line class="cg dash" x1="390" y1="170" x2="390" y2="190"/>
+<text x="250" y="206">M</text><text x="172" y="206">M−σ</text><text x="320" y="206">M+σ</text><text x="108" y="206">M−2σ</text><text x="378" y="206">M+2σ</text>
+<line class="arrow" style="color:var(--acc2)" x1="190" y1="125" x2="330" y2="125" marker-start="url(#ah)"/><text x="225" y="118">68 %</text>
+<line class="arrow" style="color:var(--acc2)" x1="130" y1="160" x2="390" y2="160" marker-start="url(#ah)"/><text x="240" y="153">95 %</text>
+<text class="m" x="400" y="180">queues épaisses (réel)</text></svg>
+<figcaption>Loi normale : 68 % des observations à ±1σ, 95 % à ±2σ. En pratique les queues réelles sont plus épaisses.</figcaption></figure>
+
+<h4>1.4 L'importance des rentabilités extrêmes</h4>
+<p><b>Walter (2003)</b> — CAC 40, 3 460 séances du 1<sup>er</sup> janvier 1988 au 30 juin 2001 :</p>
+<table><tr><th class="l">Donnée</th><th>Valeur</th></tr>
+<tr><td class="l">Progression annuelle moyenne de l'indice</td><td>13,79 %</td></tr>
+<tr><td class="l">Plus forte hausse (17 janvier 1991)</td><td>+7,05 %</td></tr>
+<tr><td class="l">Plus forte baisse (19 août 1991)</td><td>−7,29 %</td></tr>
+<tr><td class="l">Sans les 34 plus fortes hausses (1 % des séances)</td><td>rentabilité moyenne 4,10 %</td></tr>
+<tr><td class="l">Sans les 52 plus fortes hausses</td><td>rentabilité moyenne 0 %</td></tr>
+<tr><td class="l">Sans les 34 plus fortes baisses</td><td>23,80 % par an</td></tr>
+<tr><td class="l">Sans les 52 plus fortes baisses</td><td>la rentabilité annuelle moyenne double</td></tr></table>
+<p><b>Galiègue (SFAF, avril 2024)</b> — graphiques et tableau de la période 1994-2024 :</p>
+<ul><li>Tableau : <b>117</b> variations quotidiennes &lt; −20 %, <b>146</b> variations &gt; +20 %, soit <b>263</b> variations extrêmes au total (132 si on ne garde que les valeurs avec au moins 5 occurrences : 61 baisses et 71 hausses).</li>
+<li>Valeurs les plus concernées (baisses / hausses / total) : Air France-KLM 9/9/18 ; Orpea 12/6/18 ; Solutions 30 4/9/13 ; Covivio 5/7/12 ; Alstom 5/7/12 ; Valneva 3/7/10 ; Atos 6/3/9 ; Vallourec 3/5/8 ; Thales 5/2/7 ; Imerys 1/6/7 ; Eurofins Scientific 1/6/7 ; Vivendi 4/2/6 ; Elior 3/2/5.</li>
+<li>Graphique « variations extrêmes négatives et positives, glissement semestriel » : elles sont groupées par vagues (pics autour de 2002-2003, 2008-2009, 2020 et à nouveau 2022-2024).</li>
+<li>Graphique « volatilité générale et nombre de variations extrêmes (3 ans) » : les deux courbes évoluent ensemble — les périodes de forte volatilité sont celles qui concentrent les mouvements extrêmes.</li></ul>
+<div class="retiens"><b>À retenir :</b> la rentabilité du marché vient du cumul de petites rentabilités positives <i>et</i> de quelques séances extrêmes ; rater quelques jours exceptionnels détruit la performance.</div>
+<p><b>Bessembinder (2019)</b> — la rentabilité du marché est due à quelques valeurs :</p>
+<ul><li><b>4 %</b> des titres cotés sur le marché américain font la rentabilité du marché de 1926 à 2016 ;</li><li>42,6 % des rentabilités mensuelles des titres dépassent celles des bons du Trésor à 1 mois ;</li><li>30,8 % des titres ont une rentabilité supérieure à celle de l'indice pondéré ;</li><li>11,83 % des sociétés ont perdu la totalité de leur valeur.</li></ul>
+<p><b>Alpha Architect (2015)</b> : 1983-2006, 63 % des valeurs sous-performent le benchmark ; 2007-2014, 54 %.</p>
+<p>Les 4 graphiques de Bessembinder (slides sans texte) :</p>
+<ul><li><i>Rentabilité buy-and-hold sur toute la durée de cotation</i> : distribution extrêmement asymétrique — l'immense majorité des sociétés a une rentabilité proche de 0 ou faible, très peu ont des rentabilités énormes.</li>
+<li><i>Création de richesse cumulée, toutes les sociétés (≈ 25 000)</i> : la courbe monte très vite avec les premières entreprises puis plafonne à ≈ 100 % ; elle redescend légèrement à la fin car les dernières sociétés détruisent de la richesse.</li>
+<li><i>Idem, top 1 100 sociétés</i> : ces 1 100 sociétés font à elles seules toute la création nette de richesse.</li>
+<li><i>% de sociétés selon leur rentabilité totale</i> : deux pics aux extrémités — perte totale (−100 %) et rentabilité ≥ 900 %.</li></ul>
+
+<h3>2. Le principe de diversification (Markowitz 1952, 1959)</h3>
+<p>On raisonne à deux actifs A et B (poids a et 1−a), puis on généralise à N actifs.</p>
+<div class="f"><b class="t">Rentabilité du portefeuille (moyenne pondérée, linéaire)</b><div class="m">R<sub>p</sub> = a·r<sub>A</sub> + (1−a)·r<sub>B</sub> &nbsp;;&nbsp; ex ante : E(R<sub>p</sub>) = a·E(r<sub>A</sub>) + (1−a)·E(r<sub>B</sub>)</div></div>
+<div class="f"><b class="t">Variance du portefeuille</b><div class="m">Var(R<sub>p</sub>) = a²·Var(r<sub>A</sub>) + (1−a)²·Var(r<sub>B</sub>) + 2a(1−a)·Cov(r<sub>A</sub>,r<sub>B</sub>)</div>
+(développement de E[(a(r<sub>A</sub>−E r<sub>A</sub>) + (1−a)(r<sub>B</sub>−E r<sub>B</sub>))²])</div>
+<div class="f"><b class="t">Corrélation</b><div class="m">Corr(r<sub>A</sub>,r<sub>B</sub>) = Cov(r<sub>A</sub>,r<sub>B</sub>) / (σ<sub>A</sub>·σ<sub>B</sub>) &nbsp;⇒&nbsp; Cov = ρ·σ<sub>A</sub>·σ<sub>B</sub><br>
+Var(R<sub>p</sub>) = a²σ<sub>A</sub>² + (1−a)²σ<sub>B</sub>² + 2a(1−a)·ρ·σ<sub>A</sub>σ<sub>B</sub></div></div>
+<p><b>Plus la corrélation est faible, plus la diversification est efficace.</b> Le risque du portefeuille est inférieur à la moyenne pondérée des risques dès que ρ &lt; 1.</p>
+
+<div class="exo"><div class="q"><span class="tag">Exemple du cours</span>Application numérique à deux actifs<small>Énoncé : 5 périodes de rentabilités — r<sub>A</sub> = 11 %, 9 %, 25 %, 7 %, −2 % ; r<sub>B</sub> = −3 %, 15 %, 2 %, 20 %, 6 %. Calculer E, variances, covariance, puis rentabilité et risque d'un portefeuille équipondéré.</small></div><div class="c">
+<p><b>Étape 1 — Espérances (moyennes).</b><br>E(R<sub>A</sub>) = (11+9+25+7−2)/5 = 50/5 = <b>10 %</b> ; E(R<sub>B</sub>) = (−3+15+2+20+6)/5 = 40/5 = <b>8 %</b>.</p>
+<p><b>Étape 2 — Écarts à la moyenne (en points de %).</b><br>A : +1, −1, +15, −3, −12 ; B : −11, +7, −6, +12, −2.</p>
+<p><b>Étape 3 — Variances (division par 5, comme dans le cours).</b><br>Var(A) = (1² + 1² + 15² + 3² + 12²)/5 = (1+1+225+9+144)/5 = 380/5 = 76 %² = <b>0,0076</b>.<br>Var(B) = (121+49+36+144+4)/5 = 354/5 = 70,8 %² = <b>0,00708</b>.<br>σ<sub>A</sub> = √0,0076 = 8,72 % ; σ<sub>B</sub> = √0,00708 = 8,41 %.</p>
+<p><b>Étape 4 — Covariance.</b> Produits des écarts : (+1)(−11) = −11 ; (−1)(+7) = −7 ; (+15)(−6) = −90 ; (−3)(+12) = −36 ; (−12)(−2) = +24. Somme = −120, divisée par 5 = −24 %² = <b>−0,0024</b>.<br>Corrélation : ρ = −0,0024/(0,0872 × 0,0841) = <b>−0,327</b>.</p>
+<p><b>Étape 5 — Portefeuille 50/50 (a = 0,5).</b><br>E(R<sub>p</sub>) = 0,5×10 % + 0,5×8 % = <b>9 %</b>.<br>Var = 0,5²×0,0076 + 0,5²×0,00708 + 2×0,5×0,5×(−0,0024) = 0,0019 + 0,00177 − 0,0012 = <b>0,00247</b> ; σ = <b>4,97 %</b>.</p>
+<p>Le risque (4,97 %) est très inférieur à celui de chaque actif seul (8,72 % et 8,41 %) : c'est le gain de diversification.</p>
+<p><b>Autres pondérations (recalculées avec la même formule) :</b></p>
+<table><tr><th>a (A)</th><th>1−a (B)</th><th>E(R<sub>p</sub>)</th><th>σ(R<sub>p</sub>)</th></tr><tr><td>100 %</td><td>0 %</td><td>10 %</td><td>8,72 %</td></tr><tr><td>75 %</td><td>25 %</td><td>9,5 %</td><td>6,18 %</td></tr><tr><td>50 %</td><td>50 %</td><td>9 %</td><td>4,97 %</td></tr><tr><td>25 %</td><td>75 %</td><td>8,5 %</td><td>5,96 %</td></tr><tr><td>0 %</td><td>100 %</td><td>8 %</td><td>8,41 %</td></tr></table>
+</div></div>
+
+<h4>2.1 Portefeuille de risque minimum (2 actifs)</h4>
+<p>On dérive Var(R<sub>p</sub>) par rapport à a et on annule la dérivée.</p>
+<div class="f"><b class="t">Pondération du titre A dans le portefeuille de variance minimale</b><div class="m">a* = [Var(r<sub>B</sub>) − Cov(r<sub>A</sub>,r<sub>B</sub>)] / [Var(r<sub>A</sub>) + Var(r<sub>B</sub>) − 2·Cov(r<sub>A</sub>,r<sub>B</sub>)]</div>
+(écrit dans le cours avec Cov = Corr·σ<sub>A</sub>σ<sub>B</sub>)</div>
+<div class="exo"><div class="q"><span class="tag">Exemple du cours</span>Portefeuille de risque minimum avec les données précédentes<small>Énoncé : déterminer a*, la rentabilité, la variance et l'écart type du portefeuille de variance minimale.</small></div><div class="c">
+<p>a* = (0,00708 − (−0,0024)) / (0,0076 + 0,00708 − 2×(−0,0024)) = 0,00948 / 0,01948 = <b>0,4867 → 48,7 % en A et 51,3 % en B</b>.<br>
+E(R<sub>p</sub>) = 0,4867×10 % + 0,5133×8 % = <b>8,973 %</b> (la slide indique 8,974 %).<br>
+Var = 0,4867²×0,0076 + 0,5133²×0,00708 + 2×0,4867×0,5133×(−0,0024) ≈ <b>0,002467</b> ; σ ≈ <b>4,97 %</b> (la slide indique 0,0024565 et 4,956 % : simple écart d'arrondi).</p></div></div>
+
+<figure><svg viewBox="0 0 520 300" width="520" role="img" aria-label="Frontière de Markowitz à deux actifs">
+<line class="ax" x1="50" y1="260" x2="500" y2="260"/><line class="ax" x1="50" y1="260" x2="50" y2="20"/>
+<text x="470" y="278">risque σ</text><text x="8" y="30">E(R)</text>
+<path class="ca" d="M400 60 C330 130 290 170 255 190 C240 200 232 215 250 232 C262 245 300 232 330 215 C360 198 380 196 400 195"/>
+<path class="ca" d="M400 60 C330 130 300 165 275 190"/>
+<circle class="pa" cx="400" cy="60" r="5"/><text x="408" y="58">A (100 % A : 10 % ; 8,72 %)</text>
+<circle class="pb" cx="395" cy="195" r="5"/><text x="300" y="214" class="m">B (8 % ; 8,41 %)</text>
+<circle class="pg" cx="255" cy="190" r="5"/><text x="120" y="168">50/50 : 9 % ; 4,97 %</text>
+<text x="70" y="248" class="m">Le point le plus à gauche = portefeuille de variance minimale</text>
+<text x="300" y="100" class="m">portefeuilles efficients (branche haute)</text></svg>
+<figcaption>Avec ρ = −0,33, la courbe des portefeuilles possibles (A↔B) se « replie » vers la gauche : on atteint un risque plus faible que celui de chaque actif. La branche supérieure (au-dessus du portefeuille de variance minimale) est la frontière efficiente de Markowitz.</figcaption></figure>
+
+<h4>2.2 Cas extrêmes de corrélation</h4>
+<table><tr><th>ρ</th><th class="l">Écart type du portefeuille</th><th class="l">Conséquence</th></tr>
+<tr><td>+1</td><td class="l">σ(R<sub>p</sub>) = a·σ<sub>A</sub> + (1−a)·σ<sub>B</sub> (car Var = (aσ<sub>A</sub> + (1−a)σ<sub>B</sub>)²)</td><td class="l">Frontière = droite entre A et B ; <b>aucun gain de diversification</b></td></tr>
+<tr><td>−1</td><td class="l">σ(R<sub>p</sub>) = |a·σ<sub>A</sub> − (1−a)·σ<sub>C</sub>| (deux branches de pentes opposées)</td><td class="l">On peut annuler le risque : a* = σ<sub>C</sub> / (σ<sub>A</sub> + σ<sub>C</sub>) ; inutile en pratique</td></tr></table>
+<p>Cas ρ = −1 : a* = [Var(r<sub>C</sub>) + σ<sub>A</sub>σ<sub>C</sub>] / [Var(r<sub>A</sub>) + Var(r<sub>C</sub>) + 2σ<sub>A</sub>σ<sub>C</sub>] = σ<sub>C</sub>/(σ<sub>A</sub> + σ<sub>C</sub>).</p>
+<figure><svg viewBox="0 0 560 250" width="560" role="img" aria-label="Frontière pour ρ=+1 et ρ=-1">
+<g><line class="ax" x1="40" y1="215" x2="250" y2="215"/><line class="ax" x1="40" y1="215" x2="40" y2="20"/><text x="215" y="232">σp</text><text x="6" y="30">rent.</text>
+<line class="ca" x1="80" y1="170" x2="220" y2="60"/><circle class="pb" cx="80" cy="170" r="5"/><circle class="pa" cx="220" cy="60" r="5"/><text x="55" y="188">B</text><text x="226" y="58">A</text><text x="70" y="14" class="m">ρ = +1 : droite A–B</text></g>
+<g transform="translate(300 0)"><line class="ax" x1="40" y1="215" x2="250" y2="215"/><line class="ax" x1="40" y1="215" x2="40" y2="20"/><text x="215" y="232">σp</text>
+<path class="ca" d="M200 60 L40 150 L120 110"/><path class="ca" d="M40 150 L100 190 L190 170"/>
+<circle class="pa" cx="200" cy="60" r="5"/><circle class="pb" cx="190" cy="170" r="5"/><circle class="pg" cx="40" cy="150" r="5"/><text x="205" y="58">A</text><text x="196" y="188">C</text><text x="50" y="145" class="m">σ = 0</text><text x="70" y="14" class="m">ρ = −1 : deux branches</text></g></svg>
+<figcaption>À gauche : ρ = +1. À droite : ρ = −1, le point de jonction des deux branches est le portefeuille de variance minimale (risque nul).</figcaption></figure>
+
+<h4>2.3 Plusieurs actifs et limite de la diversification</h4>
+<div class="f"><b class="t">Écriture matricielle (N actifs)</b><div class="m">E(R<sub>p</sub>) = Σ w<sub>i</sub>E(r<sub>i</sub>) &nbsp;;&nbsp; Var(R<sub>p</sub>) = w′Σw = Σ<sub>n</sub>Σ<sub>m</sub> w<sub>n</sub>w<sub>m</sub>σ<sub>n,m</sub></div>
+Σ = matrice de variances-covariances (5 actifs → matrice 5×5).</div>
+<div class="f"><b class="t">Portefeuille équipondéré de N actifs (w = 1/N)</b><div class="m">Var(r<sub>p</sub>) = Σ<sub>n</sub>Σ<sub>m</sub> (1/N)²σ<sub>n,m</sub> = (1/N)·σ̄<sub>n</sub>² + ((N−1)/N)·σ̄<sub>n,m</sub></div>
+σ̄<sub>n</sub>² = variance moyenne des titres ; σ̄<sub>n,m</sub> = covariance moyenne.</div>
+<p>Quand N → ∞ : le terme (1/N)σ̄² disparaît (<b>risque spécifique éliminé</b>) mais il reste la covariance moyenne : le <b>risque systématique (de marché) ne se diversifie pas</b>. D'où la « limite de la diversification ».</p>
+<figure><svg viewBox="0 0 520 260" width="520" role="img" aria-label="Volatilité du portefeuille en fonction du nombre de titres">
+<line class="ax" x1="55" y1="220" x2="500" y2="220"/><line class="ax" x1="55" y1="220" x2="55" y2="20"/>
+<text x="400" y="244">Nombre de titres (0 → 30)</text><text x="6" y="30">Volatilité</text>
+<path class="ca" d="M60 40 C80 120 100 150 150 168 C220 182 330 188 495 192"/>
+<line class="cg dash" x1="55" y1="192" x2="500" y2="192"/><text x="300" y="186" class="m">risque systématique (covariance moyenne) — non diversifiable</text>
+<text x="120" y="110" class="m">risque spécifique éliminé peu à peu</text></svg>
+<figcaption>Courbe du cours (0-30 titres, volatilité de ≈ 35 % à ≈ 15-20 %) : la volatilité baisse vite puis plafonne.</figcaption></figure>
+<p>Les corrélations réelles : matrice des corrélations des 25 valeurs du CAC 40 (2000-2008) — presque toutes positives, de ≈ −0,18 (Essilor / France Télécom) à ≈ 0,71 (BNP Paribas / Société Générale), par exemple AXA–BNP 0,58, Air Liquide–AXA 0,51. Les valeurs d'un même secteur (banques) sont les plus corrélées.</p>
+
+<h3>3. Actif sans risque, CML et théorème de Tobin</h3>
+<div class="f"><b class="t">Un actif risqué A + l'actif sans risque</b><div class="m">r<sub>p</sub> = a·r<sub>A</sub> + (1−a)·r<sub>f</sub> ; Var(r<sub>p</sub>) = a²Var(r<sub>A</sub>) (car Var(r<sub>f</sub>) = Cov = 0) ; σ(r<sub>p</sub>) = a·σ(r<sub>A</sub>)</div>
+Le portefeuille se déplace sur la droite reliant r<sub>f</sub> à A.</div>
+<div class="f"><b class="t">Capital Market Line (avec le portefeuille risqué de marché M)</b><div class="m">r<sub>p</sub> = a·r<sub>M</sub> + (1−a)·r<sub>f</sub> ; σ(r<sub>p</sub>) = a·σ(r<sub>M</sub>)<br>
+⇒ <b>r<sub>p</sub> = r<sub>f</sub> + σ(r<sub>p</sub>) · (r<sub>M</sub> − r<sub>f</sub>) / σ(r<sub>M</sub>)</b></div>
+(en remplaçant a = σ(r<sub>p</sub>)/σ(r<sub>M</sub>) dans la rentabilité). La pente (r<sub>M</sub>−r<sub>f</sub>)/σ<sub>M</sub> est le prix du risque (ratio de Sharpe du marché).</div>
+<figure><svg viewBox="0 0 520 290" width="520" role="img" aria-label="Capital Market Line">
+<line class="ax" x1="55" y1="250" x2="500" y2="250"/><line class="ax" x1="55" y1="250" x2="55" y2="20"/>
+<text x="440" y="270">Risque σp</text><text x="6" y="30">Rentabilité</text>
+<path class="cg" d="M55 250 C60 120 140 90 480 70" style="stroke-dasharray:4 3" /><text x="380" y="62" class="m">frontière efficiente (actifs risqués)</text>
+<line class="ca" x1="55" y1="215" x2="470" y2="40"/>
+<circle class="pa" cx="270" cy="124" r="6"/><text x="278" y="122">M* (portefeuille de marché, tangent)</text>
+<circle class="pg" cx="55" cy="215" r="5"/><text x="62" y="212">r<tspan baseline-shift="sub" font-size="9">f</tspan></text>
+<text x="100" y="196" class="m">prêt (0 &lt; a &lt; 1)</text><text x="340" y="86" class="m">emprunt (a &gt; 1) : au-delà de M</text>
+<text x="120" y="130" class="m">CML</text></svg>
+<figcaption>La CML est la droite issue de r<sub>f</sub> tangente à la frontière des actifs risqués au point M*. Les portefeuilles à gauche de M prêtent au taux sans risque, ceux à droite empruntent pour investir plus de 100 % en M.</figcaption></figure>
+<div class="f"><b class="t">Théorème de séparation de Tobin (1955)</b>
+« La décision de composition du portefeuille d'actifs risqués optimum est <b>indépendante</b> de l'allocation choisie entre l'actif sans risque et le portefeuille risqué ». Le choix de l'investisseur ne porte que sur la répartition entre r<sub>f</sub> et M selon son <b>aversion au risque</b> ; la composition du portefeuille de marché ne dépend en aucun cas des préférences des investisseurs.</div>
+
+<h3>4. Le modèle de marché (Sharpe, 1963) et le MEDAF</h3>
+<div class="f"><b class="t">Modèle de marché</b><div class="m">r<sub>it</sub> = α<sub>i</sub> + β<sub>i</sub>·r<sub>mt</sub> + ε<sub>it</sub></div>
+r<sub>it</sub> rentabilité du titre i ; r<sub>mt</sub> rentabilité du marché ; α<sub>i</sub>, β<sub>i</sub> paramètres estimés ; ε<sub>it</sub> rentabilité résiduelle. (Relation <i>ex post</i>, estimée par régression.)</div>
+<p>Le MEDAF repose sur une relation simple : <b>taux sans risque + prime de risque = taux de rentabilité exigé par un actionnaire</b>.</p>
+<div class="f"><b class="t">MEDAF (CAPM) — relation ex ante à l'équilibre</b><div class="m">E(r<sub>it</sub>) = r<sub>ft</sub> + β<sub>i</sub>·[E(r<sub>mt</sub>) − r<sub>ft</sub>]</div>
+β<sub>i</sub> = risque systématique du titre i. Seul le risque systématique est rémunéré par le marché (le risque spécifique se diversifie).</div>
+<div class="f"><b class="t">Bêta</b><div class="m">β<sub>i</sub> = Cov(R<sub>i</sub>, R<sub>m</sub>) / Var(R<sub>m</sub>)</div>
+Mesure la sensibilité du cours d'une action à une variation de l'indice de marché. On l'obtient par régression de r<sub>i</sub> sur r<sub>m</sub> ou par ce rapport covariance / variance du marché.</div>
+<table><tr><th>Valeur de β</th><th class="l">Interprétation</th></tr>
+<tr><td>β = 1</td><td class="l">varie comme le marché</td></tr><tr><td>0 &lt; β &lt; 1</td><td class="l">le titre évolue dans le même sens que le marché mais en atténuant les mouvements : valeur <b>défensive</b> (« sous le marché »)</td></tr>
+<tr><td>β &gt; 1</td><td class="l">amplifie les mouvements : valeur <b>offensive</b> (β &gt; 2 : très au-dessus du marché)</td></tr>
+<tr><td>β = 0</td><td class="l">aucun lien avec le marché (Cov = 0)</td></tr><tr><td>β &lt; 0</td><td class="l">Cov &lt; 0 : mouvements de sens opposé à ceux du marché</td></tr></table>
+<div class="f"><b class="t">Bêta et levier financier</b>
+À partir de l'équation de l'effet de levier : R<sub>e</sub> = R<sub>ne</sub> + (R<sub>ne</sub> − R<sub>f</sub>)·D/CP<sub>e</sub> (R<sub>e</sub> rentabilité des fonds propres, R<sub>ne</sub> rentabilité de l'actif économique). On en déduit, avec une dette sans risque : <b>β<sub>CP</sub> = β<sub>actif</sub> · (1 + D/CP)</b>.<br>
+Le bêta dépend donc du <b>risque d'exploitation</b> de la société et du <b>risque de sa structure de financement</b>.</div>
+<figure><svg viewBox="0 0 520 280" width="520" role="img" aria-label="Droite de marché des titres SML">
+<line class="ax" x1="55" y1="240" x2="500" y2="240"/><line class="ax" x1="55" y1="240" x2="55" y2="20"/>
+<text x="470" y="260">β</text><text x="6" y="30">E(r)</text>
+<line class="ca" x1="55" y1="200" x2="480" y2="50"/>
+<circle class="pg" cx="55" cy="200" r="4"/><text x="64" y="215">r<tspan baseline-shift="sub" font-size="9">f</tspan></text>
+<line class="cg dash" x1="190" y1="240" x2="190" y2="152"/><circle class="pa" cx="190" cy="152" r="5"/><text x="180" y="258">1</text><text x="198" y="150">marché E(r<tspan baseline-shift="sub" font-size="9">m</tspan>)</text>
+<text x="330" y="90" class="m">pente = prime de risque E(r<tspan baseline-shift="sub" font-size="9">m</tspan>) − r<tspan baseline-shift="sub" font-size="9">f</tspan></text></svg>
+<figcaption>Droite de marché (SML) : ordonnée à l'origine r<sub>f</sub>, pente = prime de risque du marché, rentabilité exigée = r<sub>f</sub> + β·prime.</figcaption></figure>
+
+<h3>5. La prime de risque</h3>
+<ul><li><b>Prime historique (1926-2015)</b> — CAC 40 : 4,9 % par rapport au marché monétaire, 1,0 % par rapport à l'emprunt d'État long terme. S&amp;P 500 : 7,7 % vs monétaire, 5,9 % vs emprunt d'État long terme.</li>
+<li>Graphique Ibbotson/Research Affiliates : surperformance cumulée actions vs obligations depuis 1926 ; moyenne 1975-2000 : 5,6 % avec un écart type de 0,3 %.</li>
+<li>Graphique « Primes de risque sur les marchés actions » (Refinitiv, 2019-2025, États-Unis, Pays-Bas, Allemagne, France, Japon, Royaume-Uni) : primes ex ante fluctuantes avec tendance à la baisse sur la période.</li></ul>
+<div class="f"><b class="t">Prime de risque ex ante (Gordon-Shapiro)</b><div class="m">r<sub>m</sub> = Div<sub>1</sub>/P<sub>0</sub> + g &nbsp;; prime = r<sub>m</sub> − r<sub>f</sub></div>
+Rentabilité attendue du marché = rendement attendu (dividende/cours) + taux de croissance espéré du dividende pour l'ensemble du marché.</div>
+
+<h3>6. La construction d'un modèle de droite de marché</h3>
+<p>Idée : extraire des données de marché l'équation du MEDAF pour disposer d'une équation <i>ex ante</i>. Méthode : (1) échantillon de sociétés ; (2) calcul de leur rentabilité actuarielle ; (3) calcul de leur risque systématique (β).</p>
+<div class="f"><b class="t">Rentabilité actuarielle (actualisation des flux à l'infini)</b><div class="m">Cours = Σ<sub>t=1..∞</sub> FF<sub>t</sub> / (1 + E(r<sub>i</sub>))<sup>t</sup></div>
+Flux FF<sub>t</sub> : dividendes (modèles DDM) ou cash-flows. Connaissant le cours, on en déduit le taux E(r<sub>i</sub>).</div>
+<figure><svg viewBox="0 0 520 280" width="520" role="img" aria-label="Droite de marché empirique contre théorique">
+<line class="ax" x1="55" y1="240" x2="500" y2="240"/><line class="ax" x1="55" y1="240" x2="55" y2="20"/><text x="480" y="260">β</text>
+<line class="cg" x1="55" y1="190" x2="480" y2="50"/><text x="360" y="70" class="m">modèle théorique (pente = prime)</text>
+<line class="ca" x1="55" y1="170" x2="480" y2="95"/><text x="350" y="125">modèle empirique (régression)</text>
+<g class="pb"><circle cx="100" cy="150" r="3.5"/><circle cx="130" cy="175" r="3.5"/><circle cx="170" cy="130" r="3.5"/><circle cx="210" cy="150" r="3.5"/><circle cx="250" cy="115" r="3.5"/><circle cx="290" cy="140" r="3.5"/><circle cx="330" cy="105" r="3.5"/><circle cx="380" cy="95" r="3.5"/><circle cx="420" cy="80" r="3.5"/><circle cx="450" cy="105" r="3.5"/></g>
+<line class="cg dash" x1="190" y1="240" x2="190" y2="30"/><text x="185" y="258">β = 1</text></svg>
+<figcaption>Chaque société est placée dans le plan (β ; rentabilité actuarielle). On compare la pente de la droite empirique à celle de la droite théorique.</figcaption></figure>
+<p><b>Ce que met en évidence le modèle :</b></p>
+<ul><li><b>L'écart</b> entre le taux de rentabilité offert par le marché actions et celui des obligations d'État (ordonnée à l'origine / écart au point β = 1) : jugement sur le niveau de valorisation du marché (écart 1 vs écart 2 sur le graphique).</li>
+<li><b>La pente</b> de la droite empirique : le marché rémunère-t-il correctement le risque ? (pentes pour β = 0,5 ; 1 ; 1,5). L'écart et la pente évoluent parfois ensemble (6 situations schématisées).</li>
+<li><b>La position de chaque titre par rapport à la droite</b> : au-dessus (A) = rentabilité exigée supérieure à l'équilibre → <b>sous-évalué</b> ; en dessous (C) = <b>sur-évalué</b> ; sur la droite (B) = bien valorisé. La droite indique les prix d'équilibre.</li></ul>
+<figure><svg viewBox="0 0 400 220" width="400" role="img" aria-label="Sous et sur-évaluation par rapport à la droite">
+<line class="ax" x1="40" y1="190" x2="380" y2="190"/><line class="ax" x1="40" y1="190" x2="40" y2="15"/>
+<line class="ca" x1="40" y1="150" x2="370" y2="50"/>
+<circle class="pa" cx="150" cy="75" r="5"/><text x="160" y="75">A : au-dessus → sous-évalué</text>
+<circle class="pg" cx="210" cy="106" r="5"/><text x="220" y="112">B : sur la droite</text>
+<circle class="pb" cx="260" cy="155" r="5"/><text x="270" y="160">C : en dessous → sur-évalué</text></svg></figure>
+<div class="note">Il faut <b>réestimer régulièrement</b> les paramètres : de l'information arrive sur le marché (anticipations de flux modifiées) et les cours changent constamment. Le risque, lui, présente une assez forte inertie.</div>
+
+<h3>7. Les modèles multifacteurs</h3>
+<div class="f"><b class="t">APT de Ross (1976)</b><div class="m">r<sub>i,t</sub> = A<sub>t</sub> + β<sub>1,i</sub>F<sub>1,t</sub> + β<sub>2,i</sub>F<sub>2,t</sub> + … + β<sub>n,i</sub>F<sub>n,t</sub> + ε<sub>i,t</sub></div>
+A<sub>t</sub> : rentabilité espérée quand les facteurs sont nuls ; β<sub>n,i</sub> : sensibilité de i au facteur n ; F<sub>n,t</sub> : valeur du facteur n ; ε : erreur aléatoire d'espérance nulle.
+<div class="m">À l'équilibre : E(r<sub>i,t</sub>) = λ<sub>0</sub> + β<sub>1,i</sub>λ<sub>1,t</sub> + β<sub>2,i</sub>λ<sub>2,t</sub> + … + β<sub>n,i</sub>λ<sub>n,t</sub></div>
+(λ<sub>n</sub> = prime de risque associée au facteur n).</div>
+<p><b>Trois générations de modèles :</b></p>
+<table><tr><th>Type</th><th class="l">Objet / méthode</th><th class="l">Exemples</th></tr>
+<tr><td>Facteurs macroéconomiques</td><td class="l">Obtenir des bêtas de facteur ; régression en <b>séries temporelles</b> des rentabilités sur variables macro ; relation évaluée a priori</td><td class="l">Chen, Roll, Ross (1986) : croissance du PIB, écart de rendement obligations Trésor longues − courtes, primes de risque obligataires, inflation</td></tr>
+<tr><td>Facteurs micro / fondamentaux</td><td class="l">Déterminer les facteurs fondamentaux ; régression en <b>coupe instantanée</b> sur les caractéristiques des titres</td><td class="l">Fama-French à 3 puis 5 facteurs</td></tr>
+<tr><td>Facteurs implicites (statistiques)</td><td class="l">Déterminer à la fois les facteurs et les bêtas : analyse en composantes principales, analyse factorielle (Roll et Ross 1980), approche APT</td><td class="l">Gestion indicielle, benchmarkée, classement des fonds</td></tr></table>
+<div class="f"><b class="t">Fama-French à 3 facteurs (1993)</b><div class="m">R<sub>pt</sub> − R<sub>ft</sub> = α<sub>p</sub> + β<sub>p</sub>(R<sub>mt</sub> − R<sub>ft</sub>) + s<sub>p</sub>·SMB<sub>t</sub> + h<sub>p</sub>·HML<sub>t</sub> + e<sub>t</sub></div>
+SMB (Small Minus Big) : rentabilité des petites capitalisations − grandes ; HML (High Minus Low) : titres à ratio valeur comptable/valeur de marché élevé − faible ; β, s, h : coefficients de régression ; e : erreur.</div>
+<div class="f"><b class="t">Fama-French à 5 facteurs (2015)</b><div class="m">R<sub>pt</sub> − R<sub>ft</sub> = α<sub>p</sub> + β<sub>p</sub>(R<sub>mt</sub> − R<sub>ft</sub>) + s<sub>p</sub>SMB<sub>t</sub> + h<sub>p</sub>HML<sub>t</sub> + r<sub>p</sub>RMW<sub>t</sub> + c<sub>p</sub>CMA<sub>t</sub> + e<sub>t</sub></div>
+RMW (Robust Minus Weak) : entreprises à rentabilité opérationnelle robuste − faible ; CMA (Conservative Minus Aggressive) : politique d'investissement conservatrice − agressive.</div>
+<p><b>Facteurs implicites — graphiques du cours :</b> (Graphique 6) la variance expliquée par le 1<sup>er</sup> facteur (≈ 6 %) ; (Graphique 7) le pouvoir explicatif décroît progressivement du facteur 1 au facteur 30 (de ≈ 6 % à &lt; 1 %) ; (Graphique 9) sensibilités (bêtas) du yen aux 20 premiers facteurs : positives pour certains, négatives pour d'autres. Source : Chauvet (2007).</p>
+
+<h3>8. Exercices (cours et partiel de l'an dernier)</h3>
+<div class="exo"><div class="q"><span class="tag">Partiel — Exercice 1</span>MEDAF : Potpourri et Magnolia<small>Énoncé : le taux sans risque est de 7,6 %. Potpourri a un bêta de 1,7 et un taux de rentabilité espéré à l'équilibre de 16,7 %. (1) Quelle est la prime de risque attendue sur le marché ? (2) L'action Magnolia a un bêta de 0,8 : quelle est sa rentabilité attendue ? (3) Vous avez investi 10 000 € dans une combinaison de Magnolia et Potpourri ; le bêta du portefeuille est de 1,07. Combien avez-vous investi dans chaque action ? Quelle est la rentabilité espérée du portefeuille ?</small></div><div class="c">
+<p><b>Formule utilisée (MEDAF) :</b> E(r<sub>i</sub>) = r<sub>f</sub> + β<sub>i</sub>·[E(r<sub>m</sub>) − r<sub>f</sub>], où [E(r<sub>m</sub>) − r<sub>f</sub>] est la prime de risque du marché.</p>
+<p><b>1) Prime de risque du marché.</b> On isole la prime pour Potpourri : 16,7 % = 7,6 % + 1,7 × prime.<br>prime = (16,7 % − 7,6 %) / 1,7 = 9,1 % / 1,7 = <span class="ans">5,35 %</span> (5,3529 %).</p>
+<p><b>2) Rentabilité attendue de Magnolia (β = 0,8).</b> E(r) = 7,6 % + 0,8 × 5,3529 % = 7,6 % + 4,282 % = <span class="ans">11,88 %</span>.</p>
+<p><b>3) Répartition du portefeuille.</b> Le bêta d'un portefeuille est la moyenne pondérée des bêtas. Soit w la part en Potpourri : 1,7·w + 0,8·(1 − w) = 1,07 ⇒ 0,8 + 0,9w = 1,07 ⇒ w = 0,27/0,9 = 0,30.<br>
+Potpourri : 0,30 × 10 000 = <span class="ans">3 000 €</span> ; Magnolia : <span class="ans">7 000 €</span>.<br>
+Rentabilité espérée : soit par MEDAF 7,6 % + 1,07 × 5,3529 % = <span class="ans">13,33 %</span> ; soit par moyenne pondérée 0,3×16,7 % + 0,7×11,88 % = 5,01 % + 8,32 % = 13,33 % ✓.</p></div></div>
+
+<h4>QCM du partiel — chapitre 1</h4>
+<div class="exo"><div class="q"><span class="tag">QCM 1</span>Une action a un bêta compris entre zéro et un lorsque :<small>a) sa rentabilité est positive — b) son cours fluctue de façon identique à l'indice — c) son cours fluctue dans le même sens que l'indice en atténuant les mouvements — d) il s'agit d'une valeur offensive</small></div><div class="c">
+<p><span class="ans">Réponse : c.</span> 0 &lt; β &lt; 1 : même sens que le marché, mouvements atténués = valeur défensive. a) le signe de la rentabilité n'a rien à voir avec β ; b) correspond à β = 1 ; d) une valeur offensive a β &gt; 1.</p></div></div>
+<div class="exo"><div class="q"><span class="tag">QCM 2</span>Taux sans risque 3 %, rentabilité attendue du marché 9 % : rentabilité anticipée d'une action de bêta 1,5 ?<small>a) 12,5 % — b) 12,0 % — c) 11,5 % — d) 11,0 %</small></div><div class="c">
+<p>MEDAF : E = r<sub>f</sub> + β(E(r<sub>m</sub>) − r<sub>f</sub>) = 3 % + 1,5 × (9 % − 3 %) = 3 % + 9 % = <span class="ans">12 % → b</span>.</p></div></div>
+<div class="exo"><div class="q"><span class="tag">QCM 3</span>Variance de X = 0,050 ; variance de Y = 0,030 ; covariance = 0,0025. Variance d'un portefeuille équipondéré ?<small>a) 0,04225 — b) 0,03755 — c) 0,02125 — d) 0,01745</small></div><div class="c">
+<p>Formule : Var(r<sub>p</sub>) = a²Var<sub>X</sub> + b²Var<sub>Y</sub> + 2ab·Cov, avec a = b = 0,5.<br>
+= 0,25 × 0,050 + 0,25 × 0,030 + 2 × 0,5 × 0,5 × 0,0025 = 0,0125 + 0,0075 + 0,00125 = <span class="ans">0,02125 → c</span>.<br><i>(Attention au calcul final : 0,02125, pas 0,02725.)</i></p></div></div>
+<div class="exo"><div class="q"><span class="tag">QCM 4</span>σ(X) = 0,6 ; σ(marché) = 0,5 ; Cov(X, marché) = 0,25 ; r<sub>f</sub> = 5 %. Bêta de X ?<small>a) 0,69 — b) 1 — c) 0,5 — d) 1,25</small></div><div class="c">
+<p>β = Cov(R<sub>i</sub>, R<sub>m</sub>) / Var(R<sub>m</sub>). Var(R<sub>m</sub>) = σ<sub>m</sub>² = 0,5² = 0,25. β = 0,25/0,25 = <span class="ans">1 → b</span>. (σ<sub>X</sub> et r<sub>f</sub> sont des données inutiles ici.)</p></div></div>
+<div class="exo"><div class="q"><span class="tag">QCM 5</span>Laquelle est fausse ?<small>a) le bêta d'une action dépend de la structure de financement — b) le bêta d'un titre est une mesure de son risque total — c) le bêta d'un titre peut évoluer dans le temps — d) d'après le MEDAF seul le risque systématique est rémunéré</small></div><div class="c">
+<p><span class="ans">Réponse : b.</span> Le bêta mesure le risque <b>systématique</b> (sensibilité au marché), pas le risque total (mesuré par σ). a) vrai : β dépend du levier ; c) vrai (non-stabilité du bêta) ; d) vrai (MEDAF).</p></div></div>
+<div class="exo"><div class="q"><span class="tag">QCM 8</span>Laquelle est vraie ?<small>a) l'APT fait systématiquement intervenir la prime de risque du marché comme facteur — b) l'APT explique la rentabilité en fonction de plusieurs facteurs mais ne dit pas combien — c) les facteurs sont des facteurs macroéconomiques — d) l'avantage de l'APT est qu'il n'est pas nécessaire de réestimer régulièrement ses coefficients, contrairement au MEDAF</small></div><div class="c">
+<p><span class="ans">Réponse : b.</span> L'APT ne spécifie ni le nombre ni la nature des facteurs. a) faux : le marché n'est pas imposé ; c) faux : il existe aussi des facteurs micro/fondamentaux et statistiques ; d) faux : les coefficients doivent aussi être réestimés.</p></div></div>
+<div class="exo"><div class="q"><span class="tag">QCM 9</span>Laquelle est fausse ?<small>a) selon Tobin, la composition du portefeuille d'actifs risqués (portefeuille de marché) ne dépend pas de l'aversion au risque — b) le portefeuille de marché est composé de tous les actifs existants de par le monde — c) le portefeuille de marché est différent selon les pays — d) l'allocation d'actif d'un investisseur dépend de son aversion au risque</small></div><div class="c">
+<p><span class="ans">Réponse : c.</span> Dans la théorie, le portefeuille de marché est <b>unique</b> (mondial) et identique pour tous les investisseurs (séparation de Tobin) ; seule la répartition entre actif sans risque et portefeuille de marché varie avec l'aversion au risque (d vrai).<br><i>Réserve :</i> a), b), d) sont conformes au cours ; si l'énoncé de ton prof insiste sur le « biais domestique » du chapitre 2, c) en est la seule à ressembler à un constat empirique, mais ce n'est pas l'énoncé théorique.</p></div></div>
+<div class="exo"><div class="q"><span class="tag">QCM 11</span>Laquelle est vraie ?<small>a) il est possible de construire un portefeuille de risque nul en investissant dans un suffisamment grand nombre d'actifs — b) si la volatilité moyenne des titres augmente alors celle du marché augmente aussi — c) la volatilité du marché a tendance à augmenter dans les phases de baisse — d) le portefeuille de variance minimale est un portefeuille équipondéré</small></div><div class="c">
+<p><span class="ans">Réponse : c.</span> a) faux : la diversification n'élimine que le risque spécifique, il reste la covariance moyenne (risque systématique) ; b) pas nécessairement : la volatilité du marché dépend aussi des corrélations ; d) faux : a* = [Var(B) − Cov]/[Var(A)+Var(B) − 2Cov] n'est égal à 50 % que si les variances sont égales ; c) est un fait stylisé (la volatilité monte quand le marché baisse) — c'est la seule proposition acceptable.</p></div></div>
+<div class="exo"><div class="q"><span class="tag">QCM 12</span>Laquelle est fausse ?<small>a) la composition d'un portefeuille d'actifs risqués est indépendante de l'aversion au risque (Tobin) — b) la diversification est d'autant plus élevée que la corrélation est faible — c) la CML donne la relation risque/rentabilité d'un portefeuille parfaitement diversifié — d) le portefeuille de marché n'est composé que d'actifs financiers mais de tous ceux disponibles dans le monde</small></div><div class="c">
+<p><span class="ans">Réponse : d.</span> Le portefeuille de marché théorique comprend <b>tous les actifs risqués</b>, pas seulement financiers (immobilier, capital humain, etc.). a), b) et c) sont des énoncés du cours (CML = droite des portefeuilles combinant r<sub>f</sub> et le portefeuille de marché parfaitement diversifié).</p></div></div>
+</section>
+
+</main>
+<script>
+(function(){
+var panels=[].slice.call(document.querySelectorAll('section.panel'));
+var nav=document.getElementById('tabs');
+panels.forEach(function(p){var b=document.createElement('button');b.textContent=p.getAttribute('data-title');b.setAttribute('role','tab');b.setAttribute('data-id',p.id);b.onclick=function(){show(p.id,true)};nav.appendChild(b)});
+function show(id,push){
+ if(!document.getElementById(id))id=panels[0].id;
+ panels.forEach(function(p){p.classList.toggle('on',p.id===id)});
+ [].forEach.call(nav.children,function(b){b.setAttribute('aria-selected',b.getAttribute('data-id')===id)});
+ try{if(push)location.hash=id}catch(e){}
+ window.scrollTo(0,0);
+}
+function fromHash(){var h='';try{h=location.hash.replace('#','')}catch(e){}show(h||panels[0].id,false)}
+window.addEventListener('hashchange',fromHash);fromHash();
+})();
+</script></body></html>
